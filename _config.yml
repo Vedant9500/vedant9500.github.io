@@ -1,0 +1,26 @@
+title: "Vedantium.dev"
+name: "Vedant Deshmukh"
+email: ""
+description: "Personal blog and project updates by Vedant Deshmukh."
+url: "https://vedantium.dev"
+baseurl: ""
+theme: minimal-mistakes-jekyll
+github_username: Vedant9500
+
+# Build settings
+markdown: kramdown
+remote_theme: "mmistakes/minimal-mistakes"
+plugins:
+  - jekyll-feed
+  - jekyll-seo-tag
+  - jekyll-sitemap
+  - jekyll-include-cache
+
+# Navigation
+nav:
+  - title: "Home"
+    url: "/"
+  - title: "Projects"
+    url: "/projects/"
+  - title: "Blog"
+    url: "/blog/" 
