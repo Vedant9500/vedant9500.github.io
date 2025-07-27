@@ -358,7 +358,7 @@ section h2 {
     max-width: 800px;
     margin: 0 auto;
     position: relative;
-    padding: 2rem 0;
+    padding: 1rem 0;
 }
 
 .timeline::before {
@@ -374,7 +374,7 @@ section h2 {
 
 .timeline-item {
     position: relative;
-    margin-bottom: 3rem;
+    margin-bottom: 1.5rem;
     display: flex;
     align-items: center;
 }
@@ -404,7 +404,7 @@ section h2 {
 .timeline-content {
     background: #334155;
     border-radius: 12px;
-    padding: 1.5rem;
+    padding: 1rem;
     width: 45%;
     border: 1px solid #475569;
     transition: all 0.3s ease;
@@ -418,33 +418,38 @@ section h2 {
 }
 
 .timeline-icon {
-    font-size: 2rem;
-    margin-bottom: 0.5rem;
+    font-size: 1.5rem;
+    margin-bottom: 0.25rem;
     display: block;
 }
 
 .timeline-content h3 {
     color: #f1f5f9;
-    font-size: 1.1rem;
+    font-size: 1rem;
     font-weight: 600;
-    margin-bottom: 0.5rem;
+    margin-bottom: 0.25rem;
 }
 
 .timeline-content p {
     color: #cbd5e1;
-    font-size: 0.95rem;
-    line-height: 1.6;
+    font-size: 0.9rem;
+    line-height: 1.5;
     margin: 0;
 }
 
 /* Responsive Timeline */
 @media (max-width: 768px) {
+    .timeline {
+        padding: 0.5rem 0;
+    }
+    
     .timeline::before {
         left: 30px;
     }
     
     .timeline-item {
         flex-direction: row !important;
+        margin-bottom: 1rem;
         margin-left: 60px;
     }
     
@@ -460,16 +465,16 @@ section h2 {
 
 @media (max-width: 480px) {
     .timeline {
-        padding: 1rem 0;
-    }
-    
-    .timeline-item {
-        margin-bottom: 2rem;
-        margin-left: 40px;
+        padding: 0.5rem 0;
     }
     
     .timeline::before {
         left: 20px;
+    }
+    
+    .timeline-item {
+        margin-bottom: 0.75rem;
+        margin-left: 40px;
     }
     
     .timeline-dot {
@@ -479,19 +484,19 @@ section h2 {
     }
     
     .timeline-content {
-        padding: 1rem;
+        padding: 0.75rem;
     }
     
     .timeline-icon {
-        font-size: 1.5rem;
+        font-size: 1.25rem;
     }
     
     .timeline-content h3 {
-        font-size: 1rem;
+        font-size: 0.95rem;
     }
     
     .timeline-content p {
-        font-size: 0.9rem;
+        font-size: 0.85rem;
     }
 }
 
