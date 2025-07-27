@@ -1,4 +1,10 @@
-// Mobile navigation toggle
+/* ========================================
+   VEDANTIUM.DEV - JAVASCRIPT FUNCTIONALITY
+   ======================================== */
+
+// ========================================
+// MOBILE NAVIGATION
+// ========================================
 const hamburger = document.querySelector('.hamburger');
 const navMenu = document.querySelector('.nav-menu');
 
@@ -15,7 +21,9 @@ document.querySelectorAll('.nav-menu a').forEach(link => {
     });
 });
 
-// Smooth scrolling for navigation links
+// ========================================
+// SMOOTH SCROLLING
+// ========================================
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
         e.preventDefault();
@@ -29,7 +37,9 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     });
 });
 
-// Navbar background on scroll
+// ========================================
+// NAVBAR SCROLL EFFECTS
+// ========================================
 window.addEventListener('scroll', () => {
     const navbar = document.querySelector('.navbar');
     if (window.scrollY > 50) {
@@ -39,7 +49,9 @@ window.addEventListener('scroll', () => {
     }
 });
 
-// Add animation on scroll for cards
+// ========================================
+// SCROLL ANIMATIONS
+// ========================================
 const observerOptions = {
     threshold: 0.1,
     rootMargin: '0px 0px -50px 0px'
@@ -54,7 +66,7 @@ const observer = new IntersectionObserver((entries) => {
     });
 }, observerOptions);
 
-// Observe all cards
+// Observe all cards and achievement items
 document.querySelectorAll('.project-card, .achievements li').forEach(card => {
     card.style.opacity = '0';
     card.style.transform = 'translateY(30px)';

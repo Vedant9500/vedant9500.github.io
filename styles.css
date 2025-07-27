@@ -1,4 +1,10 @@
-/* Reset and base styles */
+/* ========================================
+   VEDANTIUM.DEV - PERSONAL PORTFOLIO SITE
+   ======================================== */
+
+/* ========================================
+   RESET & BASE STYLES
+   ======================================== */
 * {
     margin: 0;
     padding: 0;
@@ -19,7 +25,9 @@ body {
     padding: 0 20px;
 }
 
-/* Navigation */
+/* ========================================
+   NAVIGATION
+   ======================================== */
 .navbar {
     position: fixed;
     top: 0;
@@ -99,7 +107,9 @@ body {
     transition: 0.3s;
 }
 
-/* Hero Section */
+/* ========================================
+   HERO SECTION
+   ======================================== */
 .hero {
     min-height: 100vh;
     display: flex;
@@ -213,7 +223,9 @@ body {
     color: #60a5fa;
 }
 
-/* Sections */
+/* ========================================
+   SECTION STYLES
+   ======================================== */
 section {
     padding: 5rem 0;
 }
@@ -226,7 +238,31 @@ section h2 {
     color: #f1f5f9;
 }
 
-/* Projects Section */
+/* ========================================
+   ABOUT SECTION
+   ======================================== */
+.about {
+    background: #0f172a;
+    text-align: center;
+}
+
+.about p {
+    color: #cbd5e1;
+    font-size: 1.1rem;
+    line-height: 1.8;
+    margin-bottom: 1.5rem;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.about p:last-child {
+    margin-bottom: 0;
+}
+
+/* ========================================
+   PROJECTS SECTION
+   ======================================== */
 .projects {
     background: #1e293b;
 }
@@ -290,27 +326,9 @@ section h2 {
     color: #93c5fd;
 }
 
-/* About Section */
-.about {
-    background: #0f172a;
-    text-align: center;
-}
-
-.about p {
-    color: #cbd5e1;
-    font-size: 1.1rem;
-    line-height: 1.8;
-    margin-bottom: 1.5rem;
-    max-width: 800px;
-    margin-left: auto;
-    margin-right: auto;
-}
-
-.about p:last-child {
-    margin-bottom: 0;
-}
-
-/* Achievements Section */
+/* ========================================
+   ACHIEVEMENTS SECTION
+   ======================================== */
 .achievements {
     background: #1e293b;
     text-align: center;
@@ -346,7 +364,9 @@ section h2 {
     margin-bottom: 0;
 }
 
-/* Contact Section */
+/* ========================================
+   CONTACT SECTION
+   ======================================== */
 .contact {
     background: #1e293b;
     text-align: center;
@@ -386,7 +406,9 @@ section h2 {
     transform: translateY(-2px);
 }
 
-/* Footer */
+/* ========================================
+   FOOTER
+   ======================================== */
 .footer {
     background: #0f172a;
     text-align: center;
@@ -398,7 +420,9 @@ section h2 {
     color: #94a3b8;
 }
 
-/* Responsive Design */
+/* ========================================
+   RESPONSIVE DESIGN
+   ======================================== */
 @media (max-width: 768px) {
     .hamburger {
         display: flex;
@@ -470,12 +494,13 @@ section h2 {
     }
 }
 
-/* Smooth scrolling */
+/* ========================================
+   ANIMATIONS & EFFECTS
+   ======================================== */
 html {
     scroll-behavior: smooth;
 }
 
-/* Animation for cards */
 @keyframes fadeInUp {
     from {
         opacity: 0;
