@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
+    <!-- Navigation -->
     <nav class="navbar">
         <div class="nav-container">
             <div class="nav-logo">
@@ -30,41 +31,139 @@
         </div>
     </nav>
 
+    <!-- Hero Section -->
     <section id="home" class="hero">
-    <div class="hero-container">
-      <div class="hero-content">
-        <h1>Hey, I’m <span class="highlight">Vedant Deshmukh</span></h1>
-        <p class="hero-subtitle">I build things that think 🤖</p>
-        <p class="hero-description">
-          I’m a computer engineering student with a habit of turning ideas into experiments. Whether it’s crafting a chess AI that thinks 5 moves ahead, 
-          training LSTMs to predict weather, or simulating galaxies in C++ — I love digging into how things work and making them work better.
-        </p>
-        <div class="hero-buttons">
-          <a href="#projects" class="btn btn-primary">Explore My Work</a>
-          <a href="#about" class="btn btn-secondary">Know Me Better</a>
+        <div class="hero-container">
+            <div class="hero-content">
+                <h1>Hey, I'm <span class="highlight">Vedant Deshmukh</span></h1>
+                <p class="hero-subtitle">I build things that think 🤖</p>
+                <p class="hero-description">
+                    I'm a computer engineering student with a habit of turning ideas into experiments. Whether it's crafting a chess AI that thinks 5 moves ahead, 
+                    training LSTMs to predict weather, or simulating galaxies in C++ — I love digging into how things work and making them work better.
+                </p>
+                <div class="hero-buttons">
+                    <a href="#projects" class="btn btn-primary">Explore My Work</a>
+                    <a href="#about" class="btn btn-secondary">Know Me Better</a>
+                </div>
+                <div class="social-links">
+                    <a href="https://github.com/Vedant9500" target="_blank" rel="noopener">
+                        <i class="fab fa-github"></i>
+                    </a>
+                </div>
+            </div>
         </div>
-        <div class="social-links">
-          <a href="https://github.com/Vedant9500" target="_blank" rel="noopener">
-            <i class="fab fa-github"></i>
-          </a>
-        </div>
-              </div>
-      </div>
     </section>
 
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="container">
+            <h2>About Me</h2>
+            <p>
+                I'm Vedant — part developer, part curious explorer. I love building intelligent systems, tweaking my dual-boot Arch setup, and pushing limits with code.
+                I enjoy turning abstract ideas into real projects that I can run, test, and iterate on — from AI models to simulation engines.
+            </p>
+            <p>
+                I've trained a weather prediction model using LSTM and real-world data, simulated the N-body problem with OpenGL, and built a chess engine that 
+                learns through self-play (inspired by AlphaZero). I also like hacking together utilities — like a terminal-based anime player, a CLI command helper, 
+                and custom F1 tools — just for the joy of it.
+            </p>
+            <p>
+                My goals? Build systems that learn, reason, and adapt — and hopefully work at DeepMind one day.
+            </p>
+            <p>
+                Outside code, I'm into F1, story-driven games, and philosophical rabbit holes. I try to stay curious, build honestly, and keep learning.
+            </p>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="projects">
+        <div class="container">
+            <h2>Projects</h2>
+            <div class="projects-grid">
+                <div class="project-card">
+                    <div class="project-header">
+                        <h3>WTF! (What's the Function)</h3>
+                        <span class="project-lang">Go</span>
+                    </div>
+                    <p>A terminal tool that lets you find shell commands using natural language. Built to reduce Google searches and boost flow.</p>
+                    <div class="project-links">
+                        <a href="https://github.com/Vedant9500/WTF" target="_blank" rel="noopener">
+                            <i class="fab fa-github"></i> View
+                        </a>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-header">
+                        <h3>Celestialsim C-GL</h3>
+                        <span class="project-lang">C++ & OpenGL</span>
+                    </div>
+                    <p>A real-time 2D gravitational simulator for the N-body problem. Great for learning physics, math, and graphics the hard way.</p>
+                    <div class="project-links">
+                        <a href="https://github.com/Vedant9500/Celestialsim_C-GL" target="_blank" rel="noopener">
+                            <i class="fab fa-github"></i> View
+                        </a>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-header">
+                        <h3>Chess AI (AlphaZero-inspired)</h3>
+                        <span class="project-lang">Python + PyTorch</span>
+                    </div>
+                    <p>A learning chess engine trained with grandmaster games and self-play. Built with reinforcement learning and MCTS logic.</p>
+                    <div class="project-links">
+                        <a href="https://github.com/Vedant9500/ChessAI" target="_blank" rel="noopener">
+                            <i class="fab fa-github"></i> View
+                        </a>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-header">
+                        <h3>Weather Predictor & Monitor</h3>
+                        <span class="project-lang">Python + LSTM</span>
+                    </div>
+                    <p>Developed an LSTM-based weather prediction model using real-time Meteostat API data — as part of a college PBL project.</p>
+                    <div class="project-links">
+                        <a href="https://github.com/Vedant9500/WeatherMonitor" target="_blank" rel="noopener">
+                            <i class="fab fa-github"></i> View
+                        </a>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-header">
+                        <h3>Custom F1 Track Editor</h3>
+                        <span class="project-lang">Dart</span>
+                    </div>
+                    <p>Inspired by F1, this private app lets you design and manage your own racing circuits. Think motorsport meets code.</p>
+                    <div class="project-links">
+                        <a href="https://github.com/Vedant9500/Custom_f1_Track" target="_blank" rel="noopener">
+                            <i class="fab fa-github"></i> View
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Achievements Section -->
     <section id="achievements" class="achievements">
-      <div class="container">
-        <h2>Highlights & Achievements</h2>
-        <ul>
-          <li>⚙️ Trained a weather model using LSTM with 90%+ accuracy over 7-day forecasts</li>
-          <li>♟️ Built a chess AI using grandmaster PGNs, LSTMs, and Monte Carlo Tree Search</li>
-          <li>🚀 Simulated the N-body problem from scratch with real physics and OpenGL rendering</li>
-          <li>🐧 Customized Arch Linux with Hyprland & Sway for full tiling workflow and dev productivity</li>
-          <li>🏁 Built custom F1 utilities and track editors for fun</li>
-        </ul>
-      </div>
+        <div class="container">
+            <h2>Highlights & Achievements</h2>
+            <ul>
+                <li>⚙️ Trained a weather model using LSTM with 90%+ accuracy over 7-day forecasts</li>
+                <li>♟️ Built a chess AI using grandmaster PGNs, LSTMs, and Monte Carlo Tree Search</li>
+                <li>🚀 Simulated the N-body problem from scratch with real physics and OpenGL rendering</li>
+                <li>🐧 Customized Arch Linux with Hyprland & Sway for full tiling workflow and dev productivity</li>
+                <li>🏁 Built custom F1 utilities and track editors for fun</li>
+            </ul>
+        </div>
     </section>
 
+    <!-- Contact Section -->
     <section id="contact" class="contact">
         <div class="container">
             <h2>Get In Touch</h2>
@@ -78,108 +177,14 @@
         </div>
     </section>
 
+    <!-- Footer -->
     <footer class="footer">
         <div class="container">
-            <p>&copy; 2024 Vedant Deshmukh. Built with ❤️</p>
+            <p>Thanks for visiting!</p>
         </div>
     </footer>
 
     <script src="script.js"></script>
 </body>
 </html>
-  
-  <section id="about" class="about">
-    <div class="container">
-      <h2>About Me</h2>
-      <p>
-        I'm Vedant — part developer, part curious explorer. I love building intelligent systems, tweaking my dual-boot Arch setup, and pushing limits with code.
-        I enjoy turning abstract ideas into real projects that I can run, test, and iterate on — from AI models to simulation engines.
-      </p>
-      <p>
-        I’ve trained a weather prediction model using LSTM and real-world data, simulated the N-body problem with OpenGL, and built a chess engine that 
-        learns through self-play (inspired by AlphaZero). I also like hacking together utilities — like a terminal-based anime player, a CLI command helper, 
-        and custom F1 tools — just for the joy of it.
-      </p>
-      <p>
-        My goals? Build systems that learn, reason, and adapt — and hopefully work at DeepMind one day.
-      </p>
-      <p>
-        Outside code, I’m into F1, story-driven games, and philosophical rabbit holes. I try to stay curious, build honestly, and keep learning.
-      </p>
-    </div>
-  </section>
-  
-  <section id="projects" class="projects">
-    <div class="container">
-      <h2>Projects</h2>
-      <div class="projects-grid">
-  
-        <div class="project-card">
-          <div class="project-header">
-            <h3>WTF! (What's the Function)</h3>
-            <span class="project-lang">Go</span>
-          </div>
-          <p>A terminal tool that lets you find shell commands using natural language. Built to reduce Google searches and boost flow.</p>
-          <div class="project-links">
-            <a href="https://github.com/Vedant9500/WTF" target="_blank" rel="noopener">
-              <i class="fab fa-github"></i> View
-            </a>
-          </div>
-        </div>
-  
-        <div class="project-card">
-          <div class="project-header">
-            <h3>Celestialsim C-GL</h3>
-            <span class="project-lang">C++ & OpenGL</span>
-          </div>
-          <p>A real-time 2D gravitational simulator for the N-body problem. Great for learning physics, math, and graphics the hard way.</p>
-          <div class="project-links">
-            <a href="https://github.com/Vedant9500/Celestialsim_C-GL" target="_blank" rel="noopener">
-              <i class="fab fa-github"></i> View
-            </a>
-          </div>
-        </div>
-  
-        <div class="project-card">
-          <div class="project-header">
-            <h3>Chess AI (AlphaZero-inspired)</h3>
-            <span class="project-lang">Python + PyTorch</span>
-          </div>
-          <p>A learning chess engine trained with grandmaster games and self-play. Built with reinforcement learning and MCTS logic.</p>
-          <div class="project-links">
-            <a href="https://github.com/Vedant9500/ChessAI" target="_blank" rel="noopener">
-              <i class="fab fa-github"></i> View
-            </a>
-          </div>
-        </div>
-  
-        <div class="project-card">
-          <div class="project-header">
-            <h3>Weather Predictor & Monitor</h3>
-            <span class="project-lang">Python + LSTM</span>
-          </div>
-          <p>Developed an LSTM-based weather prediction model using real-time Meteostat API data — as part of a college PBL project.</p>
-          <div class="project-links">
-            <a href="https://github.com/Vedant9500/WeatherMonitor" target="_blank" rel="noopener">
-              <i class="fab fa-github"></i> View
-            </a>
-          </div>
-        </div>
-  
-        <div class="project-card">
-          <div class="project-header">
-            <h3>Custom F1 Track Editor</h3>
-            <span class="project-lang">Dart</span>
-          </div>
-          <p>Inspired by F1, this private app lets you design and manage your own racing circuits. Think motorsport meets code.</p>
-          <div class="project-links">
-            <a href="https://github.com/Vedant9500/Custom_f1_Track" target="_blank" rel="noopener">
-              <i class="fab fa-github"></i> View
-            </a>
-          </div>
-        </div>
-  
-      </div>
-    </div>
-  </section>
   
