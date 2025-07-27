@@ -66,8 +66,8 @@ const observer = new IntersectionObserver((entries) => {
     });
 }, observerOptions);
 
-// Observe all cards and achievement items
-document.querySelectorAll('.project-card, .achievements li').forEach(card => {
+// Observe all cards and timeline items
+document.querySelectorAll('.project-card, .timeline-content').forEach(card => {
     card.style.opacity = '0';
     card.style.transform = 'translateY(30px)';
     card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
