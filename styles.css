@@ -285,6 +285,7 @@ section h2 {
     flex-direction: column;
     min-height: 320px;
     height: 100%;
+    position: relative;
 }
 
 .project-card:hover {
@@ -307,12 +308,17 @@ section h2 {
 }
 
 .project-lang {
+    position: absolute;
+    right: 1.5rem;
+    bottom: 1.5rem;
     background: #60a5fa;
     color: white;
     padding: 4px 12px;
     border-radius: 20px;
     font-size: 0.875rem;
     font-weight: 500;
+    z-index: 2;
+    box-shadow: 0 2px 8px rgba(96,165,250,0.08);
 }
 
 .project-card p {
@@ -505,6 +511,13 @@ section h2 {
     .achievements li {
         padding: 0.75rem 1.5rem;
         font-size: 1rem;
+    }
+
+    .project-lang {
+        right: 1rem;
+        bottom: 1rem;
+        font-size: 0.8rem;
+        padding: 3px 10px;
     }
 }
 
