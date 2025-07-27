@@ -267,10 +267,12 @@ section h2 {
     background: #1e293b;
 }
 
+/* --- Projects Section --- */
 .projects-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
     gap: 2rem;
+    align-items: stretch;
 }
 
 .project-card {
@@ -279,6 +281,10 @@ section h2 {
     padding: 2rem;
     transition: all 0.3s ease;
     border: 1px solid #475569;
+    display: flex;
+    flex-direction: column;
+    min-height: 320px;
+    height: 100%;
 }
 
 .project-card:hover {
@@ -313,6 +319,11 @@ section h2 {
     color: #cbd5e1;
     margin-bottom: 1.5rem;
     line-height: 1.6;
+    flex: 1 1 auto;
+}
+
+.project-links {
+    margin-top: auto;
 }
 
 .project-links a {
@@ -320,6 +331,9 @@ section h2 {
     text-decoration: none;
     font-weight: 500;
     transition: color 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.25em;
 }
 
 .project-links a:hover {
