@@ -2,6 +2,20 @@
    VEDANTIUM.DEV - PERSONAL PORTFOLIO SITE
    ======================================== */
 
+:root {
+  --primary: #60a5fa;
+  --primary-light: #93c5fd;
+  --secondary: #a78bfa;
+  --bg-dark: #0f172a;
+  --bg-medium: #1e293b;
+  --bg-light: #334155;
+  --text-main: #e2e8f0;
+  --text-secondary: #cbd5e1;
+  --text-muted: #94a3b8;
+  --border: #475569;
+  --white: #fff;
+}
+
 /* ========================================
    RESET & BASE STYLES
    ======================================== */
@@ -14,8 +28,8 @@
 body {
     font-family: 'Inter', sans-serif;
     line-height: 1.6;
-    color: #e2e8f0;
-    background-color: #0f172a;
+    color: var(--text-main);
+    background-color: var(--bg-dark);
     overflow-x: hidden;
 }
 
@@ -51,13 +65,13 @@ body {
 .nav-logo a {
     font-size: 1.5rem;
     font-weight: 700;
-    color: #60a5fa;
+    color: var(--primary);
     text-decoration: none;
     transition: color 0.3s ease;
 }
 
 .nav-logo a:hover {
-    color: #93c5fd;
+    color: var(--primary-light);
 }
 
 .nav-menu {
@@ -67,7 +81,7 @@ body {
 }
 
 .nav-menu a {
-    color: #e2e8f0;
+    color: var(--text-main);
     text-decoration: none;
     font-weight: 500;
     transition: color 0.3s ease;
@@ -75,7 +89,7 @@ body {
 }
 
 .nav-menu a:hover {
-    color: #60a5fa;
+    color: var(--primary);
 }
 
 .nav-menu a::after {
@@ -85,7 +99,7 @@ body {
     height: 2px;
     bottom: -5px;
     left: 0;
-    background-color: #60a5fa;
+    background-color: var(--primary);
     transition: width 0.3s ease;
 }
 
@@ -114,7 +128,7 @@ body {
     min-height: 100vh;
     display: flex;
     align-items: center;
-    background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+    background: linear-gradient(135deg, var(--bg-dark) 0%, var(--bg-medium) 100%);
     position: relative;
     overflow: hidden;
 }
@@ -150,7 +164,7 @@ body {
 }
 
 .highlight {
-    background: linear-gradient(135deg, #60a5fa, #a78bfa);
+    background: linear-gradient(135deg, var(--primary), var(--secondary));
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -158,14 +172,14 @@ body {
 
 .hero-subtitle {
     font-size: 1.5rem;
-    color: #94a3b8;
+    color: var(--text-muted);
     margin-bottom: 1.5rem;
     font-weight: 500;
 }
 
 .hero-description {
     font-size: 1.1rem;
-    color: #cbd5e1;
+    color: var(--text-secondary);
     margin-bottom: 2rem;
     max-width: 600px;
 }
@@ -186,8 +200,8 @@ body {
 }
 
 .btn-primary {
-    background: linear-gradient(135deg, #60a5fa, #a78bfa);
-    color: white;
+    background: linear-gradient(135deg, var(--primary), var(--secondary));
+    color: var(--white);
     border: none;
 }
 
@@ -198,29 +212,44 @@ body {
 
 .btn-secondary {
     background: transparent;
-    color: #60a5fa;
-    border: 2px solid #60a5fa;
+    color: var(--primary);
+    border: 2px solid var(--primary);
 }
 
 .btn-secondary:hover {
-    background: #60a5fa;
-    color: white;
+    background: var(--primary);
+    color: var(--white);
     transform: translateY(-2px);
 }
 
-.social-links {
+.social-links, .social-links {
     display: flex;
     gap: 1rem;
+    justify-content: center;
+    margin-bottom: 2rem;
 }
 
-.social-links a {
-    color: #94a3b8;
+.social-links a, .social-link {
+    color: var(--text-muted);
     font-size: 1.5rem;
     transition: color 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 60px;
+    height: 60px;
+    background: var(--bg-light);
+    border: 2px solid var(--border);
+    border-radius: 50%;
+    text-decoration: none;
+    transition: all 0.3s ease;
 }
 
-.social-links a:hover {
-    color: #60a5fa;
+.social-links a:hover, .social-link:hover {
+    color: var(--primary);
+    border-color: var(--primary);
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(96, 165, 250, 0.2);
 }
 
 /* ========================================
@@ -242,12 +271,12 @@ section h2 {
    ABOUT SECTION
    ======================================== */
 .about {
-    background: #0f172a;
+    background: var(--bg-dark);
     text-align: center;
 }
 
 .about p {
-    color: #cbd5e1;
+    color: var(--text-secondary);
     font-size: 1.1rem;
     line-height: 1.8;
     margin-bottom: 1.5rem;
@@ -264,7 +293,7 @@ section h2 {
    PROJECTS SECTION
    ======================================== */
 .projects {
-    background: #1e293b;
+    background: var(--bg-medium);
 }
 
 /* --- Projects Section --- */
@@ -276,11 +305,11 @@ section h2 {
 }
 
 .project-card {
-    background: #334155;
+    background: var(--bg-light);
     border-radius: 12px;
     padding: 2rem;
     transition: all 0.3s ease;
-    border: 1px solid #475569;
+    border: 1px solid var(--border);
     display: flex;
     flex-direction: column;
     min-height: 320px;
@@ -291,7 +320,7 @@ section h2 {
 .project-card:hover {
     transform: translateY(-5px);
     box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
-    border-color: #60a5fa;
+    border-color: var(--primary);
 }
 
 .project-header {
@@ -311,8 +340,8 @@ section h2 {
     position: absolute;
     right: 1.5rem;
     bottom: 1.5rem;
-    background: #60a5fa;
-    color: white;
+    background: var(--primary);
+    color: var(--white);
     padding: 4px 12px;
     border-radius: 20px;
     font-size: 0.875rem;
@@ -322,7 +351,7 @@ section h2 {
 }
 
 .project-card p {
-    color: #cbd5e1;
+    color: var(--text-secondary);
     margin-bottom: 1.5rem;
     line-height: 1.6;
     flex: 1 1 auto;
@@ -333,7 +362,7 @@ section h2 {
 }
 
 .project-links a {
-    color: #60a5fa;
+    color: var(--primary);
     text-decoration: none;
     font-weight: 500;
     transition: color 0.3s ease;
@@ -343,14 +372,14 @@ section h2 {
 }
 
 .project-links a:hover {
-    color: #93c5fd;
+    color: var(--primary-light);
 }
 
 /* ========================================
    ACHIEVEMENTS SECTION - TIMELINE
    ======================================== */
 .achievements {
-    background: #1e293b;
+    background: var(--bg-medium);
     text-align: center;
 }
 
@@ -368,7 +397,7 @@ section h2 {
     top: 0;
     bottom: 0;
     width: 2px;
-    background: linear-gradient(to bottom, #60a5fa, #a78bfa);
+    background: linear-gradient(to bottom, var(--primary), var(--secondary));
     transform: translateX(-50%);
 }
 
@@ -393,8 +422,8 @@ section h2 {
     top: 50%;
     width: 16px;
     height: 16px;
-    background: #60a5fa;
-    border: 3px solid #1e293b;
+    background: var(--primary);
+    border: 3px solid var(--bg-medium);
     border-radius: 50%;
     transform: translate(-50%, -50%);
     z-index: 2;
@@ -402,11 +431,11 @@ section h2 {
 }
 
 .timeline-content {
-    background: #334155;
+    background: var(--bg-light);
     border-radius: 12px;
     padding: 1rem;
     width: 45%;
-    border: 1px solid #475569;
+    border: 1px solid var(--border);
     transition: all 0.3s ease;
     position: relative;
 }
@@ -414,7 +443,7 @@ section h2 {
 .timeline-content:hover {
     transform: translateY(-5px);
     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
-    border-color: #60a5fa;
+    border-color: var(--primary);
 }
 
 .timeline-icon {
@@ -431,7 +460,7 @@ section h2 {
 }
 
 .timeline-content p {
-    color: #cbd5e1;
+    color: var(--text-secondary);
     font-size: 0.9rem;
     line-height: 1.5;
     margin: 0;
@@ -504,12 +533,12 @@ section h2 {
    CONTACT SECTION
    ======================================== */
 .contact {
-    background: #1e293b;
+    background: var(--bg-medium);
     text-align: center;
 }
 
 .contact-intro {
-    color: #cbd5e1;
+    color: var(--text-secondary);
     font-size: 1.1rem;
     margin-bottom: 2rem;
     max-width: 400px;
@@ -563,14 +592,14 @@ section h2 {
    FOOTER
    ======================================== */
 .footer {
-    background: #0f172a;
+    background: var(--bg-dark);
     text-align: center;
     padding: 2rem 0;
-    border-top: 1px solid #334155;
+    border-top: 1px solid var(--bg-light);
 }
 
 .footer p {
-    color: #94a3b8;
+    color: var(--text-muted);
 }
 
 /* ========================================
