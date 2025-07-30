@@ -8,18 +8,24 @@
 const hamburger = document.querySelector('.hamburger');
 const navMenu = document.querySelector('.nav-menu');
 
-hamburger.addEventListener('click', () => {
-    hamburger.classList.toggle('active');
-    navMenu.classList.toggle('active');
-});
-
-// Close mobile menu when clicking on a link
-document.querySelectorAll('.nav-menu a').forEach(link => {
-    link.addEventListener('click', () => {
-        hamburger.classList.remove('active');
-        navMenu.classList.remove('active');
+if (hamburger && navMenu) {
+    hamburger.addEventListener('click', () => {
+        hamburger.classList.toggle('active');
+        navMenu.classList.toggle('active');
+        // Toggle aria-expanded for accessibility
+        const expanded = hamburger.getAttribute('aria-expanded') === 'true';
+        hamburger.setAttribute('aria-expanded', !expanded);
     });
-});
+
+    // Close mobile menu when clicking on a link
+    document.querySelectorAll('.nav-menu a').forEach(link => {
+        link.addEventListener('click', () => {
+            hamburger.classList.remove('active');
+            navMenu.classList.remove('active');
+            hamburger.setAttribute('aria-expanded', 'false');
+        });
+    });
+}
 
 // ========================================
 // SMOOTH SCROLLING
@@ -42,12 +48,23 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 // ========================================
 window.addEventListener('scroll', () => {
     const navbar = document.querySelector('.navbar');
+    if (!navbar) return;
+    // Use CSS variable for background color
+    const bgColor = getComputedStyle(document.documentElement).getPropertyValue('--bg-dark') || '#0f172a';
     if (window.scrollY > 50) {
-        navbar.style.background = 'rgba(15, 23, 42, 0.98)';
+        navbar.style.background = `rgba(${hexToRgb(bgColor)}, 0.98)`;
     } else {
-        navbar.style.background = 'rgba(15, 23, 42, 0.95)';
+        navbar.style.background = `rgba(${hexToRgb(bgColor)}, 0.95)`;
     }
 });
+
+// Helper to convert hex to rgb
+function hexToRgb(hex) {
+    let c = hex.trim().replace('#', '');
+    if (c.length === 3) c = c.split('').map(x => x + x).join('');
+    const num = parseInt(c, 16);
+    return [(num >> 16) & 255, (num >> 8) & 255, num & 255].join(', ');
+}
 
 // ========================================
 // SCROLL ANIMATIONS
@@ -67,7 +84,8 @@ const observer = new IntersectionObserver((entries) => {
 }, observerOptions);
 
 // Observe all cards and timeline items
-document.querySelectorAll('.project-card, .timeline-content').forEach(card => {
+const cards = document.querySelectorAll('.project-card, .timeline-content');
+cards.forEach(card => {
     card.style.opacity = '0';
     card.style.transform = 'translateY(30px)';
     card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
