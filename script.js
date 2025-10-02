@@ -49,12 +49,14 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 window.addEventListener('scroll', () => {
     const navbar = document.querySelector('.navbar');
     if (!navbar) return;
-    // Use CSS variable for background color
-    const bgColor = getComputedStyle(document.documentElement).getPropertyValue('--bg-dark') || '#0f172a';
+    // Use CSS variable for background color (light mode)
+    const bgColor = getComputedStyle(document.documentElement).getPropertyValue('--bg-dark') || '#ffffff';
     if (window.scrollY > 50) {
         navbar.style.background = `rgba(${hexToRgb(bgColor)}, 0.98)`;
+        navbar.style.boxShadow = '0 4px 12px rgba(0, 0, 0, 0.08)';
     } else {
         navbar.style.background = `rgba(${hexToRgb(bgColor)}, 0.95)`;
+        navbar.style.boxShadow = '0 2px 10px rgba(0, 0, 0, 0.05)';
     }
 });
 
