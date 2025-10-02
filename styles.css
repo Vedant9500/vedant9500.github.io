@@ -56,13 +56,16 @@ html::-webkit-scrollbar {
 }
 
 body {
-    font-family: 'Inter', sans-serif;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
     line-height: 1.6;
     color: var(--text-primary);
     background-color: var(--bg-white);
     overflow-x: hidden;
     scrollbar-width: none; /* Firefox */
     -ms-overflow-style: none; /* IE and Edge */
+    font-weight: 400;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }
 
 body::-webkit-scrollbar {
@@ -198,12 +201,14 @@ body::-webkit-scrollbar {
     font-size: 3.5rem;
     font-weight: 700;
     margin-bottom: 1rem;
-    line-height: 1.2;
+    line-height: 1.1;
+    letter-spacing: -0.03em;
 }
 
 .highlight {
     color: var(--primary);
     font-weight: 700;
+    letter-spacing: -0.02em;
 }
 
 .hero-subtitle {
@@ -211,6 +216,7 @@ body::-webkit-scrollbar {
     color: var(--text-secondary);
     margin-bottom: 1.5rem;
     font-weight: 500;
+    letter-spacing: -0.01em;
 }
 
 .hero-description {
@@ -219,6 +225,7 @@ body::-webkit-scrollbar {
     margin-bottom: 2rem;
     max-width: 600px;
     line-height: 1.7;
+    font-weight: 400;
 }
 
 .hero-buttons {
@@ -234,6 +241,8 @@ body::-webkit-scrollbar {
     font-weight: 600;
     transition: all 0.3s ease;
     display: inline-block;
+    font-size: 1rem;
+    letter-spacing: -0.01em;
 }
 
 .btn-primary {
@@ -305,7 +314,7 @@ section h2 {
     text-align: center;
     margin-bottom: 3rem;
     color: var(--text-primary);
-    letter-spacing: -0.02em;
+    letter-spacing: -0.03em;
 }
 
 /* ========================================
@@ -324,6 +333,7 @@ section h2 {
     max-width: 800px;
     margin-left: auto;
     margin-right: auto;
+    font-weight: 400;
 }
 
 .about p:last-child {
@@ -376,6 +386,7 @@ section h2 {
     font-size: 1.25rem;
     font-weight: 600;
     color: var(--text-primary);
+    letter-spacing: -0.01em;
 }
 
 .project-lang {
@@ -394,8 +405,10 @@ section h2 {
 .project-card p {
     color: var(--text-muted);
     margin-bottom: 1.5rem;
-    line-height: 1.6;
+    line-height: 1.7;
     flex: 1 1 auto;
+    font-weight: 400;
+    font-size: 1rem;
 }
 
 .project-links {
@@ -410,6 +423,7 @@ section h2 {
     display: inline-flex;
     align-items: center;
     gap: 0.25em;
+    font-size: 0.95rem;
 }
 
 .project-links a:hover {
@@ -492,13 +506,15 @@ section h2 {
     font-size: 1rem;
     font-weight: 600;
     margin-bottom: 0.25rem;
+    letter-spacing: -0.01em;
 }
 
 .timeline-content p {
     color: var(--text-muted);
     font-size: 0.9rem;
-    line-height: 1.5;
+    line-height: 1.6;
     margin: 0;
+    font-weight: 400;
 }
 
 /* Responsive Timeline */
