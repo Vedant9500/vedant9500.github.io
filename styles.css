@@ -550,12 +550,6 @@ section h2 {
 }
 
 /* Ensure the card is the positioning context */
-.project-card {
-    /* ... existing styles ... */
-    position: relative;
-    /* ... */
-}
-
 /* Hover Effects */
 .project-card:hover .project-links a {
     background-color: var(--md-sys-color-primary);
@@ -565,24 +559,15 @@ section h2 {
 }
 
 .project-links a:hover {
-    /* Specific hover for the button if user targets it precisely (though card hover triggers it too) */
     background-color: var(--primary-dark);
 }
 
-
-
 /* ========================================
-   ACHIEVEMENTS SECTION - TIMELINE
-   ======================================== */
-/* ========================================
-   ACHIEVEMENTS SECTION - FEATURE GRID
+   ACHIEVEMENTS SECTION - TOOLBOX GRID
    ======================================== */
 .achievements {
-    background: var(--bg-white);
-    /* Match projects background or keep section bg? Let's use white for cleaner look or section bg for differentiation. Keeping existing section bg var. */
     background: var(--bg-section);
     text-align: left;
-    /* Align text left for cards usually looks better */
 }
 
 /* Feature Grid (Bento Style) */
