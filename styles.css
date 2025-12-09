@@ -574,152 +574,89 @@ section h2 {
 /* ========================================
    ACHIEVEMENTS SECTION - TIMELINE
    ======================================== */
+/* ========================================
+   ACHIEVEMENTS SECTION - FEATURE GRID
+   ======================================== */
 .achievements {
+    background: var(--bg-white);
+    /* Match projects background or keep section bg? Let's use white for cleaner look or section bg for differentiation. Keeping existing section bg var. */
     background: var(--bg-section);
-    text-align: center;
+    text-align: left;
+    /* Align text left for cards usually looks better */
 }
 
-.timeline {
-    max-width: 800px;
-    margin: 0 auto;
-    position: relative;
+/* Feature Grid (Bento Style) */
+.achievements-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 24px;
     padding: 1rem 0;
 }
 
-.timeline::before {
-    content: '';
-    position: absolute;
-    left: 50%;
-    top: 0;
-    bottom: 0;
-    width: 2px;
-    background: var(--border-medium);
-    transform: translateX(-50%);
-}
-
-.timeline-item {
-    position: relative;
-    margin-bottom: 1.5rem;
-    display: flex;
-    align-items: center;
-}
-
-.timeline-item:nth-child(odd) {
-    flex-direction: row;
-}
-
-.timeline-item:nth-child(even) {
-    flex-direction: row-reverse;
-}
-
-.timeline-dot {
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    width: 16px;
-    height: 16px;
-    background: var(--md-sys-color-primary);
-    border: 4px solid var(--md-sys-color-surface-container-low);
-    /* Match section bg */
-    border-radius: 50%;
-    transform: translate(-50%, -50%);
-    z-index: 2;
-    box-shadow: none;
-}
-
-.timeline-content {
-    background: #FFFFFF;
+.achievement-card {
+    background: var(--md-sys-color-surface-container-low);
     border-radius: 24px;
-    padding: 24px;
-    width: 45%;
-    border: 1px solid var(--border-light);
+    padding: 32px;
     transition: all 0.3s cubic-bezier(0.2, 0, 0, 1);
-    position: relative;
+    border: 1px solid transparent;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    height: 100%;
+}
+
+.achievement-card:hover {
+    background: var(--md-sys-color-surface-container);
+    transform: translateY(-4px);
     box-shadow: var(--elevation-1);
 }
 
-.timeline-content:hover {
-    transform: translateY(-2px);
-    box-shadow: var(--elevation-2);
-    border-color: transparent;
+.achievement-icon {
+    font-size: 2rem;
+    color: var(--primary);
+    margin-bottom: 1.5rem;
+    background: var(--md-sys-color-primary-container);
+    color: var(--md-sys-color-on-primary-container);
+    width: 56px;
+    height: 56px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 16px;
 }
 
-.timeline-content h3 {
-    color: var(--md-sys-color-on-surface);
-    font-size: 1.1rem;
-    font-weight: 500;
-    margin-bottom: 0.5rem;
-    letter-spacing: normal;
-}
-
-.timeline-content p {
-    color: var(--md-sys-color-on-surface-variant, #49454F);
-    font-size: 0.95rem;
-    line-height: 1.6;
-    margin: 0;
+.achievement-card h3 {
+    font-family: var(--font-display);
+    font-size: 1.25rem;
     font-weight: 400;
+    color: var(--text-primary);
+    margin-bottom: 0.75rem;
+    line-height: 1.3;
 }
 
-/* Responsive Timeline */
+.achievement-card p {
+    color: var(--text-secondary);
+    font-size: 1rem;
+    line-height: 1.6;
+    font-family: var(--font-body);
+}
+
+/* Responsive adjustments */
 @media (max-width: 768px) {
-    .timeline {
-        padding: 0.5rem 0;
+    .achievements {
+        text-align: center;
     }
 
-    .timeline::before {
-        left: 30px;
+    .achievements-grid {
+        grid-template-columns: 1fr;
+        gap: 16px;
     }
 
-    .timeline-item {
-        flex-direction: row !important;
-        margin-bottom: 1rem;
-        margin-left: 60px;
-    }
-
-    .timeline-dot {
-        left: 30px;
-    }
-
-    .timeline-content {
-        width: 100%;
-        margin-left: 0;
-    }
-}
-
-@media (max-width: 480px) {
-    .timeline {
-        padding: 0.5rem 0;
-    }
-
-    .timeline::before {
-        left: 20px;
-    }
-
-    .timeline-item {
-        margin-bottom: 0.75rem;
-        margin-left: 40px;
-    }
-
-    .timeline-dot {
-        left: 20px;
-        width: 12px;
-        height: 12px;
-    }
-
-    .timeline-content {
-        padding: 0.75rem;
-    }
-
-    .timeline-icon {
-        font-size: 1.25rem;
-    }
-
-    .timeline-content h3 {
-        font-size: 0.95rem;
-    }
-
-    .timeline-content p {
-        font-size: 0.85rem;
+    .achievement-card {
+        align-items: center;
+        /* Center align on mobile if preferred */
+        padding: 24px;
+        text-align: center;
     }
 }
 
