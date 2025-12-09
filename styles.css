@@ -5,36 +5,83 @@
    ======================================== */
 
 :root {
-  /* Primary Accent - Elegant Indigo for CTAs */
-  --primary: #6366F1;
-  --primary-dark: #4F46E5;
-  --primary-light: #818CF8;
-  
-  /* Secondary Accent - Muted Amber for hover states */
-  --secondary: #F59E0B;
-  --secondary-dark: #D97706;
-  
-  /* Neutral Palette - Clean whites and subtle grays */
-  --bg-white: #FFFFFF;
-  --bg-section: #FAFAFA;
-  --bg-subtle: #F9FAFB;
-  
-  /* Text Hierarchy - Dark navy to muted gray */
-  --text-primary: #0F172A;
-  --text-secondary: #334155;
-  --text-muted: #6B7280;
-  
-  /* Borders and Dividers */
-  --border-light: #E5E7EB;
-  --border-medium: #D1D5DB;
-  
-  /* Shadows */
-  --shadow-subtle: rgba(15, 23, 42, 0.03);
-  --shadow-sm: rgba(15, 23, 42, 0.06);
-  --shadow-md: rgba(15, 23, 42, 0.10);
-  --shadow-lg: rgba(15, 23, 42, 0.14);
-  --shadow-primary: rgba(99, 102, 241, 0.20);
-  --shadow-secondary: rgba(245, 158, 11, 0.20);
+    /* Google Material You (MD3) Color Tokens */
+
+    /* Key Colors */
+    --md-sys-color-primary: #4285F4;
+    /* Google Blue */
+    --md-sys-color-on-primary: #FFFFFF;
+    --md-sys-color-primary-container: #D2E3FC;
+    --md-sys-color-on-primary-container: #001D35;
+
+    --md-sys-color-secondary: #5F6368;
+    /* Google Grey for secondary text */
+    --md-sys-color-on-secondary: #FFFFFF;
+    --md-sys-color-secondary-container: #E8EAED;
+    --md-sys-color-on-secondary-container: #1F1F1F;
+
+    --md-sys-color-tertiary: #EA4335;
+    /* Google Red accent */
+    --md-sys-color-on-tertiary: #FFFFFF;
+    --md-sys-color-tertiary-container: #FCE8E6;
+    --md-sys-color-on-tertiary-container: #601410;
+
+    /* Supplemental Key Colors */
+    --google-yellow: #FBBC04;
+    --google-green: #34A853;
+
+    /* Surface & Background */
+    --md-sys-color-background: #FFFFFF;
+    --md-sys-color-on-background: #202124;
+    --md-sys-color-surface: #FFFFFF;
+    --md-sys-color-on-surface: #202124;
+
+    /* Surface Containers */
+    --md-sys-color-surface-container-lowest: #FFFFFF;
+    --md-sys-color-surface-container-low: #F8F9FA;
+    /* Google grey background */
+    --md-sys-color-surface-container: #F1F3F4;
+    --md-sys-color-surface-container-high: #E8EAED;
+    --md-sys-color-surface-container-highest: #DADCE0;
+
+    /* Outline */
+    --md-sys-color-outline: #70757A;
+    --md-sys-color-outline-variant: #DADCE0;
+
+    /* Mapping */
+    --primary: var(--md-sys-color-primary);
+    --primary-dark: #3367D6;
+    --primary-light: var(--md-sys-color-primary-container);
+
+    --bg-white: var(--md-sys-color-background);
+    --bg-section: var(--md-sys-color-surface-container-low);
+    --bg-subtle: var(--md-sys-color-surface-container);
+
+    --text-primary: var(--md-sys-color-on-surface);
+    --text-secondary: var(--md-sys-color-secondary);
+    --text-muted: var(--md-sys-color-outline);
+
+    --border-light: var(--md-sys-color-outline-variant);
+    --border-medium: var(--md-sys-color-outline);
+
+    /* Material 3 Shapes */
+    --shape-corner-small: 8px;
+    --shape-corner-medium: 12px;
+    --shape-corner-large: 16px;
+    --shape-corner-extra-large: 24px;
+    --shape-corner-full: 9999px;
+
+    /* Shadows (Google Style) */
+    --elevation-1: 0 1px 2px 0 rgba(60, 64, 67, 0.3), 0 1px 3px 1px rgba(60, 64, 67, 0.15);
+    --elevation-2: 0 1px 2px 0 rgba(60, 64, 67, 0.3), 0 2px 6px 2px rgba(60, 64, 67, 0.15);
+    --elevation-3: 0 4px 8px 3px rgba(60, 64, 67, 0.15), 0 1px 3px rgba(60, 64, 67, 0.3);
+
+    --shadow-subtle: var(--elevation-1);
+    --shadow-md: var(--elevation-2);
+
+    /* Typography */
+    --font-display: 'Outfit', sans-serif;
+    --font-body: 'Inter', sans-serif;
 }
 
 /* ========================================
@@ -47,29 +94,44 @@
 }
 
 html {
-    scrollbar-width: none; /* Firefox */
-    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none;
+    /* Firefox */
+    -ms-overflow-style: none;
+    /* IE and Edge */
 }
 
 html::-webkit-scrollbar {
-    display: none; /* Chrome, Safari, Opera */
+    display: none;
+    /* Chrome, Safari, Opera */
 }
 
 body {
-    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    font-family: var(--font-body);
     line-height: 1.6;
     color: var(--text-primary);
     background-color: var(--bg-white);
     overflow-x: hidden;
-    scrollbar-width: none; /* Firefox */
-    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none;
+    -ms-overflow-style: none;
     font-weight: 400;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
 }
 
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: var(--font-display);
+    font-weight: 400;
+    color: var(--text-primary);
+}
+
 body::-webkit-scrollbar {
-    display: none; /* Chrome, Safari, Opera */
+    display: none;
+    /* Chrome, Safari, Opera */
 }
 
 .container {
@@ -85,67 +147,84 @@ body::-webkit-scrollbar {
     position: fixed;
     top: 0;
     width: 100%;
-    background: rgba(255, 255, 255, 0.98);
+    background: rgba(255, 255, 255, 0.9);
+    /* Translucent */
     backdrop-filter: blur(10px);
     z-index: 1000;
-    padding: 1rem 0;
+    padding: 12px 0;
     transition: all 0.3s ease;
+    border-bottom: 1px solid transparent;
+}
+
+.navbar.scrolled {
+    background: rgba(255, 255, 255, 0.95);
     border-bottom: 1px solid var(--border-light);
-    box-shadow: 0 1px 3px var(--shadow-subtle);
+    box-shadow: var(--elevation-1);
 }
 
 .nav-container {
     max-width: 1200px;
     margin: 0 auto;
-    padding: 0 20px;
+    padding: 0 24px;
+    /* Slightly more padding */
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
 
 .nav-logo a {
-    font-size: 1.5rem;
-    font-weight: 700;
-    color: var(--primary);
+    font-family: var(--font-display);
+    font-size: 1.25rem;
+    font-weight: 500;
+    color: var(--text-primary);
     text-decoration: none;
     transition: color 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.nav-logo a::before {
+    /* Optional: Add a logo icon if desired, or keep simple text */
+    content: '';
+    display: inline-block;
+    width: 24px;
+    height: 24px;
+    border-radius: 4px;
+    background: var(--google-blue);
+    display: none;
 }
 
 .nav-logo a:hover {
-    color: var(--primary-light);
+    color: var(--primary);
 }
 
 .nav-menu {
     display: flex;
     list-style: none;
-    gap: 2rem;
+    gap: 0.5rem;
+    /* Gap for pill buttons */
 }
 
 .nav-menu a {
     color: var(--text-secondary);
     text-decoration: none;
     font-weight: 500;
-    transition: color 0.3s ease;
+    transition: all 0.2s ease;
     position: relative;
+    font-size: 0.95rem;
+    padding: 8px 20px;
+    border-radius: var(--shape-corner-full);
 }
 
-.nav-menu a:hover {
-    color: var(--primary);
+.nav-menu a:hover,
+.nav-menu a.active {
+    background-color: var(--md-sys-color-primary-container);
+    color: var(--md-sys-color-on-primary-container);
 }
 
 .nav-menu a::after {
-    content: '';
-    position: absolute;
-    width: 0;
-    height: 2px;
-    bottom: -5px;
-    left: 0;
-    background-color: var(--primary);
-    transition: width 0.3s ease;
-}
-
-.nav-menu a:hover::after {
-    width: 100%;
+    display: none;
 }
 
 .hamburger {
@@ -169,20 +248,14 @@ body::-webkit-scrollbar {
     min-height: 100vh;
     display: flex;
     align-items: center;
-    background: var(--bg-white);
+    background: radial-gradient(circle at 85% 20%, rgba(66, 133, 244, 0.08) 0%, transparent 40%),
+        radial-gradient(circle at 10% 80%, rgba(234, 67, 53, 0.05) 0%, transparent 40%);
     position: relative;
     overflow: hidden;
 }
 
 .hero::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grid" width="20" height="20" patternUnits="userSpaceOnUse"><path d="M 20 0 L 0 0 0 20" fill="none" stroke="%23E5E7EB" stroke-width="0.5"/></pattern></defs><rect width="100" height="100" fill="url(%23grid)"/></svg>');
-    opacity: 0.5;
+    display: none;
 }
 
 .hero-container {
@@ -194,90 +267,98 @@ body::-webkit-scrollbar {
 }
 
 .hero-content {
-    max-width: 800px;
+    max-width: 840px;
 }
 
 .hero h1 {
-    font-size: 3.5rem;
-    font-weight: 700;
-    margin-bottom: 1rem;
+    font-size: 4rem;
+    font-weight: 500;
+    margin-bottom: 1.5rem;
     line-height: 1.1;
-    letter-spacing: -0.03em;
+    letter-spacing: -0.02em;
+    color: var(--text-primary);
 }
 
 .highlight {
     color: var(--primary);
-    font-weight: 700;
-    letter-spacing: -0.02em;
+    position: relative;
+    font-weight: 500;
 }
 
 .hero-subtitle {
     font-size: 1.5rem;
     color: var(--text-secondary);
-    margin-bottom: 1.5rem;
-    font-weight: 500;
-    letter-spacing: -0.01em;
+    margin-bottom: 2rem;
+    font-weight: 400;
 }
 
 .hero-description {
-    font-size: 1.1rem;
-    color: var(--text-muted);
-    margin-bottom: 2rem;
-    max-width: 600px;
-    line-height: 1.7;
+    font-size: 1.15rem;
+    color: var(--text-secondary);
+    margin-bottom: 2.5rem;
+    max-width: 640px;
+    line-height: 1.6;
     font-weight: 400;
 }
 
 .hero-buttons {
     display: flex;
     gap: 1rem;
-    margin-bottom: 2rem;
+    margin-bottom: 3rem;
 }
 
 .btn {
-    padding: 12px 24px;
-    border-radius: 8px;
+    padding: 0 24px;
+    border-radius: var(--shape-corner-full);
     text-decoration: none;
-    font-weight: 600;
-    transition: all 0.3s ease;
-    display: inline-block;
+    font-weight: 500;
+    transition: all 0.2s ease;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
     font-size: 1rem;
-    letter-spacing: -0.01em;
+    letter-spacing: 0.1px;
+    text-transform: none;
+    height: 48px;
+    font-family: var(--font-display);
 }
 
 .btn-primary {
-    background: var(--primary);
-    color: #ffffff;
+    background: var(--md-sys-color-primary);
+    color: var(--md-sys-color-on-primary);
     border: none;
+    box-shadow: none;
 }
 
 .btn-primary:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 8px 20px var(--shadow-primary);
-    background: var(--primary-dark);
+    background: #3367D6;
+    box-shadow: var(--elevation-1);
+    transform: translateY(-1px);
 }
 
 .btn-secondary {
     background: transparent;
-    color: var(--text-primary);
-    border: 2px solid var(--border-medium);
+    color: var(--md-sys-color-primary);
+    border: 1px solid var(--md-sys-color-outline);
 }
 
 .btn-secondary:hover {
-    background: var(--bg-section);
-    color: var(--text-primary);
-    border-color: var(--text-primary);
-    transform: translateY(-2px);
+    background: rgba(66, 133, 244, 0.08);
+    border-color: var(--md-sys-color-primary);
+    color: var(--md-sys-color-primary);
+    transform: none;
 }
 
-.social-links, .social-links {
+.social-links,
+.social-links {
     display: flex;
     gap: 1rem;
     justify-content: center;
     margin-bottom: 2rem;
 }
 
-.social-links a, .social-link {
+.social-links a,
+.social-link {
     color: var(--text-secondary);
     font-size: 1.5rem;
     transition: color 0.3s ease;
@@ -294,7 +375,8 @@ body::-webkit-scrollbar {
     box-shadow: 0 2px 4px var(--shadow-subtle);
 }
 
-.social-links a:hover, .social-link:hover {
+.social-links a:hover,
+.social-link:hover {
     color: var(--secondary);
     border-color: var(--secondary);
     transform: translateY(-3px);
@@ -309,12 +391,14 @@ section {
 }
 
 section h2 {
-    font-size: 2.5rem;
-    font-weight: 700;
+    font-size: 2.25rem;
+    /* Slightly smaller */
+    font-weight: 400;
+    /* Google Sans Regular */
     text-align: center;
     margin-bottom: 3rem;
     color: var(--text-primary);
-    letter-spacing: -0.03em;
+    letter-spacing: normal;
 }
 
 /* ========================================
@@ -348,87 +432,144 @@ section h2 {
 }
 
 /* --- Projects Section --- */
+/* --- Projects Section --- */
 .projects-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-    gap: 2rem;
+    gap: 24px;
     align-items: stretch;
 }
 
 .project-card {
-    background: var(--bg-white);
-    border-radius: 8px;
-    padding: 2rem;
-    transition: all 0.3s ease;
-    border: 1px solid var(--border-light);
+    background: var(--md-sys-color-surface-container-low);
+    border-radius: 24px;
+    padding: 24px;
+    transition: all 0.3s cubic-bezier(0.2, 0, 0, 1);
+    border: 1px solid transparent;
     display: flex;
     flex-direction: column;
     min-height: 320px;
     height: 100%;
     position: relative;
-    box-shadow: 0 1px 3px var(--shadow-subtle);
+    cursor: default;
 }
 
 .project-card:hover {
+    background: var(--md-sys-color-surface-container);
     transform: translateY(-4px);
-    box-shadow: 0 8px 24px var(--shadow-md);
-    border-color: var(--primary);
+    box-shadow: var(--elevation-2);
 }
 
 .project-header {
     display: flex;
     justify-content: space-between;
-    align-items: center;
+    align-items: flex-start;
     margin-bottom: 1rem;
+    gap: 16px;
+    /* Removed padding-right since we are using flex flow now */
 }
 
 .project-header h3 {
-    font-size: 1.25rem;
-    font-weight: 600;
+    font-family: var(--font-display);
+    font-size: 1.4rem;
+    font-weight: 400;
     color: var(--text-primary);
-    letter-spacing: -0.01em;
+    line-height: 1.3;
 }
 
 .project-lang {
-    position: absolute;
-    right: 1.5rem;
-    bottom: 1.5rem;
-    background: var(--primary);
-    color: #ffffff;
-    padding: 4px 12px;
-    border-radius: 20px;
-    font-size: 0.875rem;
+    font-family: var(--font-body);
+    font-size: 0.8rem;
     font-weight: 500;
-    z-index: 2;
+    color: var(--text-secondary);
+    background: transparent;
+    padding: 0;
+    border-radius: 0;
+    white-space: nowrap;
+    position: static;
 }
 
 .project-card p {
-    color: var(--text-muted);
-    margin-bottom: 1.5rem;
-    line-height: 1.7;
+    color: var(--text-secondary);
+    margin-bottom: 2rem;
+    line-height: 1.6;
     flex: 1 1 auto;
-    font-weight: 400;
     font-size: 1rem;
+    font-family: var(--font-body);
 }
 
 .project-links {
     margin-top: auto;
+    position: relative;
+    /* Context for z-index if needed */
+    z-index: 2;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
 }
 
 .project-links a {
     color: var(--primary);
     text-decoration: none;
     font-weight: 500;
-    transition: color 0.3s ease;
+    transition: all 0.2s ease;
     display: inline-flex;
     align-items: center;
-    gap: 0.25em;
-    font-size: 0.95rem;
+    gap: 0.5em;
+    font-size: 0.9rem;
+    padding: 10px 20px;
+    border-radius: 999px;
+    background-color: transparent;
+    border: 1px solid var(--border-light);
+}
+
+/* Make the whole card clickable */
+.project-links a::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    top: -1000%;
+    /* Cover the whole card by expanding up */
+    left: -1000%;
+    right: -1000%;
+    bottom: -1000%;
+    /* Actually, cleaner way for specific card container: */
+    /* If .project-card is relative, then inset:0 on ::after covers .project-card (if ::after is on the link, link needs to be static or we rely on the card being the closest relative parent? No.
+       Correct Pattern: .project-card { position: relative; } 
+       .project-links a::after { content: ''; position: absolute; inset: 0; z-index: 1; }
+       
+       Let's use the standard "stretched link" technique.
+    */
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+}
+
+/* Ensure the card is the positioning context */
+.project-card {
+    /* ... existing styles ... */
+    position: relative;
+    /* ... */
+}
+
+/* Hover Effects */
+.project-card:hover .project-links a {
+    background-color: var(--md-sys-color-primary);
+    color: var(--md-sys-color-on-primary);
+    border-color: transparent;
+    box-shadow: var(--elevation-1);
 }
 
 .project-links a:hover {
-    color: var(--primary-dark);
+    /* Specific hover for the button if user targets it precisely (though card hover triggers it too) */
+    background-color: var(--primary-dark);
 }
+
+
 
 /* ========================================
    ACHIEVEMENTS SECTION - TIMELINE
@@ -475,43 +616,45 @@ section h2 {
     position: absolute;
     left: 50%;
     top: 50%;
-    width: 14px;
-    height: 14px;
-    background: var(--primary);
-    border: 3px solid var(--bg-section);
+    width: 16px;
+    height: 16px;
+    background: var(--md-sys-color-primary);
+    border: 4px solid var(--md-sys-color-surface-container-low);
+    /* Match section bg */
     border-radius: 50%;
     transform: translate(-50%, -50%);
     z-index: 2;
+    box-shadow: none;
 }
 
 .timeline-content {
-    background: var(--bg-white);
-    border-radius: 8px;
-    padding: 1rem;
+    background: #FFFFFF;
+    border-radius: 24px;
+    padding: 24px;
     width: 45%;
     border: 1px solid var(--border-light);
-    transition: all 0.3s ease;
+    transition: all 0.3s cubic-bezier(0.2, 0, 0, 1);
     position: relative;
-    box-shadow: 0 1px 3px var(--shadow-subtle);
+    box-shadow: var(--elevation-1);
 }
 
 .timeline-content:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 6px 16px var(--shadow-sm);
-    border-color: var(--secondary);
+    transform: translateY(-2px);
+    box-shadow: var(--elevation-2);
+    border-color: transparent;
 }
 
 .timeline-content h3 {
-    color: var(--text-primary);
-    font-size: 1rem;
-    font-weight: 600;
-    margin-bottom: 0.25rem;
-    letter-spacing: -0.01em;
+    color: var(--md-sys-color-on-surface);
+    font-size: 1.1rem;
+    font-weight: 500;
+    margin-bottom: 0.5rem;
+    letter-spacing: normal;
 }
 
 .timeline-content p {
-    color: var(--text-muted);
-    font-size: 0.9rem;
+    color: var(--md-sys-color-on-surface-variant, #49454F);
+    font-size: 0.95rem;
     line-height: 1.6;
     margin: 0;
     font-weight: 400;
@@ -522,21 +665,21 @@ section h2 {
     .timeline {
         padding: 0.5rem 0;
     }
-    
+
     .timeline::before {
         left: 30px;
     }
-    
+
     .timeline-item {
         flex-direction: row !important;
         margin-bottom: 1rem;
         margin-left: 60px;
     }
-    
+
     .timeline-dot {
         left: 30px;
     }
-    
+
     .timeline-content {
         width: 100%;
         margin-left: 0;
@@ -547,34 +690,34 @@ section h2 {
     .timeline {
         padding: 0.5rem 0;
     }
-    
+
     .timeline::before {
         left: 20px;
     }
-    
+
     .timeline-item {
         margin-bottom: 0.75rem;
         margin-left: 40px;
     }
-    
+
     .timeline-dot {
         left: 20px;
         width: 12px;
         height: 12px;
     }
-    
+
     .timeline-content {
         padding: 0.75rem;
     }
-    
+
     .timeline-icon {
         font-size: 1.25rem;
     }
-    
+
     .timeline-content h3 {
         font-size: 0.95rem;
     }
-    
+
     .timeline-content p {
         font-size: 0.85rem;
     }
@@ -632,7 +775,7 @@ section h2 {
     .social-links {
         gap: 1.5rem;
     }
-    
+
     .social-link {
         width: 50px;
         height: 50px;
@@ -644,14 +787,16 @@ section h2 {
    FOOTER
    ======================================== */
 .footer {
-    background: var(--bg-section);
+    background: var(--md-sys-color-surface-container);
     text-align: center;
-    padding: 2rem 0;
-    border-top: 1px solid var(--border-light);
+    padding: 3rem 0;
+    border-top: none;
 }
 
 .footer p {
-    color: var(--text-muted);
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    font-family: var(--font-body);
 }
 
 /* ========================================
@@ -749,6 +894,7 @@ html {
         opacity: 0;
         transform: translateY(30px);
     }
+
     to {
         opacity: 1;
         transform: translateY(0);
@@ -758,4 +904,4 @@ html {
 .project-card,
 .achievements li {
     animation: fadeInUp 0.6s ease-out;
-} 
+}
