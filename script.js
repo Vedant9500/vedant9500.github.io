@@ -49,24 +49,13 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 window.addEventListener('scroll', () => {
     const navbar = document.querySelector('.navbar');
     if (!navbar) return;
-    // Use CSS variable for background color (light mode)
-    const bgColor = getComputedStyle(document.documentElement).getPropertyValue('--bg-dark') || '#ffffff';
-    if (window.scrollY > 50) {
-        navbar.style.background = `rgba(${hexToRgb(bgColor)}, 0.98)`;
-        navbar.style.boxShadow = '0 4px 12px rgba(0, 0, 0, 0.08)';
+    
+    if (window.scrollY > 20) {
+        navbar.classList.add('scrolled');
     } else {
-        navbar.style.background = `rgba(${hexToRgb(bgColor)}, 0.95)`;
-        navbar.style.boxShadow = '0 2px 10px rgba(0, 0, 0, 0.05)';
+        navbar.classList.remove('scrolled');
     }
 });
-
-// Helper to convert hex to rgb
-function hexToRgb(hex) {
-    let c = hex.trim().replace('#', '');
-    if (c.length === 3) c = c.split('').map(x => x + x).join('');
-    const num = parseInt(c, 16);
-    return [(num >> 16) & 255, (num >> 8) & 255, num & 255].join(', ');
-}
 
 // ========================================
 // SCROLL ANIMATIONS
