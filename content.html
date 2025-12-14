@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vedant Deshmukh — Content | Vedantium.dev</title>
+    <meta name="description" content="Projects, toolbox, and contact info for Vedant Deshmukh">
+    <meta property="og:title" content="Vedant Deshmukh — Content | Vedantium.dev">
+    <meta property="og:description" content="Projects, toolbox, and contact info for Vedant Deshmukh">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://vedantium.dev/content.html">
+    <meta property="og:site_name" content="Vedantium.dev">
+    <meta property="og:locale" content="en_US">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Vedant Deshmukh — Content | Vedantium.dev">
+    <meta name="twitter:description" content="Projects, toolbox, and contact info for Vedant Deshmukh">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
+    <link rel="preload" as="style" href="styles.css">
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Outfit:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+    <script>
+        (() => {
+            try {
+                const stored = localStorage.getItem('theme');
+                const systemDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+                const theme = stored === 'light' || stored === 'dark' ? stored : (systemDark ? 'dark' : 'light');
+                document.documentElement.dataset.theme = theme;
+            } catch { }
+        })();
+    </script>
+</head>
+
+<body>
+    <header>
+        <nav class="navbar" role="navigation" aria-label="Main Navigation">
+            <div class="nav-container">
+                <div class="nav-pill">
+                    <div class="nav-logo">
+                        <a href="index.html" aria-label="Back to intro">
+                            <i class="fas fa-home" aria-hidden="true"></i>
+                            Vedantium.dev
+                        </a>
+                    </div>
+                    <ul class="nav-menu" id="primary-navigation">
+                        <li><a href="#about">About</a></li>
+                        <li><a href="#projects">Projects</a></li>
+                        <li><a href="#achievements">Toolbox</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+
+                    <button class="theme-toggle" type="button" aria-label="Toggle theme" aria-pressed="false">
+                        <i class="fas fa-moon" aria-hidden="true"></i>
+                    </button>
+                </div>
+
+                <button class="hamburger" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="primary-navigation">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <!-- About Section -->
+        <section id="about" class="about">
+            <div class="container">
+                <h2>About Me</h2>
+                <p>
+                    Hi, I’m Vedant. I’m a computer engineering student who enjoys experimenting with coding, AI, and
+                    system design as a hobby. I like taking concepts I find interesting and turning them into small
+                    projects so I can understand how things work in practice.
+                </p>
+                <p>
+                    I’ve tried building an LSTM-based weather prediction model, explored the N-body problem through an
+                    OpenGL simulation, and worked on a simple chess engine inspired by AlphaZero’s self-play approach. I
+                    also enjoy creating lightweight utilities, like a terminal video tool, a CLI helper, and some
+                    motorsport-related scripts.
+                </p>
+                <p>
+                    I’m still learning and improving, but I’m excited about building systems that can learn, reason, and
+                    adapt. One day, I hope to work at places like DeepMind and contribute to research in intelligent
+                    systems.
+                </p>
+                <p>
+                    Outside of programming, I follow Formula 1, enjoy short story-driven games, and like exploring
+                    philosophical ideas. Curiosity is what keeps me moving forward, and I try to learn something new
+                    every day.
+                </p>
+            </div>
+        </section>
+
+        <!-- Projects Section -->
+        <section id="projects" class="projects">
+            <div class="container">
+                <h2>Projects</h2>
+                <div class="projects-grid">
+                    <div class="project-card">
+                        <div class="project-header">
+                            <h3>WTF! (What's the Function)</h3>
+                        </div>
+                        <p>A terminal tool I built to convert natural language into shell commands, mostly because I
+                            kept forgetting how to use tar and awk.</p>
+                        <div class="project-links">
+                            <a href="https://github.com/Vedant9500/WTF" target="_blank" rel="noopener">
+                                <i class="fab fa-github"></i> View
+                            </a>
+                            <span class="project-lang">Go</span>
+                        </div>
+                    </div>
+
+                    <div class="project-card">
+                        <div class="project-header">
+                            <h3>Celestialsim C-GL</h3>
+                        </div>
+                        <p>I wanted to understand the N-body problem better, so I wrote this 2D simulator from scratch
+                            in C++ and OpenGL.</p>
+                        <div class="project-links">
+                            <a href="https://github.com/Vedant9500/Celestialsim_C-GL" target="_blank" rel="noopener">
+                                <i class="fab fa-github"></i> View
+                            </a>
+                            <span class="project-lang">C++ & OpenGL</span>
+                        </div>
+                    </div>
+
+                    <div class="project-card">
+                        <div class="project-header">
+                            <h3>Chess AI (AlphaZero-inspired)</h3>
+                        </div>
+                        <p>A simple chess engine I worked on to understand AlphaZero's reinforcement learning approach.
+                            It learns by playing against itself.</p>
+                        <div class="project-links">
+                            <a href="https://github.com/Vedant9500/ChessAI" target="_blank" rel="noopener">
+                                <i class="fab fa-github"></i> View
+                            </a>
+                            <span class="project-lang">Python + PyTorch</span>
+                        </div>
+                    </div>
+
+                    <div class="project-card">
+                        <div class="project-header">
+                            <h3>Weather Predictor & Monitor</h3>
+                        </div>
+                        <p>My college project where I tried using LSTMs to predict the weather using real data from the
+                            Meteostat API. </p>
+                        <div class="project-links">
+                            <a href="https://github.com/Vedant9500/WeatherMonitor" target="_blank" rel="noopener">
+                                <i class="fab fa-github"></i> View
+                            </a>
+                            <span class="project-lang">Python</span>
+                        </div>
+                    </div>
+
+                    <div class="project-card">
+                        <div class="project-header">
+                            <h3>Custom F1 Track Editor</h3>
+                        </div>
+                        <p>I'm a big F1 fan, so I made this little app to design and race on my own custom circuits.</p>
+                        <div class="project-links">
+                            <a href="https://github.com/Vedant9500/Custom_f1_Track" target="_blank" rel="noopener">
+                                <i class="fab fa-github"></i> View
+                            </a>
+                            <span class="project-lang">Dart</span>
+                        </div>
+                    </div>
+
+                    <div class="project-card">
+                        <div class="project-header">
+                            <h3>Jikan Filler Fetcher</h3>
+                        </div>
+                        <p>I got tired of manually searching for filler lists, so I wrote this CLI tool in Go to fetch
+                            them directly using the Jikan API.</p>
+                        <div class="project-links">
+                            <a href="https://github.com/Vedant9500/Jikan_Filler_Fetcher" target="_blank" rel="noopener">
+                                <i class="fab fa-github"></i> View
+                            </a>
+                            <span class="project-lang">Go</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Achievements Section -->
+        <section id="achievements" class="achievements">
+            <div class="container">
+                <h2>My Toolbox</h2>
+                <div class="achievements-grid">
+                    <div class="achievement-card">
+                        <div class="achievement-icon">
+                            <i class="fas fa-code"></i>
+                        </div>
+                        <h3>Languages</h3>
+                        <p>Fluent in Python, C++ and still learning Go. I also work with JavaScript and Dart for web and mobile apps.
+                        </p>
+                    </div>
+
+                    <div class="achievement-card">
+                        <div class="achievement-icon">
+                            <i class="fas fa-brain"></i>
+                        </div>
+                        <h3>Machine Learning</h3>
+                        <p>Experience building and training models using PyTorch, TensorFlow, and Pandas for data
+                            analysis.</p>
+                    </div>
+
+                    <div class="achievement-card">
+                        <div class="achievement-icon">
+                            <i class="fas fa-microchip"></i>
+                        </div>
+                        <h3>Systems & Graphics</h3>
+                        <p>I enjoy low-level programming, building physics simulations with OpenGL, and writing system
+                            utilities.</p>
+                    </div>
+
+                    <div class="achievement-card">
+                        <div class="achievement-icon">
+                            <i class="fas fa-terminal"></i>
+                        </div>
+                        <h3>Tools & Environment</h3>
+                        <p>My daily driver is Linux. I use Git for version control and am comfortable with Bash
+                            scripting.</p>
+                    </div>
+
+                    <div class="achievement-card">
+                        <div class="achievement-icon">
+                            <i class="fas fa-cube"></i>
+                        </div>
+                        <h3>3D Modeling & Assets</h3>
+                        <p>I also have experience with 3D modeling, rendering, and asset creation for games and
+                            simulations.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="contact">
+            <div class="container">
+                <h2>Contact</h2>
+                <p class="contact-intro">Feel free to say hi or check out my code below.</p>
+
+                <div class="social-links" aria-label="Social Links">
+                    <a href="https://github.com/Vedant9500" target="_blank" rel="noopener" class="social-link">
+                        <i class="fab fa-github"></i>
+                    </a>
+                    <a href="https://instagram.com/vedant_s_d" target="_blank" rel="noopener" class="social-link">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    <a href="mailto:deshmukhvedant95@gmail.com" class="social-link">
+                        <i class="fas fa-envelope"></i>
+                    </a>
+                    <a href="https://www.linkedin.com/in/vedant-deshmukh-82441928b/" target="_blank" rel="noopener" class="social-link">
+                        <i class="fab fa-linkedin"></i>
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p>Thanks for visiting!</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
