@@ -243,3 +243,73 @@ if (prefersReducedMotion) {
 
     revealTargets.forEach(el => revealObserver.observe(el));
 }
+
+// ========================================
+// SECTION NAVIGATION (CONTENT PAGE)
+// ========================================
+const sectionOrder = ['about', 'projects', 'toolbox'];
+
+const initSectionNavigation = () => {
+    const sectionBtns = document.querySelectorAll('.nav-section-btn');
+    const sectionsTrack = document.querySelector('.sections-track');
+    const contentSections = document.querySelectorAll('.content-section');
+    
+    if (!sectionBtns.length || !sectionsTrack) return;
+    
+    let currentSection = 'about';
+    
+    const switchSection = (targetSection) => {
+        if (targetSection === currentSection) return;
+        
+        const currentIndex = sectionOrder.indexOf(currentSection);
+        const targetIndex = sectionOrder.indexOf(targetSection);
+        const direction = targetIndex > currentIndex ? 'right' : 'left';
+        
+        // Update navbar buttons
+        sectionBtns.forEach(btn => {
+            btn.classList.toggle('active', btn.dataset.section === targetSection);
+        });
+        
+        // Remove active from all sections
+        contentSections.forEach(section => {
+            section.classList.remove('active', 'slide-in-left', 'slide-in-right');
+        });
+        
+        // Update track position
+        sectionsTrack.dataset.activeSection = targetSection;
+        
+        // Add slide direction and active to target section
+        const targetSectionEl = document.querySelector(`.content-section[data-section="${targetSection}"]`);
+        if (targetSectionEl) {
+            targetSectionEl.classList.add(`slide-in-${direction === 'right' ? 'right' : 'left'}`);
+            // Small delay to ensure transition plays
+            requestAnimationFrame(() => {
+                targetSectionEl.classList.add('active');
+            });
+        }
+        
+        currentSection = targetSection;
+    };
+    
+    sectionBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+            const section = btn.dataset.section;
+            switchSection(section);
+        });
+    });
+    
+    // Handle keyboard navigation
+    document.addEventListener('keydown', (e) => {
+        if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') return;
+        
+        const currentIndex = sectionOrder.indexOf(currentSection);
+        
+        if (e.key === 'ArrowRight' && currentIndex < sectionOrder.length - 1) {
+            switchSection(sectionOrder[currentIndex + 1]);
+        } else if (e.key === 'ArrowLeft' && currentIndex > 0) {
+            switchSection(sectionOrder[currentIndex - 1]);
+        }
+    });
+};
+
+document.addEventListener('DOMContentLoaded', initSectionNavigation);
