@@ -1181,3 +1181,233 @@ p, a, span {
         transition: none;
     }
 }
+
+/* ========================================
+   EXPANDED NAVBAR (CONTENT PAGE)
+   ======================================== */
+
+/* Minimal logo - just the home icon */
+.nav-logo-minimal a {
+    padding: 10px 14px;
+    background: transparent;
+    border: none;
+}
+
+.nav-logo-minimal a:hover {
+    background: rgba(255, 255, 255, 0.12);
+}
+
+html[data-theme="dark"] .nav-logo-minimal a:hover {
+    background: rgba(255, 255, 255, 0.08);
+}
+
+/* Section navigation buttons */
+.nav-sections {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.nav-section-btn {
+    font-family: var(--font-body);
+    font-size: 0.9rem;
+    font-weight: 500;
+    padding: 8px 16px;
+    border-radius: 999px;
+    border: none;
+    background: transparent;
+    color: var(--text-secondary);
+    cursor: pointer;
+    transition: background 0.2s ease, color 0.2s ease;
+    white-space: nowrap;
+}
+
+.nav-section-btn:hover {
+    background: rgba(255, 255, 255, 0.12);
+    color: var(--text-primary);
+}
+
+.nav-section-btn.active {
+    background: var(--primary);
+    color: white;
+}
+
+html[data-theme="dark"] .nav-section-btn:hover:not(.active) {
+    background: rgba(255, 255, 255, 0.08);
+}
+
+/* Entry animation for section buttons */
+.navbar-expanded .nav-sections {
+    animation: navSectionsExpand 0.4s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+@keyframes navSectionsExpand {
+    from {
+        opacity: 0;
+        transform: scaleX(0.8);
+    }
+    to {
+        opacity: 1;
+        transform: scaleX(1);
+    }
+}
+
+/* ========================================
+   HORIZONTAL SECTIONS LAYOUT
+   ======================================== */
+
+.sections-viewport {
+    position: relative;
+    width: 100%;
+    min-height: calc(100vh - 80px);
+    overflow: hidden;
+    margin-top: 80px;
+}
+
+.sections-track {
+    display: flex;
+    width: 300%;
+    height: 100%;
+    transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.sections-track[data-active-section="about"] {
+    transform: translateX(0);
+}
+
+.sections-track[data-active-section="projects"] {
+    transform: translateX(-33.333%);
+}
+
+.sections-track[data-active-section="toolbox"] {
+    transform: translateX(-66.666%);
+}
+
+.content-section {
+    flex: 0 0 33.333%;
+    width: 33.333%;
+    min-height: calc(100vh - 80px);
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+.section-inner {
+    padding: 60px 0;
+    opacity: 0;
+    transform: translateX(30px);
+    transition: opacity 0.4s ease 0.15s, transform 0.4s ease 0.15s;
+}
+
+.content-section.active .section-inner {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+/* Section-specific background colors for visual distinction */
+.content-section[data-section="about"] {
+    background: var(--bg-white);
+}
+
+.content-section[data-section="projects"] {
+    background: var(--bg-section);
+}
+
+.content-section[data-section="toolbox"] {
+    background: var(--bg-white);
+}
+
+/* Slide direction classes for dynamic animations */
+.content-section.slide-in-left .section-inner {
+    transform: translateX(-30px);
+}
+
+.content-section.slide-in-right .section-inner {
+    transform: translateX(30px);
+}
+
+.content-section.active.slide-in-left .section-inner,
+.content-section.active.slide-in-right .section-inner {
+    transform: translateX(0);
+}
+
+/* Page content body adjustments */
+.page-content {
+    overflow: hidden;
+}
+
+.page-content .footer {
+    display: none;
+}
+
+/* ========================================
+   PAGE TRANSITION ANIMATION
+   ======================================== */
+
+@keyframes pageSlideIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.page-content .sections-viewport {
+    animation: pageSlideIn 0.5s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+.page-content .navbar-expanded .nav-pill-expanded {
+    animation: navPillExpand 0.4s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+@keyframes navPillExpand {
+    from {
+        transform: scale(0.95);
+        opacity: 0.8;
+    }
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+/* ========================================
+   RESPONSIVE: EXPANDED NAVBAR
+   ======================================== */
+
+@media (max-width: 768px) {
+    .nav-sections {
+        gap: 2px;
+    }
+    
+    .nav-section-btn {
+        font-size: 0.8rem;
+        padding: 6px 10px;
+    }
+    
+    .nav-logo-minimal a {
+        padding: 8px 10px;
+    }
+    
+    .sections-viewport {
+        margin-top: 70px;
+        min-height: calc(100vh - 70px);
+    }
+    
+    .content-section {
+        min-height: calc(100vh - 70px);
+    }
+}
+
+@media (max-width: 480px) {
+    .nav-section-btn {
+        font-size: 0.75rem;
+        padding: 5px 8px;
+    }
+    
+    .nav-divider {
+        padding: 0 3px;
+    }
+}
