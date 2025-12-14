@@ -3,6 +3,59 @@
    ======================================== */
 
 // ========================================
+// THEME TOGGLE (PERSISTENT)
+// ========================================
+const applyTheme = (theme) => {
+    if (theme !== 'light' && theme !== 'dark') return;
+    document.documentElement.dataset.theme = theme;
+    try {
+        localStorage.setItem('theme', theme);
+    } catch { }
+};
+
+const getTheme = () => {
+    const current = document.documentElement.dataset.theme;
+    if (current === 'light' || current === 'dark') return current;
+    try {
+        const stored = localStorage.getItem('theme');
+        if (stored === 'light' || stored === 'dark') return stored;
+    } catch { }
+    const systemDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+    return systemDark ? 'dark' : 'light';
+};
+
+const updateThemeToggleUI = () => {
+    const btn = document.querySelector('.theme-toggle');
+    if (!btn) return;
+
+    const theme = getTheme();
+    const isDark = theme === 'dark';
+    btn.setAttribute('aria-pressed', String(isDark));
+
+    const icon = btn.querySelector('i');
+    if (icon) {
+        icon.classList.remove('fa-sun', 'fa-moon');
+        icon.classList.add(isDark ? 'fa-sun' : 'fa-moon');
+    }
+
+    btn.setAttribute('aria-label', isDark ? 'Switch to light theme' : 'Switch to dark theme');
+};
+
+document.addEventListener('DOMContentLoaded', () => {
+    applyTheme(getTheme());
+    updateThemeToggleUI();
+
+    const btn = document.querySelector('.theme-toggle');
+    if (btn) {
+        btn.addEventListener('click', () => {
+            const next = getTheme() === 'dark' ? 'light' : 'dark';
+            applyTheme(next);
+            updateThemeToggleUI();
+        });
+    }
+});
+
+// ========================================
 // MOBILE NAVIGATION
 // ========================================
 const hamburger = document.querySelector('.hamburger');
@@ -15,6 +68,7 @@ if (hamburger && navMenu) {
         // Toggle aria-expanded for accessibility
         const expanded = hamburger.getAttribute('aria-expanded') === 'true';
         hamburger.setAttribute('aria-expanded', !expanded);
+        hamburger.setAttribute('aria-label', expanded ? 'Open menu' : 'Close menu');
     });
 
     // Close mobile menu when clicking on a link
@@ -58,27 +112,56 @@ window.addEventListener('scroll', () => {
 });
 
 // ========================================
-// SCROLL ANIMATIONS
+// SCROLLSPY (ACTIVE NAV LINK)
 // ========================================
-const observerOptions = {
-    threshold: 0.1,
-    rootMargin: '0px 0px -50px 0px'
+const navLinks = Array.from(document.querySelectorAll('.nav-menu a[href^="#"]'));
+const sections = navLinks
+    .map(link => document.querySelector(link.getAttribute('href')))
+    .filter(Boolean);
+
+const setActiveNav = () => {
+    if (!navLinks.length || !sections.length) return;
+
+    const scrollPos = window.scrollY + 120;
+    let activeId = sections[0].id;
+
+    for (const section of sections) {
+        if (section.offsetTop <= scrollPos) activeId = section.id;
+    }
+
+    navLinks.forEach(link => {
+        const isActive = link.getAttribute('href') === `#${activeId}`;
+        link.classList.toggle('active', isActive);
+    });
 };
 
-const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            entry.target.style.opacity = '1';
-            entry.target.style.transform = 'translateY(0)';
-        }
-    });
-}, observerOptions);
+window.addEventListener('scroll', setActiveNav, { passive: true });
+window.addEventListener('load', setActiveNav);
 
-// Observe all cards and timeline items
-const cards = document.querySelectorAll('.project-card, .timeline-content');
-cards.forEach(card => {
-    card.style.opacity = '0';
-    card.style.transform = 'translateY(30px)';
-    card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-    observer.observe(card);
-}); 
+// ========================================
+// REVEAL ANIMATIONS (SUBTLE)
+// ========================================
+const prefersReducedMotion = window.matchMedia?.('(prefers-reduced-motion: reduce)')?.matches;
+
+const revealTargets = document.querySelectorAll(
+    '.hero-content, section h2, .about p, .project-card, .achievement-card, .contact-intro, .social-links, .footer p'
+);
+
+revealTargets.forEach(el => el.classList.add('reveal'));
+
+if (prefersReducedMotion) {
+    revealTargets.forEach(el => el.classList.add('is-visible'));
+} else {
+    const revealObserver = new IntersectionObserver(
+        (entries, obs) => {
+            entries.forEach(entry => {
+                if (!entry.isIntersecting) return;
+                entry.target.classList.add('is-visible');
+                obs.unobserve(entry.target);
+            });
+        },
+        { threshold: 0.12, rootMargin: '0px 0px -10% 0px' }
+    );
+
+    revealTargets.forEach(el => revealObserver.observe(el));
+}
