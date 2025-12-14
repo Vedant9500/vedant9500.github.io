@@ -105,6 +105,27 @@ document.addEventListener('DOMContentLoaded', () => {
     const contactBtn = document.querySelector('.contact-toggle');
     const popover = document.querySelector('.contact-popover');
     if (contactBtn && popover) {
+        const positionPopover = () => {
+            const rect = contactBtn.getBoundingClientRect();
+            const popoverWidth = popover.offsetWidth || 240;
+            
+            // Position below the button, centered under the button
+            const top = rect.bottom + 12;
+            const buttonCenter = rect.left + (rect.width / 2);
+            let left = buttonCenter - (popoverWidth / 2);
+            
+            // Ensure popover doesn't go off-screen on the left
+            if (left < 12) left = 12;
+            
+            // Ensure popover doesn't go off-screen on the right
+            if (left + popoverWidth > window.innerWidth - 12) {
+                left = window.innerWidth - popoverWidth - 12;
+            }
+            
+            popover.style.top = `${top}px`;
+            popover.style.left = `${left}px`;
+        };
+
         const close = () => {
             popover.hidden = true;
             contactBtn.setAttribute('aria-expanded', 'false');
@@ -113,6 +134,10 @@ document.addEventListener('DOMContentLoaded', () => {
         const open = () => {
             popover.hidden = false;
             contactBtn.setAttribute('aria-expanded', 'true');
+            // Use requestAnimationFrame to ensure popover is rendered before measuring
+            requestAnimationFrame(() => {
+                positionPopover();
+            });
         };
 
         contactBtn.addEventListener('click', (evt) => {
@@ -121,6 +146,14 @@ document.addEventListener('DOMContentLoaded', () => {
             if (isOpen) close();
             else open();
         });
+
+        // Reposition on scroll/resize when open
+        window.addEventListener('scroll', () => {
+            if (!popover.hidden) positionPopover();
+        }, { passive: true });
+        window.addEventListener('resize', () => {
+            if (!popover.hidden) positionPopover();
+        }, { passive: true });
 
         popover.addEventListener('click', (evt) => {
             evt.stopPropagation();
@@ -257,9 +290,16 @@ const initSectionNavigation = () => {
     if (!sectionBtns.length || !sectionsTrack) return;
     
     let currentSection = 'about';
+    let isTransitioning = false;
+    let scrollAccumulator = 0;
+    const scrollThreshold = 150; // Pixels of overscroll needed to trigger section change
+    const transitionCooldown = 800; // ms to wait after a transition
     
-    const switchSection = (targetSection) => {
-        if (targetSection === currentSection) return;
+    const switchSection = (targetSection, scrollToTop = true) => {
+        if (targetSection === currentSection || isTransitioning) return;
+        
+        isTransitioning = true;
+        scrollAccumulator = 0;
         
         const currentIndex = sectionOrder.indexOf(currentSection);
         const targetIndex = sectionOrder.indexOf(targetSection);
@@ -282,6 +322,17 @@ const initSectionNavigation = () => {
         const targetSectionEl = document.querySelector(`.content-section[data-section="${targetSection}"]`);
         if (targetSectionEl) {
             targetSectionEl.classList.add(`slide-in-${direction === 'right' ? 'right' : 'left'}`);
+            
+            // Scroll target section to appropriate position
+            if (scrollToTop) {
+                if (direction === 'right') {
+                    targetSectionEl.scrollTop = 0;
+                } else {
+                    // When going back, scroll to bottom of previous section
+                    targetSectionEl.scrollTop = targetSectionEl.scrollHeight;
+                }
+            }
+            
             // Small delay to ensure transition plays
             requestAnimationFrame(() => {
                 targetSectionEl.classList.add('active');
@@ -289,18 +340,58 @@ const initSectionNavigation = () => {
         }
         
         currentSection = targetSection;
+        
+        // Reset transition lock after animation completes
+        setTimeout(() => {
+            isTransitioning = false;
+        }, transitionCooldown);
     };
+    
+    // Handle wheel events for section switching at scroll boundaries
+    contentSections.forEach(section => {
+        section.addEventListener('wheel', (e) => {
+            if (isTransitioning) return;
+            
+            const sectionName = section.dataset.section;
+            const currentIndex = sectionOrder.indexOf(sectionName);
+            
+            const atTop = section.scrollTop <= 0;
+            const atBottom = section.scrollTop + section.clientHeight >= section.scrollHeight - 2;
+            
+            // Scrolling down at bottom
+            if (e.deltaY > 0 && atBottom && currentIndex < sectionOrder.length - 1) {
+                scrollAccumulator += e.deltaY;
+                if (scrollAccumulator >= scrollThreshold) {
+                    switchSection(sectionOrder[currentIndex + 1]);
+                }
+                e.preventDefault();
+            }
+            // Scrolling up at top
+            else if (e.deltaY < 0 && atTop && currentIndex > 0) {
+                scrollAccumulator += Math.abs(e.deltaY);
+                if (scrollAccumulator >= scrollThreshold) {
+                    switchSection(sectionOrder[currentIndex - 1]);
+                }
+                e.preventDefault();
+            }
+            // Normal scrolling, reset accumulator
+            else {
+                scrollAccumulator = 0;
+            }
+        }, { passive: false });
+    });
     
     sectionBtns.forEach(btn => {
         btn.addEventListener('click', () => {
             const section = btn.dataset.section;
-            switchSection(section);
+            switchSection(section, true);
         });
     });
     
     // Handle keyboard navigation
     document.addEventListener('keydown', (e) => {
         if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') return;
+        if (isTransitioning) return;
         
         const currentIndex = sectionOrder.indexOf(currentSection);
         
