@@ -292,10 +292,38 @@ const initSectionNavigation = () => {
     let currentSection = 'about';
     let isTransitioning = false;
     let scrollAccumulator = 0;
-    const scrollThreshold = 150; // Pixels of overscroll needed to trigger section change
-    const transitionCooldown = 800; // ms to wait after a transition
+    let lastTransitionTime = 0; // Track when last transition happened
+    const scrollThreshold = 120; // Pixels of overscroll needed to trigger section change
+    const minTimeBetweenTransitions = 100; // ms - minimum pause in scrolling before allowing new transition
     
-    const switchSection = (targetSection, scrollToTop = true) => {
+    // Velocity tracking
+    let lastScrollTime = 0;
+    let scrollVelocity = 0;
+    let velocitySamples = [];
+    const maxSamples = 5;
+    
+    // Transition speed limits (in ms)
+    const minTransitionDuration = 300;  // Fastest transition
+    const maxTransitionDuration = 800;  // Slowest transition
+    const defaultTransitionDuration = 600; // For button clicks
+    
+    const calculateTransitionDuration = () => {
+        if (velocitySamples.length === 0) return defaultTransitionDuration;
+        
+        // Average velocity from samples
+        const avgVelocity = velocitySamples.reduce((a, b) => a + b, 0) / velocitySamples.length;
+        
+        // Map velocity to duration (higher velocity = shorter duration)
+        // Typical trackpad scroll is 1-10 pixels per event, fast scroll is 50+
+        const velocityNormalized = Math.min(Math.max(avgVelocity, 5), 80); // Clamp between 5-80
+        
+        // Inverse mapping: low velocity = long duration, high velocity = short duration
+        const duration = maxTransitionDuration - ((velocityNormalized - 5) / 75) * (maxTransitionDuration - minTransitionDuration);
+        
+        return Math.round(duration);
+    };
+    
+    const switchSection = (targetSection, scrollToTop = true, useVelocity = true) => {
         if (targetSection === currentSection || isTransitioning) return;
         
         isTransitioning = true;
@@ -304,6 +332,12 @@ const initSectionNavigation = () => {
         const currentIndex = sectionOrder.indexOf(currentSection);
         const targetIndex = sectionOrder.indexOf(targetSection);
         const direction = targetIndex > currentIndex ? 'right' : 'left';
+        
+        // Calculate transition duration based on scroll velocity
+        const transitionDuration = useVelocity ? calculateTransitionDuration() : defaultTransitionDuration;
+        
+        // Apply dynamic transition duration
+        sectionsTrack.style.transitionDuration = `${transitionDuration}ms`;
         
         // Update navbar buttons
         sectionBtns.forEach(btn => {
@@ -340,51 +374,105 @@ const initSectionNavigation = () => {
         }
         
         currentSection = targetSection;
+        velocitySamples = []; // Reset velocity samples
+        lastTransitionTime = performance.now(); // Record when transition started
         
         // Reset transition lock after animation completes
         setTimeout(() => {
             isTransitioning = false;
-        }, transitionCooldown);
+            scrollAccumulator = 0; // Reset accumulator
+            // Reset to default transition duration
+            sectionsTrack.style.transitionDuration = '';
+        }, transitionDuration + 50);
     };
     
-    // Handle wheel events for section switching at scroll boundaries
-    contentSections.forEach(section => {
-        section.addEventListener('wheel', (e) => {
-            if (isTransitioning) return;
+    // Get the currently active section element
+    const getActiveSection = () => {
+        return document.querySelector(`.content-section[data-section="${currentSection}"]`);
+    };
+    
+    // Handle wheel events at viewport level to avoid focus issues
+    const viewport = document.querySelector('.sections-viewport');
+    if (viewport) {
+        viewport.addEventListener('wheel', (e) => {
+            // Always prevent default to control scroll behavior
+            e.preventDefault();
             
-            const sectionName = section.dataset.section;
-            const currentIndex = sectionOrder.indexOf(sectionName);
+            const activeSection = getActiveSection();
+            if (!activeSection) return;
             
-            const atTop = section.scrollTop <= 0;
-            const atBottom = section.scrollTop + section.clientHeight >= section.scrollHeight - 2;
+            // During transition, absorb all scroll events (no momentum carry-over)
+            if (isTransitioning) {
+                return;
+            }
+            
+            const now = performance.now();
+            const timeSinceLastScroll = now - lastScrollTime;
+            const timeSinceTransition = now - lastTransitionTime;
+            
+            // Only allow new page transition if there was a pause in scrolling
+            // This detects when momentum has stopped and user started a new scroll gesture
+            const isFreshScrollGesture = timeSinceLastScroll > minTimeBetweenTransitions;
+            
+            // Reset accumulator if this is a fresh gesture
+            if (isFreshScrollGesture) {
+                scrollAccumulator = 0;
+                velocitySamples = [];
+            }
+            
+            // Track velocity
+            const deltaTime = timeSinceLastScroll;
+            lastScrollTime = now;
+            
+            if (deltaTime > 0 && deltaTime < 200) {
+                scrollVelocity = Math.abs(e.deltaY) / (deltaTime / 16.67);
+                velocitySamples.push(Math.abs(e.deltaY));
+                if (velocitySamples.length > maxSamples) {
+                    velocitySamples.shift();
+                }
+            }
+            
+            const currentIndex = sectionOrder.indexOf(currentSection);
+            
+            const atTop = activeSection.scrollTop <= 0;
+            const atBottom = activeSection.scrollTop + activeSection.clientHeight >= activeSection.scrollHeight - 2;
+            
+            // Check if this scroll is likely momentum from a recent transition
+            const isLikelyMomentum = !isFreshScrollGesture && timeSinceTransition < 800;
             
             // Scrolling down at bottom
             if (e.deltaY > 0 && atBottom && currentIndex < sectionOrder.length - 1) {
-                scrollAccumulator += e.deltaY;
-                if (scrollAccumulator >= scrollThreshold) {
-                    switchSection(sectionOrder[currentIndex + 1]);
+                if (!isLikelyMomentum) {
+                    scrollAccumulator += e.deltaY;
+                    if (scrollAccumulator >= scrollThreshold) {
+                        switchSection(sectionOrder[currentIndex + 1], true, true);
+                    }
                 }
-                e.preventDefault();
+                // Momentum after transition - just absorb it
             }
             // Scrolling up at top
             else if (e.deltaY < 0 && atTop && currentIndex > 0) {
-                scrollAccumulator += Math.abs(e.deltaY);
-                if (scrollAccumulator >= scrollThreshold) {
-                    switchSection(sectionOrder[currentIndex - 1]);
+                if (!isLikelyMomentum) {
+                    scrollAccumulator += Math.abs(e.deltaY);
+                    if (scrollAccumulator >= scrollThreshold) {
+                        switchSection(sectionOrder[currentIndex - 1], true, true);
+                    }
                 }
-                e.preventDefault();
+                // Momentum after transition - just absorb it
             }
-            // Normal scrolling, reset accumulator
+            // Normal scrolling within the section
             else {
                 scrollAccumulator = 0;
+                // Manually scroll the active section since we're capturing at viewport level
+                activeSection.scrollTop += e.deltaY;
             }
         }, { passive: false });
-    });
+    }
     
     sectionBtns.forEach(btn => {
         btn.addEventListener('click', () => {
             const section = btn.dataset.section;
-            switchSection(section, true);
+            switchSection(section, true, false); // Use default speed for clicks
         });
     });
     
@@ -396,7 +484,7 @@ const initSectionNavigation = () => {
         const currentIndex = sectionOrder.indexOf(currentSection);
         
         if (e.key === 'ArrowRight' && currentIndex < sectionOrder.length - 1) {
-            switchSection(sectionOrder[currentIndex + 1]);
+            switchSection(sectionOrder[currentIndex + 1], true, false);
         } else if (e.key === 'ArrowLeft' && currentIndex > 0) {
             switchSection(sectionOrder[currentIndex - 1]);
         }
@@ -404,3 +492,37 @@ const initSectionNavigation = () => {
 };
 
 document.addEventListener('DOMContentLoaded', initSectionNavigation);
+
+// ========================================
+// PAGE NAVIGATION WITH VIEW TRANSITIONS
+// ========================================
+document.addEventListener('DOMContentLoaded', () => {
+    // Handle navigation links with View Transitions API
+    const navigationLinks = document.querySelectorAll('a[href="content.html"], a[href="index.html"], .nav-logo-minimal a, .nav-logo a');
+    
+    navigationLinks.forEach(link => {
+        link.addEventListener('click', (e) => {
+            const href = link.getAttribute('href');
+            
+            // Skip if it's the current page
+            if (window.location.pathname.endsWith(href)) return;
+            
+            // Check if View Transitions API is supported
+            if (!document.startViewTransition) {
+                // Fallback: just navigate normally
+                return;
+            }
+            
+            e.preventDefault();
+            
+            // Determine direction based on navigation
+            const isGoingToContent = href === 'content.html';
+            document.documentElement.dataset.navDirection = isGoingToContent ? 'forward' : 'back';
+            
+            // Start view transition
+            document.startViewTransition(() => {
+                window.location.href = href;
+            });
+        });
+    });
+});
