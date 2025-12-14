@@ -46,23 +46,25 @@
                             Vedantium.dev
                         </a>
                     </div>
-                    <ul class="nav-menu" id="primary-navigation">
-                        <li><a href="#about">About</a></li>
-                        <li><a href="#projects">Projects</a></li>
-                        <li><a href="#achievements">Toolbox</a></li>
-                        <li><a href="#contact">Contact</a></li>
-                    </ul>
 
-                    <button class="theme-toggle" type="button" aria-label="Toggle theme" aria-pressed="false">
-                        <i class="fas fa-moon" aria-hidden="true"></i>
-                    </button>
+                    <span class="nav-divider" aria-hidden="true">|</span>
+
+                    <div class="nav-actions">
+                        <button class="contact-toggle" type="button" aria-label="Contact" aria-expanded="false" aria-controls="contact-popover">
+                            <i class="fas fa-envelope" aria-hidden="true"></i>
+                        </button>
+                        <button class="theme-toggle" type="button" aria-label="Toggle theme" aria-pressed="false">
+                            <i class="fas fa-moon" aria-hidden="true"></i>
+                        </button>
+                    </div>
+
+                    <div class="contact-popover" id="contact-popover" role="dialog" aria-label="Contact options" hidden>
+                        <a href="https://github.com/Vedant9500" target="_blank" rel="noopener"><i class="fab fa-github" aria-hidden="true"></i> GitHub</a>
+                        <a href="https://instagram.com/vedant_s_d" target="_blank" rel="noopener"><i class="fab fa-instagram" aria-hidden="true"></i> Instagram</a>
+                        <a href="mailto:deshmukhvedant95@gmail.com"><i class="fas fa-envelope" aria-hidden="true"></i> Email</a>
+                        <a href="https://www.linkedin.com/in/vedant-deshmukh-82441928b/" target="_blank" rel="noopener"><i class="fab fa-linkedin" aria-hidden="true"></i> LinkedIn</a>
+                    </div>
                 </div>
-
-                <button class="hamburger" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="primary-navigation">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </button>
             </div>
         </nav>
     </header>

@@ -41,16 +41,94 @@ const updateThemeToggleUI = () => {
     btn.setAttribute('aria-label', isDark ? 'Switch to light theme' : 'Switch to dark theme');
 };
 
+const createThemeRipple = (x, y, nextTheme) => {
+    const ripple = document.createElement('div');
+    ripple.className = 'theme-ripple';
+    ripple.style.left = `${x}px`;
+    ripple.style.top = `${y}px`;
+
+    // Freeze ripple color so it doesn't change mid-animation when theme tokens flip.
+    if (nextTheme === 'dark') ripple.style.background = 'var(--theme-bg-dark)';
+    if (nextTheme === 'light') ripple.style.background = 'var(--theme-bg-light)';
+
+    document.body.appendChild(ripple);
+
+    // Trigger layout then animate
+    ripple.getBoundingClientRect();
+    ripple.classList.add('is-on');
+    return ripple;
+};
+
 document.addEventListener('DOMContentLoaded', () => {
     applyTheme(getTheme());
     updateThemeToggleUI();
 
     const btn = document.querySelector('.theme-toggle');
     if (btn) {
-        btn.addEventListener('click', () => {
+        btn.addEventListener('click', (e) => {
             const next = getTheme() === 'dark' ? 'light' : 'dark';
-            applyTheme(next);
-            updateThemeToggleUI();
+
+            const reduceMotion = window.matchMedia?.('(prefers-reduced-motion: reduce)')?.matches;
+            if (reduceMotion) {
+                applyTheme(next);
+                updateThemeToggleUI();
+                return;
+            }
+
+            const rect = btn.getBoundingClientRect();
+            const x = rect.left + rect.width / 2;
+            const y = rect.top + rect.height / 2;
+
+            // Prefer View Transitions — smooth cross-fade.
+            if (typeof document.startViewTransition === 'function') {
+                document.startViewTransition(() => {
+                    applyTheme(next);
+                    updateThemeToggleUI();
+                });
+                return;
+            }
+
+            const ripple = createThemeRipple(x, y, next);
+
+            // Switch theme shortly after ripple starts, then clean up.
+            window.setTimeout(() => {
+                applyTheme(next);
+                updateThemeToggleUI();
+            }, 110);
+
+            window.setTimeout(() => {
+                ripple?.remove();
+            }, 650);
+        });
+    }
+
+    const contactBtn = document.querySelector('.contact-toggle');
+    const popover = document.querySelector('.contact-popover');
+    if (contactBtn && popover) {
+        const close = () => {
+            popover.hidden = true;
+            contactBtn.setAttribute('aria-expanded', 'false');
+        };
+
+        const open = () => {
+            popover.hidden = false;
+            contactBtn.setAttribute('aria-expanded', 'true');
+        };
+
+        contactBtn.addEventListener('click', (evt) => {
+            evt.stopPropagation();
+            const isOpen = !popover.hidden;
+            if (isOpen) close();
+            else open();
+        });
+
+        popover.addEventListener('click', (evt) => {
+            evt.stopPropagation();
+        });
+
+        document.addEventListener('click', () => close());
+        document.addEventListener('keydown', (evt) => {
+            if (evt.key === 'Escape') close();
         });
     }
 });
