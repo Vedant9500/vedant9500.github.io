@@ -449,6 +449,7 @@ html[data-theme="dark"] .nav-pill {
     display: inline-flex;
     align-items: center;
     gap: 10px;
+    position: relative;
 }
 
 .contact-toggle {
@@ -488,8 +489,8 @@ html[data-theme="dark"] .contact-toggle:hover {
 
 .contact-popover {
     position: fixed;
-    top: 70px;
-    right: calc(50% - 130px);
+    top: 0;
+    left: 0;
     width: 240px;
     padding: 10px;
     border-radius: 18px;
@@ -720,7 +721,6 @@ html[data-theme="dark"] .contact-popover a:hover {
 .btn-primary:hover {
     background: var(--primary-dark);
     box-shadow: 0 4px 16px rgba(124, 154, 146, 0.35);
-    transform: translateY(-1px);
 }
 
 .btn-secondary {
@@ -733,7 +733,6 @@ html[data-theme="dark"] .contact-popover a:hover {
     background: var(--pastel-primary-soft);
     border-color: var(--pastel-primary);
     color: var(--pastel-primary);
-    transform: translateY(-1px);
 }
 
 .footer-link {
@@ -820,7 +819,6 @@ section h2 {
 
 .project-card:hover {
     background: rgba(227, 218, 204, 0.65);
-    transform: translateY(-4px);
     box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
 }
 
@@ -859,7 +857,7 @@ html[data-theme="dark"] .project-card:hover {
     color: var(--text-muted);
     background: var(--pastel-secondary-soft);
     padding: 4px 10px;
-    border-radius: 6px;
+    border-radius: 12px;
     white-space: nowrap;
     position: static;
 }
@@ -906,7 +904,6 @@ html[data-theme="dark"] .project-lang {
 
 .project-links a:hover {
     background-color: #2D2D2A;
-    transform: translateY(-1px);
 }
 
 .project-links a:active {
@@ -945,7 +942,6 @@ html[data-theme="dark"] .project-lang {
 
 .achievement-card:hover {
     background: rgba(255, 255, 255, 0.80);
-    transform: translateY(-3px);
     box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
 }
 
@@ -1084,12 +1080,7 @@ html[data-theme="dark"] .achievement-card:hover {
     background: var(--pastel-primary);
     color: white;
     border-color: var(--pastel-primary);
-    transform: translateY(-3px) scale(1.02);
     box-shadow: 0 8px 20px rgba(124, 154, 146, 0.30);
-}
-
-.social-link:active {
-    transform: translateY(-1px) scale(0.98);
 }
 
 /* Responsive Contact */
@@ -1431,18 +1422,19 @@ html[data-theme="dark"] .nav-section-btn:hover:not(.active) {
    ======================================== */
 
 .sections-viewport {
-    position: relative;
-    width: 100%;
-    min-height: calc(100vh - 80px);
+    position: fixed;
+    top: 80px;
+    left: 0;
+    right: 0;
+    bottom: 0;
     overflow: hidden;
-    margin-top: 80px;
 }
 
 .sections-track {
     display: flex;
     width: 300%;
     height: 100%;
-    transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+    transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 .sections-track[data-active-section="about"] {
@@ -1460,13 +1452,34 @@ html[data-theme="dark"] .nav-section-btn:hover:not(.active) {
 .content-section {
     flex: 0 0 33.333%;
     width: 33.333%;
-    min-height: calc(100vh - 80px);
+    height: 100%;
     overflow-y: auto;
     overflow-x: hidden;
+    scroll-behavior: smooth;
+    overscroll-behavior-y: contain;
+}
+
+/* Custom scrollbar for sections */
+.content-section::-webkit-scrollbar {
+    width: 6px;
+}
+
+.content-section::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.content-section::-webkit-scrollbar-thumb {
+    background: var(--pastel-primary-light);
+    border-radius: 3px;
+}
+
+.content-section::-webkit-scrollbar-thumb:hover {
+    background: var(--pastel-primary);
 }
 
 .section-inner {
-    padding: 30px 0;
+    padding: 30px 0 60px;
+    min-height: 100%;
     opacity: 0;
     transform: translateX(30px);
     transition: opacity 0.4s ease 0.15s, transform 0.4s ease 0.15s;
@@ -1577,12 +1590,7 @@ html[data-theme="dark"] .nav-section-btn:hover:not(.active) {
     }
     
     .sections-viewport {
-        margin-top: 70px;
-        min-height: calc(100vh - 70px);
-    }
-    
-    .content-section {
-        min-height: calc(100vh - 70px);
+        top: 70px;
     }
 }
 
