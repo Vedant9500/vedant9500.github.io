@@ -1,35 +1,57 @@
 /* ========================================
    VEDANTIUM.DEV - PERSONAL PORTFOLIO SITE
    Elegant Minimalist Design
-   Sophisticated Indigo & Amber Palette
+   Sophisticated Pastel Palette
    ======================================== */
 
 :root {
-    /* Google Material You (MD3) Color Tokens */
+    /* ========================================
+       PASTEL COLOR SYSTEM
+       Primary: Sage Green (calming, professional)
+       Secondary: Warm Sand/Cream (welcoming)
+       Accent: Soft Lavender (creativity)
+       ======================================== */
 
-    /* Key Colors */
-    --md-sys-color-primary: #4285F4;
-    /* Google Blue */
+    /* Primary Pastel - Sage Green */
+    --pastel-primary: #7C9A92;
+    --pastel-primary-light: #A8C5BC;
+    --pastel-primary-soft: #D4E5E0;
+    --pastel-primary-on: #1A2E28;
+
+    /* Secondary Pastel - Warm Sand */
+    --pastel-secondary: #C4B5A0;
+    --pastel-secondary-light: #E3DACC;
+    --pastel-secondary-soft: #F5F1EB;
+
+    /* Accent Pastel - Soft Lavender */
+    --pastel-accent: #9B8AA6;
+    --pastel-accent-light: #C5B8CF;
+    --pastel-accent-soft: #E8E2ED;
+
+    /* Tertiary Pastel - Dusty Rose */
+    --pastel-tertiary: #C9A9A6;
+    --pastel-tertiary-light: #E2CCC9;
+    --pastel-tertiary-soft: #F5EDEC;
+
+    /* Neutral Pastels */
+    --pastel-neutral: #B8B5AE;
+    --pastel-neutral-light: #E6E4DE;
+
+    /* Semantic Mapping */
+    --md-sys-color-primary: var(--pastel-primary);
     --md-sys-color-on-primary: #FFFFFF;
-    --md-sys-color-primary-container: #D2E3FC;
-    --md-sys-color-on-primary-container: #001D35;
+    --md-sys-color-primary-container: var(--pastel-primary-soft);
+    --md-sys-color-on-primary-container: var(--pastel-primary-on);
 
     --md-sys-color-secondary: #5F6368;
-    /* Google Grey for secondary text */
     --md-sys-color-on-secondary: #FFFFFF;
-    --md-sys-color-secondary-container: #E8EAED;
-    --md-sys-color-on-secondary-container: #1F1F1F;
+    --md-sys-color-secondary-container: var(--pastel-secondary-soft);
+    --md-sys-color-on-secondary-container: #2D2A25;
 
-    --md-sys-color-tertiary: #EA4335;
-    /* Google Red accent */
+    --md-sys-color-tertiary: var(--pastel-accent);
     --md-sys-color-on-tertiary: #FFFFFF;
-    --md-sys-color-tertiary-container: #FCE8E6;
-    --md-sys-color-on-tertiary-container: #601410;
-
-    /* Supplemental Key Colors */
-    --google-blue: #4285F4;
-    --google-yellow: #FBBC04;
-    --google-green: #34A853;
+    --md-sys-color-tertiary-container: var(--pastel-accent-soft);
+    --md-sys-color-on-tertiary-container: #2A2332;
 
     /* Surface & Background */
     --md-sys-color-background: #FFFFFF;
@@ -39,27 +61,26 @@
 
     /* Surface Containers */
     --md-sys-color-surface-container-lowest: #FFFFFF;
-    --md-sys-color-surface-container-low: #F8F9FA;
-    /* Google grey background */
-    --md-sys-color-surface-container: #F1F3F4;
-    --md-sys-color-surface-container-high: #E8EAED;
-    --md-sys-color-surface-container-highest: #DADCE0;
+    --md-sys-color-surface-container-low: #FAFAF8;
+    --md-sys-color-surface-container: #F5F4F1;
+    --md-sys-color-surface-container-high: #EFEEE9;
+    --md-sys-color-surface-container-highest: #E9E7E2;
 
     /* Outline */
-    --md-sys-color-outline: #70757A;
-    --md-sys-color-outline-variant: #DADCE0;
+    --md-sys-color-outline: #8A8680;
+    --md-sys-color-outline-variant: #DDD9D3;
 
     /* Mapping */
-    --primary: var(--md-sys-color-primary);
-    --primary-dark: #3367D6;
-    --primary-light: var(--md-sys-color-primary-container);
+    --primary: var(--pastel-primary);
+    --primary-dark: #5A7A72;
+    --primary-light: var(--pastel-primary-soft);
 
     --bg-white: var(--md-sys-color-background);
     --bg-section: var(--md-sys-color-surface-container-low);
     --bg-subtle: var(--md-sys-color-surface-container);
 
     --text-primary: var(--md-sys-color-on-surface);
-    --text-secondary: var(--md-sys-color-secondary);
+    --text-secondary: #5A5650;
     --text-muted: var(--md-sys-color-outline);
 
     --border-light: var(--md-sys-color-outline-variant);
@@ -72,10 +93,10 @@
     --shape-corner-extra-large: 24px;
     --shape-corner-full: 9999px;
 
-    /* Shadows (Google Style) */
-    --elevation-1: 0 1px 2px 0 rgba(60, 64, 67, 0.3), 0 1px 3px 1px rgba(60, 64, 67, 0.15);
-    --elevation-2: 0 1px 2px 0 rgba(60, 64, 67, 0.3), 0 2px 6px 2px rgba(60, 64, 67, 0.15);
-    --elevation-3: 0 4px 8px 3px rgba(60, 64, 67, 0.15), 0 1px 3px rgba(60, 64, 67, 0.3);
+    /* Shadows (Softer, warmer) */
+    --elevation-1: 0 1px 3px 0 rgba(90, 85, 80, 0.12), 0 1px 2px 0 rgba(90, 85, 80, 0.08);
+    --elevation-2: 0 2px 6px 0 rgba(90, 85, 80, 0.12), 0 1px 3px 0 rgba(90, 85, 80, 0.08);
+    --elevation-3: 0 4px 12px 0 rgba(90, 85, 80, 0.12), 0 2px 4px 0 rgba(90, 85, 80, 0.08);
 
     --shadow-subtle: var(--elevation-1);
     --shadow-md: var(--elevation-2);
@@ -84,46 +105,71 @@
     --font-display: 'Outfit', sans-serif;
     --font-body: 'Inter', sans-serif;
 
-    /* Claude-ish neutrals */
-    --grain-opacity: 0.06;
+    /* Grain overlay */
+    --grain-opacity: 0.04;
 
-    /* Theme constants (used for ripple to avoid mid-animation color jumps) */
+    /* Theme constants */
     --theme-bg-light: #F7F6F3;
-    --theme-bg-dark: #0B0F17;
+    --theme-bg-dark: #0D1117;
 }
 
 html[data-theme="light"] {
-    --md-sys-color-background: #F7F6F3;
-    --md-sys-color-on-background: #121316;
-    --md-sys-color-surface: #F7F6F3;
-    --md-sys-color-on-surface: #121316;
+    --md-sys-color-background: #F9F8F5;
+    --md-sys-color-on-background: #1A1A18;
+    --md-sys-color-surface: #F9F8F5;
+    --md-sys-color-on-surface: #1A1A18;
 
     --md-sys-color-surface-container-lowest: #FFFFFF;
-    --md-sys-color-surface-container-low: #FFFFFF;
-    --md-sys-color-surface-container: #F2F1ED;
-    --md-sys-color-surface-container-high: #ECEAE5;
-    --md-sys-color-surface-container-highest: #E6E4DE;
+    --md-sys-color-surface-container-low: #FDFCFA;
+    --md-sys-color-surface-container: #F5F4F0;
+    --md-sys-color-surface-container-high: #EFEDE8;
+    --md-sys-color-surface-container-highest: #E9E6E0;
 
-    --md-sys-color-secondary: #4B5563;
-    --md-sys-color-outline: #C9C6BE;
-    --md-sys-color-outline-variant: #E3E1DA;
+    --md-sys-color-secondary: #5A5650;
+    --md-sys-color-outline: #A8A49C;
+    --md-sys-color-outline-variant: #E3E0D8;
+
+    /* Light mode pastel adjustments */
+    --pastel-primary: #7C9A92;
+    --pastel-primary-light: #A8C5BC;
+    --pastel-primary-soft: #E2EFEB;
 }
 
 html[data-theme="dark"] {
-    --md-sys-color-background: #0B0F17;
-    --md-sys-color-on-background: #E7EAF0;
-    --md-sys-color-surface: #0B0F17;
-    --md-sys-color-on-surface: #E7EAF0;
+    --md-sys-color-background: #0D1117;
+    --md-sys-color-on-background: #E6E4DE;
+    --md-sys-color-surface: #0D1117;
+    --md-sys-color-on-surface: #E6E4DE;
 
-    --md-sys-color-surface-container-lowest: #0B0F17;
-    --md-sys-color-surface-container-low: #0F1623;
-    --md-sys-color-surface-container: #111B2B;
-    --md-sys-color-surface-container-high: #142033;
-    --md-sys-color-surface-container-highest: #17263C;
+    --md-sys-color-surface-container-lowest: #0D1117;
+    --md-sys-color-surface-container-low: #131920;
+    --md-sys-color-surface-container: #1A222C;
+    --md-sys-color-surface-container-high: #212A36;
+    --md-sys-color-surface-container-highest: #283240;
 
-    --md-sys-color-secondary: #AAB2C0;
-    --md-sys-color-outline: #2A3850;
-    --md-sys-color-outline-variant: #1E2A3E;
+    --md-sys-color-secondary: #A8A49C;
+    --md-sys-color-outline: #3D4654;
+    --md-sys-color-outline-variant: #2A323E;
+
+    /* Dark mode pastel adjustments - richer, deeper */
+    --pastel-primary: #8FB0A8;
+    --pastel-primary-light: #6A8A82;
+    --pastel-primary-soft: rgba(143, 176, 168, 0.15);
+    --pastel-primary-on: #E6F0ED;
+
+    --pastel-secondary: #D4C7B5;
+    --pastel-secondary-light: rgba(212, 199, 181, 0.20);
+    --pastel-secondary-soft: rgba(212, 199, 181, 0.10);
+
+    --pastel-accent: #B8A5C4;
+    --pastel-accent-light: rgba(184, 165, 196, 0.20);
+    --pastel-accent-soft: rgba(184, 165, 196, 0.12);
+
+    --pastel-tertiary: #D4B8B5;
+    --pastel-tertiary-light: rgba(212, 184, 181, 0.20);
+    --pastel-tertiary-soft: rgba(212, 184, 181, 0.12);
+
+    --text-secondary: #A8A49C;
 }
 
 /* ========================================
@@ -560,7 +606,7 @@ html[data-theme="dark"] .contact-popover a:hover {
 }
 
 .highlight {
-    color: var(--primary);
+    color: var(--pastel-primary);
     position: relative;
     font-weight: 500;
 }
@@ -604,27 +650,27 @@ html[data-theme="dark"] .contact-popover a:hover {
 }
 
 .btn-primary {
-    background: var(--md-sys-color-primary);
-    color: var(--md-sys-color-on-primary);
+    background: var(--pastel-primary);
+    color: #FFFFFF;
     border: none;
     box-shadow: none;
 }
 
 .btn-primary:hover {
-    background: #3367D6;
+    background: var(--primary-dark);
     box-shadow: var(--elevation-1);
 }
 
 .btn-secondary {
     background: transparent;
-    color: var(--md-sys-color-primary);
-    border: 1px solid var(--md-sys-color-outline);
+    color: var(--pastel-primary);
+    border: 1px solid var(--md-sys-color-outline-variant);
 }
 
 .btn-secondary:hover {
-    background: rgba(66, 133, 244, 0.08);
-    border-color: var(--md-sys-color-primary);
-    color: var(--md-sys-color-primary);
+    background: var(--pastel-primary-soft);
+    border-color: var(--pastel-primary-light);
+    color: var(--pastel-primary);
     transform: none;
 }
 
@@ -642,7 +688,7 @@ html[data-theme="dark"] .contact-popover a:hover {
    SECTION STYLES
    ======================================== */
 section {
-    padding: 5rem 0;
+    padding: 2rem 0;
 }
 
 section h2 {
@@ -651,7 +697,7 @@ section h2 {
     font-weight: 400;
     /* Google Sans Regular */
     text-align: center;
-    margin-bottom: 3rem;
+    margin-bottom: 2rem;
     color: var(--text-primary);
     letter-spacing: normal;
 }
@@ -660,7 +706,7 @@ section h2 {
    ABOUT SECTION
    ======================================== */
 .about {
-    background: var(--bg-section);
+    background: transparent;
     text-align: center;
 }
 
@@ -683,24 +729,27 @@ section h2 {
    PROJECTS SECTION
    ======================================== */
 .projects {
-    background: var(--bg-white);
+    background: transparent;
 }
 
 /* --- Projects Section --- */
 /* --- Projects Section --- */
 .projects-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    grid-template-columns: repeat(3, 1fr);
     gap: 24px;
-    align-items: stretch;
+    align-items: start;
 }
 
 .project-card {
-    background: var(--md-sys-color-surface-container-low);
+    background: rgba(227, 218, 204, 0.50);
     border-radius: 24px;
     padding: 24px;
     transition: all 0.3s cubic-bezier(0.2, 0, 0, 1);
-    border: 1px solid transparent;
+    border: 1px solid rgba(200, 192, 178, 0.3);
+    -webkit-backdrop-filter: blur(12px) saturate(150%);
+    backdrop-filter: blur(12px) saturate(150%);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
     display: flex;
     flex-direction: column;
     min-height: 320px;
@@ -710,9 +759,20 @@ section h2 {
 }
 
 .project-card:hover {
-    background: var(--md-sys-color-surface-container);
+    background: rgba(227, 218, 204, 0.65);
     transform: translateY(-4px);
-    box-shadow: var(--elevation-2);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+}
+
+html[data-theme="dark"] .project-card {
+    background: rgba(30, 42, 62, 0.50);
+    border: 1px solid rgba(231, 234, 240, 0.08);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+}
+
+html[data-theme="dark"] .project-card:hover {
+    background: rgba(30, 42, 62, 0.65);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.20);
 }
 
 .project-header {
@@ -765,7 +825,7 @@ section h2 {
 }
 
 .project-links a {
-    color: var(--primary);
+    color: #FFFFFF;
     text-decoration: none;
     font-weight: 500;
     transition: all 0.2s ease;
@@ -775,28 +835,28 @@ section h2 {
     font-size: 0.9rem;
     padding: 10px 20px;
     border-radius: 999px;
-    background-color: transparent;
-    border: 1px solid var(--border-light);
+    background-color: #141413;
+    border: none;
 }
 
 /* Ensure the card is the positioning context */
 /* Hover Effects */
 .project-card:hover .project-links a {
-    background-color: var(--md-sys-color-primary);
-    color: var(--md-sys-color-on-primary);
+    background-color: #3D3D3A;
+    color: #FFFFFF;
     border-color: transparent;
-    box-shadow: var(--elevation-1);
+    box-shadow: none;
 }
 
 .project-links a:hover {
-    background-color: var(--primary-dark);
+    background-color: #3D3D3A;
 }
 
 /* ========================================
    ACHIEVEMENTS SECTION - TOOLBOX GRID
    ======================================== */
 .achievements {
-    background: var(--bg-section);
+    background: transparent;
     text-align: left;
 }
 
@@ -809,11 +869,14 @@ section h2 {
 }
 
 .achievement-card {
-    background: var(--md-sys-color-surface-container-low);
+    background: rgba(255, 255, 255, 0.65);
     border-radius: 24px;
     padding: 32px;
     transition: all 0.3s cubic-bezier(0.2, 0, 0, 1);
-    border: 1px solid transparent;
+    border: 1px solid rgba(200, 195, 185, 0.25);
+    -webkit-backdrop-filter: blur(12px) saturate(150%);
+    backdrop-filter: blur(12px) saturate(150%);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
     display: flex;
     flex-direction: column;
     align-items: flex-start;
@@ -821,23 +884,59 @@ section h2 {
 }
 
 .achievement-card:hover {
-    background: var(--md-sys-color-surface-container);
+    background: rgba(255, 255, 255, 0.80);
     transform: translateY(-4px);
-    box-shadow: var(--elevation-1);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.06);
+}
+
+html[data-theme="dark"] .achievement-card {
+    background: rgba(30, 42, 62, 0.50);
+    border: 1px solid rgba(231, 234, 240, 0.08);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+}
+
+html[data-theme="dark"] .achievement-card:hover {
+    background: rgba(30, 42, 62, 0.65);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.20);
 }
 
 .achievement-icon {
-    font-size: 2rem;
-    color: var(--primary);
+    font-size: 1.5rem;
     margin-bottom: 1.5rem;
-    background: var(--md-sys-color-primary-container);
-    color: var(--md-sys-color-on-primary-container);
     width: 56px;
     height: 56px;
     display: flex;
     align-items: center;
     justify-content: center;
     border-radius: 16px;
+    background: var(--pastel-primary-soft);
+    color: var(--pastel-primary);
+}
+
+/* Varied icon colors for visual interest */
+.achievement-card:nth-child(1) .achievement-icon {
+    background: var(--pastel-primary-soft);
+    color: var(--pastel-primary);
+}
+
+.achievement-card:nth-child(2) .achievement-icon {
+    background: var(--pastel-accent-soft);
+    color: var(--pastel-accent);
+}
+
+.achievement-card:nth-child(3) .achievement-icon {
+    background: var(--pastel-tertiary-soft);
+    color: var(--pastel-tertiary);
+}
+
+.achievement-card:nth-child(4) .achievement-icon {
+    background: var(--pastel-secondary-soft);
+    color: var(--pastel-secondary);
+}
+
+.achievement-card:nth-child(5) .achievement-icon {
+    background: rgba(124, 154, 146, 0.15);
+    color: #6A8A82;
 }
 
 .achievement-card h3 {
@@ -905,21 +1004,22 @@ section h2 {
     justify-content: center;
     width: 60px;
     height: 60px;
-    background: var(--bg-white);
-    border: 2px solid var(--border-light);
+    background: var(--pastel-primary-soft);
+    border: 1px solid var(--pastel-primary-light);
     border-radius: 50%;
-    color: var(--text-secondary);
+    color: var(--pastel-primary);
     font-size: 1.5rem;
     text-decoration: none;
     transition: all 0.3s ease;
-    box-shadow: var(--elevation-1);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
 }
 
 .social-link:hover {
-    color: var(--primary);
-    border-color: var(--primary);
+    background: var(--pastel-primary);
+    color: white;
+    border-color: var(--pastel-primary);
     transform: translateY(-3px);
-    box-shadow: var(--elevation-2);
+    box-shadow: 0 4px 16px rgba(124, 154, 146, 0.25);
 }
 
 /* Responsive Contact */
@@ -992,7 +1092,7 @@ section h2 {
     }
 
     .projects-grid {
-        grid-template-columns: 1fr;
+        grid-template-columns: repeat(2, 1fr);
     }
 
     section {
@@ -1019,6 +1119,10 @@ section h2 {
 
     .project-card {
         padding: 1.5rem;
+    }
+
+    .projects-grid {
+        grid-template-columns: 1fr;
     }
 
     .achievements li {
@@ -1223,17 +1327,17 @@ html[data-theme="dark"] .nav-logo-minimal a:hover {
 }
 
 .nav-section-btn:hover {
-    background: rgba(255, 255, 255, 0.12);
+    background: var(--pastel-primary-soft);
     color: var(--text-primary);
 }
 
 .nav-section-btn.active {
-    background: var(--primary);
+    background: var(--pastel-primary);
     color: white;
 }
 
 html[data-theme="dark"] .nav-section-btn:hover:not(.active) {
-    background: rgba(255, 255, 255, 0.08);
+    background: rgba(143, 176, 168, 0.15);
 }
 
 /* Entry animation for section buttons */
@@ -1292,10 +1396,21 @@ html[data-theme="dark"] .nav-section-btn:hover:not(.active) {
 }
 
 .section-inner {
-    padding: 60px 0;
+    padding: 30px 0;
     opacity: 0;
     transform: translateX(30px);
     transition: opacity 0.4s ease 0.15s, transform 0.4s ease 0.15s;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.section-inner .container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
 }
 
 .content-section.active .section-inner {
@@ -1309,7 +1424,7 @@ html[data-theme="dark"] .nav-section-btn:hover:not(.active) {
 }
 
 .content-section[data-section="projects"] {
-    background: var(--bg-section);
+    background: var(--bg-white);
 }
 
 .content-section[data-section="toolbox"] {
