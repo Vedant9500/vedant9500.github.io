@@ -526,15 +526,15 @@ html[data-theme="dark"] .contact-toggle:hover {
     width: 240px;
     padding: 10px;
     border-radius: 18px;
-    background: rgba(255, 255, 255, 0.50);
-    border: 1px solid rgba(255, 255, 255, 0.5);
-    -webkit-backdrop-filter: blur(12px) saturate(150%);
-    backdrop-filter: blur(12px) saturate(150%);
-    box-shadow:
-        0 8px 32px rgba(0, 0, 0, 0.12),
-        inset 0 1px 0 rgba(255, 255, 255, 0.5);
+    background: rgba(255, 255, 255, 0.85);
+    border: 1px solid rgba(200, 195, 185, 0.25);
+    -webkit-backdrop-filter: blur(16px) saturate(150%);
+    backdrop-filter: blur(16px) saturate(150%);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
     gap: 6px;
     z-index: 1001;
+    isolation: isolate;
+    transform: translateZ(0);
 }
 
 .contact-popover[hidden] {
@@ -546,13 +546,11 @@ html[data-theme="dark"] .contact-toggle:hover {
 }
 
 html[data-theme="dark"] .contact-popover {
-    background: rgba(15, 22, 35, 0.50);
-    border: 1px solid rgba(231, 234, 240, 0.12);
-    -webkit-backdrop-filter: blur(12px) saturate(150%);
-    backdrop-filter: blur(12px) saturate(150%);
-    box-shadow:
-        0 8px 32px rgba(0, 0, 0, 0.3),
-        inset 0 1px 0 rgba(255, 255, 255, 0.06);
+    background: rgba(25, 32, 45, 0.90);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    -webkit-backdrop-filter: blur(16px) saturate(150%);
+    backdrop-filter: blur(16px) saturate(150%);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.35);
 }
 
 /* Fallback when background blur isn't supported */
@@ -599,8 +597,8 @@ html[data-theme="dark"] .contact-popover {
     text-decoration: none;
     color: var(--text-primary);
     background: transparent;
-    border: 1px solid transparent;
-    transition: background 0.2s ease, transform 0.2s ease;
+    border: none;
+    transition: background 0.2s ease;
     outline: none;
     -webkit-tap-highlight-color: transparent;
 }
@@ -613,7 +611,6 @@ html[data-theme="dark"] .contact-popover {
 
 html[data-theme="dark"] .contact-popover a {
     background: transparent;
-    border-color: transparent;
 }
 
 .contact-popover a:hover {
@@ -621,7 +618,7 @@ html[data-theme="dark"] .contact-popover a {
 }
 
 html[data-theme="dark"] .contact-popover a:hover {
-    background: rgba(231, 234, 240, 0.06);
+    background: rgba(231, 234, 240, 0.08);
 }
 
 
@@ -730,12 +727,10 @@ html[data-theme="dark"] .contact-popover a:hover {
     background: var(--pastel-primary);
     color: #FFFFFF;
     border: none;
-    box-shadow: 0 2px 8px rgba(124, 154, 146, 0.25);
 }
 
 .btn-primary:hover {
     background: var(--primary-dark);
-    box-shadow: 0 4px 16px rgba(124, 154, 146, 0.35);
 }
 
 .btn-secondary {
@@ -1052,18 +1047,18 @@ html[data-theme="dark"] .about-card:hover {
 
 .project-card:hover {
     background: rgba(227, 218, 204, 0.65);
-    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
 }
 
 html[data-theme="dark"] .project-card {
-    background: rgba(30, 42, 62, 0.50);
+    background: rgba(30, 42, 62, 0.85);
     border: 1px solid rgba(231, 234, 240, 0.08);
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
 }
 
 html[data-theme="dark"] .project-card:hover {
     background: rgba(30, 42, 62, 0.65);
-    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.25);
 }
 
 .project-header {
@@ -1175,18 +1170,18 @@ html[data-theme="dark"] .project-lang {
 
 .achievement-card:hover {
     background: rgba(255, 255, 255, 0.80);
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
 }
 
 html[data-theme="dark"] .achievement-card {
-    background: rgba(30, 42, 62, 0.45);
+    background: rgba(30, 42, 62, 0.85);
     border: 1px solid rgba(231, 234, 240, 0.06);
     box-shadow: 0 2px 12px rgba(0, 0, 0, 0.12);
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
 }
 
 html[data-theme="dark"] .achievement-card:hover {
     background: rgba(30, 42, 62, 0.60);
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.20);
 }
 
 .achievement-icon {
@@ -1313,7 +1308,6 @@ html[data-theme="dark"] .achievement-card:hover {
     background: var(--pastel-primary);
     color: white;
     border-color: var(--pastel-primary);
-    box-shadow: 0 8px 20px rgba(124, 154, 146, 0.30);
 }
 
 /* Responsive Contact */
