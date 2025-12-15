@@ -181,6 +181,11 @@ html[data-theme="dark"] {
     box-sizing: border-box;
 }
 
+/* Remove tap highlight on mobile */
+a, button, input, select, textarea, [role="button"] {
+    -webkit-tap-highlight-color: transparent;
+}
+
 /* Smooth scrolling */
 html {
     scrollbar-width: none;
@@ -1889,15 +1894,15 @@ html[data-theme="dark"] .nav-section-btn:hover:not(.active) {
 .mobile-bottom-nav {
     display: none;
     position: fixed;
-    bottom: 20px;
+    bottom: max(12px, 2.5vh); /* Dynamic based on viewport height */
     left: 50%;
     transform: translateX(-50%);
     background: rgba(255, 255, 255, 0.75);
     backdrop-filter: blur(20px) saturate(180%);
     -webkit-backdrop-filter: blur(20px) saturate(180%);
     border-radius: 999px;
-    padding: 8px 20px;
-    gap: 8px;
+    padding: clamp(8px, 1.5vh, 12px) clamp(16px, 3vw, 24px); /* Dynamic padding */
+    gap: clamp(4px, 1vw, 10px); /* Dynamic gap */
     z-index: 1000;
     border: 1px solid rgba(0, 0, 0, 0.06);
     box-shadow: 
@@ -1917,8 +1922,8 @@ html[data-theme="dark"] .nav-section-btn:hover:not(.active) {
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 44px;
-    height: 44px;
+    width: clamp(40px, 6vh, 52px); /* Dynamic size based on viewport */
+    height: clamp(40px, 6vh, 52px);
     border-radius: 50%;
     background: transparent;
     border: 2px solid transparent;
@@ -1926,6 +1931,9 @@ html[data-theme="dark"] .nav-section-btn:hover:not(.active) {
     cursor: pointer;
     transition: all 0.25s ease;
     text-decoration: none;
+    -webkit-tap-highlight-color: transparent; /* Remove blue tap highlight */
+    -webkit-touch-callout: none; /* Disable callout */
+    user-select: none;
 }
 
 [data-theme="dark"] .mobile-nav-item {
@@ -1954,7 +1962,7 @@ html[data-theme="dark"] .nav-section-btn:hover:not(.active) {
 }
 
 .mobile-nav-item i {
-    font-size: 1.25rem;
+    font-size: clamp(1.1rem, 2.5vh, 1.4rem); /* Dynamic icon size */
     transition: transform 0.2s ease;
 }
 
@@ -1997,7 +2005,7 @@ html[data-theme="dark"] .nav-section-btn:hover:not(.active) {
     }
     
     .section-inner {
-        padding: 20px;
+        padding: 10px 20px; /* Reduced top padding */
         padding-bottom: 20px;
     }
     
