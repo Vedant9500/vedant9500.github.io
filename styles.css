@@ -186,6 +186,27 @@ a, button, input, select, textarea, [role="button"] {
     -webkit-tap-highlight-color: transparent;
 }
 
+/* Disable focus outline on cards (they're not interactive) */
+.about-card,
+.project-card,
+.achievement-card,
+.tool-card {
+    -webkit-tap-highlight-color: transparent;
+    outline: none;
+}
+
+.about-card:focus,
+.project-card:focus,
+.achievement-card:focus,
+.tool-card:focus,
+.about-card:focus-visible,
+.project-card:focus-visible,
+.achievement-card:focus-visible,
+.tool-card:focus-visible {
+    outline: none;
+    box-shadow: none;
+}
+
 /* Smooth scrolling */
 html {
     scrollbar-width: none;
@@ -302,7 +323,12 @@ body::-webkit-scrollbar {
 /* Focus styles for accessibility */
 :focus-visible {
     outline: 2px solid var(--pastel-primary);
-    outline-offset: 3px;
+    outline-offset: 2px;
+}
+
+/* Remove focus ring for mouse users */
+:focus:not(:focus-visible) {
+    outline: none;
 }
 
 /* Selection styling */
@@ -574,6 +600,14 @@ html[data-theme="dark"] .contact-popover {
     background: transparent;
     border: 1px solid transparent;
     transition: background 0.2s ease, transform 0.2s ease;
+    outline: none;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.contact-popover a:focus,
+.contact-popover a:focus-visible {
+    outline: none;
+    box-shadow: none;
 }
 
 html[data-theme="dark"] .contact-popover a {
@@ -2065,12 +2099,9 @@ html[data-theme="dark"] .nav-section-btn:hover:not(.active) {
         display: none !important;
     }
     
-    /* Contact popover mobile positioning */
+    /* Contact popover mobile positioning - JS handles left/bottom dynamically */
     .contact-popover {
-        bottom: calc(max(12px, 2.5vh) + 70px) !important; /* Aligned above navbar */
         top: auto !important;
-        left: 50% !important;
-        transform: translateX(-50%) !important;
         right: auto !important;
         width: auto !important;
         min-width: 200px;
