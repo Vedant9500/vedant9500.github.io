@@ -4,6 +4,28 @@
    Sophisticated Pastel Palette
    ======================================== */
 
+/* Skip Link - Accessibility */
+.skip-link {
+    position: absolute;
+    top: -100px;
+    left: 16px;
+    background: var(--pastel-primary);
+    color: #FFFFFF;
+    padding: 12px 24px;
+    border-radius: 0 0 8px 8px;
+    font-weight: 500;
+    font-family: var(--font-body);
+    text-decoration: none;
+    z-index: 10000;
+    transition: top 0.2s ease;
+}
+
+.skip-link:focus {
+    top: 0;
+    outline: 2px solid var(--pastel-primary-light);
+    outline-offset: 2px;
+}
+
 :root {
     /* ========================================
        PASTEL COLOR SYSTEM
@@ -81,7 +103,8 @@
 
     --text-primary: var(--md-sys-color-on-surface);
     --text-secondary: #5A5650;
-    --text-muted: var(--md-sys-color-outline);
+    /* Muted text - improved contrast for WCAG AA (4.5:1 ratio) */
+    --text-muted: #6B6760;
 
     --border-light: var(--md-sys-color-outline-variant);
     --border-medium: var(--md-sys-color-outline);
@@ -182,7 +205,12 @@ html[data-theme="dark"] {
 }
 
 /* Remove tap highlight on mobile */
-a, button, input, select, textarea, [role="button"] {
+a,
+button,
+input,
+select,
+textarea,
+[role="button"] {
     -webkit-tap-highlight-color: transparent;
 }
 
@@ -339,6 +367,7 @@ body::-webkit-scrollbar {
 
 /* Reduced motion preference */
 @media (prefers-reduced-motion: reduce) {
+
     *,
     *::before,
     *::after {
@@ -346,7 +375,7 @@ body::-webkit-scrollbar {
         animation-iteration-count: 1 !important;
         transition-duration: 0.01ms !important;
     }
-    
+
     html {
         scroll-behavior: auto;
     }
@@ -394,7 +423,7 @@ body::-webkit-scrollbar {
     border: 1px solid rgba(255, 255, 255, 0.5);
     -webkit-backdrop-filter: blur(12px) saturate(150%);
     backdrop-filter: blur(12px) saturate(150%);
-    box-shadow: 
+    box-shadow:
         0 8px 32px rgba(0, 0, 0, 0.08),
         inset 0 1px 0 rgba(255, 255, 255, 0.5);
     position: relative;
@@ -446,34 +475,6 @@ html[data-theme="dark"] .nav-pill {
 
 .nav-logo a:hover {
     color: var(--primary);
-}
-
-.nav-menu {
-    display: flex;
-    list-style: none;
-    gap: 0.5rem;
-    /* Gap for pill buttons */
-}
-
-.nav-menu a {
-    color: var(--text-secondary);
-    text-decoration: none;
-    font-weight: 500;
-    transition: all 0.2s ease;
-    position: relative;
-    font-size: 0.95rem;
-    padding: 8px 20px;
-    border-radius: var(--shape-corner-full);
-}
-
-.nav-menu a:hover,
-.nav-menu a.active {
-    background-color: var(--pastel-primary-soft);
-    color: var(--text-primary);
-}
-
-.nav-menu a::after {
-    display: none;
 }
 
 .nav-actions {
@@ -529,7 +530,7 @@ html[data-theme="dark"] .contact-toggle:hover {
     border: 1px solid rgba(255, 255, 255, 0.5);
     -webkit-backdrop-filter: blur(12px) saturate(150%);
     backdrop-filter: blur(12px) saturate(150%);
-    box-shadow: 
+    box-shadow:
         0 8px 32px rgba(0, 0, 0, 0.12),
         inset 0 1px 0 rgba(255, 255, 255, 0.5);
     gap: 6px;
@@ -572,7 +573,7 @@ html[data-theme="dark"] .contact-popover {
         opacity: 0.85;
     }
 
-    .contact-popover > * {
+    .contact-popover>* {
         position: relative;
         z-index: 1;
     }
@@ -623,32 +624,6 @@ html[data-theme="dark"] .contact-popover a:hover {
     background: rgba(231, 234, 240, 0.06);
 }
 
-.hamburger {
-    display: none;
-    flex-direction: column;
-    cursor: pointer;
-    background: transparent;
-    border: 0;
-    padding: 8px;
-    border-radius: 12px;
-    margin-left: auto;
-    position: fixed;
-    right: 16px;
-    top: 12px;
-}
-
-.hamburger:focus-visible {
-    outline: 2px solid var(--primary);
-    outline-offset: 3px;
-}
-
-.hamburger span {
-    width: 25px;
-    height: 3px;
-    background: var(--text-primary);
-    margin: 3px 0;
-    transition: 0.3s;
-}
 
 /* ========================================
    HERO SECTION
@@ -685,6 +660,7 @@ html[data-theme="dark"] .contact-popover a:hover {
         opacity: 0;
         transform: translateY(24px);
     }
+
     to {
         opacity: 1;
         transform: translateY(0);
@@ -849,12 +825,32 @@ section h2 {
 }
 
 @keyframes wave {
-    0%, 100% { transform: rotate(0deg); }
-    10% { transform: rotate(14deg); }
-    20% { transform: rotate(-8deg); }
-    30% { transform: rotate(14deg); }
-    40% { transform: rotate(-4deg); }
-    50%, 100% { transform: rotate(0deg); }
+
+    0%,
+    100% {
+        transform: rotate(0deg);
+    }
+
+    10% {
+        transform: rotate(14deg);
+    }
+
+    20% {
+        transform: rotate(-8deg);
+    }
+
+    30% {
+        transform: rotate(14deg);
+    }
+
+    40% {
+        transform: rotate(-4deg);
+    }
+
+    50%,
+    100% {
+        transform: rotate(0deg);
+    }
 }
 
 .greeting-text {
@@ -1008,15 +1004,15 @@ html[data-theme="dark"] .about-card:hover {
     .about-content {
         grid-template-columns: 1fr;
     }
-    
+
     .about-card {
         padding: 1.25rem;
     }
-    
+
     .about-interests-tags {
         gap: 0.5rem;
     }
-    
+
     .interest-tag {
         padding: 0.4rem 0.75rem;
         font-size: 0.8125rem;
@@ -1353,29 +1349,6 @@ html[data-theme="dark"] .achievement-card:hover {
    RESPONSIVE DESIGN
    ======================================== */
 @media (max-width: 768px) {
-    .hamburger {
-        display: flex;
-    }
-
-    .nav-menu {
-        position: fixed;
-        left: -100%;
-        top: 70px;
-        flex-direction: column;
-        background-color: rgba(255, 255, 255, 0.98);
-        width: 100%;
-        text-align: center;
-        transition: 0.3s;
-        backdrop-filter: blur(10px);
-        padding: 2rem 0;
-        border-bottom: 1px solid var(--border-light);
-        box-shadow: var(--elevation-2);
-    }
-
-    .nav-menu.active {
-        left: 0;
-    }
-
     .hero h1 {
         font-size: 2.5rem;
     }
@@ -1535,23 +1508,51 @@ html[data-theme="dark"] .theme-toggle:hover {
 }
 
 @keyframes slideOutToLeft {
-    from { transform: translateX(0); opacity: 1; }
-    to { transform: translateX(-30px); opacity: 0; }
+    from {
+        transform: translateX(0);
+        opacity: 1;
+    }
+
+    to {
+        transform: translateX(-30px);
+        opacity: 0;
+    }
 }
 
 @keyframes slideInFromRight {
-    from { transform: translateX(30px); opacity: 0; }
-    to { transform: translateX(0); opacity: 1; }
+    from {
+        transform: translateX(30px);
+        opacity: 0;
+    }
+
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
 }
 
 @keyframes slideOutToRight {
-    from { transform: translateX(0); opacity: 1; }
-    to { transform: translateX(30px); opacity: 0; }
+    from {
+        transform: translateX(0);
+        opacity: 1;
+    }
+
+    to {
+        transform: translateX(30px);
+        opacity: 0;
+    }
 }
 
 @keyframes slideInFromLeft {
-    from { transform: translateX(-30px); opacity: 0; }
-    to { transform: translateX(0); opacity: 1; }
+    from {
+        transform: translateX(-30px);
+        opacity: 0;
+    }
+
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
 }
 
 /* Per-element color transitions for seamless theme morphing */
@@ -1570,8 +1571,15 @@ section,
 .contact,
 .social-link,
 footer,
-h1, h2, h3, h4, h5, h6,
-p, a, span {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+a,
+span {
     transition:
         background-color 350ms ease-in-out,
         color 350ms ease-in-out,
@@ -1604,8 +1612,15 @@ p, a, span {
     .contact,
     .social-link,
     footer,
-    h1, h2, h3, h4, h5, h6,
-    p, a, span {
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6,
+    p,
+    a,
+    span {
         transition: none;
     }
 }
@@ -1674,6 +1689,7 @@ html[data-theme="dark"] .nav-section-btn:hover:not(.active) {
         opacity: 0;
         transform: scaleX(0.8);
     }
+
     to {
         opacity: 1;
         transform: scaleX(1);
@@ -1729,8 +1745,10 @@ html[data-theme="dark"] .nav-section-btn:hover:not(.active) {
 }
 
 .content-section {
-    -ms-overflow-style: none;  /* IE and Edge */
-    scrollbar-width: none;  /* Firefox */
+    -ms-overflow-style: none;
+    /* IE and Edge */
+    scrollbar-width: none;
+    /* Firefox */
 }
 
 .section-inner {
@@ -1802,6 +1820,7 @@ html[data-theme="dark"] .nav-section-btn:hover:not(.active) {
         opacity: 0;
         transform: translateY(20px);
     }
+
     to {
         opacity: 1;
         transform: translateY(0);
@@ -1821,6 +1840,7 @@ html[data-theme="dark"] .nav-section-btn:hover:not(.active) {
         transform: scale(0.95);
         opacity: 0.8;
     }
+
     to {
         transform: scale(1);
         opacity: 1;
@@ -1841,6 +1861,7 @@ html[data-theme="dark"] .nav-section-btn:hover:not(.active) {
         transform: scale(1.02);
         opacity: 0.8;
     }
+
     to {
         transform: scale(1);
         opacity: 1;
@@ -1855,16 +1876,16 @@ html[data-theme="dark"] .nav-section-btn:hover:not(.active) {
     .nav-sections {
         gap: 2px;
     }
-    
+
     .nav-section-btn {
         font-size: 0.8rem;
         padding: 6px 10px;
     }
-    
+
     .nav-logo-minimal a {
         padding: 8px 10px;
     }
-    
+
     .sections-viewport {
         top: 70px;
     }
@@ -1875,7 +1896,7 @@ html[data-theme="dark"] .nav-section-btn:hover:not(.active) {
         font-size: 0.75rem;
         padding: 5px 8px;
     }
-    
+
     .nav-divider {
         padding: 0 3px;
     }
@@ -1887,6 +1908,7 @@ html[data-theme="dark"] .nav-section-btn:hover:not(.active) {
         opacity: 0;
         transform: translateY(20px);
     }
+
     to {
         opacity: 1;
         transform: translateY(0);
@@ -1901,22 +1923,54 @@ html[data-theme="dark"] .nav-section-btn:hover:not(.active) {
 }
 
 /* Project cards stagger */
-.project-card:nth-child(1) { animation-delay: 0.05s; }
-.project-card:nth-child(2) { animation-delay: 0.1s; }
-.project-card:nth-child(3) { animation-delay: 0.15s; }
-.project-card:nth-child(4) { animation-delay: 0.2s; }
-.project-card:nth-child(5) { animation-delay: 0.25s; }
-.project-card:nth-child(6) { animation-delay: 0.3s; }
+.project-card:nth-child(1) {
+    animation-delay: 0.05s;
+}
+
+.project-card:nth-child(2) {
+    animation-delay: 0.1s;
+}
+
+.project-card:nth-child(3) {
+    animation-delay: 0.15s;
+}
+
+.project-card:nth-child(4) {
+    animation-delay: 0.2s;
+}
+
+.project-card:nth-child(5) {
+    animation-delay: 0.25s;
+}
+
+.project-card:nth-child(6) {
+    animation-delay: 0.3s;
+}
 
 /* Achievement cards stagger */
-.achievement-card:nth-child(1) { animation-delay: 0.05s; }
-.achievement-card:nth-child(2) { animation-delay: 0.1s; }
-.achievement-card:nth-child(3) { animation-delay: 0.15s; }
-.achievement-card:nth-child(4) { animation-delay: 0.2s; }
-.achievement-card:nth-child(5) { animation-delay: 0.25s; }
+.achievement-card:nth-child(1) {
+    animation-delay: 0.05s;
+}
+
+.achievement-card:nth-child(2) {
+    animation-delay: 0.1s;
+}
+
+.achievement-card:nth-child(3) {
+    animation-delay: 0.15s;
+}
+
+.achievement-card:nth-child(4) {
+    animation-delay: 0.2s;
+}
+
+.achievement-card:nth-child(5) {
+    animation-delay: 0.25s;
+}
 
 /* Respect reduced motion preference */
 @media (prefers-reduced-motion: reduce) {
+
     .project-card,
     .achievement-card {
         animation: none;
@@ -1928,18 +1982,21 @@ html[data-theme="dark"] .nav-section-btn:hover:not(.active) {
 .mobile-bottom-nav {
     display: none;
     position: fixed;
-    bottom: max(12px, 2.5vh); /* Dynamic based on viewport height */
+    bottom: max(12px, 2.5vh);
+    /* Dynamic based on viewport height */
     left: 50%;
     transform: translateX(-50%);
     background: rgba(255, 255, 255, 0.45);
     backdrop-filter: blur(20px) saturate(180%);
     -webkit-backdrop-filter: blur(20px) saturate(180%);
     border-radius: 999px;
-    padding: clamp(8px, 1.5vh, 12px) clamp(16px, 3vw, 24px); /* Dynamic padding */
-    gap: clamp(4px, 1vw, 10px); /* Dynamic gap */
+    padding: clamp(8px, 1.5vh, 12px) clamp(16px, 3vw, 24px);
+    /* Dynamic padding */
+    gap: clamp(4px, 1vw, 10px);
+    /* Dynamic gap */
     z-index: 1000;
     border: 1px solid rgba(0, 0, 0, 0.03);
-    box-shadow: 
+    box-shadow:
         0 4px 24px rgba(0, 0, 0, 0.04),
         0 1px 3px rgba(0, 0, 0, 0.02);
 }
@@ -1947,7 +2004,7 @@ html[data-theme="dark"] .nav-section-btn:hover:not(.active) {
 [data-theme="dark"] .mobile-bottom-nav {
     background: rgba(30, 30, 35, 0.55);
     border: 1px solid rgba(255, 255, 255, 0.06);
-    box-shadow: 
+    box-shadow:
         0 4px 24px rgba(0, 0, 0, 0.25),
         0 1px 3px rgba(0, 0, 0, 0.15);
 }
@@ -1956,7 +2013,8 @@ html[data-theme="dark"] .nav-section-btn:hover:not(.active) {
     display: flex;
     align-items: center;
     justify-content: center;
-    width: clamp(40px, 6vh, 52px); /* Dynamic size based on viewport */
+    width: clamp(40px, 6vh, 52px);
+    /* Dynamic size based on viewport */
     height: clamp(40px, 6vh, 52px);
     border-radius: 50%;
     background: transparent;
@@ -1965,8 +2023,10 @@ html[data-theme="dark"] .nav-section-btn:hover:not(.active) {
     cursor: pointer;
     transition: all 0.25s ease;
     text-decoration: none;
-    -webkit-tap-highlight-color: transparent; /* Remove blue tap highlight */
-    -webkit-touch-callout: none; /* Disable callout */
+    -webkit-tap-highlight-color: transparent;
+    /* Remove blue tap highlight */
+    -webkit-touch-callout: none;
+    /* Disable callout */
     user-select: none;
 }
 
@@ -1987,7 +2047,8 @@ html[data-theme="dark"] .nav-section-btn:hover:not(.active) {
     width: 1px;
     height: 24px;
     background: rgba(0, 0, 0, 0.12);
-    margin: 0 -4px; /* Negative margin to offset the gap */
+    margin: 0 -4px;
+    /* Negative margin to offset the gap */
     align-self: center;
 }
 
@@ -1996,7 +2057,8 @@ html[data-theme="dark"] .nav-section-btn:hover:not(.active) {
 }
 
 .mobile-nav-item i {
-    font-size: clamp(1.1rem, 2.5vh, 1.4rem); /* Dynamic icon size */
+    font-size: clamp(1.1rem, 2.5vh, 1.4rem);
+    /* Dynamic icon size */
     transition: transform 0.2s ease;
 }
 
@@ -2026,79 +2088,81 @@ html[data-theme="dark"] .nav-section-btn:hover:not(.active) {
     .mobile-bottom-nav {
         display: flex;
     }
-    
+
     /* Hide desktop nav on mobile */
     .nav-pill-expanded {
         display: none !important;
     }
-    
+
     /* Adjust sections viewport for mobile */
     .sections-viewport {
         top: 0;
-        bottom: 0; /* Extend to bottom - nav floats over content */
+        bottom: 0;
+        /* Extend to bottom - nav floats over content */
     }
-    
+
     .section-inner {
-        padding: 0px 20px; /* Minimal top padding */
+        padding: 0px 20px;
+        /* Minimal top padding */
         padding-bottom: 20px;
     }
-    
+
     /* Add scrollable space at bottom for mobile nav */
     .section-inner .container {
         padding-top: 0px;
         padding-bottom: 50px;
     }
-    
+
     /* Hero adjustments for mobile */
     .hero {
         padding: 30px 20px;
     }
-    
+
     .hero h1 {
         font-size: 2rem;
     }
-    
+
     .hero-subtitle {
         font-size: 0.95rem;
     }
-    
+
     /* About section mobile */
     .about-content {
         flex-direction: column;
         gap: 30px;
     }
-    
+
     .about-text h2 {
         font-size: 1.8rem;
     }
-    
+
     /* Projects grid mobile */
     .projects-grid {
         grid-template-columns: 1fr;
         gap: 20px;
     }
-    
+
     /* Toolbox mobile */
     .toolbox-grid {
         grid-template-columns: repeat(2, 1fr);
         gap: 16px;
     }
-    
+
     .tool-card {
         padding: 20px 16px;
     }
-    
+
     /* Achievements mobile */
     .achievements-grid {
         grid-template-columns: 1fr;
         gap: 16px;
     }
-    
+
     /* Hide home page desktop nav pill on mobile */
     .nav-pill {
         display: none !important;
     }
-    
+
     /* Contact popover mobile positioning - JS handles left/bottom dynamically */
     .contact-popover {
         top: auto !important;
@@ -2110,11 +2174,11 @@ html[data-theme="dark"] .nav-section-btn:hover:not(.active) {
         backdrop-filter: blur(20px) saturate(180%) !important;
         -webkit-backdrop-filter: blur(20px) saturate(180%) !important;
     }
-    
+
     [data-theme="dark"] .contact-popover {
         background: rgba(30, 30, 35, 0.55) !important;
     }
-    
+
     /* Home page hero adjustments for mobile */
     .hero-container {
         padding: 60px 20px 100px;
@@ -2142,29 +2206,29 @@ html[data-theme="dark"] .nav-section-btn:hover:not(.active) {
         padding: 6px 10px;
         border-radius: 999px;
     }
-    
+
     .mobile-nav-item {
         padding: 8px 12px;
         min-width: 40px;
     }
-    
+
     .mobile-nav-item i {
         font-size: 1rem;
     }
-    
+
     .mobile-nav-item span {
         font-size: 0.6rem;
     }
-    
+
     .hero h1 {
         font-size: 1.6rem;
     }
-    
+
     .toolbox-grid {
         grid-template-columns: 1fr 1fr;
         gap: 12px;
     }
-    
+
     .section-inner {
         padding: 16px;
     }

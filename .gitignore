@@ -50,5 +50,4 @@ jspm_packages/
 
 # Temporary files
 *.tmp
-*.temp 
-favicon.png
+*.temp
