@@ -1889,98 +1889,94 @@ html[data-theme="dark"] .nav-section-btn:hover:not(.active) {
 .mobile-bottom-nav {
     display: none;
     position: fixed;
-    bottom: 24px;
+    bottom: 20px;
     left: 50%;
     transform: translateX(-50%);
-    background: rgba(15, 22, 35, 0.45);
-    backdrop-filter: blur(12px) saturate(150%);
-    -webkit-backdrop-filter: blur(12px) saturate(150%);
+    background: rgba(255, 255, 255, 0.75);
+    backdrop-filter: blur(20px) saturate(180%);
+    -webkit-backdrop-filter: blur(20px) saturate(180%);
     border-radius: 999px;
-    padding: 12px 24px;
-    gap: 4px;
+    padding: 8px 20px;
+    gap: 8px;
     z-index: 1000;
-    border: 1px solid rgba(255, 255, 255, 0.10);
-    box-shadow: 
-        0 8px 32px rgba(0, 0, 0, 0.2),
-        inset 0 1px 0 rgba(255, 255, 255, 0.05);
-}
-
-[data-theme="light"] .mobile-bottom-nav {
-    background: rgba(255, 255, 255, 0.50);
     border: 1px solid rgba(0, 0, 0, 0.06);
     box-shadow: 
-        0 8px 32px rgba(0, 0, 0, 0.08),
-        inset 0 1px 0 rgba(255, 255, 255, 0.4);
+        0 4px 24px rgba(0, 0, 0, 0.08),
+        0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+[data-theme="dark"] .mobile-bottom-nav {
+    background: rgba(30, 30, 35, 0.75);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    box-shadow: 
+        0 4px 24px rgba(0, 0, 0, 0.3),
+        0 1px 3px rgba(0, 0, 0, 0.2);
 }
 
 .mobile-nav-item {
     display: flex;
-    flex-direction: column;
     align-items: center;
     justify-content: center;
-    padding: 20px 24px;
-    border-radius: 999px;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
     background: transparent;
-    border: none;
-    color: rgba(255, 255, 255, 0.7);
-    font-size: 0.65rem;
-    font-weight: 500;
-    gap: 8px;
+    border: 2px solid transparent;
+    color: rgba(0, 0, 0, 0.45);
     cursor: pointer;
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: all 0.25s ease;
     text-decoration: none;
-    min-width: 52px;
 }
 
-[data-theme="light"] .mobile-nav-item {
-    color: rgba(0, 0, 0, 0.5);
+[data-theme="dark"] .mobile-nav-item {
+    color: rgba(255, 255, 255, 0.5);
 }
 
 .mobile-nav-item:hover {
-    color: rgba(255, 255, 255, 0.9);
+    color: rgba(0, 0, 0, 0.7);
 }
 
-[data-theme="light"] .mobile-nav-item:hover {
-    color: rgba(0, 0, 0, 0.7);
+[data-theme="dark"] .mobile-nav-item:hover {
+    color: rgba(255, 255, 255, 0.8);
 }
 
 /* Mobile nav divider */
 .mobile-nav-divider {
-    color: rgba(255, 255, 255, 0.3);
-    font-size: 1rem;
-    padding: 0 4px;
-    user-select: none;
+    width: 1px;
+    height: 24px;
+    background: rgba(0, 0, 0, 0.12);
+    margin: 0 -4px; /* Negative margin to offset the gap */
     align-self: center;
 }
 
-[data-theme="light"] .mobile-nav-divider {
-    color: rgba(0, 0, 0, 0.2);
+[data-theme="dark"] .mobile-nav-divider {
+    background: rgba(255, 255, 255, 0.15);
 }
 
 .mobile-nav-item i {
-    font-size: 2.5rem;
-    transition: transform 0.3s ease, color 0.3s ease;
+    font-size: 1.25rem;
+    transition: transform 0.2s ease;
 }
 
 .mobile-nav-item span {
     display: none;
-    white-space: nowrap;
 }
 
-/* Dark mode active state */
+/* Active state - outlined circle */
 .mobile-nav-item.active {
-    background: var(--pastel-primary);
-    color: #ffffff;
+    border-color: var(--pastel-primary);
+    color: var(--pastel-primary);
+    background: rgba(124, 154, 146, 0.08);
+}
+
+[data-theme="dark"] .mobile-nav-item.active {
+    border-color: var(--pastel-primary);
+    color: var(--pastel-primary);
+    background: rgba(124, 154, 146, 0.15);
 }
 
 .mobile-nav-item.active i {
-    transform: scale(1.1);
-}
-
-/* Light mode active state - ensure visibility */
-[data-theme="light"] .mobile-nav-item.active {
-    background: var(--pastel-primary);
-    color: #ffffff;
+    transform: scale(1.05);
 }
 
 /* Mobile responsive breakpoints */
@@ -2057,11 +2053,14 @@ html[data-theme="dark"] .nav-section-btn:hover:not(.active) {
     
     /* Contact popover mobile positioning */
     .contact-popover {
-        bottom: 100px !important;
+        bottom: 90px !important;
         top: auto !important;
         left: 50% !important;
         transform: translateX(-50%) !important;
         right: auto !important;
+        width: auto !important;
+        min-width: 200px;
+        border-radius: 16px;
     }
     
     /* Home page hero adjustments for mobile */
