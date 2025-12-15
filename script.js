@@ -494,6 +494,239 @@ const initSectionNavigation = () => {
 document.addEventListener('DOMContentLoaded', initSectionNavigation);
 
 // ========================================
+// MOBILE BOTTOM NAVIGATION
+// ========================================
+const initMobileBottomNav = () => {
+    const mobileNavItems = document.querySelectorAll('.mobile-bottom-nav .mobile-nav-item[data-section]');
+    const sectionsTrack = document.querySelector('.sections-track');
+    const contentSections = document.querySelectorAll('.content-section');
+    const desktopNavBtns = document.querySelectorAll('.nav-section-btn');
+    
+    if (!mobileNavItems.length || !sectionsTrack) return;
+    
+    const switchToSection = (targetSection) => {
+        // Get current section from track
+        const currentSection = sectionsTrack.dataset.activeSection;
+        if (targetSection === currentSection) return;
+        
+        const currentIndex = sectionOrder.indexOf(currentSection);
+        const targetIndex = sectionOrder.indexOf(targetSection);
+        const direction = targetIndex > currentIndex ? 'right' : 'left';
+        
+        // Update mobile nav active states
+        mobileNavItems.forEach(item => {
+            item.classList.toggle('active', item.dataset.section === targetSection);
+        });
+        
+        // Update desktop nav buttons for sync
+        desktopNavBtns.forEach(btn => {
+            btn.classList.toggle('active', btn.dataset.section === targetSection);
+        });
+        
+        // Remove active from all sections
+        contentSections.forEach(section => {
+            section.classList.remove('active', 'slide-in-left', 'slide-in-right');
+        });
+        
+        // Update track position
+        sectionsTrack.dataset.activeSection = targetSection;
+        sectionsTrack.style.transitionDuration = '500ms';
+        
+        // Add slide direction and active to target section
+        const targetSectionEl = document.querySelector(`.content-section[data-section="${targetSection}"]`);
+        if (targetSectionEl) {
+            targetSectionEl.classList.add(`slide-in-${direction === 'right' ? 'right' : 'left'}`);
+            targetSectionEl.scrollTop = 0;
+            
+            requestAnimationFrame(() => {
+                targetSectionEl.classList.add('active');
+            });
+        }
+        
+        // Reset transition duration after animation
+        setTimeout(() => {
+            sectionsTrack.style.transitionDuration = '';
+        }, 550);
+    };
+    
+    mobileNavItems.forEach(item => {
+        item.addEventListener('click', () => {
+            const section = item.dataset.section;
+            if (section) {
+                switchToSection(section);
+            }
+        });
+    });
+    
+    // Sync mobile nav when desktop nav is clicked
+    desktopNavBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+            const section = btn.dataset.section;
+            mobileNavItems.forEach(item => {
+                item.classList.toggle('active', item.dataset.section === section);
+            });
+        });
+    });
+};
+
+document.addEventListener('DOMContentLoaded', initMobileBottomNav);
+
+// ========================================
+// TOUCH SWIPE NAVIGATION (MOBILE)
+// ========================================
+const initTouchSwipeNavigation = () => {
+    const sectionsTrack = document.querySelector('.sections-track');
+    const contentSections = document.querySelectorAll('.content-section');
+    const mobileNavItems = document.querySelectorAll('.mobile-bottom-nav .mobile-nav-item[data-section]');
+    const desktopNavBtns = document.querySelectorAll('.nav-section-btn');
+    
+    if (!sectionsTrack) return;
+    
+    let touchStartX = 0;
+    let touchStartY = 0;
+    let touchEndX = 0;
+    let touchEndY = 0;
+    const minSwipeDistance = 80;
+    
+    const getCurrentSection = () => sectionsTrack.dataset.activeSection || 'about';
+    
+    const switchSectionMobile = (targetSection) => {
+        const currentSection = getCurrentSection();
+        if (targetSection === currentSection) return;
+        
+        const currentIndex = sectionOrder.indexOf(currentSection);
+        const targetIndex = sectionOrder.indexOf(targetSection);
+        const direction = targetIndex > currentIndex ? 'right' : 'left';
+        
+        // Update mobile nav
+        mobileNavItems.forEach(item => {
+            item.classList.toggle('active', item.dataset.section === targetSection);
+        });
+        
+        // Update desktop nav
+        desktopNavBtns.forEach(btn => {
+            btn.classList.toggle('active', btn.dataset.section === targetSection);
+        });
+        
+        // Remove active from all sections
+        contentSections.forEach(section => {
+            section.classList.remove('active', 'slide-in-left', 'slide-in-right');
+        });
+        
+        // Update track
+        sectionsTrack.dataset.activeSection = targetSection;
+        sectionsTrack.style.transitionDuration = '400ms';
+        
+        const targetSectionEl = document.querySelector(`.content-section[data-section="${targetSection}"]`);
+        if (targetSectionEl) {
+            targetSectionEl.classList.add(`slide-in-${direction === 'right' ? 'right' : 'left'}`);
+            targetSectionEl.scrollTop = 0;
+            
+            requestAnimationFrame(() => {
+                targetSectionEl.classList.add('active');
+            });
+        }
+        
+        setTimeout(() => {
+            sectionsTrack.style.transitionDuration = '';
+        }, 450);
+    };
+    
+    const handleTouchStart = (e) => {
+        touchStartX = e.changedTouches[0].screenX;
+        touchStartY = e.changedTouches[0].screenY;
+    };
+    
+    const handleTouchEnd = (e) => {
+        touchEndX = e.changedTouches[0].screenX;
+        touchEndY = e.changedTouches[0].screenY;
+        
+        const deltaX = touchEndX - touchStartX;
+        const deltaY = touchEndY - touchStartY;
+        
+        // Only trigger horizontal swipe if it's more horizontal than vertical
+        if (Math.abs(deltaX) > Math.abs(deltaY) && Math.abs(deltaX) > minSwipeDistance) {
+            const currentSection = getCurrentSection();
+            const currentIndex = sectionOrder.indexOf(currentSection);
+            
+            if (deltaX < 0 && currentIndex < sectionOrder.length - 1) {
+                // Swipe left - go to next section
+                switchSectionMobile(sectionOrder[currentIndex + 1]);
+            } else if (deltaX > 0 && currentIndex > 0) {
+                // Swipe right - go to previous section
+                switchSectionMobile(sectionOrder[currentIndex - 1]);
+            }
+        }
+    };
+    
+    const viewport = document.querySelector('.sections-viewport');
+    if (viewport) {
+        viewport.addEventListener('touchstart', handleTouchStart, { passive: true });
+        viewport.addEventListener('touchend', handleTouchEnd, { passive: true });
+    }
+};
+
+document.addEventListener('DOMContentLoaded', initTouchSwipeNavigation);
+
+// ========================================
+// MOBILE BOTTOM NAV - THEME & CONTACT TOGGLES
+// ========================================
+document.addEventListener('DOMContentLoaded', () => {
+    // Mobile theme toggle
+    const mobileThemeBtn = document.querySelector('.theme-toggle-mobile');
+    if (mobileThemeBtn) {
+        const updateMobileThemeIcon = () => {
+            const icon = mobileThemeBtn.querySelector('i');
+            if (icon) {
+                const isDark = getTheme() === 'dark';
+                icon.classList.remove('fa-sun', 'fa-moon');
+                icon.classList.add(isDark ? 'fa-sun' : 'fa-moon');
+            }
+        };
+        
+        updateMobileThemeIcon();
+        
+        mobileThemeBtn.addEventListener('click', () => {
+            const next = getTheme() === 'dark' ? 'light' : 'dark';
+            
+            if (typeof document.startViewTransition === 'function') {
+                document.startViewTransition(() => {
+                    applyTheme(next);
+                    updateThemeToggleUI();
+                    updateMobileThemeIcon();
+                });
+            } else {
+                applyTheme(next);
+                updateThemeToggleUI();
+                updateMobileThemeIcon();
+            }
+        });
+    }
+    
+    // Mobile contact toggle
+    const mobileContactBtn = document.querySelector('.contact-toggle-mobile');
+    const popover = document.querySelector('.contact-popover');
+    
+    if (mobileContactBtn && popover) {
+        mobileContactBtn.addEventListener('click', (evt) => {
+            evt.stopPropagation();
+            
+            if (popover.hidden) {
+                popover.hidden = false;
+                // Position popover above the mobile nav
+                popover.style.position = 'fixed';
+                popover.style.bottom = '100px';
+                popover.style.left = '50%';
+                popover.style.top = 'auto';
+                popover.style.transform = 'translateX(-50%)';
+            } else {
+                popover.hidden = true;
+            }
+        });
+    }
+});
+
+// ========================================
 // PAGE NAVIGATION WITH VIEW TRANSITIONS
 // ========================================
 document.addEventListener('DOMContentLoaded', () => {
