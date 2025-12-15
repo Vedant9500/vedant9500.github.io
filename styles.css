@@ -1884,3 +1884,237 @@ html[data-theme="dark"] .nav-section-btn:hover:not(.active) {
         opacity: 1;
     }
 }
+
+/* ===== Mobile Bottom Navigation ===== */
+.mobile-bottom-nav {
+    display: none;
+    position: fixed;
+    bottom: 24px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(15, 22, 35, 0.45);
+    backdrop-filter: blur(12px) saturate(150%);
+    -webkit-backdrop-filter: blur(12px) saturate(150%);
+    border-radius: 999px;
+    padding: 12px 24px;
+    gap: 4px;
+    z-index: 1000;
+    border: 1px solid rgba(255, 255, 255, 0.10);
+    box-shadow: 
+        0 8px 32px rgba(0, 0, 0, 0.2),
+        inset 0 1px 0 rgba(255, 255, 255, 0.05);
+}
+
+[data-theme="light"] .mobile-bottom-nav {
+    background: rgba(255, 255, 255, 0.50);
+    border: 1px solid rgba(0, 0, 0, 0.06);
+    box-shadow: 
+        0 8px 32px rgba(0, 0, 0, 0.08),
+        inset 0 1px 0 rgba(255, 255, 255, 0.4);
+}
+
+.mobile-nav-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px 24px;
+    border-radius: 999px;
+    background: transparent;
+    border: none;
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 0.65rem;
+    font-weight: 500;
+    gap: 8px;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    text-decoration: none;
+    min-width: 52px;
+}
+
+[data-theme="light"] .mobile-nav-item {
+    color: rgba(0, 0, 0, 0.5);
+}
+
+.mobile-nav-item:hover {
+    color: rgba(255, 255, 255, 0.9);
+}
+
+[data-theme="light"] .mobile-nav-item:hover {
+    color: rgba(0, 0, 0, 0.7);
+}
+
+/* Mobile nav divider */
+.mobile-nav-divider {
+    color: rgba(255, 255, 255, 0.3);
+    font-size: 1rem;
+    padding: 0 4px;
+    user-select: none;
+    align-self: center;
+}
+
+[data-theme="light"] .mobile-nav-divider {
+    color: rgba(0, 0, 0, 0.2);
+}
+
+.mobile-nav-item i {
+    font-size: 2.5rem;
+    transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.mobile-nav-item span {
+    display: none;
+    white-space: nowrap;
+}
+
+/* Dark mode active state */
+.mobile-nav-item.active {
+    background: var(--pastel-primary);
+    color: #ffffff;
+}
+
+.mobile-nav-item.active i {
+    transform: scale(1.1);
+}
+
+/* Light mode active state - ensure visibility */
+[data-theme="light"] .mobile-nav-item.active {
+    background: var(--pastel-primary);
+    color: #ffffff;
+}
+
+/* Mobile responsive breakpoints */
+@media (max-width: 768px) {
+    .mobile-bottom-nav {
+        display: flex;
+    }
+    
+    /* Hide desktop nav on mobile */
+    .nav-pill-expanded {
+        display: none !important;
+    }
+    
+    /* Adjust sections viewport for mobile */
+    .sections-viewport {
+        top: 0;
+        bottom: 0; /* Extend to bottom - nav floats over content */
+    }
+    
+    .section-inner {
+        padding: 20px;
+        padding-bottom: 100px; /* Space for floating bottom nav */
+    }
+    
+    /* Hero adjustments for mobile */
+    .hero {
+        padding: 30px 20px;
+    }
+    
+    .hero h1 {
+        font-size: 2rem;
+    }
+    
+    .hero-subtitle {
+        font-size: 0.95rem;
+    }
+    
+    /* About section mobile */
+    .about-content {
+        flex-direction: column;
+        gap: 30px;
+    }
+    
+    .about-text h2 {
+        font-size: 1.8rem;
+    }
+    
+    /* Projects grid mobile */
+    .projects-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+    
+    /* Toolbox mobile */
+    .toolbox-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 16px;
+    }
+    
+    .tool-card {
+        padding: 20px 16px;
+    }
+    
+    /* Achievements mobile */
+    .achievements-grid {
+        grid-template-columns: 1fr;
+        gap: 16px;
+    }
+    
+    /* Hide home page desktop nav pill on mobile */
+    .nav-pill {
+        display: none !important;
+    }
+    
+    /* Contact popover mobile positioning */
+    .contact-popover {
+        bottom: 100px !important;
+        top: auto !important;
+        left: 50% !important;
+        transform: translateX(-50%) !important;
+        right: auto !important;
+    }
+    
+    /* Home page hero adjustments for mobile */
+    .hero-container {
+        padding: 60px 20px 100px;
+        min-height: 100vh;
+    }
+
+    .hero {
+        min-height: 100vh;
+        padding-bottom: 0;
+    }
+
+    /* Ensure main content doesn't get cut off by mobile nav */
+    main {
+        padding-bottom: 0;
+    }
+
+    body {
+        padding-bottom: 0;
+    }
+}
+
+@media (max-width: 480px) {
+    .mobile-bottom-nav {
+        bottom: 16px;
+        padding: 6px 10px;
+        border-radius: 999px;
+    }
+    
+    .mobile-nav-item {
+        padding: 8px 12px;
+        min-width: 40px;
+    }
+    
+    .mobile-nav-item i {
+        font-size: 1rem;
+    }
+    
+    .mobile-nav-item span {
+        font-size: 0.6rem;
+    }
+    
+    .hero h1 {
+        font-size: 1.6rem;
+    }
+    
+    .toolbox-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 12px;
+    }
+    
+    .section-inner {
+        padding: 16px;
+    }
+}
