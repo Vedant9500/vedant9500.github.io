@@ -1897,25 +1897,25 @@ html[data-theme="dark"] .nav-section-btn:hover:not(.active) {
     bottom: max(12px, 2.5vh); /* Dynamic based on viewport height */
     left: 50%;
     transform: translateX(-50%);
-    background: rgba(255, 255, 255, 0.75);
+    background: rgba(255, 255, 255, 0.45);
     backdrop-filter: blur(20px) saturate(180%);
     -webkit-backdrop-filter: blur(20px) saturate(180%);
     border-radius: 999px;
     padding: clamp(8px, 1.5vh, 12px) clamp(16px, 3vw, 24px); /* Dynamic padding */
     gap: clamp(4px, 1vw, 10px); /* Dynamic gap */
     z-index: 1000;
-    border: 1px solid rgba(0, 0, 0, 0.06);
+    border: 1px solid rgba(0, 0, 0, 0.03);
     box-shadow: 
-        0 4px 24px rgba(0, 0, 0, 0.08),
-        0 1px 3px rgba(0, 0, 0, 0.05);
+        0 4px 24px rgba(0, 0, 0, 0.04),
+        0 1px 3px rgba(0, 0, 0, 0.02);
 }
 
 [data-theme="dark"] .mobile-bottom-nav {
-    background: rgba(30, 30, 35, 0.75);
-    border: 1px solid rgba(255, 255, 255, 0.08);
+    background: rgba(30, 30, 35, 0.55);
+    border: 1px solid rgba(255, 255, 255, 0.06);
     box-shadow: 
-        0 4px 24px rgba(0, 0, 0, 0.3),
-        0 1px 3px rgba(0, 0, 0, 0.2);
+        0 4px 24px rgba(0, 0, 0, 0.25),
+        0 1px 3px rgba(0, 0, 0, 0.15);
 }
 
 .mobile-nav-item {
@@ -2005,13 +2005,14 @@ html[data-theme="dark"] .nav-section-btn:hover:not(.active) {
     }
     
     .section-inner {
-        padding: 10px 20px; /* Reduced top padding */
+        padding: 0px 20px; /* Minimal top padding */
         padding-bottom: 20px;
     }
     
     /* Add scrollable space at bottom for mobile nav */
     .section-inner .container {
-        padding-bottom: 30px;
+        padding-top: 0px;
+        padding-bottom: 50px;
     }
     
     /* Hero adjustments for mobile */
@@ -2066,7 +2067,7 @@ html[data-theme="dark"] .nav-section-btn:hover:not(.active) {
     
     /* Contact popover mobile positioning */
     .contact-popover {
-        bottom: 90px !important;
+        bottom: calc(max(12px, 2.5vh) + 70px) !important; /* Aligned above navbar */
         top: auto !important;
         left: 50% !important;
         transform: translateX(-50%) !important;
@@ -2074,6 +2075,13 @@ html[data-theme="dark"] .nav-section-btn:hover:not(.active) {
         width: auto !important;
         min-width: 200px;
         border-radius: 16px;
+        background: rgba(255, 255, 255, 0.45) !important;
+        backdrop-filter: blur(20px) saturate(180%) !important;
+        -webkit-backdrop-filter: blur(20px) saturate(180%) !important;
+    }
+    
+    [data-theme="dark"] .contact-popover {
+        background: rgba(30, 30, 35, 0.55) !important;
     }
     
     /* Home page hero adjustments for mobile */
