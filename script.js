@@ -708,17 +708,34 @@ document.addEventListener('DOMContentLoaded', () => {
     const popover = document.querySelector('.contact-popover');
     
     if (mobileContactBtn && popover) {
+        const positionMobilePopover = () => {
+            const btnRect = mobileContactBtn.getBoundingClientRect();
+            const popoverWidth = popover.offsetWidth || 200;
+            
+            // Position above the button, centered under it
+            const btnCenterX = btnRect.left + (btnRect.width / 2);
+            let left = btnCenterX - (popoverWidth / 2);
+            
+            // Keep popover on screen
+            const padding = 12;
+            if (left < padding) left = padding;
+            if (left + popoverWidth > window.innerWidth - padding) {
+                left = window.innerWidth - popoverWidth - padding;
+            }
+            
+            popover.style.position = 'fixed';
+            popover.style.bottom = (window.innerHeight - btnRect.top + 12) + 'px';
+            popover.style.left = left + 'px';
+            popover.style.top = 'auto';
+            popover.style.transform = 'none';
+        };
+        
         mobileContactBtn.addEventListener('click', (evt) => {
             evt.stopPropagation();
             
             if (popover.hidden) {
                 popover.hidden = false;
-                // Position popover above the mobile nav
-                popover.style.position = 'fixed';
-                popover.style.bottom = '100px';
-                popover.style.left = '50%';
-                popover.style.top = 'auto';
-                popover.style.transform = 'translateX(-50%)';
+                requestAnimationFrame(positionMobilePopover);
             } else {
                 popover.hidden = true;
             }
