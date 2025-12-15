@@ -1998,7 +1998,12 @@ html[data-theme="dark"] .nav-section-btn:hover:not(.active) {
     
     .section-inner {
         padding: 20px;
-        padding-bottom: 100px; /* Space for floating bottom nav */
+        padding-bottom: 20px;
+    }
+    
+    /* Add scrollable space at bottom for mobile nav */
+    .section-inner .container {
+        padding-bottom: 30px;
     }
     
     /* Hero adjustments for mobile */
