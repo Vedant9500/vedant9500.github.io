@@ -108,20 +108,20 @@ document.addEventListener('DOMContentLoaded', () => {
         const positionPopover = () => {
             const rect = contactBtn.getBoundingClientRect();
             const popoverWidth = popover.offsetWidth || 240;
-            
+
             // Position below the button, centered under the button
             const top = rect.bottom + 12;
             const buttonCenter = rect.left + (rect.width / 2);
             let left = buttonCenter - (popoverWidth / 2);
-            
+
             // Ensure popover doesn't go off-screen on the left
             if (left < 12) left = 12;
-            
+
             // Ensure popover doesn't go off-screen on the right
             if (left + popoverWidth > window.innerWidth - 12) {
                 left = window.innerWidth - popoverWidth - 12;
             }
-            
+
             popover.style.top = `${top}px`;
             popover.style.left = `${left}px`;
         };
@@ -214,7 +214,7 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 window.addEventListener('scroll', () => {
     const navbar = document.querySelector('.navbar');
     if (!navbar) return;
-    
+
     if (window.scrollY > 20) {
         navbar.classList.add('scrolled');
     } else {
@@ -278,395 +278,237 @@ if (prefersReducedMotion) {
 }
 
 // ========================================
-// SECTION NAVIGATION (CONTENT PAGE)
+// SECTION NAVIGATION (CONSOLIDATED)
 // ========================================
 const sectionOrder = ['about', 'projects', 'toolbox'];
 
-const initSectionNavigation = () => {
-    const sectionBtns = document.querySelectorAll('.nav-section-btn');
-    const sectionsTrack = document.querySelector('.sections-track');
-    const contentSections = document.querySelectorAll('.content-section');
-    
-    if (!sectionBtns.length || !sectionsTrack) return;
-    
+// Unified Section Navigator - handles desktop, mobile nav, and touch swipe
+const SectionNavigator = (() => {
+    // DOM elements (cached on init)
+    let sectionsTrack = null;
+    let contentSections = null;
+    let desktopNavBtns = null;
+    let mobileNavItems = null;
+    let viewport = null;
+
+    // State
     let currentSection = 'about';
     let isTransitioning = false;
     let scrollAccumulator = 0;
-    let lastTransitionTime = 0; // Track when last transition happened
-    const scrollThreshold = 120; // Pixels of overscroll needed to trigger section change
-    const minTimeBetweenTransitions = 100; // ms - minimum pause in scrolling before allowing new transition
-    
-    // Velocity tracking
+    let lastTransitionTime = 0;
     let lastScrollTime = 0;
-    let scrollVelocity = 0;
     let velocitySamples = [];
-    const maxSamples = 5;
-    
-    // Transition speed limits (in ms)
-    const minTransitionDuration = 300;  // Fastest transition
-    const maxTransitionDuration = 800;  // Slowest transition
-    const defaultTransitionDuration = 600; // For button clicks
-    
+
+    // Constants
+    const SCROLL_THRESHOLD = 120;
+    const MIN_TIME_BETWEEN_TRANSITIONS = 100;
+    const MIN_TRANSITION_DURATION = 300;
+    const MAX_TRANSITION_DURATION = 800;
+    const DEFAULT_TRANSITION_DURATION = 600;
+    const MAX_VELOCITY_SAMPLES = 5;
+    const MIN_SWIPE_DISTANCE = 80;
+
+    // Touch tracking
+    let touchStartX = 0;
+    let touchStartY = 0;
+
     const calculateTransitionDuration = () => {
-        if (velocitySamples.length === 0) return defaultTransitionDuration;
-        
-        // Average velocity from samples
+        if (velocitySamples.length === 0) return DEFAULT_TRANSITION_DURATION;
         const avgVelocity = velocitySamples.reduce((a, b) => a + b, 0) / velocitySamples.length;
-        
-        // Map velocity to duration (higher velocity = shorter duration)
-        // Typical trackpad scroll is 1-10 pixels per event, fast scroll is 50+
-        const velocityNormalized = Math.min(Math.max(avgVelocity, 5), 80); // Clamp between 5-80
-        
-        // Inverse mapping: low velocity = long duration, high velocity = short duration
-        const duration = maxTransitionDuration - ((velocityNormalized - 5) / 75) * (maxTransitionDuration - minTransitionDuration);
-        
-        return Math.round(duration);
+        const velocityNormalized = Math.min(Math.max(avgVelocity, 5), 80);
+        return Math.round(MAX_TRANSITION_DURATION - ((velocityNormalized - 5) / 75) * (MAX_TRANSITION_DURATION - MIN_TRANSITION_DURATION));
     };
-    
-    const switchSection = (targetSection, scrollToTop = true, useVelocity = true) => {
+
+    const updateNavActiveStates = (targetSection) => {
+        desktopNavBtns?.forEach(btn => {
+            btn.classList.toggle('active', btn.dataset.section === targetSection);
+        });
+        mobileNavItems?.forEach(item => {
+            item.classList.toggle('active', item.dataset.section === targetSection);
+        });
+    };
+
+    const switchSection = (targetSection, options = {}) => {
+        const { scrollToTop = true, useVelocity = false, transitionMs = null } = options;
+
         if (targetSection === currentSection || isTransitioning) return;
-        
+        if (!sectionsTrack) return;
+
         isTransitioning = true;
         scrollAccumulator = 0;
-        
+
         const currentIndex = sectionOrder.indexOf(currentSection);
         const targetIndex = sectionOrder.indexOf(targetSection);
         const direction = targetIndex > currentIndex ? 'right' : 'left';
-        
-        // Calculate transition duration based on scroll velocity
-        const transitionDuration = useVelocity ? calculateTransitionDuration() : defaultTransitionDuration;
-        
-        // Apply dynamic transition duration
+
+        // Calculate transition duration
+        const transitionDuration = transitionMs ?? (useVelocity ? calculateTransitionDuration() : DEFAULT_TRANSITION_DURATION);
         sectionsTrack.style.transitionDuration = `${transitionDuration}ms`;
-        
-        // Update navbar buttons
-        sectionBtns.forEach(btn => {
-            btn.classList.toggle('active', btn.dataset.section === targetSection);
-        });
-        
+
+        // Update all nav states
+        updateNavActiveStates(targetSection);
+
         // Remove active from all sections
-        contentSections.forEach(section => {
+        contentSections?.forEach(section => {
             section.classList.remove('active', 'slide-in-left', 'slide-in-right');
         });
-        
+
         // Update track position
         sectionsTrack.dataset.activeSection = targetSection;
-        
+
         // Add slide direction and active to target section
         const targetSectionEl = document.querySelector(`.content-section[data-section="${targetSection}"]`);
         if (targetSectionEl) {
             targetSectionEl.classList.add(`slide-in-${direction === 'right' ? 'right' : 'left'}`);
-            
-            // Scroll target section to appropriate position
+
             if (scrollToTop) {
-                if (direction === 'right') {
-                    targetSectionEl.scrollTop = 0;
-                } else {
-                    // When going back, scroll to bottom of previous section
-                    targetSectionEl.scrollTop = targetSectionEl.scrollHeight;
-                }
+                targetSectionEl.scrollTop = direction === 'right' ? 0 : Math.max(0, targetSectionEl.scrollHeight - targetSectionEl.clientHeight);
             }
-            
-            // Small delay to ensure transition plays
+
             requestAnimationFrame(() => {
                 targetSectionEl.classList.add('active');
             });
         }
-        
+
         currentSection = targetSection;
-        velocitySamples = []; // Reset velocity samples
-        lastTransitionTime = performance.now(); // Record when transition started
-        
+        velocitySamples = [];
+        lastTransitionTime = performance.now();
+
         // Reset transition lock after animation completes
         setTimeout(() => {
             isTransitioning = false;
-            scrollAccumulator = 0; // Reset accumulator
-            // Reset to default transition duration
+            scrollAccumulator = 0;
             sectionsTrack.style.transitionDuration = '';
         }, transitionDuration + 50);
     };
-    
-    // Get the currently active section element
+
     const getActiveSection = () => {
         return document.querySelector(`.content-section[data-section="${currentSection}"]`);
     };
-    
-    // Handle wheel events at viewport level to avoid focus issues
-    const viewport = document.querySelector('.sections-viewport');
-    if (viewport) {
-        viewport.addEventListener('wheel', (e) => {
-            // Always prevent default to control scroll behavior
-            e.preventDefault();
-            
-            const activeSection = getActiveSection();
-            if (!activeSection) return;
-            
-            // During transition, absorb all scroll events (no momentum carry-over)
-            if (isTransitioning) {
-                return;
-            }
-            
-            const now = performance.now();
-            const timeSinceLastScroll = now - lastScrollTime;
-            const timeSinceTransition = now - lastTransitionTime;
-            
-            // Only allow new page transition if there was a pause in scrolling
-            // This detects when momentum has stopped and user started a new scroll gesture
-            const isFreshScrollGesture = timeSinceLastScroll > minTimeBetweenTransitions;
-            
-            // Reset accumulator if this is a fresh gesture
-            if (isFreshScrollGesture) {
-                scrollAccumulator = 0;
-                velocitySamples = [];
-            }
-            
-            // Track velocity
-            const deltaTime = timeSinceLastScroll;
-            lastScrollTime = now;
-            
-            if (deltaTime > 0 && deltaTime < 200) {
-                scrollVelocity = Math.abs(e.deltaY) / (deltaTime / 16.67);
-                velocitySamples.push(Math.abs(e.deltaY));
-                if (velocitySamples.length > maxSamples) {
-                    velocitySamples.shift();
+
+    const handleWheel = (e) => {
+        e.preventDefault();
+
+        const activeSection = getActiveSection();
+        if (!activeSection || isTransitioning) return;
+
+        const now = performance.now();
+        const timeSinceLastScroll = now - lastScrollTime;
+        const timeSinceTransition = now - lastTransitionTime;
+        const isFreshScrollGesture = timeSinceLastScroll > MIN_TIME_BETWEEN_TRANSITIONS;
+
+        if (isFreshScrollGesture) {
+            scrollAccumulator = 0;
+            velocitySamples = [];
+        }
+
+        lastScrollTime = now;
+
+        if (timeSinceLastScroll > 0 && timeSinceLastScroll < 200) {
+            velocitySamples.push(Math.abs(e.deltaY));
+            if (velocitySamples.length > MAX_VELOCITY_SAMPLES) velocitySamples.shift();
+        }
+
+        const currentIndex = sectionOrder.indexOf(currentSection);
+        const atTop = activeSection.scrollTop <= 0;
+        const atBottom = activeSection.scrollTop + activeSection.clientHeight >= activeSection.scrollHeight - 2;
+        const isLikelyMomentum = !isFreshScrollGesture && timeSinceTransition < 800;
+
+        if (e.deltaY > 0 && atBottom && currentIndex < sectionOrder.length - 1) {
+            if (!isLikelyMomentum) {
+                scrollAccumulator += e.deltaY;
+                if (scrollAccumulator >= SCROLL_THRESHOLD) {
+                    switchSection(sectionOrder[currentIndex + 1], { useVelocity: true });
                 }
             }
-            
-            const currentIndex = sectionOrder.indexOf(currentSection);
-            
-            const atTop = activeSection.scrollTop <= 0;
-            const atBottom = activeSection.scrollTop + activeSection.clientHeight >= activeSection.scrollHeight - 2;
-            
-            // Check if this scroll is likely momentum from a recent transition
-            const isLikelyMomentum = !isFreshScrollGesture && timeSinceTransition < 800;
-            
-            // Scrolling down at bottom
-            if (e.deltaY > 0 && atBottom && currentIndex < sectionOrder.length - 1) {
-                if (!isLikelyMomentum) {
-                    scrollAccumulator += e.deltaY;
-                    if (scrollAccumulator >= scrollThreshold) {
-                        switchSection(sectionOrder[currentIndex + 1], true, true);
-                    }
+        } else if (e.deltaY < 0 && atTop && currentIndex > 0) {
+            if (!isLikelyMomentum) {
+                scrollAccumulator += Math.abs(e.deltaY);
+                if (scrollAccumulator >= SCROLL_THRESHOLD) {
+                    switchSection(sectionOrder[currentIndex - 1], { useVelocity: true });
                 }
-                // Momentum after transition - just absorb it
             }
-            // Scrolling up at top
-            else if (e.deltaY < 0 && atTop && currentIndex > 0) {
-                if (!isLikelyMomentum) {
-                    scrollAccumulator += Math.abs(e.deltaY);
-                    if (scrollAccumulator >= scrollThreshold) {
-                        switchSection(sectionOrder[currentIndex - 1], true, true);
-                    }
-                }
-                // Momentum after transition - just absorb it
-            }
-            // Normal scrolling within the section
-            else {
-                scrollAccumulator = 0;
-                // Manually scroll the active section since we're capturing at viewport level
-                activeSection.scrollTop += e.deltaY;
-            }
-        }, { passive: false });
-    }
-    
-    sectionBtns.forEach(btn => {
-        btn.addEventListener('click', () => {
-            const section = btn.dataset.section;
-            switchSection(section, true, false); // Use default speed for clicks
-        });
-    });
-    
-    // Handle keyboard navigation
-    document.addEventListener('keydown', (e) => {
+        } else {
+            scrollAccumulator = 0;
+            activeSection.scrollTop += e.deltaY;
+        }
+    };
+
+    const handleKeyboard = (e) => {
         if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') return;
         if (isTransitioning) return;
-        
+
         const currentIndex = sectionOrder.indexOf(currentSection);
-        
+
         if (e.key === 'ArrowRight' && currentIndex < sectionOrder.length - 1) {
-            switchSection(sectionOrder[currentIndex + 1], true, false);
+            switchSection(sectionOrder[currentIndex + 1]);
         } else if (e.key === 'ArrowLeft' && currentIndex > 0) {
             switchSection(sectionOrder[currentIndex - 1]);
         }
-    });
-};
-
-document.addEventListener('DOMContentLoaded', initSectionNavigation);
-
-// ========================================
-// MOBILE BOTTOM NAVIGATION
-// ========================================
-const initMobileBottomNav = () => {
-    const mobileNavItems = document.querySelectorAll('.mobile-bottom-nav .mobile-nav-item[data-section]');
-    const sectionsTrack = document.querySelector('.sections-track');
-    const contentSections = document.querySelectorAll('.content-section');
-    const desktopNavBtns = document.querySelectorAll('.nav-section-btn');
-    
-    if (!mobileNavItems.length || !sectionsTrack) return;
-    
-    const switchToSection = (targetSection) => {
-        // Get current section from track
-        const currentSection = sectionsTrack.dataset.activeSection;
-        if (targetSection === currentSection) return;
-        
-        const currentIndex = sectionOrder.indexOf(currentSection);
-        const targetIndex = sectionOrder.indexOf(targetSection);
-        const direction = targetIndex > currentIndex ? 'right' : 'left';
-        
-        // Update mobile nav active states
-        mobileNavItems.forEach(item => {
-            item.classList.toggle('active', item.dataset.section === targetSection);
-        });
-        
-        // Update desktop nav buttons for sync
-        desktopNavBtns.forEach(btn => {
-            btn.classList.toggle('active', btn.dataset.section === targetSection);
-        });
-        
-        // Remove active from all sections
-        contentSections.forEach(section => {
-            section.classList.remove('active', 'slide-in-left', 'slide-in-right');
-        });
-        
-        // Update track position
-        sectionsTrack.dataset.activeSection = targetSection;
-        sectionsTrack.style.transitionDuration = '500ms';
-        
-        // Add slide direction and active to target section
-        const targetSectionEl = document.querySelector(`.content-section[data-section="${targetSection}"]`);
-        if (targetSectionEl) {
-            targetSectionEl.classList.add(`slide-in-${direction === 'right' ? 'right' : 'left'}`);
-            targetSectionEl.scrollTop = 0;
-            
-            requestAnimationFrame(() => {
-                targetSectionEl.classList.add('active');
-            });
-        }
-        
-        // Reset transition duration after animation
-        setTimeout(() => {
-            sectionsTrack.style.transitionDuration = '';
-        }, 550);
     };
-    
-    mobileNavItems.forEach(item => {
-        item.addEventListener('click', () => {
-            const section = item.dataset.section;
-            if (section) {
-                switchToSection(section);
-            }
-        });
-    });
-    
-    // Sync mobile nav when desktop nav is clicked
-    desktopNavBtns.forEach(btn => {
-        btn.addEventListener('click', () => {
-            const section = btn.dataset.section;
-            mobileNavItems.forEach(item => {
-                item.classList.toggle('active', item.dataset.section === section);
-            });
-        });
-    });
-};
 
-document.addEventListener('DOMContentLoaded', initMobileBottomNav);
-
-// ========================================
-// TOUCH SWIPE NAVIGATION (MOBILE)
-// ========================================
-const initTouchSwipeNavigation = () => {
-    const sectionsTrack = document.querySelector('.sections-track');
-    const contentSections = document.querySelectorAll('.content-section');
-    const mobileNavItems = document.querySelectorAll('.mobile-bottom-nav .mobile-nav-item[data-section]');
-    const desktopNavBtns = document.querySelectorAll('.nav-section-btn');
-    
-    if (!sectionsTrack) return;
-    
-    let touchStartX = 0;
-    let touchStartY = 0;
-    let touchEndX = 0;
-    let touchEndY = 0;
-    const minSwipeDistance = 80;
-    
-    const getCurrentSection = () => sectionsTrack.dataset.activeSection || 'about';
-    
-    const switchSectionMobile = (targetSection) => {
-        const currentSection = getCurrentSection();
-        if (targetSection === currentSection) return;
-        
-        const currentIndex = sectionOrder.indexOf(currentSection);
-        const targetIndex = sectionOrder.indexOf(targetSection);
-        const direction = targetIndex > currentIndex ? 'right' : 'left';
-        
-        // Update mobile nav
-        mobileNavItems.forEach(item => {
-            item.classList.toggle('active', item.dataset.section === targetSection);
-        });
-        
-        // Update desktop nav
-        desktopNavBtns.forEach(btn => {
-            btn.classList.toggle('active', btn.dataset.section === targetSection);
-        });
-        
-        // Remove active from all sections
-        contentSections.forEach(section => {
-            section.classList.remove('active', 'slide-in-left', 'slide-in-right');
-        });
-        
-        // Update track
-        sectionsTrack.dataset.activeSection = targetSection;
-        sectionsTrack.style.transitionDuration = '400ms';
-        
-        const targetSectionEl = document.querySelector(`.content-section[data-section="${targetSection}"]`);
-        if (targetSectionEl) {
-            targetSectionEl.classList.add(`slide-in-${direction === 'right' ? 'right' : 'left'}`);
-            targetSectionEl.scrollTop = 0;
-            
-            requestAnimationFrame(() => {
-                targetSectionEl.classList.add('active');
-            });
-        }
-        
-        setTimeout(() => {
-            sectionsTrack.style.transitionDuration = '';
-        }, 450);
-    };
-    
     const handleTouchStart = (e) => {
         touchStartX = e.changedTouches[0].screenX;
         touchStartY = e.changedTouches[0].screenY;
     };
-    
+
     const handleTouchEnd = (e) => {
-        touchEndX = e.changedTouches[0].screenX;
-        touchEndY = e.changedTouches[0].screenY;
-        
+        const touchEndX = e.changedTouches[0].screenX;
+        const touchEndY = e.changedTouches[0].screenY;
         const deltaX = touchEndX - touchStartX;
         const deltaY = touchEndY - touchStartY;
-        
-        // Only trigger horizontal swipe if it's more horizontal than vertical
-        if (Math.abs(deltaX) > Math.abs(deltaY) && Math.abs(deltaX) > minSwipeDistance) {
-            const currentSection = getCurrentSection();
+
+        if (Math.abs(deltaX) > Math.abs(deltaY) && Math.abs(deltaX) > MIN_SWIPE_DISTANCE) {
             const currentIndex = sectionOrder.indexOf(currentSection);
-            
+
             if (deltaX < 0 && currentIndex < sectionOrder.length - 1) {
-                // Swipe left - go to next section
-                switchSectionMobile(sectionOrder[currentIndex + 1]);
+                switchSection(sectionOrder[currentIndex + 1], { transitionMs: 400 });
             } else if (deltaX > 0 && currentIndex > 0) {
-                // Swipe right - go to previous section
-                switchSectionMobile(sectionOrder[currentIndex - 1]);
+                switchSection(sectionOrder[currentIndex - 1], { transitionMs: 400 });
             }
         }
     };
-    
-    const viewport = document.querySelector('.sections-viewport');
-    if (viewport) {
-        viewport.addEventListener('touchstart', handleTouchStart, { passive: true });
-        viewport.addEventListener('touchend', handleTouchEnd, { passive: true });
-    }
-};
 
-document.addEventListener('DOMContentLoaded', initTouchSwipeNavigation);
+    const init = () => {
+        sectionsTrack = document.querySelector('.sections-track');
+        if (!sectionsTrack) return; // Not on content page
+
+        contentSections = document.querySelectorAll('.content-section');
+        desktopNavBtns = document.querySelectorAll('.nav-section-btn');
+        mobileNavItems = document.querySelectorAll('.mobile-bottom-nav .mobile-nav-item[data-section]');
+        viewport = document.querySelector('.sections-viewport');
+
+        // Desktop nav button clicks
+        desktopNavBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                switchSection(btn.dataset.section);
+            });
+        });
+
+        // Mobile nav button clicks
+        mobileNavItems.forEach(item => {
+            item.addEventListener('click', () => {
+                if (item.dataset.section) {
+                    switchSection(item.dataset.section, { transitionMs: 500 });
+                }
+            });
+        });
+
+        // Wheel scrolling
+        if (viewport) {
+            viewport.addEventListener('wheel', handleWheel, { passive: false });
+            viewport.addEventListener('touchstart', handleTouchStart, { passive: true });
+            viewport.addEventListener('touchend', handleTouchEnd, { passive: true });
+        }
+
+        // Keyboard navigation
+        document.addEventListener('keydown', handleKeyboard);
+    };
+
+    return { init, switchSection };
+})();
+
+document.addEventListener('DOMContentLoaded', SectionNavigator.init);
 
 // ========================================
 // MOBILE BOTTOM NAV - THEME & CONTACT TOGGLES
@@ -683,12 +525,12 @@ document.addEventListener('DOMContentLoaded', () => {
                 icon.classList.add(isDark ? 'fa-sun' : 'fa-moon');
             }
         };
-        
+
         updateMobileThemeIcon();
-        
+
         mobileThemeBtn.addEventListener('click', () => {
             const next = getTheme() === 'dark' ? 'light' : 'dark';
-            
+
             if (typeof document.startViewTransition === 'function') {
                 document.startViewTransition(() => {
                     applyTheme(next);
@@ -702,37 +544,37 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     }
-    
+
     // Mobile contact toggle
     const mobileContactBtn = document.querySelector('.contact-toggle-mobile');
     const popover = document.querySelector('.contact-popover');
-    
+
     if (mobileContactBtn && popover) {
         const positionMobilePopover = () => {
             const btnRect = mobileContactBtn.getBoundingClientRect();
             const popoverWidth = popover.offsetWidth || 200;
-            
+
             // Position above the button, centered under it
             const btnCenterX = btnRect.left + (btnRect.width / 2);
             let left = btnCenterX - (popoverWidth / 2);
-            
+
             // Keep popover on screen
             const padding = 12;
             if (left < padding) left = padding;
             if (left + popoverWidth > window.innerWidth - padding) {
                 left = window.innerWidth - popoverWidth - padding;
             }
-            
+
             popover.style.position = 'fixed';
             popover.style.bottom = (window.innerHeight - btnRect.top + 12) + 'px';
             popover.style.left = left + 'px';
             popover.style.top = 'auto';
             popover.style.transform = 'none';
         };
-        
+
         mobileContactBtn.addEventListener('click', (evt) => {
             evt.stopPropagation();
-            
+
             if (popover.hidden) {
                 popover.hidden = false;
                 requestAnimationFrame(positionMobilePopover);
@@ -748,31 +590,27 @@ document.addEventListener('DOMContentLoaded', () => {
 // ========================================
 document.addEventListener('DOMContentLoaded', () => {
     // Handle navigation links with View Transitions API
+    // Note: For cross-document navigation, browsers that support MPA View Transitions
+    // will automatically pick up transitions via CSS @view-transition rule.
+    // We add direction hints for styling purposes.
     const navigationLinks = document.querySelectorAll('a[href="content.html"], a[href="index.html"], .nav-logo-minimal a, .nav-logo a');
-    
+
     navigationLinks.forEach(link => {
         link.addEventListener('click', (e) => {
             const href = link.getAttribute('href');
-            
+
             // Skip if it's the current page
-            if (window.location.pathname.endsWith(href)) return;
-            
-            // Check if View Transitions API is supported
-            if (!document.startViewTransition) {
-                // Fallback: just navigate normally
+            if (window.location.pathname.endsWith(href)) {
+                e.preventDefault();
                 return;
             }
-            
-            e.preventDefault();
-            
-            // Determine direction based on navigation
+
+            // Set direction hint for CSS transitions (used by browsers with MPA View Transitions)
             const isGoingToContent = href === 'content.html';
             document.documentElement.dataset.navDirection = isGoingToContent ? 'forward' : 'back';
-            
-            // Start view transition
-            document.startViewTransition(() => {
-                window.location.href = href;
-            });
+
+            // Let the browser handle navigation normally
+            // MPA View Transitions are handled automatically via CSS @view-transition
         });
     });
 });
