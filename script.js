@@ -280,8 +280,14 @@ if (prefersReducedMotion) {
         (entries, obs) => {
             entries.forEach(entry => {
                 if (!entry.isIntersecting) return;
+                // Apply will-change before animation
+                entry.target.style.willChange = 'opacity, transform';
                 entry.target.classList.add('is-visible');
                 obs.unobserve(entry.target);
+                // Remove will-change after animation completes (600ms from CSS)
+                setTimeout(() => {
+                    entry.target.style.willChange = '';
+                }, 700);
             });
         },
         { threshold: TIMING.REVEAL_THRESHOLD, rootMargin: '0px 0px -10% 0px' }
@@ -354,8 +360,9 @@ const SectionNavigator = (() => {
         const targetIndex = sectionOrder.indexOf(targetSection);
         const direction = targetIndex > currentIndex ? 'right' : 'left';
 
-        // Calculate transition duration
+        // Calculate transition duration and hint compositor
         const transitionDuration = transitionMs ?? (useVelocity ? calculateTransitionDuration() : DEFAULT_TRANSITION_DURATION);
+        sectionsTrack.style.willChange = 'transform';
         sectionsTrack.style.transitionDuration = `${transitionDuration}ms`;
 
         // Update all nav states
@@ -392,6 +399,8 @@ const SectionNavigator = (() => {
             isTransitioning = false;
             scrollAccumulator = 0;
             sectionsTrack.style.transitionDuration = '';
+            // Remove will-change after animation completes to free compositor memory
+            sectionsTrack.style.willChange = '';
         }, transitionDuration + 50);
     };
 
