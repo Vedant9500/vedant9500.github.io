@@ -437,13 +437,11 @@ body::-webkit-scrollbar {
 }
 
 html[data-theme="dark"] .nav-pill {
-    background: rgba(15, 22, 35, 0.50);
+    background: rgba(15, 22, 35, 0.85);
     border: 1px solid rgba(231, 234, 240, 0.12);
-    -webkit-backdrop-filter: blur(12px) saturate(150%);
-    backdrop-filter: blur(12px) saturate(150%);
-    box-shadow:
-        0 8px 32px rgba(0, 0, 0, 0.25),
-        inset 0 1px 0 rgba(255, 255, 255, 0.06);
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25);
 }
 
 .nav-logo a {
@@ -902,8 +900,10 @@ section h2 {
 }
 
 html[data-theme="dark"] .about-card {
-    background: rgba(30, 42, 62, 0.45);
+    background: rgba(30, 42, 62, 0.85);
     border: 1px solid rgba(231, 234, 240, 0.06);
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
 }
 
 html[data-theme="dark"] .about-card:hover {
