@@ -1731,6 +1731,48 @@ html[data-theme="dark"] .nav-section-btn:hover:not(.active) {
     overflow-x: hidden;
     scroll-behavior: smooth;
     overscroll-behavior-y: contain;
+    position: relative;
+}
+
+/* Scroll shadow indicators - hint that content is scrollable */
+.content-section::before,
+.content-section::after {
+    content: '';
+    position: sticky;
+    left: 0;
+    right: 0;
+    height: 60px;
+    pointer-events: none;
+    z-index: 10;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.content-section::before {
+    top: 0;
+    background: linear-gradient(to bottom, var(--bg-white) 0%, transparent 100%);
+}
+
+.content-section::after {
+    bottom: 0;
+    background: linear-gradient(to top, var(--bg-white) 0%, transparent 100%);
+}
+
+/* Show scroll shadows when section has scrollable content */
+.content-section.can-scroll-up::before {
+    opacity: 1;
+}
+
+.content-section.can-scroll-down::after {
+    opacity: 1;
+}
+
+html[data-theme="dark"] .content-section::before {
+    background: linear-gradient(to bottom, var(--bg-primary) 0%, transparent 100%);
+}
+
+html[data-theme="dark"] .content-section::after {
+    background: linear-gradient(to top, var(--bg-primary) 0%, transparent 100%);
 }
 
 /* Custom scrollbar for sections - hidden */
@@ -1867,6 +1909,12 @@ html[data-theme="dark"] .nav-section-btn:hover:not(.active) {
    ======================================== */
 
 @media (max-width: 768px) {
+
+    /* Disable grain overlay on mobile for performance */
+    body::before {
+        display: none;
+    }
+
     .nav-sections {
         gap: 2px;
     }

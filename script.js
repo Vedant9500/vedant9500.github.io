@@ -631,6 +631,38 @@ const initPageNavigation = () => {
 };
 
 // ========================================
+// SCROLL INDICATORS
+// ========================================
+const initScrollIndicators = () => {
+    const sections = document.querySelectorAll('.content-section');
+    if (!sections.length) return;
+
+    const updateScrollIndicators = (section) => {
+        const { scrollTop, scrollHeight, clientHeight } = section;
+        const canScrollUp = scrollTop > 20;
+        const canScrollDown = scrollTop + clientHeight < scrollHeight - 20;
+
+        section.classList.toggle('can-scroll-up', canScrollUp);
+        section.classList.toggle('can-scroll-down', canScrollDown);
+    };
+
+    sections.forEach(section => {
+        // Initial check
+        updateScrollIndicators(section);
+
+        // Update on scroll
+        section.addEventListener('scroll', () => {
+            updateScrollIndicators(section);
+        }, { passive: true });
+    });
+
+    // Re-check on window resize
+    window.addEventListener('resize', () => {
+        sections.forEach(updateScrollIndicators);
+    }, { passive: true });
+};
+
+// ========================================
 // CONSOLIDATED INITIALIZATION
 // ========================================
 document.addEventListener('DOMContentLoaded', () => {
@@ -638,4 +670,5 @@ document.addEventListener('DOMContentLoaded', () => {
     SectionNavigator.init();
     initMobileToggles();
     initPageNavigation();
+    initScrollIndicators();
 });
