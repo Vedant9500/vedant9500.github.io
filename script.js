@@ -3,6 +3,19 @@
    ======================================== */
 
 // ========================================
+// CONSTANTS
+// ========================================
+const TIMING = {
+    THEME_SWITCH_DELAY_MS: 110,      // Delay before applying theme during ripple animation
+    RIPPLE_CLEANUP_MS: 650,          // Time before removing ripple element
+    POPOVER_OFFSET: 12,              // Spacing between popover and trigger element
+    NAVBAR_SCROLL_THRESHOLD: 20,     // Scroll distance to trigger navbar 'scrolled' state
+    SCROLL_OFFSET: 120,              // Offset for scrollspy active section detection
+    REVEAL_THRESHOLD: 0.12,          // Intersection observer threshold for reveal animations
+    MOBILE_POPOVER_PADDING: 12,      // Edge padding for mobile popover positioning
+};
+
+// ========================================
 // THEME TOGGLE (PERSISTENT)
 // ========================================
 const applyTheme = (theme) => {
@@ -59,7 +72,7 @@ const createThemeRipple = (x, y, nextTheme) => {
     return ripple;
 };
 
-document.addEventListener('DOMContentLoaded', () => {
+const initThemeAndPopover = () => {
     applyTheme(getTheme());
     updateThemeToggleUI();
 
@@ -94,11 +107,11 @@ document.addEventListener('DOMContentLoaded', () => {
             window.setTimeout(() => {
                 applyTheme(next);
                 updateThemeToggleUI();
-            }, 110);
+            }, TIMING.THEME_SWITCH_DELAY_MS);
 
             window.setTimeout(() => {
                 ripple?.remove();
-            }, 650);
+            }, TIMING.RIPPLE_CLEANUP_MS);
         });
     }
 
@@ -110,16 +123,16 @@ document.addEventListener('DOMContentLoaded', () => {
             const popoverWidth = popover.offsetWidth || 240;
 
             // Position below the button, centered under the button
-            const top = rect.bottom + 12;
+            const top = rect.bottom + TIMING.POPOVER_OFFSET;
             const buttonCenter = rect.left + (rect.width / 2);
             let left = buttonCenter - (popoverWidth / 2);
 
             // Ensure popover doesn't go off-screen on the left
-            if (left < 12) left = 12;
+            if (left < TIMING.POPOVER_OFFSET) left = TIMING.POPOVER_OFFSET;
 
             // Ensure popover doesn't go off-screen on the right
-            if (left + popoverWidth > window.innerWidth - 12) {
-                left = window.innerWidth - popoverWidth - 12;
+            if (left + popoverWidth > window.innerWidth - TIMING.POPOVER_OFFSET) {
+                left = window.innerWidth - popoverWidth - TIMING.POPOVER_OFFSET;
             }
 
             popover.style.top = `${top}px`;
@@ -164,7 +177,7 @@ document.addEventListener('DOMContentLoaded', () => {
             if (evt.key === 'Escape') close();
         });
     }
-});
+};
 
 // ========================================
 // MOBILE NAVIGATION
@@ -215,7 +228,7 @@ window.addEventListener('scroll', () => {
     const navbar = document.querySelector('.navbar');
     if (!navbar) return;
 
-    if (window.scrollY > 20) {
+    if (window.scrollY > TIMING.NAVBAR_SCROLL_THRESHOLD) {
         navbar.classList.add('scrolled');
     } else {
         navbar.classList.remove('scrolled');
@@ -233,7 +246,7 @@ const sections = navLinks
 const setActiveNav = () => {
     if (!navLinks.length || !sections.length) return;
 
-    const scrollPos = window.scrollY + 120;
+    const scrollPos = window.scrollY + TIMING.SCROLL_OFFSET;
     let activeId = sections[0].id;
 
     for (const section of sections) {
@@ -271,7 +284,7 @@ if (prefersReducedMotion) {
                 obs.unobserve(entry.target);
             });
         },
-        { threshold: 0.12, rootMargin: '0px 0px -10% 0px' }
+        { threshold: TIMING.REVEAL_THRESHOLD, rootMargin: '0px 0px -10% 0px' }
     );
 
     revealTargets.forEach(el => revealObserver.observe(el));
@@ -508,12 +521,11 @@ const SectionNavigator = (() => {
     return { init, switchSection };
 })();
 
-document.addEventListener('DOMContentLoaded', SectionNavigator.init);
 
 // ========================================
 // MOBILE BOTTOM NAV - THEME & CONTACT TOGGLES
 // ========================================
-document.addEventListener('DOMContentLoaded', () => {
+const initMobileToggles = () => {
     // Mobile theme toggle
     const mobileThemeBtn = document.querySelector('.theme-toggle-mobile');
     if (mobileThemeBtn) {
@@ -559,14 +571,13 @@ document.addEventListener('DOMContentLoaded', () => {
             let left = btnCenterX - (popoverWidth / 2);
 
             // Keep popover on screen
-            const padding = 12;
-            if (left < padding) left = padding;
-            if (left + popoverWidth > window.innerWidth - padding) {
-                left = window.innerWidth - popoverWidth - padding;
+            if (left < TIMING.MOBILE_POPOVER_PADDING) left = TIMING.MOBILE_POPOVER_PADDING;
+            if (left + popoverWidth > window.innerWidth - TIMING.MOBILE_POPOVER_PADDING) {
+                left = window.innerWidth - popoverWidth - TIMING.MOBILE_POPOVER_PADDING;
             }
 
             popover.style.position = 'fixed';
-            popover.style.bottom = (window.innerHeight - btnRect.top + 12) + 'px';
+            popover.style.bottom = (window.innerHeight - btnRect.top + TIMING.MOBILE_POPOVER_PADDING) + 'px';
             popover.style.left = left + 'px';
             popover.style.top = 'auto';
             popover.style.transform = 'none';
@@ -583,12 +594,12 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     }
-});
+};
 
 // ========================================
 // PAGE NAVIGATION WITH VIEW TRANSITIONS
 // ========================================
-document.addEventListener('DOMContentLoaded', () => {
+const initPageNavigation = () => {
     // Handle navigation links with View Transitions API
     // Note: For cross-document navigation, browsers that support MPA View Transitions
     // will automatically pick up transitions via CSS @view-transition rule.
@@ -613,4 +624,14 @@ document.addEventListener('DOMContentLoaded', () => {
             // MPA View Transitions are handled automatically via CSS @view-transition
         });
     });
+};
+
+// ========================================
+// CONSOLIDATED INITIALIZATION
+// ========================================
+document.addEventListener('DOMContentLoaded', () => {
+    initThemeAndPopover();
+    SectionNavigator.init();
+    initMobileToggles();
+    initPageNavigation();
 });
