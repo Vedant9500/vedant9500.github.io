@@ -604,20 +604,24 @@ const initPageNavigation = () => {
     // Note: For cross-document navigation, browsers that support MPA View Transitions
     // will automatically pick up transitions via CSS @view-transition rule.
     // We add direction hints for styling purposes.
-    const navigationLinks = document.querySelectorAll('a[href="content.html"], a[href="index.html"], .nav-logo-minimal a, .nav-logo a');
+    const navigationLinks = document.querySelectorAll('a[href="/about/"], a[href="/"], .nav-logo-minimal a, .nav-logo a');
 
     navigationLinks.forEach(link => {
         link.addEventListener('click', (e) => {
             const href = link.getAttribute('href');
+            const currentPath = window.location.pathname;
 
             // Skip if it's the current page
-            if (window.location.pathname.endsWith(href)) {
+            const isHome = href === '/' && (currentPath === '/' || currentPath.endsWith('/index.html') || currentPath === '/index.html');
+            const isAbout = href === '/about/' && (currentPath.includes('/about') || currentPath.endsWith('/about/'));
+
+            if (isHome || isAbout) {
                 e.preventDefault();
                 return;
             }
 
             // Set direction hint for CSS transitions (used by browsers with MPA View Transitions)
-            const isGoingToContent = href === 'content.html';
+            const isGoingToContent = href === '/about/' || href.includes('/about');
             document.documentElement.dataset.navDirection = isGoingToContent ? 'forward' : 'back';
 
             // Let the browser handle navigation normally
