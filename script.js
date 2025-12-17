@@ -438,8 +438,6 @@ const SectionNavigator = (() => {
     };
 
     const handleWheel = (e) => {
-        e.preventDefault();
-
         const activeSection = getActiveSection();
         if (!activeSection || isTransitioning) return;
 
@@ -465,8 +463,10 @@ const SectionNavigator = (() => {
         const atBottom = activeSection.scrollTop + activeSection.clientHeight >= activeSection.scrollHeight - 2;
         const isLikelyMomentum = !isFreshScrollGesture && timeSinceTransition < 800;
 
+        // Only intercept scroll at section boundaries
         if (e.deltaY > 0 && atBottom && currentIndex < sectionOrder.length - 1) {
             if (!isLikelyMomentum) {
+                e.preventDefault();
                 scrollAccumulator += e.deltaY;
                 if (scrollAccumulator >= SCROLL_THRESHOLD) {
                     switchSection(sectionOrder[currentIndex + 1], { useVelocity: true });
@@ -474,14 +474,15 @@ const SectionNavigator = (() => {
             }
         } else if (e.deltaY < 0 && atTop && currentIndex > 0) {
             if (!isLikelyMomentum) {
+                e.preventDefault();
                 scrollAccumulator += Math.abs(e.deltaY);
                 if (scrollAccumulator >= SCROLL_THRESHOLD) {
                     switchSection(sectionOrder[currentIndex - 1], { useVelocity: true });
                 }
             }
         } else {
+            // Allow native scrolling within section
             scrollAccumulator = 0;
-            activeSection.scrollTop += e.deltaY;
         }
     };
 

@@ -439,11 +439,11 @@ body::-webkit-scrollbar {
 }
 
 html[data-theme="dark"] .nav-pill {
-    background: rgba(40, 40, 40, 0.90);
+    background: rgba(40, 40, 40, 0.65);
     border: 1px solid rgba(255, 255, 255, 0.08);
-    -webkit-backdrop-filter: none;
-    backdrop-filter: none;
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25);
+    -webkit-backdrop-filter: blur(16px) saturate(150%);
+    backdrop-filter: blur(16px) saturate(150%);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.35);
 }
 
 .nav-logo a {
@@ -2024,7 +2024,7 @@ html[data-theme="dark"] .nav-section-btn:hover:not(.active) {
 
 .sections-viewport {
     position: fixed;
-    top: 80px;
+    top: 0;
     left: 0;
     right: 0;
     bottom: 0;
@@ -2061,41 +2061,24 @@ html[data-theme="dark"] .nav-section-btn:hover:not(.active) {
     position: relative;
 }
 
-/* Scroll shadow indicators - hint that content is scrollable */
-.content-section::before,
+/* Bottom scroll indicator - shows when more content is below */
 .content-section::after {
     content: '';
     position: sticky;
     left: 0;
     right: 0;
+    bottom: 0;
     height: 60px;
     pointer-events: none;
     z-index: 10;
     opacity: 0;
     transition: opacity 0.3s ease;
-}
-
-.content-section::before {
-    top: 0;
-    background: linear-gradient(to bottom, var(--bg-white) 0%, transparent 100%);
-}
-
-.content-section::after {
-    bottom: 0;
     background: linear-gradient(to top, var(--bg-white) 0%, transparent 100%);
 }
 
-/* Show scroll shadows when section has scrollable content */
-.content-section.can-scroll-up::before {
-    opacity: 1;
-}
-
+/* Show bottom scroll shadow when content is scrollable */
 .content-section.can-scroll-down::after {
     opacity: 1;
-}
-
-html[data-theme="dark"] .content-section::before {
-    background: linear-gradient(to bottom, var(--bg-primary) 0%, transparent 100%);
 }
 
 html[data-theme="dark"] .content-section::after {
@@ -2115,7 +2098,8 @@ html[data-theme="dark"] .content-section::after {
 }
 
 .section-inner {
-    padding: 2rem 0;
+    padding: 100px 0 2rem 0;
+    /* Top padding accounts for navbar */
     min-height: 100%;
     opacity: 0;
     transform: translateX(30px);
