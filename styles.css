@@ -133,7 +133,7 @@
 
     /* Theme constants */
     --theme-bg-light: #F7F6F3;
-    --theme-bg-dark: #0D1117;
+    --theme-bg-dark: #1f1f1f;
 }
 
 html[data-theme="light"] {
@@ -159,40 +159,42 @@ html[data-theme="light"] {
 }
 
 html[data-theme="dark"] {
-    --md-sys-color-background: #0D1117;
-    --md-sys-color-on-background: #E6E4DE;
-    --md-sys-color-surface: #0D1117;
-    --md-sys-color-on-surface: #E6E4DE;
+    /* Warm neutral dark theme - inspired by Zen Browser */
+    --md-sys-color-background: #1f1f1f;
+    --md-sys-color-on-background: #E8E6E0;
+    --md-sys-color-surface: #1f1f1f;
+    --md-sys-color-on-surface: #E8E6E0;
 
-    --md-sys-color-surface-container-lowest: #0D1117;
-    --md-sys-color-surface-container-low: #131920;
-    --md-sys-color-surface-container: #1A222C;
-    --md-sys-color-surface-container-high: #212A36;
-    --md-sys-color-surface-container-highest: #283240;
+    /* Warm neutral surface containers - no blue tint */
+    --md-sys-color-surface-container-lowest: #1a1a1a;
+    --md-sys-color-surface-container-low: #252525;
+    --md-sys-color-surface-container: #2d2d2d;
+    --md-sys-color-surface-container-high: #363636;
+    --md-sys-color-surface-container-highest: #404040;
 
-    --md-sys-color-secondary: #A8A49C;
-    --md-sys-color-outline: #3D4654;
-    --md-sys-color-outline-variant: #2A323E;
+    --md-sys-color-secondary: #B8B5AE;
+    --md-sys-color-outline: #4a4a4a;
+    --md-sys-color-outline-variant: #3a3a3a;
 
-    /* Dark mode pastel adjustments - richer, deeper */
-    --pastel-primary: #8FB0A8;
-    --pastel-primary-light: #6A8A82;
-    --pastel-primary-soft: rgba(143, 176, 168, 0.15);
-    --pastel-primary-on: #E6F0ED;
+    /* Dark mode accent colors - warm amber */
+    --pastel-primary: #E0A458;
+    --pastel-primary-light: #C4883C;
+    --pastel-primary-soft: rgba(224, 164, 88, 0.15);
+    --pastel-primary-on: #1f1f1f;
 
     --pastel-secondary: #D4C7B5;
     --pastel-secondary-light: rgba(212, 199, 181, 0.20);
     --pastel-secondary-soft: rgba(212, 199, 181, 0.10);
 
-    --pastel-accent: #B8A5C4;
-    --pastel-accent-light: rgba(184, 165, 196, 0.20);
-    --pastel-accent-soft: rgba(184, 165, 196, 0.12);
+    --pastel-accent: #C4B5A0;
+    --pastel-accent-light: rgba(196, 181, 160, 0.20);
+    --pastel-accent-soft: rgba(196, 181, 160, 0.12);
 
-    --pastel-tertiary: #D4B8B5;
-    --pastel-tertiary-light: rgba(212, 184, 181, 0.20);
-    --pastel-tertiary-soft: rgba(212, 184, 181, 0.12);
+    --pastel-tertiary: #D4C4B5;
+    --pastel-tertiary-light: rgba(212, 196, 181, 0.20);
+    --pastel-tertiary-soft: rgba(212, 196, 181, 0.12);
 
-    --text-secondary: #A8A49C;
+    --text-secondary: #B8B5AE;
 }
 
 /* ========================================
@@ -304,8 +306,8 @@ header {
 
 @media (prefers-color-scheme: dark) {
     .glass {
-        background: rgba(15, 22, 35, 0.58);
-        border: 1px solid rgba(231, 234, 240, 0.12);
+        background: rgba(45, 45, 45, 0.70);
+        border: 1px solid rgba(255, 255, 255, 0.10);
     }
 }
 
@@ -437,8 +439,8 @@ body::-webkit-scrollbar {
 }
 
 html[data-theme="dark"] .nav-pill {
-    background: rgba(15, 22, 35, 0.85);
-    border: 1px solid rgba(231, 234, 240, 0.12);
+    background: rgba(40, 40, 40, 0.90);
+    border: 1px solid rgba(255, 255, 255, 0.08);
     -webkit-backdrop-filter: none;
     backdrop-filter: none;
     box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25);
@@ -544,7 +546,7 @@ html[data-theme="dark"] .contact-toggle:hover {
 }
 
 html[data-theme="dark"] .contact-popover {
-    background: rgba(25, 32, 45, 0.90);
+    background: rgba(45, 45, 45, 0.95);
     border: 1px solid rgba(255, 255, 255, 0.08);
     -webkit-backdrop-filter: blur(16px) saturate(150%);
     backdrop-filter: blur(16px) saturate(150%);
@@ -575,7 +577,7 @@ html[data-theme="dark"] .contact-popover {
     }
 
     html[data-theme="dark"] .contact-popover {
-        background: linear-gradient(135deg, rgba(17, 27, 43, 0.70), rgba(11, 15, 23, 0.38));
+        background: linear-gradient(135deg, rgba(45, 45, 45, 0.85), rgba(31, 31, 31, 0.70));
     }
 
     html[data-theme="dark"] .contact-popover::before {
