@@ -1585,9 +1585,12 @@ html[data-theme="dark"] .skill-pill[data-level="learning"] {
 
     .achievement-card {
         align-items: center;
-        /* Center align on mobile if preferred */
         padding: 24px;
         text-align: center;
+    }
+
+    .skill-pills {
+        justify-content: center;
     }
 }
 
