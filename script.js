@@ -263,15 +263,37 @@ window.addEventListener('scroll', setActiveNav, { passive: true });
 window.addEventListener('load', setActiveNav);
 
 // ========================================
-// REVEAL ANIMATIONS (SUBTLE)
+// REVEAL ANIMATIONS (SCROLL-TRIGGERED)
 // ========================================
 const prefersReducedMotion = window.matchMedia?.('(prefers-reduced-motion: reduce)')?.matches;
 
 const revealTargets = document.querySelectorAll(
-    '.hero-content, section h2, .about p, .project-card, .achievement-card, .contact-intro, .social-links, .footer p'
+    '.hero-content, section h2, .about-card, .project-card, .achievement-card, .contact-intro, .social-links, .footer p'
 );
 
 revealTargets.forEach(el => el.classList.add('reveal'));
+
+// Function to re-trigger reveal animations for a section's children
+const triggerSectionReveals = (sectionId) => {
+    const section = document.querySelector(`[data-section="${sectionId}"]`);
+    if (!section) return;
+
+    const cards = section.querySelectorAll('.reveal');
+    cards.forEach((card, index) => {
+        // Reset animation
+        card.classList.remove('is-visible');
+        card.style.animationDelay = `${index * 0.08}s`;
+
+        // Trigger reflow, then add visible class
+        void card.offsetWidth;
+        requestAnimationFrame(() => {
+            card.classList.add('is-visible');
+        });
+    });
+};
+
+// Expose globally for SectionNavigator to use
+window.triggerSectionReveals = triggerSectionReveals;
 
 if (prefersReducedMotion) {
     revealTargets.forEach(el => el.classList.add('is-visible'));
@@ -393,6 +415,13 @@ const SectionNavigator = (() => {
         currentSection = targetSection;
         velocitySamples = [];
         lastTransitionTime = performance.now();
+
+        // Trigger reveal animations for the target section after slide-in
+        setTimeout(() => {
+            if (window.triggerSectionReveals) {
+                window.triggerSectionReveals(targetSection);
+            }
+        }, transitionDuration * 0.3);
 
         // Reset transition lock after animation completes
         setTimeout(() => {
