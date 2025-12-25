@@ -1686,7 +1686,8 @@ html[data-theme="dark"] .skill-pill[data-level="learning"] {
     }
 
     .projects-grid {
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns: 1fr !important;
+        /* Single column on mobile/tablet */
     }
 
     section {
@@ -2462,8 +2463,9 @@ html[data-theme="dark"] .content-section::after {
 
     /* Add scrollable space at bottom for mobile nav */
     .section-inner .container {
-        padding-top: 0px;
-        padding-bottom: 50px;
+        padding-top: 20px;
+        padding-bottom: 100px;
+        /* Increased for mobile nav clearance */
     }
 
     /* Hero adjustments for mobile */
@@ -2480,19 +2482,70 @@ html[data-theme="dark"] .content-section::after {
     }
 
     /* About section mobile */
+    .about-name {
+        font-size: 1.75rem;
+    }
+
+    .about-tagline {
+        font-size: 0.95rem;
+    }
+
     .about-content {
-        flex-direction: column;
-        gap: 30px;
+        gap: 16px;
+    }
+
+    .about-card {
+        padding: 16px;
+    }
+
+    .about-card h3 {
+        font-size: 1rem;
+    }
+
+    .about-card p {
+        font-size: 0.875rem;
+        line-height: 1.5;
+    }
+
+    .about-card-icon {
+        width: 40px;
+        height: 40px;
+        font-size: 1rem;
     }
 
     .about-text h2 {
         font-size: 1.8rem;
     }
 
-    /* Projects grid mobile */
+    /* Projects grid mobile - FORCE single column */
     .projects-grid {
-        grid-template-columns: 1fr;
-        gap: 20px;
+        display: grid !important;
+        grid-template-columns: 1fr !important;
+        gap: 16px;
+    }
+
+    /* Project cards mobile optimization */
+    .project-card {
+        min-height: auto !important;
+        padding: 20px !important;
+    }
+
+    .project-card.featured {
+        padding: 24px !important;
+    }
+
+    .project-card h3 {
+        font-size: 1.1rem;
+    }
+
+    .project-card p {
+        font-size: 0.9rem;
+        line-height: 1.5;
+    }
+
+    .project-lang {
+        font-size: 0.75rem;
+        padding: 4px 10px;
     }
 
     /* Toolbox mobile */
@@ -2509,6 +2562,24 @@ html[data-theme="dark"] .content-section::after {
     .achievements-grid {
         grid-template-columns: 1fr;
         gap: 16px;
+    }
+
+    .achievement-card {
+        padding: 20px;
+    }
+
+    .achievement-card h3 {
+        font-size: 1rem;
+    }
+
+    /* Skill pills mobile */
+    .skill-pills {
+        gap: 6px;
+    }
+
+    .skill-pill {
+        font-size: 0.75rem;
+        padding: 4px 10px;
     }
 
     /* Hide home page desktop nav pill on mobile */
