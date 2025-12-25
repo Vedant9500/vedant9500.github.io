@@ -725,64 +725,41 @@ const initToolboxAccordion = () => {
 };
 
 // ========================================
-// PROJECTS CAROUSEL (Mobile)
+// PROJECTS VERTICAL STACK FOCUS (Mobile)
 // ========================================
 const initProjectsCarousel = () => {
+    // Only run on mobile
+    if (window.innerWidth > 768) return;
+
     const grid = document.querySelector('.projects-grid');
-    const dotsContainer = document.querySelector('.carousel-dots');
-    if (!grid || !dotsContainer) return;
+    if (!grid) return;
 
     const cards = grid.querySelectorAll('.project-card');
-    const dots = dotsContainer.querySelectorAll('.carousel-dot');
-    if (!cards.length || !dots.length) return;
+    if (!cards.length) return;
 
-    let currentIndex = 0;
-    let isScrolling = false;
-
-    // Update active dot based on scroll position
-    const updateActiveDot = () => {
-        const scrollLeft = grid.scrollLeft;
-        const cardWidth = cards[0].offsetWidth + 16; // Include gap
-        const newIndex = Math.round(scrollLeft / cardWidth);
-
-        if (newIndex !== currentIndex && newIndex >= 0 && newIndex < dots.length) {
-            currentIndex = newIndex;
-            dots.forEach((dot, i) => {
-                dot.classList.toggle('active', i === currentIndex);
-            });
-        }
+    // Intersection Observer to detect when card is in center
+    const observerOptions = {
+        root: grid,
+        rootMargin: '-25% 0px -25% 0px', // Card is "in focus" when in middle 50%
+        threshold: 0.5
     };
 
-    // Scroll to card when dot is clicked
-    const scrollToCard = (index) => {
-        if (index < 0 || index >= cards.length) return;
-
-        const cardWidth = cards[0].offsetWidth + 16;
-        const scrollPosition = index * cardWidth;
-
-        grid.scrollTo({
-            left: scrollPosition,
-            behavior: 'smooth'
+    const handleIntersect = (entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                // Remove focus from all cards
+                cards.forEach(card => card.classList.remove('in-focus'));
+                // Add focus to intersecting card
+                entry.target.classList.add('in-focus');
+            }
         });
     };
 
-    // Listen for scroll events
-    grid.addEventListener('scroll', () => {
-        if (!isScrolling) {
-            window.requestAnimationFrame(() => {
-                updateActiveDot();
-                isScrolling = false;
-            });
-            isScrolling = true;
-        }
-    }, { passive: true });
+    const observer = new IntersectionObserver(handleIntersect, observerOptions);
+    cards.forEach(card => observer.observe(card));
 
-    // Handle dot clicks
-    dots.forEach((dot, index) => {
-        dot.addEventListener('click', () => {
-            scrollToCard(index);
-        });
-    });
+    // Set first card as initially in focus
+    if (cards[0]) cards[0].classList.add('in-focus');
 };
 
 // ========================================
