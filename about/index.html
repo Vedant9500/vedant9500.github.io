@@ -292,6 +292,16 @@
                                 </div>
                             </div>
                         </div>
+                        <!-- Pagination dots for mobile carousel -->
+                        <div class="carousel-dots" aria-label="Project navigation">
+                            <button class="carousel-dot active" data-index="0" aria-label="Project 1"
+                                type="button"></button>
+                            <button class="carousel-dot" data-index="1" aria-label="Project 2" type="button"></button>
+                            <button class="carousel-dot" data-index="2" aria-label="Project 3" type="button"></button>
+                            <button class="carousel-dot" data-index="3" aria-label="Project 4" type="button"></button>
+                            <button class="carousel-dot" data-index="4" aria-label="Project 5" type="button"></button>
+                            <button class="carousel-dot" data-index="5" aria-label="Project 6" type="button"></button>
+                        </div>
                     </div>
                 </div>
             </section>
@@ -302,69 +312,93 @@
                 <div class="section-inner">
                     <div class="container">
                         <h2>My Toolbox</h2>
-                        <div class="achievements-grid">
-                            <div class="achievement-card">
-                                <div class="achievement-icon">
-                                    <i class="fas fa-code"></i>
-                                </div>
-                                <h3>Languages</h3>
-                                <div class="skill-pills">
-                                    <span class="skill-pill" data-level="expert">Python</span>
-                                    <span class="skill-pill" data-level="expert">C++</span>
-                                    <span class="skill-pill" data-level="learning">Go</span>
-                                    <span class="skill-pill" data-level="proficient">JavaScript</span>
-                                    <span class="skill-pill" data-level="proficient">Dart</span>
-                                </div>
-                            </div>
-
-                            <div class="achievement-card">
-                                <div class="achievement-icon">
-                                    <i class="fas fa-brain"></i>
-                                </div>
-                                <h3>Machine Learning</h3>
-                                <div class="skill-pills">
-                                    <span class="skill-pill" data-level="proficient">PyTorch</span>
-                                    <span class="skill-pill" data-level="proficient">TensorFlow</span>
-                                    <span class="skill-pill" data-level="proficient">Pandas</span>
-                                    <span class="skill-pill" data-level="learning">NumPy</span>
+                        <div class="toolbox-accordion">
+                            <div class="toolbox-category" data-expanded="true">
+                                <button class="toolbox-header" type="button" aria-expanded="true">
+                                    <div class="toolbox-header-content">
+                                        <i class="fas fa-code" aria-hidden="true"></i>
+                                        <span>Languages</span>
+                                    </div>
+                                    <i class="fas fa-chevron-down toolbox-chevron" aria-hidden="true"></i>
+                                </button>
+                                <div class="toolbox-content">
+                                    <div class="skill-pills">
+                                        <span class="skill-pill">Python</span>
+                                        <span class="skill-pill">C++</span>
+                                        <span class="skill-pill">JavaScript</span>
+                                        <span class="skill-pill">Go</span>
+                                        <span class="skill-pill">Dart</span>
+                                    </div>
                                 </div>
                             </div>
 
-                            <div class="achievement-card">
-                                <div class="achievement-icon">
-                                    <i class="fas fa-microchip"></i>
-                                </div>
-                                <h3>Systems & Graphics</h3>
-                                <div class="skill-pills">
-                                    <span class="skill-pill" data-level="proficient">OpenGL</span>
-                                    <span class="skill-pill" data-level="proficient">Physics Sims</span>
-                                    <span class="skill-pill" data-level="proficient">Low-level</span>
-                                    <span class="skill-pill" data-level="learning">System Utils</span>
-                                </div>
-                            </div>
-
-                            <div class="achievement-card">
-                                <div class="achievement-icon">
-                                    <i class="fas fa-terminal"></i>
-                                </div>
-                                <h3>Tools & Environment</h3>
-                                <div class="skill-pills">
-                                    <span class="skill-pill" data-level="expert">Linux</span>
-                                    <span class="skill-pill" data-level="expert">Git</span>
-                                    <span class="skill-pill" data-level="proficient">Bash</span>
-                                    <span class="skill-pill" data-level="proficient">VS Code</span>
+                            <div class="toolbox-category">
+                                <button class="toolbox-header" type="button" aria-expanded="false">
+                                    <div class="toolbox-header-content">
+                                        <i class="fas fa-brain" aria-hidden="true"></i>
+                                        <span>AI / ML Stack</span>
+                                    </div>
+                                    <i class="fas fa-chevron-down toolbox-chevron" aria-hidden="true"></i>
+                                </button>
+                                <div class="toolbox-content">
+                                    <div class="skill-pills">
+                                        <span class="skill-pill">PyTorch</span>
+                                        <span class="skill-pill">TensorFlow</span>
+                                        <span class="skill-pill">Pandas</span>
+                                        <span class="skill-pill">NumPy</span>
+                                    </div>
                                 </div>
                             </div>
 
-                            <div class="achievement-card">
-                                <div class="achievement-icon">
-                                    <i class="fas fa-cube"></i>
+                            <div class="toolbox-category">
+                                <button class="toolbox-header" type="button" aria-expanded="false">
+                                    <div class="toolbox-header-content">
+                                        <i class="fas fa-microchip" aria-hidden="true"></i>
+                                        <span>Systems & Graphics</span>
+                                    </div>
+                                    <i class="fas fa-chevron-down toolbox-chevron" aria-hidden="true"></i>
+                                </button>
+                                <div class="toolbox-content">
+                                    <div class="skill-pills">
+                                        <span class="skill-pill">OpenGL</span>
+                                        <span class="skill-pill">Physics Sims</span>
+                                        <span class="skill-pill">Low-level</span>
+                                    </div>
                                 </div>
-                                <h3>3D Modeling & Assets</h3>
-                                <div class="skill-pills">
-                                    <span class="skill-pill" data-level="learning">Blender</span>
-                                    <span class="skill-pill" data-level="learning">Rendering</span>
-                                    <span class="skill-pill" data-level="learning">Game Assets</span>
+                            </div>
+
+                            <div class="toolbox-category">
+                                <button class="toolbox-header" type="button" aria-expanded="false">
+                                    <div class="toolbox-header-content">
+                                        <i class="fas fa-terminal" aria-hidden="true"></i>
+                                        <span>Tools & Environment</span>
+                                    </div>
+                                    <i class="fas fa-chevron-down toolbox-chevron" aria-hidden="true"></i>
+                                </button>
+                                <div class="toolbox-content">
+                                    <div class="skill-pills">
+                                        <span class="skill-pill">Linux</span>
+                                        <span class="skill-pill">Git</span>
+                                        <span class="skill-pill">Bash</span>
+                                        <span class="skill-pill">VS Code</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="toolbox-category">
+                                <button class="toolbox-header" type="button" aria-expanded="false">
+                                    <div class="toolbox-header-content">
+                                        <i class="fas fa-cube" aria-hidden="true"></i>
+                                        <span>Exploring</span>
+                                    </div>
+                                    <i class="fas fa-chevron-down toolbox-chevron" aria-hidden="true"></i>
+                                </button>
+                                <div class="toolbox-content">
+                                    <div class="skill-pills">
+                                        <span class="skill-pill">Blender</span>
+                                        <span class="skill-pill">3D Rendering</span>
+                                        <span class="skill-pill">Game Assets</span>
+                                    </div>
                                 </div>
                             </div>
                         </div>
