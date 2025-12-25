@@ -2690,7 +2690,32 @@ html[data-theme="dark"] .content-section::after {
         padding: 20px;
         scroll-snap-align: start;
         min-height: auto;
-        transition: transform 0.3s ease, box-shadow 0.3s ease, opacity 0.3s ease;
+        transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
+        opacity: 0.85;
+        transform: scale(0.98);
+    }
+
+    /* Auto-highlight when card is in focus (JS controlled) */
+    .about-card.in-focus {
+        opacity: 1;
+        transform: scale(1);
+        background: rgba(255, 255, 255, 0.85);
+        box-shadow:
+            0 4px 8px rgba(0, 0, 0, 0.06),
+            0 8px 16px rgba(0, 0, 0, 0.06),
+            0 16px 32px rgba(0, 0, 0, 0.08);
+    }
+
+    html[data-theme="dark"] .about-card.in-focus {
+        background: rgba(55, 55, 55, 0.90);
+        box-shadow:
+            0 8px 32px rgba(0, 0, 0, 0.3),
+            0 0 0 1px rgba(224, 164, 88, 0.15);
+    }
+
+    .about-card.in-focus .about-card-icon {
+        transform: translateY(-2px) scale(1.05);
+        box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
     }
 
     /* First card (intro) - more prominent */
@@ -2757,15 +2782,21 @@ html[data-theme="dark"] .content-section::after {
         display: none;
     }
 
-    /* Project card sizing for peek effect */
+    /* Project card sizing - compact card-like appearance */
     .project-card {
-        flex: 0 0 85vw !important;
-        max-width: 340px !important;
-        min-height: 280px !important;
-        padding: 24px !important;
+        flex: 0 0 80vw !important;
+        max-width: 300px !important;
+        min-height: auto !important;
+        height: auto !important;
+        padding: 20px !important;
         scroll-snap-align: center;
         scroll-snap-stop: always;
-        transition: transform 0.3s ease, opacity 0.3s ease;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .project-card p {
+        margin-bottom: 1rem !important;
+        flex: 0 0 auto !important;
     }
 
     /* Featured card same size on mobile */
@@ -2851,38 +2882,56 @@ html[data-theme="dark"] .content-section::after {
         background: var(--pastel-primary);
     }
 
-    /* Toolbox mobile */
-    .toolbox-grid {
-        grid-template-columns: repeat(2, 1fr);
+    /* ========================================
+       TOOLBOX MOBILE - Always Expanded View
+       ======================================== */
+    .toolbox-accordion {
         gap: 16px;
     }
 
-    .tool-card {
-        padding: 20px 16px;
+    /* Hide accordion toggle elements on mobile */
+    .toolbox-chevron {
+        display: none !important;
     }
 
-    /* Achievements mobile */
-    .achievements-grid {
-        grid-template-columns: 1fr;
-        gap: 16px;
+    /* Make header non-interactive on mobile */
+    .toolbox-header {
+        cursor: default;
+        padding: 12px 16px;
     }
 
-    .achievement-card {
-        padding: 20px;
+    .toolbox-header:hover {
+        background: transparent;
     }
 
-    .achievement-card h3 {
-        font-size: 1rem;
+    .toolbox-header-content i {
+        width: 32px;
+        height: 32px;
+        font-size: 0.9rem;
     }
 
-    /* Skill pills mobile */
+    .toolbox-header-content span {
+        font-size: 0.95rem;
+    }
+
+    /* Force all content visible */
+    .toolbox-content {
+        grid-template-rows: 1fr !important;
+        padding: 0 16px 14px 16px !important;
+    }
+
+    .toolbox-category {
+        padding-bottom: 0;
+    }
+
+    /* Compact skill pills for mobile */
     .skill-pills {
         gap: 6px;
     }
 
     .skill-pill {
         font-size: 0.75rem;
-        padding: 4px 10px;
+        padding: 5px 10px;
     }
 
     /* Hide home page desktop nav pill on mobile */
