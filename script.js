@@ -702,6 +702,90 @@ const initScrollIndicators = () => {
 };
 
 // ========================================
+// TOOLBOX ACCORDION
+// ========================================
+const initToolboxAccordion = () => {
+    const accordion = document.querySelector('.toolbox-accordion');
+    if (!accordion) return;
+
+    const categories = accordion.querySelectorAll('.toolbox-category');
+
+    categories.forEach(category => {
+        const header = category.querySelector('.toolbox-header');
+        if (!header) return;
+
+        header.addEventListener('click', () => {
+            const isExpanded = category.dataset.expanded === 'true';
+
+            // Toggle current category
+            category.dataset.expanded = isExpanded ? 'false' : 'true';
+            header.setAttribute('aria-expanded', isExpanded ? 'false' : 'true');
+        });
+    });
+};
+
+// ========================================
+// PROJECTS CAROUSEL (Mobile)
+// ========================================
+const initProjectsCarousel = () => {
+    const grid = document.querySelector('.projects-grid');
+    const dotsContainer = document.querySelector('.carousel-dots');
+    if (!grid || !dotsContainer) return;
+
+    const cards = grid.querySelectorAll('.project-card');
+    const dots = dotsContainer.querySelectorAll('.carousel-dot');
+    if (!cards.length || !dots.length) return;
+
+    let currentIndex = 0;
+    let isScrolling = false;
+
+    // Update active dot based on scroll position
+    const updateActiveDot = () => {
+        const scrollLeft = grid.scrollLeft;
+        const cardWidth = cards[0].offsetWidth + 16; // Include gap
+        const newIndex = Math.round(scrollLeft / cardWidth);
+
+        if (newIndex !== currentIndex && newIndex >= 0 && newIndex < dots.length) {
+            currentIndex = newIndex;
+            dots.forEach((dot, i) => {
+                dot.classList.toggle('active', i === currentIndex);
+            });
+        }
+    };
+
+    // Scroll to card when dot is clicked
+    const scrollToCard = (index) => {
+        if (index < 0 || index >= cards.length) return;
+
+        const cardWidth = cards[0].offsetWidth + 16;
+        const scrollPosition = index * cardWidth;
+
+        grid.scrollTo({
+            left: scrollPosition,
+            behavior: 'smooth'
+        });
+    };
+
+    // Listen for scroll events
+    grid.addEventListener('scroll', () => {
+        if (!isScrolling) {
+            window.requestAnimationFrame(() => {
+                updateActiveDot();
+                isScrolling = false;
+            });
+            isScrolling = true;
+        }
+    }, { passive: true });
+
+    // Handle dot clicks
+    dots.forEach((dot, index) => {
+        dot.addEventListener('click', () => {
+            scrollToCard(index);
+        });
+    });
+};
+
+// ========================================
 // CONSOLIDATED INITIALIZATION
 // ========================================
 document.addEventListener('DOMContentLoaded', () => {
@@ -710,4 +794,6 @@ document.addEventListener('DOMContentLoaded', () => {
     initMobileToggles();
     initPageNavigation();
     initScrollIndicators();
+    initToolboxAccordion();
+    initProjectsCarousel();
 });
