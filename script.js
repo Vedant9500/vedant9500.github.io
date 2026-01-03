@@ -426,6 +426,16 @@ const SectionNavigator = (() => {
         velocitySamples = [];
         lastTransitionTime = performance.now();
 
+        // Update nav indicator position
+        if (window.updateNavIndicator) {
+            requestAnimationFrame(window.updateNavIndicator);
+        }
+
+        // Trigger haptic feedback on section change
+        if (window.triggerHaptic) {
+            window.triggerHaptic('light');
+        }
+
         // Trigger reveal animations for the target section after slide-in
         setTimeout(() => {
             if (window.triggerSectionReveals) {
@@ -907,6 +917,102 @@ const initTouchRipple = () => {
 };
 
 // ========================================
+// MORPHING NAV INDICATOR (Mobile)
+// ========================================
+const initNavIndicator = () => {
+    // Only run on mobile
+    if (window.innerWidth > 768) return;
+
+    const nav = document.querySelector('.mobile-bottom-nav');
+    const indicator = nav?.querySelector('.nav-indicator');
+    if (!nav || !indicator) return;
+
+    const updateIndicator = () => {
+        const activeItem = nav.querySelector('.mobile-nav-item.active');
+        if (!activeItem) {
+            indicator.style.opacity = '0';
+            return;
+        }
+
+        indicator.style.opacity = '1';
+
+        // Get positions relative to nav container
+        const navRect = nav.getBoundingClientRect();
+        const activeRect = activeItem.getBoundingClientRect();
+
+        // Calculate offset from nav's left edge (accounting for nav padding)
+        const navPadding = parseFloat(getComputedStyle(nav).paddingLeft);
+        const offsetX = activeRect.left - navRect.left;
+        const offsetY = activeRect.top - navRect.top;
+
+        indicator.style.transform = `translate(${offsetX}px, ${offsetY}px)`;
+    };
+
+    // Initial position
+    updateIndicator();
+
+    // Update on nav item click
+    const navItems = nav.querySelectorAll('.mobile-nav-item[data-section]');
+    navItems.forEach(item => {
+        item.addEventListener('click', () => {
+            // Small delay to let class update happen first
+            requestAnimationFrame(updateIndicator);
+        });
+    });
+
+    // Update on window resize
+    window.addEventListener('resize', updateIndicator);
+
+    // Expose function globally for use by SectionNavigator
+    window.updateNavIndicator = updateIndicator;
+};
+
+// ========================================
+// HAPTIC FEEDBACK (Mobile)
+// ========================================
+const triggerHaptic = (type = 'light') => {
+    // Check if vibration API is available
+    if (!navigator.vibrate) return;
+
+    switch (type) {
+        case 'light':
+            navigator.vibrate(10);
+            break;
+        case 'medium':
+            navigator.vibrate(25);
+            break;
+        case 'heavy':
+            navigator.vibrate(50);
+            break;
+        case 'success':
+            navigator.vibrate([10, 50, 10]);
+            break;
+        default:
+            navigator.vibrate(10);
+    }
+};
+
+const initHapticFeedback = () => {
+    // Only run on mobile with vibration support
+    if (window.innerWidth > 768 || !navigator.vibrate) return;
+
+    // Add haptic to nav items
+    const navItems = document.querySelectorAll('.mobile-nav-item');
+    navItems.forEach(item => {
+        item.addEventListener('click', () => triggerHaptic('light'), { passive: true });
+    });
+
+    // Add haptic to cards (on touch)
+    const cards = document.querySelectorAll('.about-card, .project-card');
+    cards.forEach(card => {
+        card.addEventListener('touchstart', () => triggerHaptic('light'), { passive: true });
+    });
+
+    // Expose globally for section switches
+    window.triggerHaptic = triggerHaptic;
+};
+
+// ========================================
 // CONSOLIDATED INITIALIZATION
 // ========================================
 document.addEventListener('DOMContentLoaded', () => {
@@ -920,4 +1026,6 @@ document.addEventListener('DOMContentLoaded', () => {
     initAboutCardsFocus();
     initScrollProgressIndicator();
     initTouchRipple();
+    initNavIndicator();
+    initHapticFeedback();
 });
