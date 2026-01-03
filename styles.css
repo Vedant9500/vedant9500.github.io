@@ -2533,6 +2533,10 @@ html[data-theme="dark"] .content-section::after {
     pointer-events: none;
     transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
     z-index: 0;
+    /* Position at nav's padding offset so transform aligns correctly */
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
 }
 
 [data-theme="dark"] .nav-indicator {
