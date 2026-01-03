@@ -740,17 +740,17 @@ const initProjectsCarousel = () => {
     // Only run on mobile
     if (window.innerWidth > 768) return;
 
-    const grid = document.querySelector('.projects-grid');
-    if (!grid) return;
+    const section = document.querySelector('.content-section[data-section="projects"]');
+    if (!section) return;
 
-    const cards = grid.querySelectorAll('.project-card');
+    const cards = section.querySelectorAll('.project-card');
     if (!cards.length) return;
 
-    // Intersection Observer to detect when card is in center
+    // Intersection Observer to detect when card is in center of section
     const observerOptions = {
-        root: grid,
-        rootMargin: '-25% 0px -25% 0px', // Card is "in focus" when in middle 50%
-        threshold: 0.5
+        root: section, // Section is now the scroll container
+        rootMargin: '-30% 0px -30% 0px', // Card is "in focus" when in middle 40%
+        threshold: 0.3
     };
 
     const handleIntersect = (entries) => {

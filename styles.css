@@ -2753,45 +2753,33 @@ html[data-theme="dark"] .content-section::after {
        One card at a time with scroll-snap
        ======================================== */
 
-    /* Container fills available space */
+    /* Let the section scroll naturally like other sections */
+    .content-section[data-section="projects"] {
+        overflow-y: auto;
+        scroll-snap-type: y proximity;
+        -webkit-overflow-scrolling: touch;
+    }
+
     .content-section[data-section="projects"] .section-inner {
-        padding: 0;
-        height: 100%;
-        display: flex;
-        flex-direction: column;
+        padding: 20px 0 120px 0;
+        /* Bottom padding for navbar */
     }
 
     .content-section[data-section="projects"] .section-inner .container {
-        flex: 1;
-        display: flex;
-        flex-direction: column;
         max-width: 100%;
-        padding: 0;
-        overflow: hidden;
+        padding: 0 20px;
     }
 
     .content-section[data-section="projects"] .section-inner .container h2 {
-        flex: 0 0 auto;
-        padding: 20px 20px 16px 20px;
-        margin: 0;
+        margin-bottom: 20px;
     }
 
-    /* Vertical scroll container */
+    /* Simple vertical stack - no separate scroll container */
     .projects-grid {
-        flex: 1 !important;
         display: flex !important;
         flex-direction: column !important;
-        overflow-y: auto !important;
-        overflow-x: hidden !important;
-        scroll-snap-type: y proximity;
-        scroll-behavior: smooth;
         gap: 20px !important;
-        /* Top padding for smooth start, bottom padding to clear navbar */
-        padding: 10px 20px 120px 20px !important;
         margin: 0 !important;
-        -webkit-overflow-scrolling: touch;
-        scrollbar-width: none;
-        -ms-overflow-style: none;
     }
 
     .projects-grid::-webkit-scrollbar {
