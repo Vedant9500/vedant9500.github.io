@@ -2874,6 +2874,34 @@ html[data-theme="dark"] .content-section::after {
     }
 
     /* ========================================
+       SCROLL PROGRESS INDICATOR (Mobile)
+       ======================================== */
+    .scroll-progress {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 3px;
+        background: transparent;
+        z-index: 1000;
+        pointer-events: none;
+    }
+
+    .scroll-progress-bar {
+        height: 100%;
+        background: linear-gradient(90deg, var(--pastel-primary), var(--pastel-secondary, var(--pastel-primary)));
+        transform-origin: left;
+        transform: scaleX(0);
+        transition: transform 0.1s linear;
+        border-radius: 0 2px 2px 0;
+    }
+
+    html[data-theme="dark"] .scroll-progress-bar {
+        background: linear-gradient(90deg, var(--pastel-primary), #c9a060);
+        box-shadow: 0 0 8px rgba(224, 164, 88, 0.4);
+    }
+
+    /* ========================================
        TOOLBOX MOBILE - Always Expanded View
        ======================================== */
     .toolbox-accordion {
@@ -2928,6 +2956,53 @@ html[data-theme="dark"] .content-section::after {
     /* Hide home page desktop nav pill on mobile */
     .nav-pill {
         display: none !important;
+    }
+
+    /* ========================================
+       TOUCH RIPPLE FEEDBACK (Mobile)
+       ======================================== */
+    .touch-ripple {
+        position: relative;
+        overflow: hidden;
+        -webkit-tap-highlight-color: transparent;
+    }
+
+    .touch-ripple::after {
+        content: '';
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 0;
+        height: 0;
+        border-radius: 50%;
+        background: rgba(124, 154, 146, 0.25);
+        transform: translate(-50%, -50%);
+        opacity: 0;
+        pointer-events: none;
+        transition: width 0.4s ease-out, height 0.4s ease-out, opacity 0.4s ease-out;
+    }
+
+    .touch-ripple.rippling::after {
+        width: 300%;
+        height: 300%;
+        opacity: 0;
+    }
+
+    .touch-ripple:active::after {
+        width: 0;
+        height: 0;
+        opacity: 1;
+        transition: 0s;
+    }
+
+    html[data-theme="dark"] .touch-ripple::after {
+        background: rgba(224, 164, 88, 0.2);
+    }
+
+    /* Apply ripple to interactive cards */
+    .about-card.touch-ripple,
+    .project-card.touch-ripple {
+        cursor: pointer;
     }
 
     /* Contact popover mobile positioning - JS handles left/bottom dynamically */

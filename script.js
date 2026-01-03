@@ -502,6 +502,11 @@ const SectionNavigator = (() => {
     const handleTouchStart = (e) => {
         touchStartX = e.changedTouches[0].screenX;
         touchStartY = e.changedTouches[0].screenY;
+        // Track if swipe started near screen edge for easier navigation
+        const clientX = e.changedTouches[0].clientX;
+        const screenWidth = window.innerWidth;
+        const isEdgeSwipe = clientX < 30 || clientX > screenWidth - 30;
+        e.target._isEdgeSwipe = isEdgeSwipe;
     };
 
     const handleTouchEnd = (e) => {
@@ -510,13 +515,17 @@ const SectionNavigator = (() => {
         const deltaX = touchEndX - touchStartX;
         const deltaY = touchEndY - touchStartY;
 
-        if (Math.abs(deltaX) > Math.abs(deltaY) && Math.abs(deltaX) > MIN_SWIPE_DISTANCE) {
+        // Use lower threshold for edge swipes (40px vs 80px for regular swipes)
+        const isEdgeSwipe = e.target._isEdgeSwipe;
+        const swipeThreshold = isEdgeSwipe ? 40 : MIN_SWIPE_DISTANCE;
+
+        if (Math.abs(deltaX) > Math.abs(deltaY) && Math.abs(deltaX) > swipeThreshold) {
             const currentIndex = sectionOrder.indexOf(currentSection);
 
             if (deltaX < 0 && currentIndex < sectionOrder.length - 1) {
-                switchSection(sectionOrder[currentIndex + 1], { transitionMs: 400 });
+                switchSection(sectionOrder[currentIndex + 1], { transitionMs: isEdgeSwipe ? 300 : 400 });
             } else if (deltaX > 0 && currentIndex > 0) {
-                switchSection(sectionOrder[currentIndex - 1], { transitionMs: 400 });
+                switchSection(sectionOrder[currentIndex - 1], { transitionMs: isEdgeSwipe ? 300 : 400 });
             }
         }
     };
@@ -801,6 +810,93 @@ const initAboutCardsFocus = () => {
 };
 
 // ========================================
+// SCROLL PROGRESS INDICATOR (Mobile)
+// ========================================
+const initScrollProgressIndicator = () => {
+    // Only run on mobile
+    if (window.innerWidth > 768) return;
+
+    const progressBar = document.querySelector('.scroll-progress-bar');
+    if (!progressBar) return;
+
+    // Get all scrollable sections
+    const sections = document.querySelectorAll('.content-section');
+
+    // Track scroll on each section
+    sections.forEach(section => {
+        const scrollContainer = section.querySelector('.section-inner') || section;
+
+        // Find the scrollable element within the section
+        const scrollableElements = [
+            section.querySelector('.about-content'),
+            section.querySelector('.projects-grid'),
+            section
+        ].filter(el => el && el.scrollHeight > el.clientHeight);
+
+        scrollableElements.forEach(scrollable => {
+            scrollable.addEventListener('scroll', () => {
+                // Only update if this section is active
+                if (!section.classList.contains('active')) return;
+
+                const scrollTop = scrollable.scrollTop;
+                const scrollHeight = scrollable.scrollHeight - scrollable.clientHeight;
+                const progress = scrollHeight > 0 ? scrollTop / scrollHeight : 0;
+
+                progressBar.style.transform = `scaleX(${Math.min(progress, 1)})`;
+            }, { passive: true });
+        });
+    });
+
+    // Also track main section scroll for sections without internal scroll
+    const sectionsTrack = document.querySelector('.sections-track');
+    if (sectionsTrack) {
+        sectionsTrack.addEventListener('scroll', () => {
+            const activeSection = document.querySelector('.content-section.active');
+            if (!activeSection) return;
+
+            const scrollTop = activeSection.scrollTop;
+            const scrollHeight = activeSection.scrollHeight - activeSection.clientHeight;
+            const progress = scrollHeight > 0 ? scrollTop / scrollHeight : 0;
+
+            progressBar.style.transform = `scaleX(${Math.min(progress, 1)})`;
+        }, { passive: true });
+    }
+
+    // Reset progress when section changes
+    const navButtons = document.querySelectorAll('.mobile-bottom-nav button');
+    navButtons.forEach(btn => {
+        btn.addEventListener('click', () => {
+            progressBar.style.transform = 'scaleX(0)';
+        });
+    });
+};
+
+// ========================================
+// TOUCH RIPPLE FEEDBACK (Mobile)
+// ========================================
+const initTouchRipple = () => {
+    // Only run on mobile/touch devices
+    if (window.innerWidth > 768) return;
+
+    // Select all cards that should have ripple
+    const cards = document.querySelectorAll('.about-card, .project-card');
+
+    cards.forEach(card => {
+        card.classList.add('touch-ripple');
+
+        card.addEventListener('touchstart', function (e) {
+            // Add rippling class
+            this.classList.add('rippling');
+
+            // Remove rippling class after animation completes
+            setTimeout(() => {
+                this.classList.remove('rippling');
+            }, 400);
+        }, { passive: true });
+    });
+};
+
+// ========================================
 // CONSOLIDATED INITIALIZATION
 // ========================================
 document.addEventListener('DOMContentLoaded', () => {
@@ -812,4 +908,6 @@ document.addEventListener('DOMContentLoaded', () => {
     initToolboxAccordion();
     initProjectsCarousel();
     initAboutCardsFocus();
+    initScrollProgressIndicator();
+    initTouchRipple();
 });
