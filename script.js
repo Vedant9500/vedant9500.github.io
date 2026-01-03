@@ -973,7 +973,7 @@ const initNavIndicator = () => {
 // ========================================
 // HAPTIC FEEDBACK (Mobile)
 // ========================================
-const triggerHaptic = (type = 'light') => {
+const triggerHaptic = (type = 'success') => {
     // Check if vibration API is available
     if (!navigator.vibrate) return;
 
