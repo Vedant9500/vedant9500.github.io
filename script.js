@@ -403,13 +403,23 @@ const SectionNavigator = (() => {
         if (targetSectionEl) {
             targetSectionEl.classList.add(`slide-in-${direction === 'right' ? 'right' : 'left'}`);
 
+            // Always scroll to top when switching sections (regardless of direction)
             if (scrollToTop) {
-                targetSectionEl.scrollTop = direction === 'right' ? 0 : Math.max(0, targetSectionEl.scrollHeight - targetSectionEl.clientHeight);
+                targetSectionEl.scrollTop = 0;
+                // Also reset any inner scrollable containers
+                const innerScrollables = targetSectionEl.querySelectorAll('.about-content, .projects-grid, .toolbox-accordion');
+                innerScrollables.forEach(el => el.scrollTop = 0);
             }
 
             requestAnimationFrame(() => {
                 targetSectionEl.classList.add('active');
             });
+        }
+
+        // Reset scroll progress bar
+        const progressBar = document.querySelector('.scroll-progress-bar');
+        if (progressBar) {
+            progressBar.style.transform = 'scaleX(0)';
         }
 
         currentSection = targetSection;

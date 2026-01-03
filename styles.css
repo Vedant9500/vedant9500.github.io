@@ -2772,6 +2772,10 @@ html[data-theme="dark"] .content-section::after {
 
     .content-section[data-section="projects"] .section-inner .container h2 {
         margin-bottom: 20px;
+        /* Override reveal animation on mobile - title should always be visible */
+        opacity: 1 !important;
+        transform: none !important;
+        scroll-snap-align: start;
     }
 
     /* Simple vertical stack - no separate scroll container */
