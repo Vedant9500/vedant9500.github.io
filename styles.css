@@ -2783,10 +2783,11 @@ html[data-theme="dark"] .content-section::after {
         flex-direction: column !important;
         overflow-y: auto !important;
         overflow-x: hidden !important;
-        scroll-snap-type: y mandatory;
+        scroll-snap-type: y proximity;
         scroll-behavior: smooth;
         gap: 20px !important;
-        padding: 0 20px 20px 20px !important;
+        /* Top padding for smooth start, bottom padding to clear navbar */
+        padding: 10px 20px 120px 20px !important;
         margin: 0 !important;
         -webkit-overflow-scrolling: touch;
         scrollbar-width: none;
