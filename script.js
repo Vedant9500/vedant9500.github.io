@@ -940,12 +940,15 @@ const initNavIndicator = () => {
         const navRect = nav.getBoundingClientRect();
         const activeRect = activeItem.getBoundingClientRect();
 
-        // Calculate offset from nav's left edge (accounting for nav padding)
-        const navPadding = parseFloat(getComputedStyle(nav).paddingLeft);
-        const offsetX = activeRect.left - navRect.left;
-        const offsetY = activeRect.top - navRect.top;
+        // Get nav padding (indicator needs to start after padding)
+        const navPaddingLeft = parseFloat(getComputedStyle(nav).paddingLeft);
+        const navPaddingTop = parseFloat(getComputedStyle(nav).paddingTop);
 
-        indicator.style.transform = `translate(${offsetX}px, ${offsetY}px)`;
+        // Calculate offset from nav's content area (not including padding)
+        const offsetX = activeRect.left - navRect.left - navPaddingLeft;
+
+        // Use translateX only, preserve translateY(-50%) for vertical centering
+        indicator.style.transform = `translate(${offsetX + navPaddingLeft}px, -50%)`;
     };
 
     // Initial position
