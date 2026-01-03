@@ -1028,11 +1028,11 @@ html[data-theme="dark"] .about-card:hover {
 }
 
 html[data-theme="dark"] .about-card-icon {
-    box-shadow: 0 4px 12px rgba(224, 164, 88, 0.25);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
 }
 
 html[data-theme="dark"] .about-card:hover .about-card-icon {
-    box-shadow: 0 8px 24px rgba(224, 164, 88, 0.4);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
 }
 
 /* Varied icon colors */
@@ -1447,11 +1447,11 @@ html[data-theme="dark"] .achievement-card:hover {
 }
 
 html[data-theme="dark"] .achievement-icon {
-    box-shadow: 0 4px 12px rgba(224, 164, 88, 0.25);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
 }
 
 html[data-theme="dark"] .achievement-card:hover .achievement-icon {
-    box-shadow: 0 8px 24px rgba(224, 164, 88, 0.4);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
 }
 
 /* Varied icon colors for visual interest */
@@ -1575,6 +1575,19 @@ html[data-theme="dark"] .toolbox-category:hover {
     box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
 }
 
+/* Expanded state - highlight entire card */
+.toolbox-category[data-expanded="true"] {
+    background: rgba(255, 255, 255, 0.70);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+}
+
+html[data-theme="dark"] .toolbox-category[data-expanded="true"] {
+    background: rgba(45, 45, 45, 0.85);
+    /* Same as normal state */
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.35);
+    /* Subtle shadow around card */
+}
+
 .toolbox-header {
     width: 100%;
     display: flex;
@@ -1597,7 +1610,19 @@ html[data-theme="dark"] .toolbox-category:hover {
 }
 
 html[data-theme="dark"] .toolbox-header:hover {
-    background: rgba(224, 164, 88, 0.06);
+    background: transparent;
+    /* No separate hover - let category handle it */
+}
+
+/* Remove header hover effect when card is expanded to prevent two-tone look */
+.toolbox-category[data-expanded="true"] .toolbox-header:hover {
+    background: transparent;
+}
+
+/* Ensure header and content inherit background in dark theme */
+html[data-theme="dark"] .toolbox-header,
+html[data-theme="dark"] .toolbox-content {
+    background: inherit;
 }
 
 .toolbox-header-content {
@@ -1630,7 +1655,7 @@ html[data-theme="dark"] .toolbox-header-content i {
 }
 
 html[data-theme="dark"] .toolbox-category[data-expanded="true"] .toolbox-header-content i {
-    box-shadow: 0 4px 12px rgba(224, 164, 88, 0.3);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
 }
 
 /* Varied icon colors */
@@ -2541,7 +2566,6 @@ html[data-theme="dark"] .content-section::after {
 
 [data-theme="dark"] .nav-indicator {
     background: rgba(124, 154, 146, 0.2);
-    box-shadow: 0 0 12px rgba(124, 154, 146, 0.2);
 }
 
 [data-theme="dark"] .mobile-bottom-nav {
