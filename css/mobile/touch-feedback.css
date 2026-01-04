@@ -1,0 +1,92 @@
+/* ========================================
+   MOBILE TOUCH FEEDBACK
+   ======================================== */
+
+/* ========================================
+   TOUCH RIPPLE EFFECT
+   ======================================== */
+.touch-ripple {
+    position: relative;
+    overflow: hidden;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.touch-ripple::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background: rgba(124, 154, 146, 0.25);
+    transform: translate(-50%, -50%);
+    opacity: 0;
+    pointer-events: none;
+    transition: width 0.4s ease-out, height 0.4s ease-out, opacity 0.4s ease-out;
+}
+
+.touch-ripple.rippling::after {
+    width: 300%;
+    height: 300%;
+    opacity: 0;
+}
+
+.touch-ripple:active::after {
+    width: 0;
+    height: 0;
+    opacity: 1;
+    transition: 0s;
+}
+
+html[data-theme="dark"] .touch-ripple::after {
+    background: rgba(224, 164, 88, 0.2);
+}
+
+/* Apply ripple to interactive cards */
+.about-card.touch-ripple,
+.project-card.touch-ripple {
+    cursor: pointer;
+}
+
+/* ========================================
+   CARD IN-FOCUS STATES (Mobile)
+   ======================================== */
+
+/* About card focus state */
+.about-card.in-focus {
+    opacity: 1;
+    transform: scale(1);
+    background: rgba(255, 255, 255, 0.85);
+    box-shadow:
+        0 4px 8px rgba(0, 0, 0, 0.06),
+        0 8px 16px rgba(0, 0, 0, 0.06),
+        0 16px 32px rgba(0, 0, 0, 0.08);
+}
+
+html[data-theme="dark"] .about-card.in-focus {
+    background: rgba(55, 55, 55, 0.90);
+    box-shadow:
+        0 8px 32px rgba(0, 0, 0, 0.3),
+        0 0 0 1px rgba(224, 164, 88, 0.15);
+}
+
+.about-card.in-focus .about-card-icon {
+    transform: translateY(-2px) scale(1.05);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+}
+
+/* Project card focus state */
+.project-card.in-focus {
+    opacity: 1;
+    transform: scale(1);
+    box-shadow:
+        0 8px 32px rgba(0, 0, 0, 0.12),
+        0 0 0 1px rgba(124, 154, 146, 0.1);
+}
+
+html[data-theme="dark"] .project-card.in-focus {
+    box-shadow:
+        0 8px 32px rgba(0, 0, 0, 0.3),
+        0 0 0 1px rgba(224, 164, 88, 0.15);
+}

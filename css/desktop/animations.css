@@ -1,0 +1,135 @@
+/* ========================================
+   DESKTOP ANIMATIONS & TRANSITIONS
+   ======================================== */
+
+/* ========================================
+   REVEAL ANIMATIONS
+   ======================================== */
+.reveal {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+    will-change: opacity, transform;
+}
+
+.reveal.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* ========================================
+   THEME TRANSITION RIPPLE
+   ======================================== */
+.theme-ripple {
+    position: fixed;
+    border-radius: 50%;
+    width: 0;
+    height: 0;
+    opacity: 0.5;
+    z-index: 9999;
+    pointer-events: none;
+    transform: translate(-50%, -50%);
+    transition: none;
+}
+
+.theme-ripple.is-on {
+    animation: themeRippleExpand 0.5s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+@keyframes themeRippleExpand {
+    from {
+        width: 0;
+        height: 0;
+        opacity: 1;
+    }
+
+    to {
+        width: 300vmax;
+        height: 300vmax;
+        opacity: 0;
+    }
+}
+
+/* ========================================
+   PAGE TRANSITIONS
+   ======================================== */
+@keyframes pageSlideIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.page-content .sections-viewport {
+    animation: pageSlideIn 0.5s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+.page-content .navbar-expanded .nav-pill-expanded {
+    animation: navPillExpand 0.4s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+@keyframes navPillExpand {
+    from {
+        transform: scale(0.95);
+        opacity: 0.8;
+    }
+
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+/* Home page entry animations */
+.page-intro .nav-pill {
+    animation: navPillCollapse 0.4s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+.page-intro .hero {
+    animation: heroFadeIn 0.6s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+@keyframes navPillCollapse {
+    from {
+        transform: scale(1.02);
+        opacity: 0.8;
+    }
+
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+/* ========================================
+   CARD ENTRANCE ANIMATION
+   ======================================== */
+@keyframes cardFadeUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ========================================
+   SELECTION STYLING
+   ======================================== */
+::selection {
+    background: var(--pastel-primary-soft);
+    color: var(--pastel-primary-on);
+}
+
+/* Remove focus ring for mouse users */
+:focus:not(:focus-visible) {
+    outline: none;
+}
