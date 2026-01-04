@@ -1,0 +1,211 @@
+/* ========================================
+   DESKTOP LAYOUT - Horizontal sections and transitions
+   ======================================== */
+
+/* ========================================
+   HORIZONTAL SECTIONS LAYOUT
+   ======================================== */
+.sections-viewport {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    overflow: hidden;
+}
+
+.sections-track {
+    display: flex;
+    width: 300%;
+    height: 100%;
+    transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.sections-track[data-active-section="about"] {
+    transform: translateX(0);
+}
+
+.sections-track[data-active-section="projects"] {
+    transform: translateX(-33.333%);
+}
+
+.sections-track[data-active-section="toolbox"] {
+    transform: translateX(-66.666%);
+}
+
+.content-section {
+    flex: 0 0 33.333%;
+    width: 33.333%;
+    height: 100%;
+    overflow-y: auto;
+    overflow-x: hidden;
+    scroll-behavior: smooth;
+    overscroll-behavior-y: contain;
+    position: relative;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+.content-section::-webkit-scrollbar {
+    display: none;
+}
+
+/* Bottom scroll indicator - shows when more content is below */
+.content-section::after {
+    content: '';
+    position: sticky;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 60px;
+    pointer-events: none;
+    z-index: 10;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    background: linear-gradient(to top, var(--bg-white) 0%, transparent 100%);
+}
+
+.content-section.can-scroll-down::after {
+    opacity: 1;
+}
+
+html[data-theme="dark"] .content-section::after {
+    background: linear-gradient(to top, var(--bg-primary) 0%, transparent 100%);
+}
+
+.section-inner {
+    padding: 100px 0 2rem 0;
+    min-height: 100%;
+    opacity: 0;
+    transform: translateX(30px);
+    transition: opacity 0.4s ease 0.15s, transform 0.4s ease 0.15s;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.section-inner .container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+}
+
+.content-section.active .section-inner {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+/* Section-specific background colors */
+.content-section[data-section="about"],
+.content-section[data-section="projects"],
+.content-section[data-section="toolbox"] {
+    background: var(--bg-white);
+}
+
+/* Slide direction classes for dynamic animations */
+.content-section.slide-in-left .section-inner {
+    transform: translateX(-30px);
+}
+
+.content-section.slide-in-right .section-inner {
+    transform: translateX(30px);
+}
+
+.content-section.active.slide-in-left .section-inner,
+.content-section.active.slide-in-right .section-inner {
+    transform: translateX(0);
+}
+
+/* Page content body adjustments */
+.page-content {
+    overflow: hidden;
+}
+
+.page-content .footer {
+    display: none;
+}
+
+/* ========================================
+   CONTACT & FOOTER
+   ======================================== */
+.contact {
+    background: var(--bg-white);
+    text-align: center;
+}
+
+.contact-intro {
+    color: var(--text-muted);
+    font-size: 1.1rem;
+    margin-bottom: 2rem;
+    max-width: 400px;
+    margin-inline: auto;
+}
+
+.social-links {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.social-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 56px;
+    height: 56px;
+    background: var(--pastel-primary-soft);
+    border: 1px solid var(--pastel-primary-light);
+    border-radius: 50%;
+    color: var(--pastel-primary);
+    font-size: 1.375rem;
+    text-decoration: none;
+    transition: all 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+}
+
+.social-link:hover {
+    background: var(--pastel-primary);
+    color: white;
+    border-color: var(--pastel-primary);
+}
+
+.footer {
+    padding: 2rem 0;
+    text-align: center;
+    background: transparent;
+    border-top: none;
+}
+
+.footer p {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    font-family: var(--font-body);
+}
+
+/* ========================================
+   SCROLL PROGRESS INDICATOR
+   ======================================== */
+.scroll-progress {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: rgba(0, 0, 0, 0.05);
+    z-index: 1001;
+}
+
+.scroll-progress-bar {
+    height: 100%;
+    background: var(--pastel-primary);
+    transform-origin: left;
+    transform: scaleX(0);
+    transition: transform 0.1s ease-out;
+}
+
+html[data-theme="dark"] .scroll-progress {
+    background: rgba(255, 255, 255, 0.05);
+}

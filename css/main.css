@@ -1,37 +1,158 @@
 /* ========================================
    VEDANTIUM.DEV - MAIN CSS ENTRY POINT
-   
-   This file imports all CSS modules in the correct order.
-   The original styles.css is imported for backwards compatibility
-   while the modular structure is set up alongside.
-   
-   As you refactor further, you can move styles from styles.css
-   into the appropriate modular files and remove that import.
+   Modular CSS Architecture
    ======================================== */
 
-/* Base styles - core foundation */
+/* =====================================
+   BASE STYLES - Core foundation
+   ===================================== */
 @import './base/variables.css';
 @import './base/reset.css';
 @import './base/typography.css';
 
-/* Original styles - will be gradually deprecated as modular styles take over */
-/* For now, importing the original to ensure nothing breaks */
-@import '../styles.css';
+/* =====================================
+   COMPONENTS - UI elements
+   ===================================== */
+@import './components/navbar.css';
+@import './components/hero.css';
+@import './components/buttons.css';
+@import './components/cards.css';
+@import './components/toolbox.css';
 
-/* 
-   Future modular imports (uncomment as you migrate styles):
-   
-   @import './components/navbar.css';
-   @import './components/hero.css';
-   @import './components/cards.css';
-   @import './components/buttons.css';
-   @import './components/toolbox.css';
-   @import './components/popover.css';
-   
-   @import './desktop/layout.css';
-   @import './desktop/animations.css';
-   
-   @import './mobile/bottom-nav.css';
-   @import './mobile/responsive.css';
-   @import './mobile/touch-feedback.css';
-*/
+/* =====================================
+   DESKTOP - Layout and effects
+   ===================================== */
+@import './desktop/layout.css';
+
+/* =====================================
+   MOBILE - Navigation and responsive
+   ===================================== */
+@import './mobile/bottom-nav.css';
+@import './mobile/responsive.css';
+
+/* =====================================
+   ANIMATIONS & TRANSITIONS
+   (Shared animations used across the site)
+   ===================================== */
+
+/* Reveal animation base styles */
+.reveal {
+   opacity: 0;
+   transform: translateY(20px);
+   transition: opacity 0.6s ease, transform 0.6s ease;
+   will-change: opacity, transform;
+}
+
+.reveal.is-visible {
+   opacity: 1;
+   transform: translateY(0);
+}
+
+/* Theme ripple effect */
+.theme-ripple {
+   position: fixed;
+   border-radius: 50%;
+   width: 0;
+   height: 0;
+   opacity: 0.5;
+   z-index: 9999;
+   pointer-events: none;
+   transform: translate(-50%, -50%);
+   transition: none;
+}
+
+.theme-ripple.is-on {
+   animation: themeRippleExpand 0.5s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+@keyframes themeRippleExpand {
+   from {
+      width: 0;
+      height: 0;
+      opacity: 1;
+   }
+
+   to {
+      width: 300vmax;
+      height: 300vmax;
+      opacity: 0;
+   }
+}
+
+/* Page slide-in animation */
+@keyframes pageSlideIn {
+   from {
+      opacity: 0;
+      transform: translateY(20px);
+   }
+
+   to {
+      opacity: 1;
+      transform: translateY(0);
+   }
+}
+
+.page-content .sections-viewport {
+   animation: pageSlideIn 0.5s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+.page-content .navbar-expanded .nav-pill-expanded {
+   animation: navPillExpand 0.4s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+@keyframes navPillExpand {
+   from {
+      transform: scale(0.95);
+      opacity: 0.8;
+   }
+
+   to {
+      transform: scale(1);
+      opacity: 1;
+   }
+}
+
+/* Home page entry animations */
+.page-intro .nav-pill {
+   animation: navPillCollapse 0.4s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+.page-intro .hero {
+   animation: heroFadeIn 0.6s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+@keyframes navPillCollapse {
+   from {
+      transform: scale(1.02);
+      opacity: 0.8;
+   }
+
+   to {
+      transform: scale(1);
+      opacity: 1;
+   }
+}
+
+/* Card entrance animation */
+@keyframes cardFadeUp {
+   from {
+      opacity: 0;
+      transform: translateY(20px);
+   }
+
+   to {
+      opacity: 1;
+      transform: translateY(0);
+   }
+}
+
+/* Selection styling */
+::selection {
+   background: var(--pastel-primary-soft);
+   color: var(--pastel-primary-on);
+}
+
+/* Remove focus ring for mouse users */
+:focus:not(:focus-visible) {
+   outline: none;
+}

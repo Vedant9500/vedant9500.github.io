@@ -1,0 +1,472 @@
+/* ========================================
+   RESPONSIVE - Mobile-first media queries
+   ======================================== */
+
+/* ========================================
+   MOBILE STYLES (max-width: 768px)
+   ======================================== */
+@media (max-width: 768px) {
+
+    /* Disable grain overlay on mobile for performance */
+    body::before {
+        display: none;
+    }
+
+    /* ===== Mobile Navigation ===== */
+    .nav-sections {
+        gap: 2px;
+    }
+
+    .nav-section-btn {
+        font-size: 0.8rem;
+        padding: 6px 10px;
+    }
+
+    .nav-logo-minimal a {
+        padding: 8px 10px;
+    }
+
+    /* Mobile bottom nav display */
+    .mobile-bottom-nav {
+        display: flex;
+    }
+
+    /* ===== Section Layout Adjustments ===== */
+    .sections-viewport {
+        top: 0;
+    }
+
+    .section-inner {
+        padding: 20px 0 80px 0;
+    }
+
+    .section-inner .container {
+        padding: 0 20px;
+    }
+
+    /* ===== About Section Mobile ===== */
+    .about-content {
+        grid-template-columns: 1fr;
+    }
+
+    .about-card {
+        padding: 1.25rem;
+    }
+
+    .about-hero {
+        margin-bottom: 1.5rem;
+        padding-top: 10px;
+    }
+
+    .about-name {
+        font-size: 1.75rem;
+    }
+
+    .about-tagline {
+        font-size: 0.95rem;
+    }
+
+    .about-greeting {
+        margin-bottom: 0.5rem;
+    }
+
+    .greeting-wave {
+        font-size: 1.5rem;
+    }
+
+    .greeting-text {
+        font-size: 1rem;
+    }
+
+    /* Scroll-snap for cards */
+    .about-content {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        scroll-snap-type: y proximity;
+    }
+
+    .about-card {
+        padding: 20px;
+        scroll-snap-align: start;
+        min-height: auto;
+        transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
+        opacity: 0.85;
+        transform: scale(0.98);
+    }
+
+    /* Auto-highlight when card is in focus (JS controlled) */
+    .about-card.in-focus {
+        opacity: 1;
+        transform: scale(1);
+        background: rgba(255, 255, 255, 0.85);
+        box-shadow:
+            0 4px 8px rgba(0, 0, 0, 0.06),
+            0 8px 16px rgba(0, 0, 0, 0.06),
+            0 16px 32px rgba(0, 0, 0, 0.08);
+    }
+
+    html[data-theme="dark"] .about-card.in-focus {
+        background: rgba(55, 55, 55, 0.90);
+        box-shadow:
+            0 8px 32px rgba(0, 0, 0, 0.3),
+            0 0 0 1px rgba(224, 164, 88, 0.15);
+    }
+
+    .about-card.in-focus .about-card-icon {
+        transform: translateY(-2px) scale(1.05);
+        box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+    }
+
+    /* First card (intro) - more prominent */
+    .about-card.about-intro {
+        padding: 24px;
+    }
+
+    .about-card.about-intro .about-card-content p {
+        font-size: 0.95rem;
+    }
+
+    .about-card h3 {
+        font-size: 1rem;
+    }
+
+    .about-card p {
+        font-size: 0.875rem;
+        line-height: 1.6;
+    }
+
+    .about-card-icon {
+        width: 40px;
+        height: 40px;
+        min-width: 40px;
+        font-size: 1rem;
+        border-radius: 12px;
+    }
+
+    .about-interests-tags {
+        gap: 0.5rem;
+    }
+
+    .interest-tag {
+        padding: 0.4rem 0.75rem;
+        font-size: 0.8125rem;
+    }
+
+    /* ===== Projects Mobile - Vertical Stack ===== */
+    .content-section[data-section="projects"] {
+        overflow-y: auto;
+        scroll-snap-type: y proximity;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    .content-section[data-section="projects"] .section-inner {
+        padding: 20px 0 120px 0;
+    }
+
+    .content-section[data-section="projects"] .section-inner .container {
+        max-width: 100%;
+        padding: 0 20px;
+    }
+
+    .content-section[data-section="projects"] .section-inner .container h2 {
+        margin-bottom: 20px;
+        opacity: 1 !important;
+        transform: none !important;
+        scroll-snap-align: start;
+    }
+
+    .projects-grid {
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 20px !important;
+        margin: 0 !important;
+    }
+
+    .projects-grid::-webkit-scrollbar {
+        display: none;
+    }
+
+    .project-card {
+        flex: 0 0 auto !important;
+        width: 100% !important;
+        max-width: 100% !important;
+        min-height: auto !important;
+        height: auto !important;
+        padding: 24px !important;
+        scroll-snap-align: start;
+        scroll-snap-stop: always;
+        transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
+        opacity: 0.7;
+        transform: scale(0.98);
+    }
+
+    .project-card.in-focus {
+        opacity: 1;
+        transform: scale(1);
+        box-shadow:
+            0 8px 32px rgba(0, 0, 0, 0.12),
+            0 0 0 1px rgba(124, 154, 146, 0.1);
+    }
+
+    html[data-theme="dark"] .project-card.in-focus {
+        box-shadow:
+            0 8px 32px rgba(0, 0, 0, 0.3),
+            0 0 0 1px rgba(224, 164, 88, 0.15);
+    }
+
+    .project-card.featured {
+        flex: 0 0 auto !important;
+        width: 100% !important;
+        max-width: 100% !important;
+        min-height: auto !important;
+        grid-column: unset !important;
+        padding: 24px !important;
+    }
+
+    .project-card.featured::before {
+        top: 16px;
+        right: 16px;
+        font-size: 0.7rem;
+        padding: 4px 12px;
+    }
+
+    .project-card h3 {
+        font-size: 1.15rem;
+    }
+
+    .project-card p {
+        font-size: 0.9rem;
+        line-height: 1.6;
+        margin-bottom: 1rem;
+    }
+
+    .project-links {
+        padding-top: 0;
+    }
+
+    .project-links a {
+        padding: 10px 16px;
+        font-size: 0.85rem;
+    }
+
+    .project-lang {
+        font-size: 0.75rem;
+        padding: 5px 12px;
+    }
+
+    .carousel-dots {
+        display: none !important;
+    }
+
+    /* ===== Toolbox Mobile - Always Expanded ===== */
+    .toolbox-accordion {
+        gap: 16px;
+    }
+
+    .toolbox-chevron {
+        display: none !important;
+    }
+
+    .toolbox-header {
+        cursor: default;
+        padding: 12px 16px;
+    }
+
+    .toolbox-header:hover {
+        background: transparent;
+    }
+
+    .toolbox-header-content i {
+        width: 32px;
+        height: 32px;
+        font-size: 0.9rem;
+    }
+
+    .toolbox-header-content span {
+        font-size: 0.95rem;
+    }
+
+    .toolbox-content {
+        grid-template-rows: 1fr !important;
+        padding: 0 16px 14px 16px !important;
+    }
+
+    .toolbox-category {
+        padding-bottom: 0;
+    }
+
+    .skill-pills {
+        gap: 6px;
+    }
+
+    .skill-pill {
+        font-size: 0.75rem;
+        padding: 5px 10px;
+    }
+
+    /* Hide home page desktop nav pill on mobile */
+    .nav-pill {
+        display: none !important;
+    }
+
+    /* ===== Touch Feedback ===== */
+    .touch-ripple {
+        position: relative;
+        overflow: hidden;
+        -webkit-tap-highlight-color: transparent;
+    }
+
+    .touch-ripple::after {
+        content: '';
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 0;
+        height: 0;
+        border-radius: 50%;
+        background: rgba(124, 154, 146, 0.25);
+        transform: translate(-50%, -50%);
+        opacity: 0;
+        pointer-events: none;
+        transition: width 0.4s ease-out, height 0.4s ease-out, opacity 0.4s ease-out;
+    }
+
+    .touch-ripple.rippling::after {
+        width: 300%;
+        height: 300%;
+        opacity: 0;
+    }
+
+    .touch-ripple:active::after {
+        width: 0;
+        height: 0;
+        opacity: 1;
+        transition: 0s;
+    }
+
+    html[data-theme="dark"] .touch-ripple::after {
+        background: rgba(224, 164, 88, 0.2);
+    }
+
+    .about-card.touch-ripple,
+    .project-card.touch-ripple {
+        cursor: pointer;
+    }
+
+    /* ===== Contact Popover Mobile ===== */
+    .contact-popover {
+        top: auto !important;
+        right: auto !important;
+        width: auto !important;
+        min-width: 200px;
+        border-radius: 16px;
+        background: rgba(255, 255, 255, 0.45) !important;
+        backdrop-filter: blur(20px) saturate(180%) !important;
+        -webkit-backdrop-filter: blur(20px) saturate(180%) !important;
+    }
+
+    [data-theme="dark"] .contact-popover {
+        background: rgba(30, 30, 35, 0.55) !important;
+    }
+
+    /* ===== Hero Mobile ===== */
+    .hero-container {
+        padding: 60px 20px 100px;
+        min-height: 100vh;
+    }
+
+    .hero {
+        min-height: 100vh;
+        padding-bottom: 0;
+    }
+
+    main {
+        padding-bottom: 0;
+    }
+
+    body {
+        padding-bottom: 0;
+    }
+
+    /* ===== Social Links Mobile ===== */
+    .social-links {
+        gap: 1.5rem;
+    }
+
+    .social-link {
+        width: 50px;
+        height: 50px;
+        font-size: 1.25rem;
+    }
+}
+
+/* ========================================
+   SMALL MOBILE (max-width: 480px)
+   ======================================== */
+@media (max-width: 480px) {
+    .nav-section-btn {
+        font-size: 0.75rem;
+        padding: 5px 8px;
+    }
+
+    .nav-divider {
+        padding: 0 3px;
+    }
+
+    .mobile-bottom-nav {
+        bottom: 16px;
+        padding: 6px 10px;
+        border-radius: 999px;
+    }
+
+    .mobile-nav-item {
+        padding: 8px 12px;
+        min-width: 40px;
+    }
+
+    .mobile-nav-item i {
+        font-size: 1rem;
+    }
+
+    .mobile-nav-item span {
+        font-size: 0.6rem;
+    }
+
+    .hero h1 {
+        font-size: 1.6rem;
+    }
+
+    .toolbox-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 12px;
+    }
+
+    .section-inner {
+        padding: 16px;
+    }
+}
+
+/* ========================================
+   REDUCED MOTION PREFERENCE
+   ======================================== */
+@media (prefers-reduced-motion: reduce) {
+
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+
+    html {
+        scroll-behavior: auto;
+    }
+
+    .project-card,
+    .achievement-card {
+        animation: none;
+        opacity: 1;
+    }
+}
