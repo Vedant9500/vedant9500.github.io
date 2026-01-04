@@ -102,12 +102,18 @@ export const initThemeAndPopover = () => {
         const close = () => {
             popover.hidden = true;
             contactBtn.setAttribute('aria-expanded', 'false');
+            // Slide about-hero back
+            const aboutHero = document.querySelector('.about-hero');
+            if (aboutHero) aboutHero.classList.remove('popover-open');
         };
 
         const open = () => {
             popover.hidden = false;
             contactBtn.setAttribute('aria-expanded', 'true');
             requestAnimationFrame(positionPopover);
+            // Slide about-hero away
+            const aboutHero = document.querySelector('.about-hero');
+            if (aboutHero) aboutHero.classList.add('popover-open');
         };
 
         contactBtn.addEventListener('click', (evt) => {

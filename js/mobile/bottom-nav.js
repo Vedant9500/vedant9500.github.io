@@ -68,12 +68,17 @@ export const initMobileToggles = () => {
 
         mobileContactBtn.addEventListener('click', (evt) => {
             evt.stopPropagation();
+            const aboutHero = document.querySelector('.about-hero');
 
             if (popover.hidden) {
                 popover.hidden = false;
                 requestAnimationFrame(positionMobilePopover);
+                // Slide about-hero away
+                if (aboutHero) aboutHero.classList.add('popover-open');
             } else {
                 popover.hidden = true;
+                // Slide about-hero back
+                if (aboutHero) aboutHero.classList.remove('popover-open');
             }
         });
     }
