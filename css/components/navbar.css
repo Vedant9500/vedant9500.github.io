@@ -99,9 +99,10 @@ html[data-theme="dark"] .nav-pill {
 }
 
 /* ========================================
-   CONTACT TOGGLE & POPOVER
+   CONTACT & THEME TOGGLES
    ======================================== */
-.contact-toggle {
+.contact-toggle,
+.theme-toggle {
     width: 40px;
     height: 40px;
     border-radius: 14px;
@@ -117,22 +118,26 @@ html[data-theme="dark"] .nav-pill {
     line-height: 1;
 }
 
-.contact-toggle:hover {
+.contact-toggle:hover,
+.theme-toggle:hover {
     background: rgba(255, 255, 255, 0.16);
     color: var(--text-primary);
 }
 
-.contact-toggle:focus-visible {
+.contact-toggle:focus-visible,
+.theme-toggle:focus-visible {
     outline: 2px solid var(--primary);
     outline-offset: 3px;
 }
 
-html[data-theme="dark"] .contact-toggle {
+html[data-theme="dark"] .contact-toggle,
+html[data-theme="dark"] .theme-toggle {
     border-color: transparent;
     background: transparent;
 }
 
-html[data-theme="dark"] .contact-toggle:hover {
+html[data-theme="dark"] .contact-toggle:hover,
+html[data-theme="dark"] .theme-toggle:hover {
     background: rgba(255, 255, 255, 0.08);
 }
 
