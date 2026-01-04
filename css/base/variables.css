@@ -1,0 +1,174 @@
+/* ========================================
+   VEDANTIUM.DEV - CSS VARIABLES & THEMES
+   ======================================== */
+
+:root {
+    /* ========================================
+       PASTEL COLOR SYSTEM
+       Primary: Sage Green (calming, professional)
+       Secondary: Warm Sand/Cream (welcoming)
+       Accent: Soft Lavender (creativity)
+       ======================================== */
+
+    /* Primary Pastel - Sage Green */
+    --pastel-primary: #7C9A92;
+    --pastel-primary-light: #A8C5BC;
+    --pastel-primary-soft: #D4E5E0;
+    --pastel-primary-on: #1A2E28;
+
+    /* Secondary Pastel - Warm Sand */
+    --pastel-secondary: #C4B5A0;
+    --pastel-secondary-light: #E3DACC;
+    --pastel-secondary-soft: #F5F1EB;
+
+    /* Accent Pastel - Soft Lavender */
+    --pastel-accent: #9B8AA6;
+    --pastel-accent-light: #C5B8CF;
+    --pastel-accent-soft: #E8E2ED;
+
+    /* Tertiary Pastel - Dusty Rose */
+    --pastel-tertiary: #C9A9A6;
+    --pastel-tertiary-light: #E2CCC9;
+    --pastel-tertiary-soft: #F5EDEC;
+
+    /* Neutral Pastels */
+    --pastel-neutral: #B8B5AE;
+    --pastel-neutral-light: #E6E4DE;
+
+    /* Semantic Mapping */
+    --md-sys-color-primary: var(--pastel-primary);
+    --md-sys-color-on-primary: #FFFFFF;
+    --md-sys-color-primary-container: var(--pastel-primary-soft);
+    --md-sys-color-on-primary-container: var(--pastel-primary-on);
+
+    --md-sys-color-secondary: #5F6368;
+    --md-sys-color-on-secondary: #FFFFFF;
+    --md-sys-color-secondary-container: var(--pastel-secondary-soft);
+    --md-sys-color-on-secondary-container: #2D2A25;
+
+    --md-sys-color-tertiary: var(--pastel-accent);
+    --md-sys-color-on-tertiary: #FFFFFF;
+    --md-sys-color-tertiary-container: var(--pastel-accent-soft);
+    --md-sys-color-on-tertiary-container: #2A2332;
+
+    /* Surface & Background */
+    --md-sys-color-background: #FFFFFF;
+    --md-sys-color-on-background: #202124;
+    --md-sys-color-surface: #FFFFFF;
+    --md-sys-color-on-surface: #202124;
+
+    /* Surface Containers */
+    --md-sys-color-surface-container-lowest: #FFFFFF;
+    --md-sys-color-surface-container-low: #FAFAF8;
+    --md-sys-color-surface-container: #F5F4F1;
+    --md-sys-color-surface-container-high: #EFEEE9;
+    --md-sys-color-surface-container-highest: #E9E7E2;
+
+    /* Outline */
+    --md-sys-color-outline: #8A8680;
+    --md-sys-color-outline-variant: #DDD9D3;
+
+    /* Mapping */
+    --primary: var(--pastel-primary);
+    --primary-dark: #5A7A72;
+    --primary-light: var(--pastel-primary-soft);
+
+    --bg-white: var(--md-sys-color-background);
+    --bg-section: var(--md-sys-color-surface-container-low);
+    --bg-subtle: var(--md-sys-color-surface-container);
+    --bg-primary: var(--md-sys-color-background);
+
+    --text-primary: var(--md-sys-color-on-surface);
+    --text-secondary: #5A5650;
+    --text-muted: #6B6760;
+
+    --border-light: var(--md-sys-color-outline-variant);
+    --border-medium: var(--md-sys-color-outline);
+
+    /* Material 3 Shapes */
+    --shape-corner-small: 8px;
+    --shape-corner-medium: 12px;
+    --shape-corner-large: 16px;
+    --shape-corner-extra-large: 24px;
+    --shape-corner-full: 9999px;
+
+    /* Shadows (Softer, warmer) */
+    --elevation-1: 0 1px 3px 0 rgba(90, 85, 80, 0.12), 0 1px 2px 0 rgba(90, 85, 80, 0.08);
+    --elevation-2: 0 2px 6px 0 rgba(90, 85, 80, 0.12), 0 1px 3px 0 rgba(90, 85, 80, 0.08);
+    --elevation-3: 0 4px 12px 0 rgba(90, 85, 80, 0.12), 0 2px 4px 0 rgba(90, 85, 80, 0.08);
+
+    --shadow-subtle: var(--elevation-1);
+    --shadow-md: var(--elevation-2);
+
+    /* Typography */
+    --font-display: 'Outfit', sans-serif;
+    --font-body: 'Inter', sans-serif;
+
+    /* Grain overlay */
+    --grain-opacity: 0.04;
+
+    /* Theme constants */
+    --theme-bg-light: #F7F6F3;
+    --theme-bg-dark: #1f1f1f;
+}
+
+html[data-theme="light"] {
+    --md-sys-color-background: #F9F8F5;
+    --md-sys-color-on-background: #1A1A18;
+    --md-sys-color-surface: #F9F8F5;
+    --md-sys-color-on-surface: #1A1A18;
+
+    --md-sys-color-surface-container-lowest: #FFFFFF;
+    --md-sys-color-surface-container-low: #FDFCFA;
+    --md-sys-color-surface-container: #F5F4F0;
+    --md-sys-color-surface-container-high: #EFEDE8;
+    --md-sys-color-surface-container-highest: #E9E6E0;
+
+    --md-sys-color-secondary: #5A5650;
+    --md-sys-color-outline: #A8A49C;
+    --md-sys-color-outline-variant: #E3E0D8;
+
+    /* Light mode pastel adjustments */
+    --pastel-primary: #7C9A92;
+    --pastel-primary-light: #A8C5BC;
+    --pastel-primary-soft: #E2EFEB;
+}
+
+html[data-theme="dark"] {
+    /* Warm neutral dark theme - inspired by Zen Browser */
+    --md-sys-color-background: #1f1f1f;
+    --md-sys-color-on-background: #E8E6E0;
+    --md-sys-color-surface: #1f1f1f;
+    --md-sys-color-on-surface: #E8E6E0;
+
+    /* Warm neutral surface containers - no blue tint */
+    --md-sys-color-surface-container-lowest: #1a1a1a;
+    --md-sys-color-surface-container-low: #252525;
+    --md-sys-color-surface-container: #2d2d2d;
+    --md-sys-color-surface-container-high: #363636;
+    --md-sys-color-surface-container-highest: #404040;
+
+    --md-sys-color-secondary: #B8B5AE;
+    --md-sys-color-outline: #4a4a4a;
+    --md-sys-color-outline-variant: #3a3a3a;
+
+    /* Dark mode accent colors - warm amber */
+    --pastel-primary: #E0A458;
+    --pastel-primary-light: #C4883C;
+    --pastel-primary-soft: rgba(224, 164, 88, 0.15);
+    --pastel-primary-on: #1f1f1f;
+
+    --pastel-secondary: #D4C7B5;
+    --pastel-secondary-light: rgba(212, 199, 181, 0.20);
+    --pastel-secondary-soft: rgba(212, 199, 181, 0.10);
+
+    --pastel-accent: #C4B5A0;
+    --pastel-accent-light: rgba(196, 181, 160, 0.20);
+    --pastel-accent-soft: rgba(196, 181, 160, 0.12);
+
+    --pastel-tertiary: #D4C4B5;
+    --pastel-tertiary-light: rgba(212, 196, 181, 0.20);
+    --pastel-tertiary-soft: rgba(212, 196, 181, 0.12);
+
+    --text-secondary: #B8B5AE;
+}
