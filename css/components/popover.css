@@ -1,0 +1,109 @@
+/* ========================================
+   POPOVER COMPONENT
+   Shared popover styles for contact and other popovers
+   ======================================== */
+
+/* ========================================
+   BASE POPOVER STYLES
+   ======================================== */
+.popover {
+    position: fixed;
+    padding: 10px;
+    border-radius: 18px;
+    background: rgba(255, 255, 255, 0.85);
+    border: 1px solid rgba(200, 195, 185, 0.25);
+    -webkit-backdrop-filter: blur(16px) saturate(150%);
+    backdrop-filter: blur(16px) saturate(150%);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
+    z-index: 1001;
+    isolation: isolate;
+    transform: translateZ(0);
+}
+
+.popover[hidden] {
+    display: none !important;
+}
+
+.popover:not([hidden]) {
+    display: grid;
+}
+
+/* Dark mode popover */
+html[data-theme="dark"] .popover {
+    background: rgba(45, 45, 45, 0.95);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.35);
+}
+
+/* ========================================
+   POPOVER LINKS
+   ======================================== */
+.popover a,
+.popover button {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 12px;
+    border-radius: 14px;
+    text-decoration: none;
+    color: var(--text-primary);
+    background: transparent;
+    border: none;
+    transition: background 0.2s ease;
+    outline: none;
+    cursor: pointer;
+    font-family: var(--font-body);
+    font-size: 0.9375rem;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.popover a:focus,
+.popover a:focus-visible,
+.popover button:focus,
+.popover button:focus-visible {
+    outline: none;
+    box-shadow: none;
+}
+
+html[data-theme="dark"] .popover a,
+html[data-theme="dark"] .popover button {
+    background: transparent;
+}
+
+.popover a:hover,
+.popover button:hover {
+    background: var(--pastel-primary-soft);
+}
+
+html[data-theme="dark"] .popover a:hover,
+html[data-theme="dark"] .popover button:hover {
+    background: rgba(231, 234, 240, 0.08);
+}
+
+/* ========================================
+   POPOVER ICONS
+   ======================================== */
+.popover i {
+    font-size: 1rem;
+    width: 20px;
+    text-align: center;
+    color: var(--text-secondary);
+}
+
+.popover a:hover i,
+.popover button:hover i {
+    color: var(--pastel-primary);
+}
+
+/* ========================================
+   BACKDROP FILTER FALLBACK
+   ======================================== */
+@supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+    .popover {
+        background: linear-gradient(135deg, rgba(255, 255, 255, 0.90), rgba(255, 255, 255, 0.75));
+    }
+
+    html[data-theme="dark"] .popover {
+        background: linear-gradient(135deg, rgba(45, 45, 45, 0.95), rgba(31, 31, 31, 0.85));
+    }
+}
