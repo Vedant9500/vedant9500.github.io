@@ -2,9 +2,63 @@
    DESKTOP LAYOUT - Horizontal sections and transitions
    ======================================== */
 
-/* ========================================
-   HORIZONTAL SECTIONS LAYOUT
-   ======================================== */
+/* Grid Overlay & Crosshairs */
+.grid-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 900;
+    /* Above content, below navbar/modals */
+}
+
+.crosshair {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    border-left: 1px solid var(--accent-cyan);
+    border-top: 1px solid var(--accent-cyan);
+    opacity: 0.5;
+}
+
+.c-tl {
+    top: 40px;
+    left: 40px;
+}
+
+.c-tr {
+    top: 40px;
+    right: 40px;
+    border-left: none;
+    border-right: 1px solid var(--accent-cyan);
+}
+
+.c-bl {
+    bottom: 40px;
+    left: 40px;
+    border-top: none;
+    border-bottom: 1px solid var(--accent-cyan);
+}
+
+.c-br {
+    bottom: 40px;
+    right: 40px;
+    border-left: none;
+    border-right: 1px solid var(--accent-cyan);
+    border-top: none;
+    border-bottom: 1px solid var(--accent-cyan);
+}
+
+/* MEASUREMENT LINES */
+.measure-lines {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 10;
+}
+
 .sections-viewport {
     position: fixed;
     top: 0;
