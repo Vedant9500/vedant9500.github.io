@@ -226,64 +226,9 @@ section h2::before {
 
 /* ========================================
    TOOLBOX / SKILLS
+   Moved to css/components/toolbox.css
    ======================================== */
-.toolbox-category {
-    border: 1px solid var(--line-color);
-    margin-bottom: 1rem;
-    background: var(--bg-panel);
-}
 
-.toolbox-header {
-    width: 100%;
-    padding: 1.5rem;
-    background: transparent;
-    border: none;
-    color: var(--text-primary);
-    font-family: var(--font-mono);
-    text-transform: uppercase;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    cursor: pointer;
-    transition: background 0.2s;
-}
-
-.toolbox-header:hover {
-    background: rgba(42, 161, 152, 0.1);
-}
-
-.toolbox-content {
-    padding: 0 1.5rem 1.5rem;
-    display: none;
-    /* JS handles toggle */
-}
-
-/* ACTIVE STATE for Accordion (handled by JS usually, ensuring style) */
-.toolbox-category[data-expanded="true"] .toolbox-content {
-    display: block;
-}
-
-.skill-pills {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
-}
-
-.skill-pill {
-    font-family: var(--font-mono);
-    font-size: 0.8rem;
-    color: var(--text-secondary);
-    border: 1px solid var(--line-strong);
-    padding: 5px 10px;
-    background: transparent;
-    cursor: default;
-}
-
-.skill-pill:hover {
-    border-color: var(--accent-cyan);
-    color: var(--accent-cyan);
-    background: rgba(42, 161, 152, 0.1);
-}
 
 /* ========================================
    RESPONSIVE

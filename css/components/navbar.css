@@ -135,6 +135,13 @@
     flex-direction: column;
     gap: 0.5rem;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    width: 200px;
+    /* Fixed width to prevent unintended expansion */
+    z-index: 1100;
+}
+
+.contact-popover[hidden] {
+    display: none !important;
 }
 
 .contact-popover a {
