@@ -54,6 +54,8 @@ body {
         linear-gradient(var(--line-color) 1px, transparent 1px),
         linear-gradient(90deg, var(--line-color) 1px, transparent 1px);
     background-size: 50px 50px;
+    background-position: var(--bg-x, 0px) var(--bg-y, 0px);
+    transition: background-position 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 
 /* Container */

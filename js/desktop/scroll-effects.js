@@ -209,3 +209,77 @@ export const initPageNavigation = () => {
         });
     });
 };
+// ========================================
+// BACKGROUND PARALLAX
+// ========================================
+// ========================================
+// BACKGROUND PARALLAX
+// ========================================
+// ========================================
+// BACKGROUND PARALLAX
+// ========================================
+export const initBackgroundParallax = () => {
+    // Only run on desktop/larger screens to save mobile perf
+    if (window.innerWidth < 768) return;
+
+    const body = document.body;
+    body.style.backgroundAttachment = 'fixed';
+
+    // 1. VERTICAL PARALLAX (Scroll based)
+    const sections = document.querySelectorAll('.content-section');
+    let ticking = false;
+
+    const handleScroll = (e) => {
+        if (!ticking) {
+            window.requestAnimationFrame(() => {
+                const target = e.target;
+                const scrolled = target.scrollTop;
+                // Update Y variable
+                body.style.setProperty('--bg-y', `${-(scrolled * 0.1)}px`);
+                ticking = false;
+            });
+            ticking = true;
+        }
+    };
+
+    if (sections.length) {
+        sections.forEach(section => {
+            section.addEventListener('scroll', handleScroll, { passive: true });
+        });
+    } else {
+        // Fallback for non-section pages
+        window.addEventListener('scroll', () => {
+            requestAnimationFrame(() => {
+                body.style.setProperty('--bg-y', `${-(window.scrollY * 0.1)}px`);
+            });
+        }, { passive: true });
+    }
+
+    // 2. HORIZONTAL PARALLAX (Section based)
+    const sectionsTrack = document.querySelector('.sections-track');
+    if (sectionsTrack) {
+        const sectionOrder = ['about', 'projects', 'toolbox'];
+
+        const updateHorizontalParallax = () => {
+            const activeSection = sectionsTrack.dataset.activeSection || 'about';
+            const index = sectionOrder.indexOf(activeSection);
+            // Shift grid horizontally: 50px per section (1 grid unit)
+            const xPos = -(index * 50);
+            body.style.setProperty('--bg-x', `${xPos}px`);
+        };
+
+        // Initialize
+        updateHorizontalParallax();
+
+        // Observer for changes
+        const observer = new MutationObserver((mutations) => {
+            mutations.forEach((mutation) => {
+                if (mutation.type === 'attributes' && mutation.attributeName === 'data-active-section') {
+                    updateHorizontalParallax();
+                }
+            });
+        });
+
+        observer.observe(sectionsTrack, { attributes: true });
+    }
+};
