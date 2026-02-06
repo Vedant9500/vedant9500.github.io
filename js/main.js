@@ -16,7 +16,8 @@ import {
     initRevealAnimations,
     initScrollIndicators,
     initToolboxAccordion,
-    initPageNavigation
+    initPageNavigation,
+    initBackgroundParallax
 } from './desktop/scroll-effects.js';
 
 // Mobile modules
@@ -39,6 +40,7 @@ document.addEventListener('DOMContentLoaded', () => {
     initScrollspy();
     initRevealAnimations();
     initPageNavigation();
+    initBackgroundParallax();
 
     // Section-based page features (about/ page)
     SectionNavigator.init();
