@@ -44,9 +44,9 @@ export const initPetals = () => {
 
     class Petal {
         constructor() {
-            // Start mostly from top left, simulating a tree just off-screen
-            this.x = (Math.random() * width * 0.5) - (width * 0.2);
-            this.y = (Math.random() * height * 0.5) - height;
+            // Start scattered across a larger area to pre-fill the screen on load
+            this.x = (Math.random() * width * 1.5) - (width * 0.5);
+            this.y = (Math.random() * height * 2) - height;
 
             // Slightly bigger: baseline 12 + random up to 15
             this.size = (Math.random() * 15) + 12;
