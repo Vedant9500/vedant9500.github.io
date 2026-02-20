@@ -22,7 +22,8 @@
     width: clamp(40px, 6vh, 52px);
     height: clamp(40px, 6vh, 52px);
     border-radius: 8px;
-    background: var(--accent-mint);
+    background: var(--accent-pink);
+    /* Sakura theme */
     border: var(--border-thin);
     pointer-events: none;
     transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);

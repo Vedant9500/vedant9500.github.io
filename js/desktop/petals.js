@@ -36,7 +36,8 @@ export const initPetals = () => {
     });
 
     const petals = [];
-    const numPetals = width < 768 ? 20 : 40; // Fewer on mobile
+    // Even fewer on mobile for battery and FPS, to maintain 60FPS while scrolling
+    const numPetals = width < 768 ? 12 : 40;
 
     const petalImg = new Image();
     // Use a data URI for a simple pink petal to avoid an external HTTP request
