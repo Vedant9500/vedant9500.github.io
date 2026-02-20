@@ -68,7 +68,8 @@
     body,
     a,
     button,
-    .draggable {
+    .draggable,
+    .decor {
         cursor: none !important;
     }
 }
