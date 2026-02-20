@@ -8,7 +8,7 @@
 
     <!-- Meta Logs -->
     <meta name="description" content="Systems Engineer focusing on AI/ML and Low-level Optimization">
-    <meta property="og:title" content="Vedant Deshmukh | Blueprint">
+    <meta property="og:title" content="Vedant Deshmukh | Portfolio">
     <meta property="og:type" content="website">
 
     <!-- Fonts -->
@@ -18,160 +18,108 @@
         href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap"
         rel="stylesheet">
 
+    <!-- Add an expressive serif or bolder display font if needed later -->
+
     <!-- Styles -->
     <link rel="stylesheet" href="css/main.css">
-    <!-- Component styles usually imported by main.css, but for landing uniqueness we add distinct styles here inline or via a dedicated file later if needed. 
-         For now, we rely on main.css and specific overrides/additions below. -->
 
     <style>
-        /* LANDING SPECIFIC STYLES - To be moved to css/desktop/landing.css later */
+        /* LANDING SPECIFIC STYLES - PLAYFUL & BRUTALIST */
 
         main {
             display: flex;
             align-items: center;
             justify-content: center;
             min-height: 100vh;
-            padding-top: 60px;
-            /* Offset fixed header if used */
+            padding: 20px;
+            overflow: hidden;
+            position: relative;
         }
 
-        .blueprint-card {
-            background: var(--bg-panel);
-            border: 1px solid var(--text-secondary);
+        .hero-card {
+            background: var(--accent-yellow);
+            border: var(--border-main);
             padding: 60px;
             max-width: 800px;
             width: 100%;
             position: relative;
-            backdrop-filter: blur(5px);
-            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
-            margin: 20px;
+            box-shadow: 12px 12px 0 var(--ink);
+            border-radius: 16px;
+            transition: all 0.3s;
+            z-index: 10;
         }
 
-        /* Measurements */
-        .measure-h {
+        .hero-card:hover {
+            box-shadow: 16px 16px 0 var(--ink);
+            transform: translate(-4px, -4px);
+        }
+
+        /* Decorative Background Elements */
+        .decor {
             position: absolute;
-            top: -20px;
-            left: 0;
-            width: 100%;
-            height: 1px;
-            background: var(--text-secondary);
-            display: flex;
-            justify-content: center;
-            align-items: flex-end;
-            font-family: var(--font-mono);
-            font-size: 0.7rem;
-            color: var(--text-secondary);
+            border: var(--border-main);
+            box-shadow: var(--shadow-main);
+            border-radius: 50%;
+            z-index: 1;
         }
 
-        .measure-h::before {
-            content: '800px';
-            transform: translateY(-15px);
+        .decor-1 {
+            width: 150px;
+            height: 150px;
+            background: var(--accent-pink);
+            top: 10%;
+            left: 5%;
         }
 
-        .measure-v {
-            position: absolute;
-            right: -20px;
-            top: 0;
-            height: 100%;
-            width: 1px;
-            background: var(--text-secondary);
-            display: flex;
-            justify-content: flex-start;
-            align-items: center;
-            font-family: var(--font-mono);
-            font-size: 0.7rem;
-            color: var(--text-secondary);
+        .decor-2 {
+            width: 200px;
+            height: 200px;
+            background: var(--accent-mint);
+            bottom: -50px;
+            right: 5%;
+            border-radius: 20px;
+            transform: rotate(15deg);
         }
 
-        .measure-v::before {
-            content: 'AUTO';
-            transform: translateX(10px) rotate(90deg);
+        .decor-3 {
+            width: 80px;
+            height: 80px;
+            background: var(--accent-blue);
+            top: 20%;
+            right: 15%;
+            border-radius: 4px;
+            transform: rotate(-10deg);
         }
 
         /* Role Line */
         .role {
-            font-family: var(--font-mono);
-            color: var(--accent-cyan);
+            font-family: var(--font-display);
+            font-weight: 800;
+            color: var(--ink);
             margin-bottom: 2rem;
-            display: block;
-            border-bottom: 1px solid var(--line-color);
-            padding-bottom: 2rem;
+            display: inline-block;
+            background: var(--accent-mint);
+            padding: 4px 12px;
+            border: var(--border-thin);
+            border-radius: 4px;
+            box-shadow: 2px 2px 0 var(--ink);
             letter-spacing: 1px;
         }
 
-        .specs {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 2rem;
+        .bio-intro {
+            font-family: var(--font-body);
+            color: var(--ink-light);
+            font-weight: 500;
+            font-size: 1.25rem;
             margin-bottom: 3rem;
-            font-family: var(--font-mono);
-            font-size: 0.85rem;
-            color: var(--text-secondary);
-        }
-
-        .spec-item strong {
-            color: var(--text-primary);
-            display: block;
-            margin-bottom: 5px;
+            line-height: 1.6;
+            max-width: 600px;
         }
 
         .cta-container {
             display: flex;
             gap: 1rem;
             flex-wrap: wrap;
-        }
-
-        .btn-tech {
-            background: var(--accent-cyan);
-            color: var(--bg-blue);
-            border: none;
-            padding: 15px 30px;
-            font-family: var(--font-display);
-            font-weight: 700;
-            text-transform: uppercase;
-            text-decoration: none;
-            transition: all 0.2s;
-            position: relative;
-            overflow: hidden;
-            display: inline-block;
-        }
-
-        .btn-tech::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 10px;
-            height: 100%;
-            background: rgba(255, 255, 255, 0.2);
-            transform: skewX(-20deg) translateX(-20px);
-            transition: transform 0.4s;
-        }
-
-        .btn-tech:hover::before {
-            transform: skewX(-20deg) translateX(200px);
-        }
-
-        .btn-tech:hover {
-            box-shadow: 0 0 20px rgba(42, 161, 152, 0.4);
-            color: var(--bg-blue);
-        }
-
-        .btn-outline {
-            background: transparent;
-            border: 1px solid var(--accent-cyan);
-            color: var(--accent-cyan);
-            padding: 15px 30px;
-            font-family: var(--font-display);
-            font-weight: 700;
-            text-transform: uppercase;
-            text-decoration: none;
-            transition: all 0.2s;
-            display: inline-block;
-        }
-
-        .btn-outline:hover {
-            background: rgba(42, 161, 152, 0.1);
         }
 
         /* Header / Footer specifics for landing */
@@ -184,48 +132,54 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            z-index: 10;
+            z-index: 20;
         }
 
         .brand {
-            font-family: var(--font-mono);
-            font-size: 0.9rem;
-            letter-spacing: 1px;
-            color: var(--accent-cyan);
+            font-family: var(--font-display);
+            font-size: 1.5rem;
+            font-weight: 800;
+            letter-spacing: -1px;
+            color: var(--ink);
             padding: 5px 10px;
-            border: 1px solid var(--accent-cyan);
+            border: var(--border-main);
+            background: var(--bg-card);
+            box-shadow: var(--shadow-main);
+            border-radius: 8px;
         }
 
         .landing-footer {
             position: absolute;
             bottom: 0;
-            right: 0;
+            left: 0;
             padding: 20px 40px;
-            text-align: right;
-            font-family: var(--font-mono);
-            font-size: 0.7rem;
-            color: var(--text-secondary);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-family: var(--font-display);
+            font-weight: 700;
+            font-size: 0.9rem;
+            color: var(--ink);
             width: 100%;
-            z-index: 10;
+            z-index: 20;
         }
 
         @media screen and (max-width: 768px) {
-            .blueprint-card {
+            .hero-card {
                 padding: 30px;
             }
 
-            h1 {
-                font-size: 2.5rem;
-            }
-
-            .measure-h,
-            .measure-v {
-                display: none;
+            .about-name {
+                font-size: 3.5rem;
             }
 
             .landing-header,
             .landing-footer {
                 padding: 20px;
+            }
+
+            .decor {
+                opacity: 0.5;
             }
         }
     </style>
@@ -233,44 +187,42 @@
 
 <body>
 
-    <!-- Global Grid & Crosshairs -->
-    <div class="grid-overlay">
-        <div class="crosshair c-tl"></div>
-        <div class="crosshair c-tr"></div>
-        <div class="crosshair c-bl"></div>
-        <div class="crosshair c-br"></div>
-    </div>
-
     <header class="landing-header">
-        <div class="brand">PROJ_VEDANTIUM.REV_01</div>
-        <div class="mono" style="font-size: 0.8rem; color: var(--text-secondary)">STATUS: OPERATIONAL</div>
+        <div class="brand">vedantium.dev</div>
+        <div
+            style="font-family: var(--font-display); font-weight: 800; background: var(--accent-pink); padding: 5px 10px; border: var(--border-main); box-shadow: 2px 2px 0 var(--ink); border-radius: 8px;">
+            (⌐■_■)</div>
     </header>
 
     <main>
-        <div class="blueprint-card">
-            <!-- Decorative Measurements -->
-            <div class="measure-h"></div>
-            <div class="measure-v"></div>
+        <!-- Fun Decorative Elements -->
+        <div class="decor decor-1" id="draggable-1"></div>
+        <div class="decor decor-2" id="draggable-2"></div>
+        <div class="decor decor-3" id="draggable-3"></div>
 
-            <h1>Vedant<br><span>Deshmukh</span></h1>
-            <span class="role">/// SYSTEMS & AI ENGINEER</span>
+        <div class="hero-card">
+            <h1 class="about-name" style="margin-bottom: 5px;">Vedant<br>Deshmukh</h1>
+            <span class="role">Systems & AI Engineer</span>
 
-            <div class="bio-intro"
-                style="font-family: var(--font-mono); color: var(--text-secondary); margin-bottom: 3rem; line-height: 1.6; max-width: 600px;">
-                Computer Engineering Student & AI Enthusiast. <br>
-                Building scalable systems, exploring deep learning, and optimizing low-level code.
+            <div class="bio-intro">
+                Computer Engineering Student & AI Enthusiast.<br>
+                Building scalable systems, exploring deep learning, and wondering why my code works.
             </div>
 
             <div class="cta-container">
-                <a href="about/index.html" class="btn-tech">Access Schematics</a>
-                <a href="https://github.com/Vedant9500" target="_blank" class="btn-outline">Download Specs</a>
+                <a href="about/index.html" class="btn btn-primary">Enter Portfolio!</a>
+                <a href="https://github.com/Vedant9500" target="_blank" class="btn btn-secondary">My GitHub</a>
             </div>
         </div>
     </main>
 
     <footer class="landing-footer">
-        SECURE TERMINAL // VEDANTIUM.DEV // 2026
+        <div>© 2026 Vedant Deshmukh</div>
+        <div>Made with ☕ and 💖</div>
     </footer>
+
+    <!-- Playful Interactions -->
+    <script src="js/landing.js"></script>
 
 </body>
 

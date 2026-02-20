@@ -37,7 +37,7 @@ body::-webkit-scrollbar {
 /* Base body styles */
 body {
     font-family: var(--font-body);
-    background-color: var(--bg-blue);
+    background-color: var(--bg-cream);
     color: var(--text-primary);
     line-height: 1.6;
     min-height: 100vh;
@@ -48,14 +48,9 @@ body {
     -moz-osx-font-smoothing: grayscale;
     text-rendering: geometricPrecision;
     font-size: 16px;
-
-    /* Technical Grid Background */
-    background-image:
-        linear-gradient(var(--line-color) 1px, transparent 1px),
-        linear-gradient(90deg, var(--line-color) 1px, transparent 1px);
-    background-size: 50px 50px;
+    background-image: radial-gradient(var(--ink-light) 1px, transparent 1px);
+    background-size: 20px 20px;
     background-position: var(--bg-x, 0px) var(--bg-y, 0px);
-    transition: background-position 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 
 /* Container */
