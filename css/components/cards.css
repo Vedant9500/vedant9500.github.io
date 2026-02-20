@@ -1,6 +1,5 @@
 /* ========================================
-   CARDS - BLUEPRINT SCHEMATIC STYLE
-   Theme: Technical, Wireframe, Data Display
+   CARDS - GOOFY VINTAGE PASTEL
    ======================================== */
 
 section {
@@ -9,20 +8,14 @@ section {
 
 section h2 {
     font-family: var(--font-display);
-    font-size: 2.5rem;
-    font-weight: 300;
+    font-size: 3rem;
+    font-weight: 700;
     text-transform: uppercase;
     text-align: left;
     margin-bottom: 3rem;
-    color: var(--accent-cyan);
-    border-bottom: 1px solid var(--line-color);
+    color: var(--ink);
     padding-bottom: 1rem;
-    letter-spacing: 2px;
-}
-
-section h2::before {
-    content: '// ';
-    color: var(--text-dim);
+    letter-spacing: -2px;
 }
 
 /* ========================================
@@ -31,7 +24,7 @@ section h2::before {
 .about-hero {
     text-align: left;
     margin-bottom: 4rem;
-    border-left: 1px solid var(--accent-cyan);
+    border-left: var(--border-main);
     padding-left: 2rem;
 }
 
@@ -41,21 +34,26 @@ section h2::before {
     gap: 1rem;
     margin-bottom: 0.5rem;
     font-family: var(--font-mono);
-    color: var(--accent-cyan);
-    font-size: 0.9rem;
+    color: var(--text-secondary);
+    font-weight: bold;
+    font-size: 1.2rem;
 }
 
 .about-name {
-    font-size: 4rem;
+    font-size: 5rem;
+    font-weight: 800;
     color: var(--text-primary);
     margin-bottom: 0.5rem;
     line-height: 1;
+    letter-spacing: -3px;
+    text-shadow: 3px 3px 0px var(--accent-pink);
 }
 
 .about-tagline {
     font-family: var(--font-mono);
     color: var(--text-secondary);
-    font-size: 1rem;
+    font-size: 1.1rem;
+    font-weight: bold;
     max-width: 600px;
 }
 
@@ -68,99 +66,74 @@ section h2::before {
 
 .about-card.about-intro {
     grid-column: 1 / -1;
+    background: var(--accent-pink);
 }
 
 /* ========================================
-   SCHEMATIC CARD BASE
+   CARD BASE (Neo-brutalist)
    ======================================== */
 .about-card,
 .project-card,
 .achievement-card {
-    background: rgba(0, 43, 54, 0.4);
-    /* subtle fill */
-    border: 1px solid var(--line-strong);
+    background: var(--bg-card);
+    border: var(--border-main);
+    box-shadow: var(--shadow-main);
     padding: 2rem;
     position: relative;
-    transition: all 0.3s ease;
-}
-
-/* Corner Markers */
-.about-card::before,
-.project-card::before,
-.achievement-card::before,
-.about-card::after,
-.project-card::after,
-.achievement-card::after {
-    content: '';
-    position: absolute;
-    width: 6px;
-    height: 6px;
-    background: var(--text-dim);
-    transition: background 0.3s;
-}
-
-.about-card::before,
-.project-card::before,
-.achievement-card::before {
-    top: -3px;
-    left: -3px;
-}
-
-.about-card::after,
-.project-card::after,
-.achievement-card::after {
-    bottom: -3px;
-    right: -3px;
+    border-radius: 8px;
+    transition: all 0.2s ease;
 }
 
 /* Hover Effects */
 .about-card:hover,
 .project-card:hover,
 .achievement-card:hover {
-    border-color: var(--accent-cyan);
-    box-shadow: 0 0 15px rgba(42, 161, 152, 0.1);
-    transform: translateY(-2px);
+    box-shadow: var(--shadow-hover);
+    transform: translate(-2px, -2px);
 }
 
-.about-card:hover::before,
-.about-card:hover::after,
-.project-card:hover::before,
-.project-card:hover::after,
-.achievement-card:hover::before,
-.achievement-card:hover::after {
-    background: var(--accent-cyan);
+.about-card:active,
+.project-card:active,
+.achievement-card:active {
+    box-shadow: var(--shadow-active);
+    transform: translate(2px, 2px);
 }
 
 /* Card Content */
 .about-card-icon {
-    font-size: 1.5rem;
-    color: var(--accent-cyan);
+    font-size: 2rem;
+    color: var(--ink);
     margin-bottom: 1rem;
 }
 
 .about-card h3,
 .project-header h3,
 .achievement-card h3 {
-    font-family: var(--font-mono);
-    font-size: 1rem;
+    font-family: var(--font-display);
+    font-size: 1.5rem;
+    font-weight: 700;
     text-transform: uppercase;
-    color: var(--text-primary);
+    color: var(--ink);
     margin-bottom: 1rem;
-    letter-spacing: 1px;
+    letter-spacing: -1px;
 }
 
 .about-card p,
 .project-card p,
 .achievement-card p {
-    font-family: var(--font-mono);
-    font-size: 0.85rem;
-    color: var(--text-secondary);
+    font-family: var(--font-body);
+    font-size: 1rem;
+    color: var(--ink-light);
     line-height: 1.6;
+    font-weight: 500;
 }
 
 .keyword {
-    color: var(--accent-cyan);
-    font-weight: 700;
+    color: var(--ink);
+    font-weight: 800;
+    background: var(--accent-yellow);
+    padding: 0 4px;
+    border-radius: 4px;
 }
 
 /* ========================================

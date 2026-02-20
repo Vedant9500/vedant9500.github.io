@@ -1,48 +1,53 @@
 /* ========================================
-   VEDANTIUM.DEV - BLUEPRINT DESIGN SYSTEM
-   Theme: Technical, Precision Engineering, CAD
+   VEDANTIUM.DEV - GOOFY VINTAGE PASTEL SYSTEM
+   Theme: Warm, Nostalgic, Playful, Neo-Brutalist
    ======================================== */
 
 :root {
     /* ========================================
-       COLOR PALETTE (Solarized Deep / Blueprint)
+       COLOR PALETTE
        ======================================== */
     
     /* Backgrounds */
-    --bg-blue: #002B36; /* Deep Technical Blue */
-    --bg-dark: #00212B; /* Darker shade for contrast/overlay */
+    --bg-cream: #FAF9F6;
+    --bg-card: #FFFFFF;
     
-    /* Accents */
-    --accent-cyan: #2AA198; /* Primary active color */
-    --accent-cyan-dim: rgba(42, 161, 152, 0.4);
-    --accent-red: #DC322F; /* Error / Danger */
-    --accent-orange: #CB4B16; /* Warning */
+    /* Accents (Pastels) */
+    --accent-pink: #FFC4C4;
+    --accent-mint: #C4FFD9;
+    --accent-yellow: #FFF3C4;
+    --accent-blue: #C4D9FF;
+    --accent-lavender: #E0C4FF;
 
-    /* Text */
-    --text-primary: #FDF6E3; /* Solarized Base3 */
-    --text-secondary: #93A1A1; /* Solarized Base1 */
-    --text-dim: #586E75; /* Solarized Base01 */
-
-    /* Structure */
-    --line-color: rgba(147, 161, 161, 0.2);
-    --line-strong: rgba(147, 161, 161, 0.5);
+    /* Text & Ink */
+    --ink: #1A1A1A;
+    --ink-light: #555555;
     
     /* Semantic Mapping */
-    --primary: var(--accent-cyan);
-    --bg-app: var(--bg-blue);
-    --bg-panel: rgba(0, 33, 43, 0.9);
+    --bg-app: var(--bg-cream);
+    --text-primary: var(--ink);
+    --text-secondary: var(--ink-light);
+    --line-color: var(--ink);
+    --bg-panel: var(--bg-card); /* Replacing old translucent panel */
+    --primary: var(--accent-pink);
     
     /* Fonts */
     --font-display: 'Space Grotesk', sans-serif;
     --font-mono: 'Space Mono', monospace;
     --font-body: var(--font-display);
 
+    /* Shadows & Borders (Neo-brutalist) */
+    --border-main: 3px solid var(--ink);
+    --border-thin: 2px solid var(--ink);
+    --shadow-main: 4px 4px 0px var(--ink);
+    --shadow-hover: 6px 6px 0px var(--ink);
+    --shadow-active: 0px 0px 0px var(--ink); /* Flat when pressed */
+    
     /* Spacing & Layout */
     --header-height: 80px;
     --container-max: 1400px;
 }
 
-/* Force Dark Mode (The only mode for this aesthetic) */
 html {
-    color-scheme: dark;
+    color-scheme: light;
 }

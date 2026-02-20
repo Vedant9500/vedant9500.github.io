@@ -125,8 +125,8 @@
    SELECTION STYLING
    ======================================== */
 ::selection {
-    background: var(--pastel-primary-soft);
-    color: var(--pastel-primary-on);
+    background: var(--accent-pink);
+    color: var(--ink);
 }
 
 /* Remove focus ring for mouse users */

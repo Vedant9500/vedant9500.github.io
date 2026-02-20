@@ -4,20 +4,16 @@
 .mobile-bottom-nav {
     display: none;
     position: fixed;
-    bottom: max(12px, 2.5vh);
+    bottom: max(16px, 3vh);
     left: 50%;
     transform: translateX(-50%);
-    background: rgba(255, 255, 255, 0.45);
-    backdrop-filter: blur(20px) saturate(180%);
-    -webkit-backdrop-filter: blur(20px) saturate(180%);
-    border-radius: 999px;
+    background: var(--bg-card);
+    border: var(--border-main);
+    box-shadow: var(--shadow-main);
+    border-radius: 12px;
     padding: clamp(8px, 1.5vh, 12px) clamp(16px, 3vw, 24px);
-    gap: clamp(4px, 1vw, 10px);
+    gap: clamp(8px, 2vw, 16px);
     z-index: 1000;
-    border: 1px solid rgba(0, 0, 0, 0.03);
-    box-shadow:
-        0 4px 24px rgba(0, 0, 0, 0.04),
-        0 1px 3px rgba(0, 0, 0, 0.02);
 }
 
 /* Sliding pill indicator */
@@ -25,27 +21,16 @@
     position: absolute;
     width: clamp(40px, 6vh, 52px);
     height: clamp(40px, 6vh, 52px);
-    border-radius: 50%;
-    background: rgba(124, 154, 146, 0.15);
-    border: 2px solid var(--pastel-primary);
+    border-radius: 8px;
+    background: var(--accent-mint);
+    border: var(--border-thin);
     pointer-events: none;
-    transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     z-index: 0;
     top: 50%;
     left: 0;
-    transform: translateY(-50%);
-}
-
-[data-theme="dark"] .nav-indicator {
-    background: rgba(124, 154, 146, 0.2);
-}
-
-[data-theme="dark"] .mobile-bottom-nav {
-    background: rgba(30, 30, 35, 0.55);
-    border: 1px solid rgba(255, 255, 255, 0.06);
-    box-shadow:
-        0 4px 24px rgba(0, 0, 0, 0.25),
-        0 1px 3px rgba(0, 0, 0, 0.15);
+    transform: translateY(-50%) translate(-2px, -2px);
+    box-shadow: 2px 2px 0 var(--ink);
 }
 
 .mobile-nav-item {
@@ -54,45 +39,36 @@
     justify-content: center;
     width: clamp(40px, 6vh, 52px);
     height: clamp(40px, 6vh, 52px);
-    border-radius: 50%;
+    border-radius: 8px;
     background: transparent;
-    border: 2px solid transparent;
-    color: rgba(0, 0, 0, 0.45);
+    color: var(--ink);
     cursor: pointer;
-    transition: all 0.25s ease;
+    transition: all 0.2s ease;
     text-decoration: none;
     -webkit-tap-highlight-color: transparent;
     -webkit-touch-callout: none;
     user-select: none;
-}
-
-[data-theme="dark"] .mobile-nav-item {
-    color: rgba(255, 255, 255, 0.5);
+    position: relative;
+    z-index: 1;
+    border: 2px solid transparent;
 }
 
 .mobile-nav-item:hover {
-    color: rgba(0, 0, 0, 0.7);
-}
-
-[data-theme="dark"] .mobile-nav-item:hover {
-    color: rgba(255, 255, 255, 0.8);
+    color: var(--ink);
+    transform: translate(-1px, -1px);
 }
 
 /* Mobile nav divider */
 .mobile-nav-divider {
-    width: 1px;
-    height: 24px;
-    background: rgba(0, 0, 0, 0.12);
-    margin: 0 -4px;
+    width: 2px;
+    height: 32px;
+    background: var(--ink);
+    margin: 0 4px;
     align-self: center;
 }
 
-[data-theme="dark"] .mobile-nav-divider {
-    background: rgba(255, 255, 255, 0.15);
-}
-
 .mobile-nav-item i {
-    font-size: clamp(1.1rem, 2.5vh, 1.4rem);
+    font-size: clamp(1.2rem, 2.5vh, 1.5rem);
     transition: transform 0.2s ease;
 }
 
@@ -102,14 +78,8 @@
 
 /* Active state */
 .mobile-nav-item.active {
-    color: var(--pastel-primary);
-    border-color: transparent;
-    background: transparent;
-    z-index: 1;
-}
-
-[data-theme="dark"] .mobile-nav-item.active {
-    color: var(--pastel-primary);
+    color: var(--ink);
+    font-weight: bold;
 }
 
 .mobile-nav-item.active i {
