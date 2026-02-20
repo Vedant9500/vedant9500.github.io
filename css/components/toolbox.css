@@ -51,7 +51,7 @@
 
 .toolbox-card:hover {
     box-shadow: var(--shadow-hover);
-    transform: translate(-4px, -4px) rotate(0deg);
+    transform: translate(-4px, -4px) rotate(-1deg);
     z-index: 10;
 }
 

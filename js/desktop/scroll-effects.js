@@ -225,21 +225,18 @@ export const initBackgroundParallax = () => {
     const body = document.body;
     body.style.backgroundAttachment = 'fixed';
 
+    // State for combined parallax and drift
+    let scrollY = window.scrollY || 0;
+    let sectionX = 0; // Horizontal shift from active section
+    let driftTime = 0; // Continuous accumulator for drift
+    let lastTime = performance.now();
+    let rAF_ID = null;
+
     // 1. VERTICAL PARALLAX (Scroll based)
     const sections = document.querySelectorAll('.content-section');
-    let ticking = false;
 
     const handleScroll = (e) => {
-        if (!ticking) {
-            window.requestAnimationFrame(() => {
-                const target = e.target;
-                const scrolled = target.scrollTop;
-                // Update Y variable
-                body.style.setProperty('--bg-y', `${-(scrolled * 0.1)}px`);
-                ticking = false;
-            });
-            ticking = true;
-        }
+        scrollY = e.target.scrollTop || window.scrollY;
     };
 
     if (sections.length) {
@@ -248,30 +245,23 @@ export const initBackgroundParallax = () => {
         });
     } else {
         // Fallback for non-section pages
-        window.addEventListener('scroll', () => {
-            requestAnimationFrame(() => {
-                body.style.setProperty('--bg-y', `${-(window.scrollY * 0.1)}px`);
-            });
-        }, { passive: true });
+        window.addEventListener('scroll', handleScroll, { passive: true });
     }
 
     // 2. HORIZONTAL PARALLAX (Section based)
     const sectionsTrack = document.querySelector('.sections-track');
-    if (sectionsTrack) {
+    const updateHorizontalParallax = () => {
+        if (!sectionsTrack) return;
         const sectionOrder = ['about', 'projects', 'toolbox'];
+        const activeSection = sectionsTrack.dataset.activeSection || 'about';
+        const index = sectionOrder.indexOf(activeSection);
 
-        const updateHorizontalParallax = () => {
-            const activeSection = sectionsTrack.dataset.activeSection || 'about';
-            const index = sectionOrder.indexOf(activeSection);
-            // Shift grid horizontally: 50px per section (1 grid unit)
-            const xPos = -(index * 50);
-            body.style.setProperty('--bg-x', `${xPos}px`);
-        };
+        // Exaggerated horizontal shift: 150px per section
+        sectionX = -(index * 150);
+    };
 
-        // Initialize
+    if (sectionsTrack) {
         updateHorizontalParallax();
-
-        // Observer for changes
         const observer = new MutationObserver((mutations) => {
             mutations.forEach((mutation) => {
                 if (mutation.type === 'attributes' && mutation.attributeName === 'data-active-section') {
@@ -279,7 +269,31 @@ export const initBackgroundParallax = () => {
                 }
             });
         });
-
         observer.observe(sectionsTrack, { attributes: true });
     }
+
+    // 3. CONTINUOUS IDLE DRIFT LOOP
+    const renderDrift = (time) => {
+        const delta = time - lastTime;
+        lastTime = time;
+
+        // Increment drift (slow, constant movement)
+        driftTime += delta * 0.02; // Adjust multiplier for speed
+
+        // Calculate final positions combining user action (scroll/section) + idle drift
+        const finalX = sectionX + driftTime;
+        const finalY = -(scrollY * 0.15) + (driftTime * 0.5); // 0.15 is enhanced vertical parallax
+
+        // Apply to CSS variables
+        body.style.setProperty('--bg-x', `${finalX}px`);
+        body.style.setProperty('--bg-y', `${finalY}px`);
+
+        rAF_ID = requestAnimationFrame(renderDrift);
+    };
+
+    // Start loop
+    rAF_ID = requestAnimationFrame(renderDrift);
+
+    // Cleanup (useful if navigating away via SPA routing later)
+    return () => cancelAnimationFrame(rAF_ID);
 };

@@ -146,6 +146,37 @@ section h2 {
     gap: 2rem;
 }
 
+/* Staggered Entries for Grid items */
+.projects-grid> :nth-child(1),
+.achievements-grid> :nth-child(1) {
+    transition-delay: 0.1s;
+}
+
+.projects-grid> :nth-child(2),
+.achievements-grid> :nth-child(2) {
+    transition-delay: 0.2s;
+}
+
+.projects-grid> :nth-child(3),
+.achievements-grid> :nth-child(3) {
+    transition-delay: 0.3s;
+}
+
+.projects-grid> :nth-child(4),
+.achievements-grid> :nth-child(4) {
+    transition-delay: 0.4s;
+}
+
+.projects-grid> :nth-child(5),
+.achievements-grid> :nth-child(5) {
+    transition-delay: 0.5s;
+}
+
+.projects-grid> :nth-child(6),
+.achievements-grid> :nth-child(6) {
+    transition-delay: 0.6s;
+}
+
 .project-card {
     display: flex;
     flex-direction: column;

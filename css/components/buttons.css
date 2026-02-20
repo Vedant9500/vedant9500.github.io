@@ -46,7 +46,7 @@
 .btn-tech:hover {
     background: var(--accent-pink);
     box-shadow: var(--shadow-hover);
-    transform: translate(-2px, -2px);
+    transform: translate(-4px, -4px) rotate(-2deg);
 }
 
 .btn-secondary,
@@ -58,7 +58,7 @@
 .btn-outline:hover {
     background: var(--accent-yellow);
     box-shadow: var(--shadow-hover);
-    transform: translate(-2px, -2px);
+    transform: translate(-4px, -4px) rotate(2deg);
 }
 
 .footer-link {

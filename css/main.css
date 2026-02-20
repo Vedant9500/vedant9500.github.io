@@ -25,6 +25,7 @@
    ===================================== */
 @import './desktop/layout.css';
 @import './desktop/animations.css';
+@import './desktop/cursor.css';
 
 /* =====================================
    MOBILE - Navigation and responsive

@@ -19,6 +19,8 @@ import {
     initPageNavigation,
     initBackgroundParallax
 } from './desktop/scroll-effects.js';
+import { initCustomCursor } from './desktop/cursor.js';
+import { initPetals } from './desktop/petals.js';
 
 // Mobile modules
 import { initMobileToggles, initNavIndicator } from './mobile/bottom-nav.js';
@@ -41,6 +43,8 @@ document.addEventListener('DOMContentLoaded', () => {
     initRevealAnimations();
     initPageNavigation();
     initBackgroundParallax();
+    initCustomCursor();
+    initPetals();
 
     // Section-based page features (about/ page)
     SectionNavigator.init();

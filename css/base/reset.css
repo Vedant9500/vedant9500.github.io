@@ -48,12 +48,9 @@ body {
     -moz-osx-font-smoothing: grayscale;
     text-rendering: geometricPrecision;
     font-size: 16px;
-    background-image: repeating-linear-gradient(-45deg,
-            transparent,
-            transparent 10px,
-            rgba(26, 26, 26, 0.05) 10px,
-            rgba(26, 26, 26, 0.05) 12px);
-    background-size: 100% 100%;
+    background-image: radial-gradient(rgba(113, 90, 110, 0.06) 2px, transparent 2px);
+    background-size: 30px 30px;
+    background-position: var(--bg-x, 0px) var(--bg-y, 0px);
 }
 
 /* Container */
