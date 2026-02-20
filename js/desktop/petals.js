@@ -44,33 +44,41 @@ export const initPetals = () => {
 
     class Petal {
         constructor() {
-            this.x = Math.random() * width;
-            this.y = (Math.random() * height) - height; // Start offscreen above
-            this.size = (Math.random() * 10) + 10;
-            this.speedY = (Math.random() * 1) + 0.5;
-            this.speedX = (Math.random() * 2) - 1;
+            // Start mostly from top left, simulating a tree just off-screen
+            this.x = (Math.random() * width * 0.5) - (width * 0.2);
+            this.y = (Math.random() * height * 0.5) - height;
+
+            // Slightly bigger: baseline 12 + random up to 15
+            this.size = (Math.random() * 15) + 12;
+
+            // Gentler, slower speeds for a serene fall
+            this.speedY = (Math.random() * 0.7) + 0.3;
+            this.speedX = (Math.random() * 1.0) + 0.2; // Always positive (moving right)
+
             this.angle = Math.random() * 360;
-            this.spin = (Math.random() * 0.1) - 0.05;
+            this.spin = (Math.random() * 0.05) - 0.025; // Slower spin
             this.wobble = Math.random() * 2 * Math.PI;
-            this.wobbleSpeed = (Math.random() * 0.05) + 0.01;
+            this.wobbleSpeed = (Math.random() * 0.03) + 0.01; // Slower wobble
         }
 
         update() {
             this.y += this.speedY;
-            this.x += this.speedX + Math.sin(this.wobble) * 0.5;
+            // Gentle wobble added to general rightward movement
+            this.x += this.speedX + Math.sin(this.wobble) * 0.8;
             this.angle += this.spin;
             this.wobble += this.wobbleSpeed;
 
-            // Reset when falling off screen
-            if (this.y > height + this.size) {
+            // Removed the sudden gust of wind for a more peaceful, steady fall
+
+            // Reset when falling off screen (wrap around to top-left-ish)
+            if (this.y > height + this.size || this.x > width + this.size) {
                 this.y = -this.size;
-                this.x = Math.random() * width;
-                this.speedX = (Math.random() * 2) - 1;
-            }
-            if (this.x > width + this.size) {
-                this.x = -this.size;
-            } else if (this.x < -this.size) {
-                this.x = width + this.size;
+                // Re-spawn near top-left area
+                this.x = (Math.random() * width * 0.5) - (width * 0.2);
+
+                // Reset speeds to serene baseline
+                this.speedY = (Math.random() * 0.7) + 0.3;
+                this.speedX = (Math.random() * 1.0) + 0.2;
             }
         }
 
