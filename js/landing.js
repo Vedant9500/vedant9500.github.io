@@ -2,8 +2,16 @@
  * landing.js
  * Implements playful drag interactions for the decorative elements on the homepage.
  */
+import { initCustomCursor } from './desktop/cursor.js';
+import { initPetals } from './desktop/petals.js';
+import { initBackgroundParallax } from './desktop/scroll-effects.js';
 
 document.addEventListener('DOMContentLoaded', () => {
+    // Initialize global UX
+    initCustomCursor();
+    initPetals();
+    initBackgroundParallax();
+
     // Make elements draggable
     const draggables = Array.from(document.querySelectorAll('.decor'));
     let activeDrag = null;
@@ -51,7 +59,7 @@ document.addEventListener('DOMContentLoaded', () => {
         // Reset visual feedback
         activeDrag.style.cursor = 'grab';
         activeDrag.style.boxShadow = '4px 4px 0 var(--ink)'; // normal shadow for decor
-        activeDrag.style.zIndex = '1'; 
+        activeDrag.style.zIndex = '1';
         activeDrag = null;
     }
 

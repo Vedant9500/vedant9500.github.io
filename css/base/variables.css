@@ -9,19 +9,25 @@
        ======================================== */
 
     /* Backgrounds */
-    --bg-cream: #FAF9F6;
+    --bg-cream: #FDFBF7;
+    /* Soft rice paper / warm white */
     --bg-card: #FFFFFF;
 
-    /* Accents (Pastels) */
-    --accent-pink: #FFC4C4;
-    --accent-mint: #C4FFD9;
-    --accent-yellow: #FFF3C4;
-    --accent-blue: #C4D9FF;
+    /* Accents (Japanese Summer / Sakura) */
+    --accent-pink: #FFB7C5;
+    /* Sakura Pink */
+    --accent-mint: #C1D5A4;
+    /* Matcha Green */
+    --accent-yellow: #FDFD96;
+    /* Soft Sunlight */
+    --accent-blue: #A2D2FF;
+    /* Summer Sky */
     --accent-lavender: #E0C4FF;
 
     /* Text & Ink */
-    --ink: #1A1A1A;
-    --ink-light: #555555;
+    --ink: #3A2E39;
+    /* Deep warm plum/brown instead of harsh black */
+    --ink-light: #715A6E;
 
     /* Semantic Mapping */
     --bg-app: var(--bg-cream);
