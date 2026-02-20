@@ -17,13 +17,17 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // 1. Generate Random Shapes
     const shapes = ['50%', '8px', '50% 50% 8px 8px', '8px 50% 50% 8px', '50% 8px 50% 8px'];
-    const colors = ['var(--accent-pink)', 'var(--accent-mint)', 'var(--accent-blue)', 'var(--accent-yellow)', 'var(--accent-lavender)'];
+
+    // Favor Sakura colors on mobile
+    const colors = window.innerWidth < 768
+        ? ['var(--accent-pink)', 'var(--accent-lavender)']
+        : ['var(--accent-pink)', 'var(--accent-mint)', 'var(--accent-blue)', 'var(--accent-yellow)', 'var(--accent-lavender)'];
 
     // Remove any hardcoded decor that might be in the HTML
     document.querySelectorAll('.decor').forEach(el => el.remove());
 
     const draggables = [];
-    const numShapes = window.innerWidth < 768 ? 2 : 4; // Fewer on mobile
+    const numShapes = window.innerWidth < 768 ? 3 : 4; // 3 on mobile to showcase the pink aesthetic
 
     for (let i = 0; i < numShapes; i++) {
         const el = document.createElement('div');

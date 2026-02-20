@@ -111,11 +111,11 @@ export const initNavIndicator = () => {
         // Get nav padding (indicator needs to start after padding)
         const navPaddingLeft = parseFloat(getComputedStyle(nav).paddingLeft);
 
-        // Calculate offset from nav's content area (not including padding)
-        const offsetX = activeRect.left - navRect.left - navPaddingLeft;
+        // Calculate offset from nav left edge to active item left edge for exact overlap
+        const offsetX = activeRect.left - navRect.left;
 
-        // Use translateX only, preserve translateY(-50%) for vertical centering
-        indicator.style.transform = `translate(${offsetX + navPaddingLeft}px, -50%)`;
+        // Apply visual adjustments to account for shadow and maintain exact centering
+        indicator.style.transform = `translate(${offsetX}px, -50%) translate(-2px, -2px)`;
     };
 
     // Initial position
