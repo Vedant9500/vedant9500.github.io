@@ -1,94 +1,86 @@
 /* ========================================
-   TOOLBOX / SKILLS - BLUEPRINT STYLE
-   Theme: Technical, Schematic, Grid
+   TOOLBOX / SKILLS - VINTAGE BENTO BOX
+   Theme: Playful, Scattered, Neo-Brutalist
    ======================================== */
 
-.toolbox-accordion {
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-    max-width: 800px;
+.toolbox-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 24px;
+    max-width: 1000px;
     margin: 0 auto;
 }
 
-.toolbox-category {
-    border: 1px solid var(--line-color);
-    margin-bottom: 0;
-    background: var(--bg-panel);
-    transition: all 0.3s ease;
+.toolbox-card {
+    background: var(--bg-card);
+    border: var(--border-main);
+    box-shadow: var(--shadow-main);
+    padding: 1.5rem;
+    border-radius: 8px;
+    transition: all 0.2s ease;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
 }
 
-.toolbox-category[data-expanded="true"] {
-    border-color: var(--accent-cyan);
-    background: rgba(42, 161, 152, 0.02);
+/* Playful rotations for a scattered desk look */
+.toolbox-card:nth-child(1) {
+    transform: rotate(-2deg);
+    background: var(--accent-mint);
+}
+
+.toolbox-card:nth-child(2) {
+    transform: rotate(1deg);
+    background: var(--accent-pink);
+}
+
+.toolbox-card:nth-child(3) {
+    transform: rotate(-1deg);
+    background: var(--accent-blue);
+}
+
+.toolbox-card:nth-child(4) {
+    transform: rotate(2deg);
+    background: var(--accent-yellow);
+}
+
+.toolbox-card:nth-child(5) {
+    transform: rotate(-1.5deg);
+    background: var(--bg-cream);
+}
+
+.toolbox-card:hover {
+    box-shadow: var(--shadow-hover);
+    transform: translate(-4px, -4px) rotate(0deg);
+    z-index: 10;
+}
+
+.toolbox-card:active {
+    box-shadow: var(--shadow-active);
+    transform: translate(2px, 2px) rotate(0deg);
 }
 
 .toolbox-header {
-    width: 100%;
-    padding: 1.5rem;
-    background: transparent;
-    border: none;
-    color: var(--text-primary);
-    font-family: var(--font-mono);
-    text-transform: uppercase;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    cursor: pointer;
-    transition: background 0.2s;
-}
-
-.toolbox-header:hover {
-    background: rgba(42, 161, 152, 0.05);
-}
-
-.toolbox-header-content {
     display: flex;
     align-items: center;
-    gap: 15px;
+    gap: 12px;
+    font-family: var(--font-display);
+    font-size: 1.4rem;
+    font-weight: 800;
+    color: var(--ink);
+    border-bottom: var(--border-thin);
+    padding-bottom: 0.5rem;
+    margin-bottom: 0.5rem;
 }
 
-.toolbox-header-content i {
-    width: 24px;
-    text-align: center;
-    color: var(--accent-cyan);
-    font-size: 1rem;
-}
-
-.toolbox-chevron {
-    color: var(--text-dim);
-    transition: transform 0.3s ease;
-    font-size: 0.8rem;
-}
-
-.toolbox-category[data-expanded="true"] .toolbox-chevron {
-    transform: rotate(180deg);
-    color: var(--accent-cyan);
+.toolbox-header i {
+    font-size: 1.2rem;
 }
 
 .toolbox-content {
-    padding: 0 1.5rem 1.5rem 4rem;
-    /* Indented to align with text */
-    display: none;
-    /* JS handles toggle, but we need CSS state support */
-}
-
-/* ACTIVE STATE for Accordion */
-.toolbox-category[data-expanded="true"] .toolbox-content {
-    display: block;
-    animation: fadeIn 0.3s ease;
-}
-
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-        transform: translateY(-5px);
-    }
-
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
 }
 
 .skill-pills {
@@ -99,18 +91,30 @@
 
 .skill-pill {
     font-family: var(--font-mono);
-    font-size: 0.8rem;
-    color: var(--text-secondary);
-    border: 1px solid var(--line-strong);
-    padding: 5px 12px;
-    background: transparent;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--ink);
+    border: 2px solid var(--ink);
+    padding: 6px 14px;
+    background: var(--bg-card);
+    border-radius: 20px;
+    box-shadow: 2px 2px 0 var(--ink);
     cursor: default;
     transition: all 0.2s;
 }
 
 .skill-pill:hover {
-    border-color: var(--accent-cyan);
-    color: var(--accent-cyan);
-    background: rgba(42, 161, 152, 0.1);
-    box-shadow: 0 0 10px rgba(42, 161, 152, 0.2);
+    transform: translate(-2px, -2px);
+    box-shadow: 4px 4px 0 var(--ink);
+}
+
+@media (max-width: 768px) {
+    .toolbox-card:nth-child(n) {
+        transform: rotate(0deg);
+        /* Disable rotation on mobile for readability */
+    }
+
+    .toolbox-card:hover {
+        transform: translate(-2px, -2px);
+    }
 }
