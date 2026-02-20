@@ -23,7 +23,7 @@ document.addEventListener('DOMContentLoaded', () => {
     document.querySelectorAll('.decor').forEach(el => el.remove());
 
     const draggables = [];
-    const numShapes = window.innerWidth < 768 ? 4 : 8; // Fewer on mobile
+    const numShapes = window.innerWidth < 768 ? 2 : 4; // Fewer on mobile
 
     for (let i = 0; i < numShapes; i++) {
         const el = document.createElement('div');
@@ -37,9 +37,31 @@ document.addEventListener('DOMContentLoaded', () => {
         el.style.background = colors[Math.floor(Math.random() * colors.length)];
         el.style.borderRadius = shapes[Math.floor(Math.random() * shapes.length)];
 
-        // Randomize placement
-        el.style.left = `${Math.random() * 80 + 10}%`;
-        el.style.top = `${Math.random() * 80 + 10}%`;
+        // Randomize placement (Avoid center hero card by distributing into quadrants)
+        let left, top;
+        const quadrant = i % 4;
+
+        switch (quadrant) {
+            case 0: // Top-Left
+                left = Math.random() * 20 + 5; // 5% to 25%
+                top = Math.random() * 20 + 5;  // 5% to 25%
+                break;
+            case 1: // Top-Right
+                left = Math.random() * 20 + 70; // 70% to 90%
+                top = Math.random() * 20 + 5;
+                break;
+            case 2: // Bottom-Left
+                left = Math.random() * 20 + 5;
+                top = Math.random() * 20 + 70; // 70% to 90%
+                break;
+            case 3: // Bottom-Right
+                left = Math.random() * 20 + 70;
+                top = Math.random() * 20 + 70;
+                break;
+        }
+
+        el.style.left = `${left}%`;
+        el.style.top = `${top}%`;
 
         const rotation = Math.random() * 360;
         el.dataset.rotation = rotation;
