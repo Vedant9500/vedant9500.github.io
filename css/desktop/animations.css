@@ -7,14 +7,14 @@
    ======================================== */
 .reveal {
     opacity: 0;
-    transform: translateY(30px);
-    transition: opacity 0.6s ease, transform 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-    will-change: opacity, transform;
+    translate: 0 24px;
+    transition: opacity 0.8s ease-out, translate 1s cubic-bezier(0.22, 1, 0.36, 1);
+    will-change: opacity, translate;
 }
 
 .reveal.is-visible {
     opacity: 1;
-    transform: translateY(0);
+    translate: 0 0;
 }
 
 /* ========================================

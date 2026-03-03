@@ -15,7 +15,7 @@ export const initPetals = () => {
     canvas.style.width = '100%';
     canvas.style.height = '100%';
     canvas.style.pointerEvents = 'none';
-    canvas.style.zIndex = '0';
+    canvas.style.zIndex = '5';
 
     // Insert behind main content
     document.body.prepend(canvas);
