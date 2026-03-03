@@ -81,7 +81,7 @@ section h2 {
     padding: 2rem;
     position: relative;
     border-radius: 8px;
-    transition: all 0.2s ease;
+    transition: all 0.35s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 /* Hover Effects */
@@ -90,6 +90,7 @@ section h2 {
 .achievement-card:hover {
     box-shadow: var(--shadow-hover);
     transform: translate(-2px, -2px);
+    transition: all 0.35s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 .about-card:active,
@@ -97,6 +98,7 @@ section h2 {
 .achievement-card:active {
     box-shadow: var(--shadow-active);
     transform: translate(2px, 2px);
+    transition: all 0.15s ease;
 }
 
 /* Card Content */
@@ -181,6 +183,36 @@ section h2 {
     display: flex;
     flex-direction: column;
     min-height: 250px;
+}
+
+/* Pinboard effect — subtle rotations + staggered offsets */
+.project-card:nth-child(1) {
+    transform: rotate(-1deg);
+}
+
+.project-card:nth-child(2) {
+    transform: rotate(0.8deg) translateY(8px);
+}
+
+.project-card:nth-child(3) {
+    transform: rotate(-0.6deg);
+}
+
+.project-card:nth-child(4) {
+    transform: rotate(1deg) translateY(6px);
+}
+
+.project-card:nth-child(5) {
+    transform: rotate(-0.8deg);
+}
+
+.project-card:nth-child(6) {
+    transform: rotate(0.5deg) translateY(10px);
+}
+
+/* Snap straight on hover for readability */
+.project-card:hover {
+    transform: translate(-2px, -2px) rotate(0deg) !important;
 }
 
 .project-header {

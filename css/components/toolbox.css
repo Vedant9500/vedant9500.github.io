@@ -5,7 +5,7 @@
 
 .toolbox-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    grid-template-columns: repeat(3, 1fr);
     gap: 24px;
     max-width: 1000px;
     margin: 0 auto;
@@ -17,47 +17,52 @@
     box-shadow: var(--shadow-main);
     padding: 1.5rem;
     border-radius: 8px;
-    transition: all 0.2s ease;
+    transition: all 0.35s cubic-bezier(0.22, 1, 0.36, 1);
     display: flex;
     flex-direction: column;
     gap: 1rem;
 }
 
-/* Playful rotations for a scattered desk look */
+/* Scattered desk — wider rotations for messy feel */
 .toolbox-card:nth-child(1) {
-    transform: rotate(-2deg);
+    transform: rotate(-3deg);
     background: var(--accent-mint);
 }
 
 .toolbox-card:nth-child(2) {
-    transform: rotate(1deg);
+    transform: rotate(2deg) translateY(6px);
     background: var(--accent-pink);
 }
 
 .toolbox-card:nth-child(3) {
-    transform: rotate(-1deg);
+    transform: rotate(-1.5deg);
     background: var(--accent-blue);
 }
 
 .toolbox-card:nth-child(4) {
-    transform: rotate(2deg);
+    transform: rotate(3deg) translateY(8px);
     background: var(--accent-yellow);
 }
 
 .toolbox-card:nth-child(5) {
-    transform: rotate(-1.5deg);
+    transform: rotate(-2deg);
     background: var(--bg-cream);
+}
+
+.toolbox-card:nth-child(6) {
+    transform: rotate(1.5deg) translateY(5px);
+    background: var(--accent-lavender);
 }
 
 .toolbox-card:hover {
     box-shadow: var(--shadow-hover);
-    transform: translate(-4px, -4px) rotate(-1deg);
+    transform: translate(-4px, -4px) rotate(0deg) !important;
     z-index: 10;
 }
 
 .toolbox-card:active {
     box-shadow: var(--shadow-active);
-    transform: translate(2px, 2px) rotate(0deg);
+    transform: translate(2px, 2px) rotate(0deg) !important;
 }
 
 .toolbox-header {
@@ -100,7 +105,7 @@
     border-radius: 20px;
     box-shadow: 2px 2px 0 var(--ink);
     cursor: default;
-    transition: all 0.2s;
+    transition: all 0.3s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 .skill-pill:hover {
@@ -109,6 +114,10 @@
 }
 
 @media (max-width: 768px) {
+    .toolbox-grid {
+        grid-template-columns: 1fr;
+    }
+
     .toolbox-card:nth-child(n) {
         transform: rotate(0deg);
         /* Disable rotation on mobile for readability */

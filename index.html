@@ -25,6 +25,64 @@
     <style>
         /* LANDING SPECIFIC STYLES - PLAYFUL & BRUTALIST */
 
+        @keyframes heroSlideUp {
+            from {
+                opacity: 0;
+                transform: translateY(60px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes shapePop {
+            from {
+                opacity: 0;
+                transform: scale(0.5) rotate(0deg);
+            }
+
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        @keyframes cardBreathe {
+
+            0%,
+            100% {
+                box-shadow: 8px 8px 0 var(--ink);
+            }
+
+            50% {
+                box-shadow: 8px 8px 12px rgba(255, 183, 197, 0.15), 8px 8px 0 var(--ink);
+            }
+        }
+
+        @keyframes rolePulse {
+
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-2px);
+            }
+        }
+
         main {
             display: flex;
             align-items: center;
@@ -33,59 +91,88 @@
             padding: 20px;
             overflow: hidden;
             position: relative;
+            background-color: var(--bg-cream);
+            background-image: radial-gradient(rgba(113, 90, 110, 0.22) 1.2px, transparent 1.2px);
+            background-size: 28px 28px;
         }
 
         .hero-card {
-            background: var(--accent-yellow);
+            background: var(--bg-card);
             border: var(--border-main);
             padding: 60px;
             max-width: 800px;
             width: 100%;
             position: relative;
-            box-shadow: 12px 12px 0 var(--ink);
-            border-radius: 16px;
-            transition: all 0.3s;
+            box-shadow: 8px 8px 0 var(--ink);
+            border-radius: 20px;
+            transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.3s ease;
             z-index: 10;
+            animation: heroSlideUp 1s cubic-bezier(0.22, 1, 0.36, 1) both,
+                cardBreathe 6s ease-in-out 2.5s infinite;
+        }
+
+        .hero-card .about-name {
+            animation: heroSlideUp 0.8s cubic-bezier(0.22, 1, 0.36, 1) 0.15s both;
+        }
+
+        .hero-card .role {
+            animation: heroSlideUp 0.8s cubic-bezier(0.22, 1, 0.36, 1) 0.35s both,
+                rolePulse 3s ease-in-out 2.5s infinite;
+        }
+
+        .hero-card .bio-intro {
+            animation: heroSlideUp 0.8s cubic-bezier(0.22, 1, 0.36, 1) 0.55s both;
         }
 
         .hero-card:hover {
-            box-shadow: 16px 16px 0 var(--ink);
+            box-shadow: 12px 12px 0 var(--ink) !important;
             transform: translate(-4px, -4px);
+            animation-play-state: paused;
         }
 
-        /* Decorative Background Elements */
+        /* Decorative Background Shapes */
         .decor {
             position: absolute;
             border: var(--border-main);
-            box-shadow: var(--shadow-main);
-            border-radius: 50%;
             z-index: 1;
+            cursor: grab;
+            user-select: none;
+            -webkit-user-select: none;
+            transition: box-shadow 0.25s ease, filter 0.3s ease;
         }
 
-        /* Specific decor shapes are now generated dynamically in landing.js */
+        .decor:hover {
+            filter: brightness(1.08) saturate(1.2);
+        }
 
-        /* Role Line */
+        .decor:active {
+            cursor: grabbing;
+        }
+
+        /* Role Tag */
         .role {
-            font-family: var(--font-display);
-            font-weight: 800;
+            font-family: var(--font-mono);
+            font-weight: 600;
             color: var(--ink);
-            margin-bottom: 2rem;
+            margin-bottom: 2.5rem;
             display: inline-block;
-            background: var(--accent-mint);
-            padding: 4px 12px;
+            background: var(--accent-yellow);
+            padding: 6px 16px;
             border: var(--border-thin);
-            border-radius: 4px;
-            box-shadow: 2px 2px 0 var(--ink);
-            letter-spacing: 1px;
+            border-radius: 20px;
+            box-shadow: 3px 3px 0 var(--ink);
+            letter-spacing: 0.5px;
+            font-size: 0.95rem;
+            text-transform: uppercase;
         }
 
         .bio-intro {
             font-family: var(--font-body);
-            color: var(--ink-light);
-            font-weight: 500;
+            color: var(--ink);
+            font-weight: 400;
             font-size: 1.25rem;
-            margin-bottom: 3rem;
-            line-height: 1.6;
+            margin-bottom: 3.5rem;
+            line-height: 1.7;
             max-width: 600px;
         }
 
@@ -93,9 +180,10 @@
             display: flex;
             gap: 1rem;
             flex-wrap: wrap;
+            animation: fadeIn 1.2s ease 0.65s both;
         }
 
-        /* Header / Footer specifics for landing */
+        /* Header */
         .landing-header {
             position: absolute;
             top: 0;
@@ -106,21 +194,34 @@
             justify-content: space-between;
             align-items: center;
             z-index: 20;
+            animation: fadeIn 0.6s ease 0.2s both;
+            pointer-events: none;
+        }
+
+        .landing-header>* {
+            pointer-events: auto;
         }
 
         .brand {
             font-family: var(--font-display);
-            font-size: 1.5rem;
+            font-size: 1.4rem;
             font-weight: 800;
-            letter-spacing: -1px;
+            letter-spacing: -0.5px;
             color: var(--ink);
-            padding: 5px 10px;
+            padding: 6px 14px;
             border: var(--border-main);
             background: var(--bg-card);
-            box-shadow: var(--shadow-main);
-            border-radius: 8px;
+            box-shadow: 4px 4px 0 var(--ink);
+            border-radius: 12px;
+            transition: transform 0.2s, box-shadow 0.2s;
         }
 
+        .brand:hover {
+            transform: translateY(-2px);
+            box-shadow: 6px 6px 0 var(--ink);
+        }
+
+        /* Footer */
         .landing-footer {
             position: absolute;
             bottom: 0;
@@ -135,6 +236,11 @@
             color: var(--ink);
             width: 100%;
             z-index: 20;
+            pointer-events: none;
+        }
+
+        .landing-footer>* {
+            pointer-events: auto;
         }
 
         @media screen and (max-width: 768px) {
@@ -163,7 +269,7 @@
     <header class="landing-header">
         <div class="brand">vedantium.dev</div>
         <div
-            style="font-family: var(--font-display); font-weight: 800; background: var(--accent-pink); padding: 5px 10px; border: var(--border-main); box-shadow: 2px 2px 0 var(--ink); border-radius: 8px;">
+            style="font-family: var(--font-display); font-weight: 800; background: var(--accent-pink); padding: 6px 16px; border: var(--border-main); box-shadow: 4px 4px 0 var(--ink); border-radius: 16px; transform: rotate(4deg); display: inline-block; cursor: pointer;">
             (🌸^^)</div>
     </header>
 
