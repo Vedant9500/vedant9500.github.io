@@ -1,0 +1,22 @@
+{
+  "date": "2026-02-03",
+  "title": "Glassbox updates and training improvements",
+  "summary": "I spent the last few days working on the Glassbox classifier. I simplified the operator ontology to 9 classes and added XGBoost for better performance. The data generation is much faster now because of the new streaming mode. I can finally create 1M+ datasets without running out of RAM.\n\nIn the training script, I added gradient clipping and fixed the BatchNorm order. I also caught some silent failures in L-BFGS that were bothering me for a long time. I fixed import errors and added CUDA cache cleanup so the GPU does not crash. The LASSO coordinate descent is now faster too. Everything feels much more stable now.",
+  "commits": [
+    "b054db5",
+    "de37328",
+    "27c99c2"
+  ],
+  "commitMessages": [
+    "refactor(classifier): simplify ontology, improve training pipeline, add XGBoost",
+    "fix(sr): harden evolution error handling and integration imports",
+    "fix(scripts): optimize classifier scripts with bug fixes and performance improvements"
+  ],
+  "repo": "Vedant9500/Glassbox",
+  "tags": [
+    "symbolic-regression",
+    "machine-learning",
+    "pytorch",
+    "xgboost"
+  ]
+}

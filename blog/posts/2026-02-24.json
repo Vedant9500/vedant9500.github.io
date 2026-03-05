@@ -1,0 +1,20 @@
+{
+  "date": "2026-02-24",
+  "title": "Glassbox engine update",
+  "summary": "Finished the P5-P8 optimizations for the Glassbox engine. Added NSGA-II sorting to find better trade-offs between MSE and complexity. Also added island models with ring migration to help with evolution stalls. Now you can export the C++ AST back to PyTorch which makes testing much easier.\n\nI also fixed a major bug where my formulas were getting huge. My SVD solver was creating redundant nodes like (x+x)/2. Switched to Ridge regression and added a post-evolution cleanup step to prune dead nodes. It removed the bloat and kept the math simple. Refined the Adam optimizer logic so it does not hang the CPU anymore. Everything now runs in about 10-16 seconds on 16 threads.",
+  "commits": [
+    "7c2fa75",
+    "385ad69"
+  ],
+  "commitMessages": [
+    "feat(cpp-evolution): implement P5-P8 optimizations (NSGA-II, Islands, PyTorch export)",
+    "fix(cpp): eliminate formula bloat + fix evolution stall"
+  ],
+  "repo": "Vedant9500/Glassbox",
+  "tags": [
+    "cpp",
+    "symbolic-regression",
+    "pytorch",
+    "research"
+  ]
+}

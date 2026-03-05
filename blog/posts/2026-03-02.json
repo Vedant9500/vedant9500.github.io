@@ -1,0 +1,21 @@
+{
+  "date": "2026-03-02",
+  "title": "XGBoost and fast-path updates",
+  "summary": "This week I worked on the Glassbox fast-path pipeline. I added a post-processing step using SymPy to simplify formulas. I also added a guardrail for large expressions so the code does not time out. It feels much cleaner now that I removed the old A/B strategy code paths.\n\nI also switched the classifier to XGBoost. The old MLP was causing problems with Z-score logic. I tightened the feature clipping bounds from 50 to 5. This stopped the model weights from shrinking to zero. I also fixed a ZeroDivisionError in the fast-path when computing basis terms. Everything is updated in the README and docs now.",
+  "commits": [
+    "a42e745",
+    "9652cb7",
+    "6c0f4bc"
+  ],
+  "commitMessages": [
+    "feat(docs): update README with optimized fast-path features and post-processing details",
+    "feat(sr): optimize fast-path pipeline, simplify formulas, and streamline ONN skill docs",
+    "feat: implement XGBoost curve classifier and fix adversarial bounds"
+  ],
+  "repo": "Vedant9500/Glassbox",
+  "tags": [
+    "symbolic-regression",
+    "coding",
+    "research"
+  ]
+}

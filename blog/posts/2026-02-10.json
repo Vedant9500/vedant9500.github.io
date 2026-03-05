@@ -1,0 +1,17 @@
+{
+  "date": "2026-02-10",
+  "title": "fixing trend detection in Glassbox",
+  "summary": "been working on the Glassbox fast-path this week. i was struggling with equations like x^2.5 + sin(3x) because the model was overfitting. it was trying to fit everything at once.\n\ni added a stage 2 refinement. now it fits the power trend first, then looks for periodic residuals. i also improved the frequency detection using interpolation for non-uniform data. the FFT range is wider now, from 0.1 to 50 Hz. \n\ni also added a rule to force refinement if a formula has more than 4 terms. this keeps the model simple even if the MSE is low. fixed some input shape issues too, so it takes (N,1) arrays correctly. it is working much better on complex test cases now.",
+  "commits": [
+    "5b743bd"
+  ],
+  "commitMessages": [
+    "feat(fast-path): implement iterative refinement for complex trends"
+  ],
+  "repo": "Vedant9500/Glassbox",
+  "tags": [
+    "symbolic-regression",
+    "glassbox",
+    "python"
+  ]
+}

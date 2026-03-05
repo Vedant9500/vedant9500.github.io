@@ -1,0 +1,23 @@
+{
+  "date": "2026-02-16",
+  "title": "Glassbox updates and fixes",
+  "summary": "been working on Glassbox a lot lately. finally fixed the classifier checkpoint loading for MLP and CNN models. also made the training process memmap-friendly so it does not crash when memory is low.\n\nthere was a bug where the classifier input was inconsistent. i fixed this by flattening x in all evolution call sites. also improved how we do validation splits.\n\nadded some new docs for the research roadmap and wrote down my critique of the current architecture. need to clean up more code before the next evaluation.",
+  "commits": [
+    "5ebe921",
+    "96b5be7",
+    "06c681d",
+    "8e56230"
+  ],
+  "commitMessages": [
+    "feat: enhance classifier integration and improve validation split logic",
+    "docs: updated research roadmap and added architectural critique documents.",
+    "Fix classifier checkpoint loading (MLP/CNN) and make training memmap-friendly",
+    "Fix inconsistent classifier input handling across evolution call sites by flattening x in both paths"
+  ],
+  "repo": "Vedant9500/Glassbox",
+  "tags": [
+    "symbolic-regression",
+    "python",
+    "research"
+  ]
+}

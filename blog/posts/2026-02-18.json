@@ -1,0 +1,21 @@
+{
+  "date": "2026-02-18",
+  "title": "Fixing bugs in Glassbox",
+  "summary": "Spent the last few days fixing bugs in my Glassbox research project. The PCFG generator was missing the division operator, so it could not make rational expressions. Also found an off-by-one error that made the trees too deep. Fixed both of those.\n\nUpdated how I calculate gradients. Switched from np.diff to np.gradient because the shapes were not matching before. Also moved the parameter clamping after the optimizer step in the power refinement function. This ensures the gradients apply to the right values.\n\nFinally cleaned up some technical debt. Replaced old ast.Num calls with ast.Constant to stop 4000+ pytest warnings. Added np.errstate to keep the code from crashing when it hits division-by-zero. The model is running much more stable now.",
+  "commits": [
+    "d4c2bc6",
+    "d567b38",
+    "cfe8d25"
+  ],
+  "commitMessages": [
+    "Fix remaining low-priority robustness issues in fast path and data generation",
+    "Fix medium priority logic issues in feature extraction and PCFG",
+    "Fix critical logic bugs in PCFG generation and fast path refinement"
+  ],
+  "repo": "Vedant9500/Glassbox",
+  "tags": [
+    "symbolic regression",
+    "python",
+    "research"
+  ]
+}

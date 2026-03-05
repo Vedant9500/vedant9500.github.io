@@ -1,0 +1,19 @@
+{
+  "date": "2026-02-02",
+  "title": "updates to Glassbox",
+  "summary": "been working on Glassbox for my research. i added gpu selection support today. also fixed the threading so exact-match works better now. added some skip heuristics to make the search faster. it was taking too long before.\n\ni also wrote the readme file. it explains how to use the framework. hope it helps others understand my code. still have more to fix but this is a good start for the project.",
+  "commits": [
+    "1bdd3f6",
+    "e3ba4df"
+  ],
+  "commitMessages": [
+    "feat: Add comprehensive README documentation for Glassbox framework",
+    "Add GPU device selection, exact‑match threading, and skip heuristics"
+  ],
+  "repo": "Vedant9500/Glassbox",
+  "tags": [
+    "symbolic-regression",
+    "research",
+    "coding"
+  ]
+}

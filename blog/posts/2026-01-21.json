@@ -1,0 +1,20 @@
+{
+  "date": "2026-01-21",
+  "title": "Hybrid ONN implementation",
+  "summary": "Today I finished the hybrid approach for the ONN in Glassbox. It combines symbolic and neural parts better than before. I was having trouble with accuracy but it looks better now. I also uploaded my research docs to the repo.\n\nEverything is in the new commits. Please check if it works on your machine. I need to test it on more datasets next week to see if it generalizes.",
+  "commits": [
+    "d4e013e",
+    "33e7773"
+  ],
+  "commitMessages": [
+    "Implemented Hybrid approach for ONN",
+    "Uploaded Research DOCS"
+  ],
+  "repo": "Vedant9500/Glassbox",
+  "tags": [
+    "glassbox",
+    "symbolic-regression",
+    "onn",
+    "research"
+  ]
+}

@@ -1,0 +1,18 @@
+{
+  "date": "2026-01-20",
+  "title": "started Glassbox project",
+  "summary": "today i did the initial commit for Glassbox. it is my symbolic regression research project. i set up the basic folder structure and git repository.\n\ni am using python for this. i want to find math expressions from data. the first part is just setting up how the code reads the csv files. it took me some time to handle the headers correctly. i have it working now.\n\nnext i need to work on the tree representation of the equations. i will start that tomorrow. need to make sure the library dependencies are simple.",
+  "commits": [
+    "57ebd63"
+  ],
+  "commitMessages": [
+    "Initial commit"
+  ],
+  "repo": "Vedant9500/Glassbox",
+  "tags": [
+    "coding",
+    "research",
+    "python",
+    "symbolic-regression"
+  ]
+}

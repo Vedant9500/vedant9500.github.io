@@ -1,0 +1,18 @@
+{
+  "date": "2026-02-19",
+  "title": "updated the glassbox readme",
+  "summary": "today i finally updated the readme for glassbox. my symbolic regression project was getting messy so i wanted to make the instructions clear. i added the setup steps for the environment and explained how to run the main script.\n\nfor a long time, the documentation was just some notes on my laptop. now it is in the repository. people can see how to load their own datasets and set the hyperparameters. i also listed the current features so it is easier to understand what works right now. it took a few hours to write but it looks much better now.",
+  "commits": [
+    "09e7980"
+  ],
+  "commitMessages": [
+    "Update README"
+  ],
+  "repo": "Vedant9500/Glassbox",
+  "tags": [
+    "coding",
+    "research",
+    "symbolic-regression",
+    "python"
+  ]
+}

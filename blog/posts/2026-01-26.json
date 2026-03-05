@@ -1,0 +1,22 @@
+{
+  "date": "2026-01-26",
+  "title": "New two-phase approach for Glassbox",
+  "summary": "Spent the last few days working on Glassbox. I was having trouble getting exact coefficients for my formulas. My model would find the right structure like sin(x) + x^2, but the numbers were always slightly off. \n\nI fixed this by splitting the process into two phases. Phase one finds the structure using evolutionary training. Phase two uses least squares regression to get the exact coefficients. This made the MSE drop to almost zero. I also added a GUI with Tkinter so I can see the network evolution live without the UI freezing. \n\nI deleted 10 old files that were cluttering the codebase. The tests are passing on the [-6, 6] range now. It is much more stable.",
+  "commits": [
+    "1441276",
+    "ba71fbc",
+    "3ea7c2f"
+  ],
+  "commitMessages": [
+    "Codebase cleanup. Deleted 10 legacy files",
+    "feat: Add interactive formula tester with live visualization",
+    "feat: Phased Symbolic Regression with exact coefficient extraction"
+  ],
+  "repo": "Vedant9500/Glassbox",
+  "tags": [
+    "symbolic-regression",
+    "python",
+    "research",
+    "glassbox"
+  ]
+}

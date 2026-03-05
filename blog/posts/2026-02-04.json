@@ -1,0 +1,18 @@
+{
+  "date": "2026-02-04",
+  "title": "added XGBoost support to Glassbox",
+  "summary": "Today I updated Glassbox to work better with XGBoost models. Before, loading the classifiers was not working well because the data handling in the scripts had some issues. \n\nI changed how the loader processes the input to fix this. Now it can load XGBoost models and make predictions without crashing. It took some time to align the arrays, but now it works fine. I also cleaned up the training scripts so they handle the inputs better. Next I will check if the regression accuracy stays the same with these changes.",
+  "commits": [
+    "85af125"
+  ],
+  "commitMessages": [
+    "feat: Enhance classifier loading and prediction support for XGBoost models; update data handling in training scripts"
+  ],
+  "repo": "Vedant9500/Glassbox",
+  "tags": [
+    "coding",
+    "symbolic-regression",
+    "python",
+    "machine-learning"
+  ]
+}

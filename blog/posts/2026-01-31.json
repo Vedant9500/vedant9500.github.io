@@ -1,0 +1,17 @@
+{
+  "date": "2026-01-31",
+  "title": "made Glassbox faster",
+  "summary": "spent this week working on Glassbox speed. training was slow before, taking 450 seconds. i added stuck detection so the model knows when it is not learning. now if it gets stuck, it boosts mutations by 2.5x or restarts the population.\n\ni also added progressive refinement. the number of steps drops from 50 to 15 as confidence increases. i am using L-BFGS when confidence is over 0.4. elites also skip re-evaluation now. this saved about 20% of time, bringing average down to 365 seconds. tried sparse routing and lazy evaluation but they made it slower or broke torch.compile, so i removed them. everything works well now.",
+  "commits": [
+    "c285a32"
+  ],
+  "commitMessages": [
+    "feat(evolution): Add scalability optimizations and stuck detection"
+  ],
+  "repo": "Vedant9500/Glassbox",
+  "tags": [
+    "symbolic-regression",
+    "python",
+    "research"
+  ]
+}

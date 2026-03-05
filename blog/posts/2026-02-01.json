@@ -1,0 +1,19 @@
+{
+  "date": "2026-02-01",
+  "title": "Symbolic regression speed up",
+  "summary": "I was working on Glassbox and symbolic regression was too slow. Waiting 10 minutes for a simple formula is bad. I built a MLP classifier to guess the operators based on the curve shape instead of using evolution for everything.\n\nI made scripts to generate data and train the classifier. It reaches 98.8% accuracy. Now it uses least squares to find coefficients. It solves in under 1 second now. For example sin(x) + x^2 dropped from 336s to 0.72s.\n\nIf the error is more than 0.01 it goes back to normal evolution. Code is updated on GitHub without the large dataset files.",
+  "commits": [
+    "8a41bc4",
+    "0ec148d"
+  ],
+  "commitMessages": [
+    "Recommit changes without large dataset",
+    "feat(sr): Add classifier fast-path for 750x speedup in symbolic regression"
+  ],
+  "repo": "Vedant9500/Glassbox",
+  "tags": [
+    "research",
+    "symbolic-regression",
+    "python"
+  ]
+}

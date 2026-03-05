@@ -1,0 +1,18 @@
+{
+  "date": "2026-01-24",
+  "title": "Glassbox updates: FairDARTS and structure-lock",
+  "summary": "Spent last week working on Glassbox. I added FairDARTS regularization to help the model pick binary gates. Now using Zero-One Loss and gate regularization to stop ambiguous structures. I also turned off LayerNorm by default because it was messing up the scale for symbolic regression.\n\nAdded structure-lock detection. If correlation hits 0.99, mutations stop. This happens around generation 5 or 7. I tested on y=x^2, sin(x), and x^3. Correlation is high, but coefficient accuracy is still not perfect. I tried intensive coefficient refinement after evolution, but it actually made results worse, so I disabled it. Also fixed a bug where dict.copy() was not cloning tensors correctly.",
+  "commits": [
+    "0fff6ab"
+  ],
+  "commitMessages": [
+    "feat: Add FairDARTS regularization and structure-lock detection"
+  ],
+  "repo": "Vedant9500/Glassbox",
+  "tags": [
+    "symbolic-regression",
+    "research",
+    "python",
+    "machine-learning"
+  ]
+}
