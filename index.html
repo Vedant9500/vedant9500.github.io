@@ -114,6 +114,24 @@
             }
         }
 
+        @property --hero-hover-x {
+            syntax: '<length>';
+            inherits: false;
+            initial-value: 0px;
+        }
+
+        @property --hero-hover-y {
+            syntax: '<length>';
+            inherits: false;
+            initial-value: 0px;
+        }
+
+        @property --hero-hover-shadow {
+            syntax: '<length>';
+            inherits: false;
+            initial-value: 0px;
+        }
+
         @keyframes cardBreathe {
 
             0%,
@@ -156,7 +174,10 @@
             position: relative;
             box-shadow: 8px 8px 0 var(--ink);
             border-radius: 20px;
-            transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.3s ease;
+            transition:
+                --hero-hover-x 280ms cubic-bezier(0.22, 1, 0.36, 1),
+                --hero-hover-y 280ms cubic-bezier(0.22, 1, 0.36, 1),
+                --hero-hover-shadow 280ms cubic-bezier(0.22, 1, 0.36, 1);
             will-change: transform, box-shadow;
             z-index: 10;
             animation: heroSlideUp 1s cubic-bezier(0.22, 1, 0.36, 1) both,
