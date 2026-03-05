@@ -5,13 +5,11 @@
  */
 import { initCustomCursor } from './desktop/cursor.js';
 import { initPetals } from './desktop/petals.js';
-import { initBackgroundParallax } from './desktop/scroll-effects.js';
 
 document.addEventListener('DOMContentLoaded', () => {
     // Initialize global UX
     initCustomCursor();
     initPetals();
-    initBackgroundParallax();
 
     const main = document.querySelector('main');
     const heroCard = document.querySelector('.hero-card');
@@ -37,6 +35,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const draggables = [];
     const numShapes = window.innerWidth < 768 ? 4 : 7;
+    let floatAnimIdCounter = 0;
 
     /**
      * Shadow compensation: when an element is rotated by θ, its box-shadow
@@ -64,6 +63,44 @@ document.addEventListener('DOMContentLoaded', () => {
         { left: [35, 55], top: [82, 95] },
         { left: [70, 92], top: [75, 92] },
     ];
+
+    function removeFloatKeyframes(el) {
+        const previousId = el.dataset.floatAnimId;
+        if (!previousId) return;
+
+        const previousTag = document.head.querySelector(`style[data-float-anim-id="${previousId}"]`);
+        if (previousTag) previousTag.remove();
+        delete el.dataset.floatAnimId;
+    }
+
+    function startFloatAnimation(el, xOffset = 0, yOffset = 0) {
+        const rotation = parseFloat(el.dataset.rotation);
+        const duration = parseFloat(el.dataset.floatDuration);
+        const amplitude = parseFloat(el.dataset.floatAmp);
+        const halfAmpX = amplitude * 0.3;
+        const animationId = `float_${floatAnimIdCounter++}`;
+
+        removeFloatKeyframes(el);
+
+        const keyframes = `
+            @keyframes ${animationId} {
+                0%   { transform: translate(${xOffset}px, ${yOffset}px) rotate(${rotation}deg); }
+                25%  { transform: translate(${xOffset + halfAmpX}px, ${yOffset - amplitude}px) rotate(${rotation}deg); }
+                50%  { transform: translate(${xOffset}px, ${yOffset}px) rotate(${rotation}deg); }
+                75%  { transform: translate(${xOffset - halfAmpX}px, ${yOffset + amplitude * 0.5}px) rotate(${rotation}deg); }
+                100% { transform: translate(${xOffset}px, ${yOffset}px) rotate(${rotation}deg); }
+            }
+        `;
+
+        const styleTag = document.createElement('style');
+        styleTag.dataset.floatAnimId = animationId;
+        styleTag.textContent = keyframes;
+        document.head.appendChild(styleTag);
+
+        el.dataset.floatAnimId = animationId;
+        el.style.animation = `${animationId} ${duration}s ease-in-out infinite`;
+        el.style.animationDelay = '0s';
+    }
 
     for (let i = 0; i < numShapes; i++) {
         const el = document.createElement('div');
@@ -104,7 +141,6 @@ document.addEventListener('DOMContentLoaded', () => {
         // Unique float parameters for organic feel (GENTLE values)
         el.dataset.floatDuration = (3 + Math.random() * 4).toFixed(2);   // 3–7s period
         el.dataset.floatAmp = (3 + Math.random() * 5).toFixed(2);        // 3–8px max
-        el.dataset.floatPhase = (Math.random() * Math.PI * 2).toFixed(3);
 
         // Set initial hidden state (before pop-in)
         el.style.opacity = '0';
@@ -130,66 +166,12 @@ document.addEventListener('DOMContentLoaded', () => {
         popAnim.finished.then(() => {
             popAnim.cancel();
             el.style.opacity = '1';
-            el.style.transform = `rotate(${rotation}deg)`;
-        });
+            startFloatAnimation(el, parseFloat(el.dataset.xOffset) || 0, parseFloat(el.dataset.yOffset) || 0);
+        }).catch(() => {});
     }
 
     // ========================================
-    // 2. GENTLE FLOAT VIA CSS (no JS RAF jitter)
-    // ========================================
-    // After entrance animations finish, apply CSS-based float via custom
-    // animation per shape. This avoids JS RAF jitter entirely.
-    setTimeout(() => {
-        draggables.forEach(el => {
-            if (el.dataset.isDragging === 'true') return;
-
-            const rot = parseFloat(el.dataset.rotation);
-            const dur = parseFloat(el.dataset.floatDuration);
-            const amp = parseFloat(el.dataset.floatAmp);
-            const phase = parseFloat(el.dataset.floatPhase);
-            const xOff = parseFloat(el.dataset.xOffset) || 0;
-            const yOff = parseFloat(el.dataset.yOffset) || 0;
-
-            // Inject a unique @keyframes for each shape (rotation-aware)
-            const id = `float_${Math.random().toString(36).slice(2, 8)}`;
-            const halfAmpX = amp * 0.3;
-
-            const keyframes = `
-                @keyframes ${id} {
-                    0%   { transform: translate(${xOff}px, ${yOff}px) rotate(${rot}deg); }
-                    25%  { transform: translate(${xOff + halfAmpX}px, ${yOff - amp}px) rotate(${rot}deg); }
-                    50%  { transform: translate(${xOff}px, ${yOff}px) rotate(${rot}deg); }
-                    75%  { transform: translate(${xOff - halfAmpX}px, ${yOff + amp * 0.5}px) rotate(${rot}deg); }
-                    100% { transform: translate(${xOff}px, ${yOff}px) rotate(${rot}deg); }
-                }
-            `;
-            const styleTag = document.createElement('style');
-            styleTag.textContent = keyframes;
-            document.head.appendChild(styleTag);
-
-            el.dataset.floatAnimId = id;
-            el.style.animation = `${id} ${dur}s ease-in-out infinite`;
-            el.style.animationDelay = `${-phase}s`;
-        });
-    }, 1500); // Wait for entrance animations to finish
-
-    // ========================================
-    // 3. HERO CARD: REMOVE ENTRANCE ANIMATION AFTER IT PLAYS
-    // ========================================
-    // After heroSlideUp finishes, switch to ONLY cardBreathe so the
-    // entrance animation can never restart on hover/unhover cycles.
-    if (heroCard) {
-        heroCard.addEventListener('animationend', (e) => {
-            if (e.animationName === 'heroSlideUp') {
-                // Lock in the final state and keep only the breathing
-                heroCard.style.opacity = '1';
-                heroCard.style.animation = 'cardBreathe 6s ease-in-out infinite';
-            }
-        });
-    }
-
-    // ========================================
-    // 4. DRAG LOGIC
+    // 2. DRAG LOGIC
     // ========================================
     let activeDrag = null;
     let initialX, initialY, currentX, currentY;
@@ -249,25 +231,7 @@ document.addEventListener('DOMContentLoaded', () => {
         renderTransform(activeDrag, finalX, finalY);
 
         // Restart float from new position by regenerating keyframes
-        const rot = parseFloat(activeDrag.dataset.rotation);
-        const dur = parseFloat(activeDrag.dataset.floatDuration);
-        const amp = parseFloat(activeDrag.dataset.floatAmp);
-        const halfAmpX = amp * 0.3;
-        const id = `float_${Math.random().toString(36).slice(2, 8)}`;
-        const keyframes = `
-            @keyframes ${id} {
-                0%   { transform: translate(${finalX}px, ${finalY}px) rotate(${rot}deg); }
-                25%  { transform: translate(${finalX + halfAmpX}px, ${finalY - amp}px) rotate(${rot}deg); }
-                50%  { transform: translate(${finalX}px, ${finalY}px) rotate(${rot}deg); }
-                75%  { transform: translate(${finalX - halfAmpX}px, ${finalY + amp * 0.5}px) rotate(${rot}deg); }
-                100% { transform: translate(${finalX}px, ${finalY}px) rotate(${rot}deg); }
-            }
-        `;
-        const styleTag = document.createElement('style');
-        styleTag.textContent = keyframes;
-        document.head.appendChild(styleTag);
-
-        activeDrag.style.animation = `${id} ${dur}s ease-in-out infinite`;
+        startFloatAnimation(activeDrag, finalX, finalY);
         currentX = null;
         currentY = null;
         activeDrag = null;
