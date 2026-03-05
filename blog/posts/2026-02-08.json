@@ -1,0 +1,20 @@
+{
+  "date": "2026-02-08",
+  "title": "multi-input support for Glassbox",
+  "summary": "I updated the fast path in Glassbox to support multiple inputs. Before, it was just one variable. Now it works for higher dimensions.\n\nI added 1D slicing so the classifier handles multi-dimensional data correctly. I also added new basis functions like triple products (x0*x1*x2) and product-ratios. These are useful for physics formulas. I had to fix some divide-by-zero errors in the exponential terms too.\n\nI updated the variable naming from 1-indexed to 0-indexed (x0, x1) to stay consistent. I ran the benchmarks and it solves \"x0^2 + x1^2\" in 0.43 seconds with zero error. Everything seems stable now.",
+  "commits": [
+    "03becdc",
+    "cbbd724"
+  ],
+  "commitMessages": [
+    "feat: Add multi-input support and product-ratio basis to fast path",
+    "feat: Add multi-input support to fast path regression"
+  ],
+  "repo": "Vedant9500/Glassbox",
+  "tags": [
+    "symbolic-regression",
+    "coding",
+    "physics",
+    "python"
+  ]
+}

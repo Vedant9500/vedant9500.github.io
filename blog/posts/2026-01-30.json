@@ -1,0 +1,27 @@
+{
+  "date": "2026-01-30",
+  "title": "updates to Glassbox",
+  "summary": "I spent the last few days working on Glassbox. I made a new tool called sr_tester.py. Before this, I had five different scripts for testing evolution, pruning, and visualization. It was very messy. Now I can just use one command with flags like --mode viz or --mode evolution. I also added a TUI using Rich so it looks much cleaner in the terminal.\n\nAlso added constant snapping. My research requires interpretable formulas, but seeing 3.14159 is hard to read. I added a dictionary of 50 constants. Now the code automatically snaps weights to π, e, and others. It makes the formulas look much better. Finally finished fixing the documentation formatting. Everything is organized now.",
+  "commits": [
+    "7b7de5e",
+    "964ca41",
+    "24df90f",
+    "b5ae3c1",
+    "fbbda9f",
+    "dfe6bf0"
+  ],
+  "commitMessages": [
+    "Merge branch 'master' of https://github.com/Vedant9500/Glassbo",
+    "fixed remaining issues regarding formatting research documentation",
+    "fixed remaining issues regarding formatting research documentation",
+    "Chores: Reformat research documentation",
+    "feat(scripts): consolidate test scripts into unified sr_tester.py with TUI",
+    "feat(sr): add constant snapping for interpretable formula display"
+  ],
+  "repo": "Vedant9500/Glassbox",
+  "tags": [
+    "symbolic-regression",
+    "python",
+    "research"
+  ]
+}

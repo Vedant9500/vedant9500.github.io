@@ -1,0 +1,26 @@
+{
+  "date": "2026-02-17",
+  "title": "Glassbox project update",
+  "summary": "This week I worked on Phase 2 of Glassbox. I updated the feature extractor to 366 dimensions. Added FFT phase features and Savitzky-Golay smoothing to help with noisy data. I retrained the classifier to version 3 and got 0.96 F1 score. \n\nI also finished the PCFG formula generator. It can now make random formulas using 9 unary and 3 binary operators. Added 7 noise profiles like Gaussian and pink noise to test the model robustness. Fixed a constant handling bug where scalar broadcasting was failing and causing NaN in skew/kurtosis. \n\nCleaned up old files and removed legacy benchmarks. Everything is running with the new CLI options now. All tests are passing.",
+  "commits": [
+    "059114a",
+    "92aa3f5",
+    "b3e58d8",
+    "864e4ff",
+    "f26f576"
+  ],
+  "commitMessages": [
+    "Fixed the constant handling issue",
+    "feat(Phase 2B): PCFG formula generator + multi-SNR noise injection",
+    "feat: Add symbolic regression benchmark suite script and updated research roadmap documentation.",
+    "feat: Phase 2A feature extraction improvements + retrain classifier v3",
+    "chore: remove legacy benchmarking and GPU optimization modules"
+  ],
+  "repo": "Vedant9500/Glassbox",
+  "tags": [
+    "symbolic-regression",
+    "python",
+    "machine-learning",
+    "research"
+  ]
+}

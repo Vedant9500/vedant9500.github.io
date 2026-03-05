@@ -1,0 +1,24 @@
+{
+  "date": "2026-02-23",
+  "title": "C++ backend and 100x speedup",
+  "summary": "I moved the Glassbox evolution loop from PyTorch to C++ using Eigen and pybind11. The PyTorch overhead was too slow. Removing nn.Module structs saved a lot of time. Now the search takes 2.5 seconds instead of 250.\n\nI also replaced gradient descent with analytical SVD for the linear weights. This makes the math exact and very fast. I added OpenMP for multithreading too. The AST parsing now works directly in C++, so I don't need Python for that part. My basis regression can find x^2 with 0.0000 MSE in about 4 seconds now. \n\nFixed some MSVC compiler errors with nested functions. Added parsimony pressure to stop overfitting. Code is much faster now.",
+  "commits": [
+    "809895a",
+    "dd8bda9",
+    "d5a0e03",
+    "48dfa20"
+  ],
+  "commitMessages": [
+    "Updated README.md",
+    "feat(sr): optimize C++ evolution backend with SVD and OpenMP",
+    "feat(sr): Implement C++ Lamarckian refinement and AST string parser",
+    "feat(sr): Integrate C++ Eigen backend for 100x ONN evolution speedup"
+  ],
+  "repo": "Vedant9500/Glassbox",
+  "tags": [
+    "cpp",
+    "symbolic-regression",
+    "eigen",
+    "research"
+  ]
+}

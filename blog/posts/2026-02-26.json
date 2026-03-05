@@ -1,0 +1,17 @@
+{
+  "date": "2026-02-26",
+  "title": "Fixing training crashes and C++ evolution",
+  "summary": "Spent the week working on Glassbox training stability. The model kept hitting NaN crashes during adversarial training. Turns out the curvature calculations were overflowing and the division logic was flipping negative denominators by mistake. Added a replay buffer and gradient clipping to fix this. Also added a power token to the vocabulary so it can finally generate polynomials like x^2.\n\nFor the C++ evolution part, I switched to 3-objective NSGA-II to include age. This helps keep new, interesting structures from being deleted too early. Added macro-mutations like nesting and multiplication. Tightened the MSE tolerance for the weight snapping because 2.0x was too loose and corrupting good solutions. Everything is running more stable now.",
+  "commits": [
+    "352b8e6"
+  ],
+  "commitMessages": [
+    "Fix adversarial training NaN crashes, underperformance, and improve C++ evolution search"
+  ],
+  "repo": "Vedant9500/Glassbox",
+  "tags": [
+    "symbolic-regression",
+    "cpp",
+    "machine-learning"
+  ]
+}

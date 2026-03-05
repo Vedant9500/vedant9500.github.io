@@ -1,0 +1,20 @@
+{
+  "date": "2026-02-09",
+  "title": "Glassbox update: expanded templates",
+  "summary": "worked on Glassbox today. i added more math templates to the classifier. now i have 117 templates total. added hyperbolic functions like tanh and sinh, plus physics ones like Coulomb and Gaussian. also added fractional powers to the basis. before this, x^2.3 was not working, but now it detects it fine.\n\nincreased the hidden layer size from 256 to 512. it makes the model train better. i also added a class weights flag for the imbalanced labels. some labels like addition appear way more than others, so this weighting helps the training process for the 500k dataset. code is running better now.",
+  "commits": [
+    "1103b4e",
+    "c0c655b"
+  ],
+  "commitMessages": [
+    "updated model and minor tweaks",
+    "feat(classifier): expand templates and improve training for 500K dataset"
+  ],
+  "repo": "Vedant9500/Glassbox",
+  "tags": [
+    "symbolic-regression",
+    "coding",
+    "physics",
+    "ml"
+  ]
+}

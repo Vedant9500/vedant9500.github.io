@@ -1,0 +1,17 @@
+{
+  "date": "2026-01-25",
+  "title": "Real-time visualization and coefficient updates",
+  "summary": "This week I added real-time monitoring to Glassbox. I created the ONNVisualizer so I can see what is happening during training. It uses a dark theme with green, blue, and red colors to show node importance. It updates every 100ms.\n\nI also added Tier 2 features like Beta-Decay for sparsity and a risk-seeking policy to jump out of local minima. I finished the coefficient finalization module too. It uses L-BFGS to prune small coefficients and simplify the math.\n\nI tested it on sin(x) + x² and it gave me a clean formula with 99.99% correlation. The pruning at 0.15 threshold makes the output much easier to read. The training took about 40 seconds.",
+  "commits": [
+    "27fddf8"
+  ],
+  "commitMessages": [
+    "feat: Real-time visualization, Tier 2 research features, coefficient finalization"
+  ],
+  "repo": "Vedant9500/Glassbox",
+  "tags": [
+    "symbolic-regression",
+    "pytorch",
+    "research"
+  ]
+}

@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Research Blog — Vedant Deshmukh | Vedantium.dev</title>
+
+    <!-- SEO Meta Tags -->
+    <meta name="description"
+        content="Vedant Deshmukh's research blog — updates from the Glassbox symbolic regression project. Follow the journey of building intelligent systems.">
+    <meta name="author" content="Vedant Sudhir Deshmukh">
+    <meta name="keywords"
+        content="Vedant Deshmukh, research blog, symbolic regression, Glassbox, machine learning, AI, deep learning, vedantium.dev">
+    <link rel="canonical" href="https://vedantium.dev/blog/">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="Research Blog — Vedant Deshmukh | Vedantium.dev">
+    <meta property="og:description"
+        content="Daily research updates from the Glassbox symbolic regression project by Vedant Deshmukh.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://vedantium.dev/blog/">
+    <meta property="og:site_name" content="Vedantium.dev">
+    <meta property="og:locale" content="en_US">
+    <meta property="og:image" content="https://vedantium.dev/assets/og-image.png">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Research Blog — Vedant Deshmukh | Vedantium.dev">
+    <meta name="twitter:description" content="Daily research updates from the Glassbox symbolic regression project.">
+    <meta name="twitter:image" content="https://vedantium.dev/assets/og-image.png">
+
+    <!-- JSON-LD Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Blog",
+        "name": "Vedant Deshmukh — Research Blog",
+        "description": "Research updates from the Glassbox symbolic regression project.",
+        "url": "https://vedantium.dev/blog/",
+        "author": {
+            "@type": "Person",
+            "name": "Vedant Deshmukh",
+            "alternateName": ["Vedant Sudhir Deshmukh", "Vedantium"],
+            "url": "https://vedantium.dev"
+        },
+        "about": {
+            "@type": "Thing",
+            "name": "Symbolic Regression",
+            "description": "Machine learning technique for discovering mathematical expressions from data"
+        }
+    }
+    </script>
+
+    <link rel="icon" type="image/x-icon" href="../assets/favicon/favicon.ico">
+    <link rel="icon" type="image/png" sizes="32x32" href="../assets/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../assets/favicon/favicon-16x16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="../assets/favicon/apple-touch-icon.png">
+    <link rel="manifest" href="../assets/favicon/site.webmanifest">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
+    <link rel="preload" as="style" href="../css/main.css">
+    <link rel="stylesheet" href="../css/main.css">
+    <link rel="preload" as="style"
+        href="https://fonts.googleapis.com/css2?family=Fredoka:wght@300..700&family=Outfit:wght@300..900&display=swap"
+        onload="this.onload=null;this.rel='stylesheet'">
+    <noscript>
+        <link rel="stylesheet"
+            href="https://fonts.googleapis.com/css2?family=Fredoka:wght@300..700&family=Outfit:wght@300..900&display=swap">
+    </noscript>
+    <link rel="preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+        onload="this.onload=null;this.rel='stylesheet'">
+    <noscript>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    </noscript>
+
+    <script src="../theme-init.js"></script>
+</head>
+
+<body class="blog-page">
+    <!-- Desktop Navbar -->
+    <header>
+        <nav class="navbar navbar-expanded" role="navigation" aria-label="Main Navigation">
+            <div class="nav-container">
+                <div class="nav-pill nav-pill-expanded">
+                    <!-- Home button -->
+                    <div class="nav-logo nav-logo-minimal">
+                        <a href="../" aria-label="Back to home">
+                            <i class="fas fa-home" aria-hidden="true"></i>
+                        </a>
+                    </div>
+
+                    <span class="nav-divider" aria-hidden="true">|</span>
+
+                    <!-- Section navigation (links to portfolio + blog active) -->
+                    <div class="nav-sections">
+                        <a href="../about/" class="nav-section-btn">
+                            Portfolio
+                        </a>
+                        <a class="nav-section-btn active" aria-current="page">
+                            Blog
+                        </a>
+                    </div>
+
+                    <span class="nav-divider" aria-hidden="true">|</span>
+
+                    <div class="nav-actions">
+                        <button class="contact-toggle" type="button" aria-label="Contact" aria-expanded="false"
+                            aria-controls="contact-popover">
+                            <i class="fas fa-envelope" aria-hidden="true"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </nav>
+
+        <div class="contact-popover" id="contact-popover" role="dialog" aria-label="Contact options" hidden>
+            <a href="https://github.com/Vedant9500" target="_blank" rel="noopener"><i class="fab fa-github"
+                    aria-hidden="true"></i> GitHub</a>
+            <a href="https://instagram.com/vedant_s_d" target="_blank" rel="noopener"><i class="fab fa-instagram"
+                    aria-hidden="true"></i> Instagram</a>
+            <a href="mailto:deshmukhvedant95@gmail.com"><i class="fas fa-envelope" aria-hidden="true"></i>
+                Email</a>
+            <a href="https://www.linkedin.com/in/vedant-deshmukh-82441928b/" target="_blank" rel="noopener"><i
+                    class="fab fa-linkedin" aria-hidden="true"></i> LinkedIn</a>
+            <a href="https://t.me/Vedant_s_d" target="_blank" rel="noopener"><i class="fab fa-telegram"
+                    aria-hidden="true"></i> Telegram</a>
+        </div>
+    </header>
+
+    <!-- Mobile Bottom Navigation -->
+    <nav class="mobile-bottom-nav" aria-label="Mobile Navigation">
+        <div class="nav-indicator" aria-hidden="true"></div>
+        <a href="../" class="mobile-nav-item" aria-label="Home">
+            <i class="fas fa-home"></i>
+        </a>
+        <a href="../about/" class="mobile-nav-item" aria-label="Portfolio">
+            <i class="fas fa-user"></i>
+        </a>
+        <button class="mobile-nav-item active" type="button" aria-label="Blog" disabled>
+            <i class="fas fa-pen-nib"></i>
+        </button>
+        <span class="mobile-nav-divider" aria-hidden="true"></span>
+        <button class="mobile-nav-item contact-toggle-mobile" type="button" aria-label="Contact">
+            <i class="fas fa-envelope"></i>
+        </button>
+    </nav>
+
+    <!-- Blog Content -->
+    <main>
+        <div class="blog-container">
+            <div class="blog-hero">
+                <h1>Research Blog <span id="blog-post-count"
+                        style="font-size: 1rem; color: var(--ink-light); font-weight: 500;"></span></h1>
+                <p class="blog-subtitle">
+                    Updates from my symbolic regression research.
+                    What I worked on, what broke, and what finally clicked.
+                </p>
+                <a href="https://github.com/Vedant9500/Glassbox" target="_blank" rel="noopener" class="blog-repo-badge">
+                    <i class="fab fa-github"></i> Vedant9500/Glassbox
+                </a>
+            </div>
+
+            <div class="blog-feed" id="blog-feed">
+                <!-- Posts are loaded dynamically by blog.js -->
+            </div>
+
+            <footer class="blog-footer">
+                <p>© 2026 Vedant Deshmukh — Research updates from Glassbox</p>
+            </footer>
+        </div>
+    </main>
+
+    <!-- Blog-specific JS -->
+    <script src="../js/blog.js"></script>
+    <!-- Custom cursor (reuse from desktop module) -->
+    <script type="module">
+        import { initCustomCursor } from '../js/desktop/cursor.js';
+        if (!window.matchMedia('(pointer: coarse)').matches) {
+            document.addEventListener('DOMContentLoaded', () => initCustomCursor());
+        }
+    </script>
+    <!-- Contact popover toggle (reuse from core) -->
+    <script>
+        // Contact popover toggle
+        document.querySelectorAll('.contact-toggle, .contact-toggle-mobile').forEach(btn => {
+            btn.addEventListener('click', () => {
+                const popover = document.getElementById('contact-popover');
+                if (popover) {
+                    const isHidden = popover.hasAttribute('hidden');
+                    if (isHidden) {
+                        popover.removeAttribute('hidden');
+                        btn.setAttribute('aria-expanded', 'true');
+                    } else {
+                        popover.setAttribute('hidden', '');
+                        btn.setAttribute('aria-expanded', 'false');
+                    }
+                }
+            });
+        });
+
+        // Close popover on outside click
+        document.addEventListener('click', (e) => {
+            const popover = document.getElementById('contact-popover');
+            if (popover && !popover.hasAttribute('hidden')) {
+                if (!e.target.closest('.contact-popover') &&
+                    !e.target.closest('.contact-toggle') &&
+                    !e.target.closest('.contact-toggle-mobile')) {
+                    popover.setAttribute('hidden', '');
+                    document.querySelectorAll('.contact-toggle, .contact-toggle-mobile').forEach(b => {
+                        b.setAttribute('aria-expanded', 'false');
+                    });
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>

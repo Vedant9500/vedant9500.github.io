@@ -1,0 +1,21 @@
+{
+  "date": "2026-01-28",
+  "title": "Glassbox updates: fixing SR instability",
+  "summary": "I worked on Glassbox this week. The symbolic regression module had some instability issues. I fixed the division by zero in MetaLog and made MetaArithmetic fully differentiable. Now the model can finally find x^2 because I added even and odd symmetry to MetaPower.\n\nAlso did some cleanup. Fixed the NaN handling and indentation bugs in the evolution part. The pruning logic was slow so I changed the sensitivity analysis from O(N) to O(1). Added cooldown logic to RSPG to help with the search process. Still have to test more but it seems more stable now.",
+  "commits": [
+    "20bbad3",
+    "a372d30",
+    "38e2bf2"
+  ],
+  "commitMessages": [
+    "Merge branch 'fix/recovery'",
+    "fix(sr): resolve instability and enable x^2 discovery",
+    "added code review"
+  ],
+  "repo": "Vedant9500/Glassbox",
+  "tags": [
+    "research",
+    "symbolic-regression",
+    "coding"
+  ]
+}

@@ -75,6 +75,12 @@
     height: 100%;
     transition: all 0.2s;
     position: relative;
+    /* Ensure consistent alignment for both <a> and <button> */
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    line-height: 1;
 }
 
 .nav-section-btn:last-child {

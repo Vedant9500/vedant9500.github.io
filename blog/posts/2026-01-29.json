@@ -1,0 +1,20 @@
+{
+  "date": "2026-01-29",
+  "title": "Adding FFT and L-BFGS to Glassbox",
+  "summary": "I spent the last two days working on Glassbox. I wanted the model to find internal constants like omega in sin(omega*x) automatically. I added a function using numpy FFT to look at the data and guess the frequency. \n\nI also put in a nested L-BFGS optimizer. It runs 5 steps on every candidate before checking the fitness. This helps get better values for omega and phi. I had to change the initialization range for omega from [0.5, 2.0] to [0.3, 6.0] so it finds more patterns. Now the code actually shows the omega value in the formula, like sin(3.2*x). \n\nI also added early stopping so the search does not run forever if it is not improving. The performance on test data is much better now. I am running it on 600 samples across [-15, 15] to make sure the FFT stays accurate.",
+  "commits": [
+    "62aeeb1",
+    "3fed96a"
+  ],
+  "commitMessages": [
+    "feat(evolution): Add FFT frequency detection and nested BFGS for internal constants",
+    "feat: added early stopping"
+  ],
+  "repo": "Vedant9500/Glassbox",
+  "tags": [
+    "symbolic-regression",
+    "python",
+    "research",
+    "glassbox"
+  ]
+}

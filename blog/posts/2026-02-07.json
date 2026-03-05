@@ -1,0 +1,19 @@
+{
+  "date": "2026-02-07",
+  "title": "Glassbox multi-input update",
+  "summary": "I updated Glassbox to handle multiple inputs today. Added --n-inputs flag so now it can work with x0, x1, and more. Fixed the regex to read these variables right. Also changed generate_data to use grid-based sampling for higher dimensions. My basis functions now include cross-terms like x0*x1.\n\nGPU speed was slow so I added FP16 with AMP. Used GradScaler for the coefficient refinement. It makes it about 2x faster. Also added .contiguous() in my operation nodes to help with memory access. My memory coalescing was bad before. The code is running much better now.",
+  "commits": [
+    "6fafb86",
+    "8366588"
+  ],
+  "commitMessages": [
+    "Multi-input support:",
+    "feat: Add FP16/AMP, multi-input support, and memory coalescing optimizations"
+  ],
+  "repo": "Vedant9500/Glassbox",
+  "tags": [
+    "symbolic-regression",
+    "gpu",
+    "coding"
+  ]
+}

@@ -1,0 +1,20 @@
+{
+  "date": "2026-01-23",
+  "title": "cleaner formulas in glassbox",
+  "summary": "I worked on Glassbox this week to make the formulas simpler. I added coefficient pruning to remove extra terms that don't help. I also added a simplified_ops mode. This turns off logs and exponents, which were making the models too noisy. \n\nFor the math, I added Hoyer regularization and BIC penalty to keep things sparse. I also fixed the MetaArithmetic sigmoid because the gradients were getting stuck. \n\nTesting showed great results. For y=x^2, the MSE dropped from 0.0810 to 0.0018. It now beats the MLP baseline. The formulas look much cleaner now, mostly because I removed the useless parts. I still need to fix over-pruning for sin(x)+x^2 as it gets a bit too aggressive. Next, I will refine the pruning ratio.",
+  "commits": [
+    "7bade83",
+    "6708da8"
+  ],
+  "commitMessages": [
+    "feat(onn): add coefficient pruning + simplified_ops for cleaner formulas",
+    "feat(onn): implement Tier 1 quick fixes for improved convergence"
+  ],
+  "repo": "Vedant9500/Glassbox",
+  "tags": [
+    "symbolic-regression",
+    "python",
+    "research",
+    "ml"
+  ]
+}

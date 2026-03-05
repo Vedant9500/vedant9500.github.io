@@ -1,0 +1,19 @@
+{
+  "date": "2026-01-22",
+  "title": "fixing bugs in Glassbox",
+  "summary": "been working on Glassbox, my symbolic regression project. spent this week fixing evolutionary ONN training. found a duplicate snap_to_discrete call that was killing the model. also fixed train/eval mode bugs.\n\ntesting against MLP shows mixed results. it works fine for sin(x) and x³, and it actually beats the MLP on x²+x. but it still fails on x² and sin+x² sometimes. it is also still way slower than MLP.\n\ni added SymPy for formula simplification and a parsimony penalty to keep the expressions small. added a diversity rescue to stop the model from converging too early. still need to work on speed and making the search more reliable. it finds the right math sometimes, but it is not consistent yet.",
+  "commits": [
+    "4cdc6d2",
+    "f7930ea"
+  ],
+  "commitMessages": [
+    "fix: resolve critical bugs in evolutionary ONN training",
+    "Enhance ONN evolution with simplification and parsimony penalty"
+  ],
+  "repo": "Vedant9500/Glassbox",
+  "tags": [
+    "machine-learning",
+    "symbolic-regression",
+    "coding"
+  ]
+}

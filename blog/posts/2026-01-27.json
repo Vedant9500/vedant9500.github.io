@@ -1,0 +1,18 @@
+{
+  "date": "2026-01-27",
+  "title": "Glassbox refactor and fixes",
+  "summary": "Spent all day cleaning up the Glassbox code. My evolution logic had many small bugs. The device mismatch in progressive_round_loss was causing random crashes. I also fixed the LBFGS closure issue because it was not updating variables correctly.\n\nI removed some unnecessary gc.collect calls to make things faster. Also changed all my print statements to use the logging module. It is much easier to debug now. I updated the coefficient extraction in phased_regression.py and added harder tests with PI in test_visualization.py to make sure the math is correct.",
+  "commits": [
+    "6a6de75"
+  ],
+  "commitMessages": [
+    "refactor(evolution): major code quality improvements and bug fixes"
+  ],
+  "repo": "Vedant9500/Glassbox",
+  "tags": [
+    "python",
+    "symbolic-regression",
+    "research",
+    "coding"
+  ]
+}
