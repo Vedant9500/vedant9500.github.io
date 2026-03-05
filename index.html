@@ -118,23 +118,16 @@
 
             0%,
             100% {
-                box-shadow: 8px 8px 0 var(--ink);
+                transform: translate(var(--hero-hover-x), var(--hero-hover-y)) scale(1);
+                box-shadow:
+                    calc(8px + var(--hero-hover-shadow)) calc(8px + var(--hero-hover-shadow)) 0 var(--ink);
             }
 
             50% {
-                box-shadow: 8px 8px 12px rgba(255, 183, 197, 0.15), 8px 8px 0 var(--ink);
-            }
-        }
-
-        @keyframes rolePulse {
-
-            0%,
-            100% {
-                transform: translateY(0);
-            }
-
-            50% {
-                transform: translateY(-2px);
+                transform: translate(calc(var(--hero-hover-x) - 1px), calc(var(--hero-hover-y) - 1px)) scale(1.008);
+                box-shadow:
+                    calc(8px + var(--hero-hover-shadow)) calc(8px + var(--hero-hover-shadow)) 8px rgba(255, 183, 197, 0.18),
+                    calc(8px + var(--hero-hover-shadow)) calc(8px + var(--hero-hover-shadow)) 0 var(--ink);
             }
         }
 
@@ -152,6 +145,9 @@
         }
 
         .hero-card {
+            --hero-hover-x: 0px;
+            --hero-hover-y: 0px;
+            --hero-hover-shadow: 0px;
             background: var(--bg-card);
             border: var(--border-main);
             padding: 60px;
@@ -161,6 +157,7 @@
             box-shadow: 8px 8px 0 var(--ink);
             border-radius: 20px;
             transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.3s ease;
+            will-change: transform, box-shadow;
             z-index: 10;
             animation: heroSlideUp 1s cubic-bezier(0.22, 1, 0.36, 1) both,
                 cardBreathe 6s ease-in-out 2.5s infinite;
@@ -171,8 +168,7 @@
         }
 
         .hero-card .role {
-            animation: heroSlideUp 0.8s cubic-bezier(0.22, 1, 0.36, 1) 0.35s both,
-                rolePulse 3s ease-in-out 2.5s infinite;
+            animation: heroSlideUp 0.8s cubic-bezier(0.22, 1, 0.36, 1) 0.35s both;
         }
 
         .hero-card .bio-intro {
@@ -180,9 +176,9 @@
         }
 
         .hero-card:hover {
-            box-shadow: 12px 12px 0 var(--ink) !important;
-            transform: translate(-4px, -4px);
-            animation-play-state: paused;
+            --hero-hover-x: -4px;
+            --hero-hover-y: -4px;
+            --hero-hover-shadow: 4px;
         }
 
         /* Decorative Background Shapes */
