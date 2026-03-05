@@ -180,6 +180,13 @@
         scroll-snap-align: start;
     }
 
+    .content-section[data-section="projects"] .section-inner .container .section-lead,
+    .content-section[data-section="toolbox"] .section-inner .container .section-lead {
+        margin: -0.75rem 0 1.25rem;
+        font-size: 0.9rem;
+        line-height: 1.55;
+    }
+
     .projects-grid {
         display: flex !important;
         flex-direction: column !important;
@@ -201,26 +208,18 @@
         scroll-snap-align: start;
         scroll-snap-stop: always;
         transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
-        opacity: 0.7;
-        transform: scale(0.98);
+        opacity: 0.85;
+        transform: scale(0.995);
     }
 
     .project-card.in-focus {
         opacity: 1;
         transform: scale(1);
-        box-shadow:
-            0 8px 32px rgba(0, 0, 0, 0.12),
-            0 0 0 1px rgba(255, 183, 197, 0.4),
-            0 0 20px rgba(255, 183, 197, 0.3);
-        /* Sakura glow */
+        box-shadow: 5px 5px 0 var(--ink);
     }
 
     html[data-theme="dark"] .project-card.in-focus {
-        box-shadow:
-            0 8px 32px rgba(0, 0, 0, 0.3),
-            0 0 0 1px rgba(255, 183, 197, 0.25),
-            0 0 20px rgba(255, 183, 197, 0.15);
-        /* Dark mode Sakura glow */
+        box-shadow: 5px 5px 0 var(--ink);
     }
 
     .project-card.featured {
@@ -251,11 +250,12 @@
 
     .project-links {
         padding-top: 0;
+        gap: 0.5rem;
     }
 
-    .project-links a {
-        padding: 10px 16px;
-        font-size: 0.85rem;
+    .project-link {
+        padding: 8px 12px;
+        font-size: 0.8rem;
     }
 
     .project-lang {
