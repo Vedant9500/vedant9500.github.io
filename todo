@@ -1,2 +1,6 @@
-add a cute animal on the page
+landing page takes about 700-1400ms to load
+moving to portfolio takes about 1000-1600ms ... maybe it loads all sections at once
+research block takes more 600-1350ms to load
+can add RSS or ATOM for blog page
 
+i noticed that for all pages majority of the time is taken by fonts (150ms-300ms+ for each font consistently)
