@@ -21,7 +21,7 @@
     width: 100%;
     max-width: var(--container-max);
     margin: 0 auto;
-    padding: 0 40px;
+    padding: 0 var(--page-gutter);
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -71,7 +71,7 @@
     font-weight: 600;
     font-size: 0.88rem;
     letter-spacing: var(--tracking-label);
-    padding: 0 24px;
+    padding: 0 22px;
     cursor: pointer;
     height: 100%;
     transition: all 0.2s;
@@ -100,7 +100,7 @@
 /* Icons/Actions */
 .nav-actions {
     display: flex;
-    gap: 15px;
+    gap: var(--space-sm);
     align-items: center;
 }
 
@@ -139,16 +139,16 @@
 /* Popover - Retro Window */
 .contact-popover {
     position: fixed;
-    top: 80px;
-    right: 40px;
+    top: calc(var(--header-height) + var(--space-xs));
+    right: var(--page-gutter);
     background: var(--bg-card);
     border: var(--border-main);
-    padding: 1rem;
+    padding: var(--space-md);
     display: flex;
     flex-direction: column;
-    gap: 0.5rem;
+    gap: var(--space-xs);
     box-shadow: var(--shadow-main);
-    width: 200px;
+    width: 208px;
     z-index: 1100;
     border-radius: 8px;
 }

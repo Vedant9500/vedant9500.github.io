@@ -15,15 +15,15 @@
     max-width: 860px;
     width: 100%;
     margin: 0 auto;
-    padding: 0 2rem 4rem;
+    padding: 0 var(--page-gutter) var(--space-3xl);
 }
 
 /* Blog Header */
 .blog-hero {
     text-align: left;
-    margin-bottom: 3rem;
+    margin-bottom: var(--space-2xl);
     border-left: var(--border-main);
-    padding-left: 2rem;
+    padding-left: var(--space-lg);
 }
 
 .blog-hero h1 {
@@ -33,7 +33,7 @@
     color: var(--ink);
     letter-spacing: var(--tracking-display);
     text-shadow: 2px 2px 0px var(--accent-pink);
-    margin-bottom: 0.5rem;
+    margin-bottom: var(--space-xs);
     line-height: var(--leading-display);
     text-transform: uppercase;
 }
@@ -60,7 +60,7 @@
     border: var(--border-thin);
     border-radius: 999px;
     padding: 6px 14px;
-    margin-top: 1rem;
+    margin-top: var(--space-md);
     box-shadow: 2px 2px 0 var(--ink);
     text-decoration: none;
     transition: all 0.2s ease;
@@ -89,7 +89,7 @@
 .blog-feed {
     display: flex;
     flex-direction: column;
-    gap: 0.75rem;
+    gap: var(--space-md);
 }
 
 /* Blog Post Card */
@@ -98,7 +98,7 @@
     border: var(--border-main);
     box-shadow: var(--shadow-main);
     border-radius: 12px;
-    padding: 1.25rem 1.5rem;
+    padding: 1.4rem 1.6rem;
     transition: all 0.35s cubic-bezier(0.22, 1, 0.36, 1);
     position: relative;
     overflow: hidden;
@@ -121,7 +121,7 @@
     display: flex;
     align-items: flex-start;
     justify-content: space-between;
-    gap: 1rem;
+    gap: var(--space-sm);
 }
 
 .blog-post-header-left {
@@ -164,11 +164,11 @@
 .blog-post-card.expanded .blog-post-body {
     max-height: 2000px;
     opacity: 1;
-    margin-top: 1rem;
+    margin-top: var(--space-md);
 }
 
 .blog-post-card.expanded {
-    padding: 1.5rem 2rem;
+    padding: 1.6rem 1.9rem;
 }
 
 /* Date badge */
@@ -221,14 +221,14 @@
     color: var(--ink-light);
     line-height: var(--leading-body);
     font-weight: 500;
-    margin-bottom: 1.2rem;
+    margin-bottom: var(--space-md);
 }
 
 /* Commit list */
 .blog-post-commits {
     border-top: 1px dashed var(--ink);
-    padding-top: 1rem;
-    margin-top: 0.5rem;
+    padding-top: var(--space-md);
+    margin-top: var(--space-xs);
 }
 
 .blog-post-commits-label {
@@ -247,7 +247,7 @@
     margin: 0;
     display: flex;
     flex-direction: column;
-    gap: 6px;
+    gap: var(--space-xs);
 }
 
 .blog-commit-item {
@@ -368,7 +368,7 @@
 /* Blog footer */
 .blog-footer {
     text-align: center;
-    padding: 2rem 0;
+    padding: var(--space-xl) 0;
     font-family: var(--font-body);
     color: var(--text-secondary);
     font-size: var(--type-label);
@@ -380,18 +380,18 @@
    ======================================== */
 @media (max-width: 768px) {
     .blog-page {
-        padding-top: 20px;
+        padding-top: 24px;
         padding-bottom: 100px;
     }
 
     .blog-container {
-        padding: 0 0.75rem 2rem;
+        padding: 0 1rem var(--space-xl);
     }
 
     .blog-hero {
-        padding-left: 1rem;
+        padding-left: var(--space-md);
         border-left-width: 2px;
-        margin-bottom: 2rem;
+        margin-bottom: var(--space-xl);
     }
 
     .blog-hero h1 {
@@ -400,11 +400,11 @@
     }
 
     .blog-post-card {
-        padding: 1rem 1.25rem;
+        padding: 1rem 1.15rem;
     }
 
     .blog-post-card.expanded {
-        padding: 1.25rem 1.5rem;
+        padding: 1.2rem 1.35rem;
     }
 
     .blog-post-title {
@@ -412,6 +412,6 @@
     }
 
     .blog-feed {
-        gap: 0.5rem;
+        gap: var(--space-sm);
     }
 }

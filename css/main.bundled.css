@@ -75,6 +75,18 @@
     --tracking-body: -0.01em;
     --tracking-label: 0.06em;
 
+    /* Spacing scale */
+    --space-2xs: 0.375rem;
+    --space-xs: 0.5rem;
+    --space-sm: 0.75rem;
+    --space-md: 1rem;
+    --space-lg: 1.5rem;
+    --space-xl: 2rem;
+    --space-2xl: 2.5rem;
+    --space-3xl: 3.5rem;
+    --space-4xl: 4.5rem;
+    --page-gutter: clamp(1.25rem, 3vw, 2.5rem);
+
     /* Shadows & Borders (Neo-brutalist) */
     --border-main: 3px solid var(--ink);
     --border-thin: 2px solid var(--ink);
@@ -289,7 +301,7 @@ small,
     width: 100%;
     max-width: var(--container-max);
     margin: 0 auto;
-    padding: 0 40px;
+    padding: 0 var(--page-gutter);
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -339,7 +351,7 @@ small,
     font-weight: 600;
     font-size: 0.88rem;
     letter-spacing: var(--tracking-label);
-    padding: 0 24px;
+    padding: 0 22px;
     cursor: pointer;
     height: 100%;
     transition: all 0.2s;
@@ -368,7 +380,7 @@ small,
 /* Icons/Actions */
 .nav-actions {
     display: flex;
-    gap: 15px;
+    gap: var(--space-sm);
     align-items: center;
 }
 
@@ -407,16 +419,16 @@ small,
 /* Popover - Retro Window */
 .contact-popover {
     position: fixed;
-    top: 80px;
-    right: 40px;
+    top: calc(var(--header-height) + var(--space-xs));
+    right: var(--page-gutter);
     background: var(--bg-card);
     border: var(--border-main);
-    padding: 1rem;
+    padding: var(--space-md);
     display: flex;
     flex-direction: column;
-    gap: 0.5rem;
+    gap: var(--space-xs);
     box-shadow: var(--shadow-main);
-    width: 200px;
+    width: 208px;
     z-index: 1100;
     border-radius: 8px;
 }
@@ -661,7 +673,7 @@ html[data-theme="dark"] .popover button:hover {
 .btn-secondary,
 .btn-tech,
 .btn-outline {
-    padding: 0 28px;
+    padding: 0 24px;
     border-radius: 8px;
     border: var(--border-main);
     box-shadow: var(--shadow-main);
@@ -676,7 +688,7 @@ html[data-theme="dark"] .popover button:hover {
     font-size: 0.9rem;
     letter-spacing: var(--tracking-label);
     text-transform: uppercase;
-    height: 48px;
+    height: 46px;
     font-family: var(--font-body);
     cursor: pointer;
     position: relative;
@@ -742,9 +754,9 @@ section h2 {
     font-weight: 700;
     text-transform: uppercase;
     text-align: left;
-    margin-bottom: 2.4rem;
+    margin-bottom: var(--space-xl);
     color: var(--ink);
-    padding-bottom: 1rem;
+    padding-bottom: var(--space-sm);
     letter-spacing: var(--tracking-display);
     line-height: var(--leading-display);
 }
@@ -756,7 +768,7 @@ section h2 {
     line-height: 1.65;
     font-weight: 500;
     max-width: 60ch;
-    margin: -1rem 0 2rem;
+    margin: calc(-1 * var(--space-sm)) 0 var(--space-xl);
 }
 
 /* ========================================
@@ -764,9 +776,9 @@ section h2 {
    ======================================== */
 .about-hero {
     text-align: left;
-    margin-bottom: 4rem;
+    margin-bottom: var(--space-2xl);
     border-left: var(--border-main);
-    padding-left: 2rem;
+    padding-left: var(--space-lg);
 }
 
 .about-greeting {
@@ -806,7 +818,7 @@ section h2 {
 .about-content {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: 2rem;
+    gap: var(--space-lg);
 }
 
 .about-card.about-intro {
@@ -823,7 +835,7 @@ section h2 {
     background: var(--bg-card);
     border: var(--border-main);
     box-shadow: var(--shadow-main);
-    padding: 2rem;
+    padding: 1.75rem;
     position: relative;
     border-radius: 8px;
     transition: all 0.35s cubic-bezier(0.22, 1, 0.36, 1);
@@ -890,13 +902,13 @@ section h2 {
 .projects-grid {
     display: grid;
     grid-template-columns: repeat(12, minmax(0, 1fr));
-    gap: 1.75rem;
+    gap: var(--space-lg);
 }
 
 .achievements-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 2rem;
+    gap: var(--space-lg);
 }
 
 .project-card {
@@ -922,8 +934,8 @@ section h2 {
 
 .project-header {
     border-bottom: 1px solid var(--line-color);
-    padding-bottom: 0.75rem;
-    margin-bottom: 1rem;
+    padding-bottom: var(--space-sm);
+    margin-bottom: 0.9rem;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -940,7 +952,7 @@ section h2 {
 }
 
 .project-card p {
-    margin-bottom: 1.2rem;
+    margin-bottom: var(--space-md);
     display: -webkit-box;
     -webkit-box-orient: vertical;
     -webkit-line-clamp: 3;
@@ -964,18 +976,18 @@ section h2 {
 
 .project-links {
     margin-top: auto;
-    padding-top: 1rem;
+    padding-top: var(--space-sm);
     display: flex;
     align-items: center;
     justify-content: space-between;
-    gap: 0.75rem;
+    gap: var(--space-sm);
 }
 
 .project-tags {
     display: flex;
     flex-wrap: wrap;
     justify-content: flex-end;
-    gap: 0.5rem;
+    gap: var(--space-xs);
 }
 
 .project-link {
@@ -1054,17 +1066,18 @@ section h2 {
     }
 
     .about-hero {
-        padding-left: 1rem;
+        margin-bottom: var(--space-lg);
+        padding-left: var(--space-md);
         border-left-width: 2px;
     }
 
     .section-lead {
-        margin: -1rem 0 1.6rem;
+        margin: calc(-1 * var(--space-xs)) 0 var(--space-lg);
         font-size: var(--type-body-sm);
     }
 
     .projects-grid {
-        gap: 1rem;
+        gap: var(--space-md);
     }
 
     .project-card,
@@ -1105,7 +1118,7 @@ section h2 {
 .toolbox-grid {
     display: grid;
     grid-template-columns: repeat(12, minmax(0, 1fr));
-    gap: 22px;
+    gap: var(--space-lg);
     max-width: 1000px;
     margin: 0 auto;
 }
@@ -1115,18 +1128,18 @@ section h2 {
     background: var(--bg-card);
     border: var(--border-thin);
     box-shadow: 3px 3px 0 var(--ink);
-    padding: 1.5rem;
+    padding: 1.4rem;
     border-radius: 12px;
     transition: transform 0.28s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.28s cubic-bezier(0.22, 1, 0.36, 1);
     display: flex;
     flex-direction: column;
-    gap: 0.85rem;
-    min-height: 220px;
+    gap: var(--space-sm);
+    min-height: 212px;
 }
 
 .toolbox-card--featured {
     grid-column: span 6;
-    min-height: 235px;
+    min-height: 228px;
 }
 
 .toolbox-card--mint {
@@ -1183,20 +1196,20 @@ section h2 {
 .toolbox-header {
     display: flex;
     align-items: center;
-    gap: 12px;
+    gap: var(--space-sm);
     font-family: var(--font-display);
     font-size: 1.45rem;
     font-weight: 700;
     color: var(--ink);
     border-bottom: 1px solid var(--line-color);
-    padding-bottom: 0.5rem;
-    margin-bottom: 0.5rem;
+    padding-bottom: var(--space-sm);
+    margin-bottom: var(--space-sm);
     letter-spacing: var(--tracking-heading);
     line-height: var(--leading-snug);
 }
 
 .toolbox-context {
-    margin: 0 0 0.25rem;
+    margin: 0 0 var(--space-2xs);
     font-family: var(--font-body);
     font-size: var(--type-body-sm);
     line-height: 1.65;
@@ -1212,13 +1225,13 @@ section h2 {
     display: flex;
     flex-direction: column;
     flex-grow: 1;
-    gap: 0.8rem;
+    gap: var(--space-sm);
 }
 
 .skill-pills {
     display: flex;
     flex-wrap: wrap;
-    gap: 10px;
+    gap: var(--space-xs);
     margin-top: auto;
 }
 
@@ -1289,15 +1302,15 @@ section h2 {
     max-width: 860px;
     width: 100%;
     margin: 0 auto;
-    padding: 0 2rem 4rem;
+    padding: 0 var(--page-gutter) var(--space-3xl);
 }
 
 /* Blog Header */
 .blog-hero {
     text-align: left;
-    margin-bottom: 3rem;
+    margin-bottom: var(--space-2xl);
     border-left: var(--border-main);
-    padding-left: 2rem;
+    padding-left: var(--space-lg);
 }
 
 .blog-hero h1 {
@@ -1307,7 +1320,7 @@ section h2 {
     color: var(--ink);
     letter-spacing: var(--tracking-display);
     text-shadow: 2px 2px 0px var(--accent-pink);
-    margin-bottom: 0.5rem;
+    margin-bottom: var(--space-xs);
     line-height: var(--leading-display);
     text-transform: uppercase;
 }
@@ -1334,7 +1347,7 @@ section h2 {
     border: var(--border-thin);
     border-radius: 999px;
     padding: 6px 14px;
-    margin-top: 1rem;
+    margin-top: var(--space-md);
     box-shadow: 2px 2px 0 var(--ink);
     text-decoration: none;
     transition: all 0.2s ease;
@@ -1363,7 +1376,7 @@ section h2 {
 .blog-feed {
     display: flex;
     flex-direction: column;
-    gap: 0.75rem;
+    gap: var(--space-md);
 }
 
 /* Blog Post Card */
@@ -1372,7 +1385,7 @@ section h2 {
     border: var(--border-main);
     box-shadow: var(--shadow-main);
     border-radius: 12px;
-    padding: 1.25rem 1.5rem;
+    padding: 1.4rem 1.6rem;
     transition: all 0.35s cubic-bezier(0.22, 1, 0.36, 1);
     position: relative;
     overflow: hidden;
@@ -1395,7 +1408,7 @@ section h2 {
     display: flex;
     align-items: flex-start;
     justify-content: space-between;
-    gap: 1rem;
+    gap: var(--space-sm);
 }
 
 .blog-post-header-left {
@@ -1438,11 +1451,11 @@ section h2 {
 .blog-post-card.expanded .blog-post-body {
     max-height: 2000px;
     opacity: 1;
-    margin-top: 1rem;
+    margin-top: var(--space-md);
 }
 
 .blog-post-card.expanded {
-    padding: 1.5rem 2rem;
+    padding: 1.6rem 1.9rem;
 }
 
 /* Date badge */
@@ -1495,14 +1508,14 @@ section h2 {
     color: var(--ink-light);
     line-height: var(--leading-body);
     font-weight: 500;
-    margin-bottom: 1.2rem;
+    margin-bottom: var(--space-md);
 }
 
 /* Commit list */
 .blog-post-commits {
     border-top: 1px dashed var(--ink);
-    padding-top: 1rem;
-    margin-top: 0.5rem;
+    padding-top: var(--space-md);
+    margin-top: var(--space-xs);
 }
 
 .blog-post-commits-label {
@@ -1521,7 +1534,7 @@ section h2 {
     margin: 0;
     display: flex;
     flex-direction: column;
-    gap: 6px;
+    gap: var(--space-xs);
 }
 
 .blog-commit-item {
@@ -1642,7 +1655,7 @@ section h2 {
 /* Blog footer */
 .blog-footer {
     text-align: center;
-    padding: 2rem 0;
+    padding: var(--space-xl) 0;
     font-family: var(--font-body);
     color: var(--text-secondary);
     font-size: var(--type-label);
@@ -1654,18 +1667,18 @@ section h2 {
    ======================================== */
 @media (max-width: 768px) {
     .blog-page {
-        padding-top: 20px;
+        padding-top: 24px;
         padding-bottom: 100px;
     }
 
     .blog-container {
-        padding: 0 0.75rem 2rem;
+        padding: 0 1rem var(--space-xl);
     }
 
     .blog-hero {
-        padding-left: 1rem;
+        padding-left: var(--space-md);
         border-left-width: 2px;
-        margin-bottom: 2rem;
+        margin-bottom: var(--space-xl);
     }
 
     .blog-hero h1 {
@@ -1674,11 +1687,11 @@ section h2 {
     }
 
     .blog-post-card {
-        padding: 1rem 1.25rem;
+        padding: 1rem 1.15rem;
     }
 
     .blog-post-card.expanded {
-        padding: 1.25rem 1.5rem;
+        padding: 1.2rem 1.35rem;
     }
 
     .blog-post-title {
@@ -1686,7 +1699,7 @@ section h2 {
     }
 
     .blog-feed {
-        gap: 0.5rem;
+        gap: var(--space-sm);
     }
 }
 
@@ -1784,6 +1797,7 @@ section h2 {
     flex: 0 0 33.333%;
     width: 33.333%;
     height: 100%;
+    padding: 0;
     overflow-y: auto;
     overflow-x: hidden;
     scroll-behavior: smooth;
@@ -1821,7 +1835,7 @@ html[data-theme="dark"] .content-section::after {
 }
 
 .section-inner {
-    padding: 100px 0 2rem 0;
+    padding: calc(var(--header-height) + var(--space-lg)) 0 var(--space-3xl);
     min-height: 100%;
     opacity: 0;
     transform: translateX(30px);
@@ -1829,14 +1843,14 @@ html[data-theme="dark"] .content-section::after {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
+    justify-content: flex-start;
 }
 
 .section-inner .container {
     width: 100%;
-    max-width: 1200px;
+    max-width: 1160px;
     margin: 0 auto;
-    padding: 0 2rem;
+    padding: 0 var(--page-gutter);
 }
 
 .content-section.active .section-inner {
@@ -1885,7 +1899,7 @@ html[data-theme="dark"] .content-section::after {
 .contact-intro {
     color: var(--text-muted);
     font-size: 1.1rem;
-    margin-bottom: 2rem;
+    margin-bottom: var(--space-xl);
     max-width: 400px;
     margin-inline: auto;
 }
@@ -1893,8 +1907,8 @@ html[data-theme="dark"] .content-section::after {
 .social-links {
     display: flex;
     justify-content: center;
-    gap: 1.5rem;
-    margin-bottom: 2rem;
+    gap: var(--space-lg);
+    margin-bottom: var(--space-xl);
 }
 
 .social-link {
@@ -1920,7 +1934,7 @@ html[data-theme="dark"] .content-section::after {
 }
 
 .footer {
-    padding: 2rem 0;
+    padding: var(--space-xl) 0;
     text-align: center;
     background: transparent;
     border-top: none;
@@ -1928,7 +1942,7 @@ html[data-theme="dark"] .content-section::after {
 
 .footer p {
     color: var(--text-secondary);
-    font-size: 0.9rem;
+    font-size: var(--type-label);
     font-family: var(--font-body);
 }
 
@@ -2753,11 +2767,11 @@ html[data-theme="dark"] .project-card.in-focus {
     }
 
     .section-inner {
-        padding: 20px 0 80px 0;
+        padding: 24px 0 96px 0;
     }
 
     .section-inner .container {
-        padding: 0 20px;
+        padding: 0 18px;
     }
 
     /* ===== About Section Mobile ===== */
@@ -2770,8 +2784,8 @@ html[data-theme="dark"] .project-card.in-focus {
     }
 
     .about-hero {
-        margin-bottom: 1.5rem;
-        padding-top: 10px;
+        margin-bottom: 1.25rem;
+        padding-top: 0;
     }
 
     .about-name {
@@ -2799,12 +2813,12 @@ html[data-theme="dark"] .project-card.in-focus {
     .about-content {
         display: flex;
         flex-direction: column;
-        gap: 20px;
+        gap: 16px;
         scroll-snap-type: y proximity;
     }
 
     .about-card {
-        padding: 20px;
+        padding: 18px;
         scroll-snap-align: start;
         min-height: auto;
         transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
@@ -2841,7 +2855,7 @@ html[data-theme="dark"] .project-card.in-focus {
 
     /* First card (intro) - more prominent */
     .about-card.about-intro {
-        padding: 24px;
+        padding: 20px;
     }
 
     .about-card.about-intro .about-card-content p {
@@ -2882,12 +2896,12 @@ html[data-theme="dark"] .project-card.in-focus {
     }
 
     .content-section[data-section="projects"] .section-inner {
-        padding: 20px 0 120px 0;
+        padding: 24px 0 112px 0;
     }
 
     .content-section[data-section="projects"] .section-inner .container {
         max-width: 100%;
-        padding: 0 20px;
+        padding: 0 18px;
     }
 
     .content-section[data-section="projects"] .section-inner .container h2 {
@@ -2899,7 +2913,7 @@ html[data-theme="dark"] .project-card.in-focus {
 
     .content-section[data-section="projects"] .section-inner .container .section-lead,
     .content-section[data-section="toolbox"] .section-inner .container .section-lead {
-        margin: -0.75rem 0 1.25rem;
+        margin: calc(-1 * var(--space-xs)) 0 var(--space-md);
         font-size: 0.95rem;
         line-height: 1.6;
     }
@@ -2907,7 +2921,7 @@ html[data-theme="dark"] .project-card.in-focus {
     .projects-grid {
         display: flex !important;
         flex-direction: column !important;
-        gap: 20px !important;
+        gap: 16px !important;
         margin: 0 !important;
     }
 
@@ -2921,7 +2935,7 @@ html[data-theme="dark"] .project-card.in-focus {
         max-width: 100% !important;
         min-height: auto !important;
         height: auto !important;
-        padding: 24px !important;
+        padding: 20px !important;
         scroll-snap-align: start;
         scroll-snap-stop: always;
         transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
@@ -2945,7 +2959,7 @@ html[data-theme="dark"] .project-card.in-focus {
         max-width: 100% !important;
         min-height: auto !important;
         grid-column: unset !important;
-        padding: 24px !important;
+        padding: 20px !important;
     }
 
     .project-card.featured::before {
@@ -2967,7 +2981,7 @@ html[data-theme="dark"] .project-card.in-focus {
 
     .project-links {
         padding-top: 0;
-        gap: 0.5rem;
+        gap: var(--space-sm);
     }
 
     .project-link {
@@ -2986,7 +3000,7 @@ html[data-theme="dark"] .project-card.in-focus {
 
     /* ===== Toolbox Mobile - Always Expanded ===== */
     .toolbox-accordion {
-        gap: 16px;
+        gap: 14px;
     }
 
     .toolbox-chevron {
@@ -2995,7 +3009,7 @@ html[data-theme="dark"] .project-card.in-focus {
 
     .toolbox-header {
         cursor: default;
-        padding: 12px 16px;
+        padding: 12px 14px;
     }
 
     .toolbox-header:hover {
@@ -3014,7 +3028,7 @@ html[data-theme="dark"] .project-card.in-focus {
 
     .toolbox-content {
         grid-template-rows: 1fr !important;
-        padding: 0 16px 14px 16px !important;
+        padding: 0 14px 14px 14px !important;
     }
 
     .toolbox-category {

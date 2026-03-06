@@ -6,7 +6,7 @@
 .btn-secondary,
 .btn-tech,
 .btn-outline {
-    padding: 0 28px;
+    padding: 0 24px;
     border-radius: 8px;
     border: var(--border-main);
     box-shadow: var(--shadow-main);
@@ -21,7 +21,7 @@
     font-size: 0.9rem;
     letter-spacing: var(--tracking-label);
     text-transform: uppercase;
-    height: 48px;
+    height: 46px;
     font-family: var(--font-body);
     cursor: pointer;
     position: relative;
