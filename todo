@@ -50,34 +50,35 @@ Main problems on the current site
 
 What to do next
 
-1. Do a typography pass first
-- Keep the display font mainly for hero moments and maybe section titles.
-- Move nav, buttons, tags, and body copy to a cleaner text face.
-- Increase paragraph size slightly.
-- Reduce all-caps usage.
-- Remove or soften heavy text shadows.
+1. Finish typography pass
+- Reduce all-caps usage further across nav, buttons, tags, and supporting metadata.
 
-2. Remove at least half of the current animations
+2. Spacing cleanup
+- Normalize vertical rhythm between section headings, section leads, grids, and footers.
+- Tighten hero, card, and container spacing across home, about, toolbox, and blog.
+- Make mobile spacing less jumpy across stacked sections.
+
+3. Remove at least half of the current animations
 - Keep one reveal system.
 - Keep one hover response system.
 - Remove the hero breathing loop, button rotation, card wobble, keyword shimmer, and jelly hover.
 - Motion should support the structure of the page, not compete with it.
 
-3. Reduce the active color hierarchy
+4. Reduce the active color hierarchy
 - Use cream and ink as the base.
 - Choose one main accent per page or section.
 - Use the other colors as occasional punctuation, not dominant surfaces.
 
-4. Simplify the elevation system
+5. Simplify the elevation system
 - Define only three states: flat, raised, focal.
 - Small controls should not feel as loud as large cards.
 - Use thicker shadows and borders only where emphasis is actually needed.
 
-5. Rework the home composition, not just the styling
+6. Rework the home composition, not just the styling
 - The centered card on a dotted background feels like a nice component placed in empty space.
 - A sharper home page would have one dominant layout move, stronger negative space, and one signature visual idea.
 
-6. Make motion specific to the site concept
+7. Make motion specific to the site concept
 - Generic magnetic buttons and 3D tilt feel borrowed.
 - Interactions should feel tied to your identity as someone working on systems, AI, and research.
 - Think in terms of annotations, diagrams, notebooks, data cards, terminals, or modular systems rather than toy-like hover tricks.
@@ -94,10 +95,11 @@ That direction suggests
 - motion that feels analytical, not playful for its own sake
 
 Practical rewrite order
-1. Typography and spacing cleanup.
-2. Motion cleanup and simplification.
-3. Color and elevation cleanup.
-4. Home page redesign around one stronger concept.
+1. Finish typography cleanup.
+2. Spacing cleanup.
+3. Motion cleanup and simplification.
+4. Color and elevation cleanup.
+5. Home page redesign around one stronger concept.
 
 Rule for future changes
 - Before adding any visual effect, ask: does this belong to the site's core idea, or is it just another cool thing?

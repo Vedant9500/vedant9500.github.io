@@ -1,0 +1,21 @@
+Completed tasks - March 2026
+
+Moved out of todo after the first implementation pass.
+
+1. Typography work completed
+- Kept the display font focused on hero and section-title roles instead of using it as the default reading face.
+- Moved nav, buttons, tags, metadata, and body copy to the cleaner UI/body text face.
+- Increased paragraph and supporting copy sizes where needed.
+- Removed or softened the heaviest heading text shadows.
+
+2. Typography implementation details completed
+- Added a semantic type scale and text rhythm tokens.
+- Cleaned typography-related inline overrides from the landing page and blog page.
+- Synced css/main.bundled.css with the updated source styles.
+
+Still intentionally left in todo
+- Reduce all-caps usage further across the site.
+- Spacing cleanup across layout, containers, cards, and mobile section rhythm.
+- Motion cleanup and simplification.
+- Color and elevation cleanup.
+- Home page redesign around a stronger concept.

@@ -12,9 +12,9 @@ section h2 {
     font-weight: 700;
     text-transform: uppercase;
     text-align: left;
-    margin-bottom: 2.4rem;
+    margin-bottom: var(--space-xl);
     color: var(--ink);
-    padding-bottom: 1rem;
+    padding-bottom: var(--space-sm);
     letter-spacing: var(--tracking-display);
     line-height: var(--leading-display);
 }
@@ -26,7 +26,7 @@ section h2 {
     line-height: 1.65;
     font-weight: 500;
     max-width: 60ch;
-    margin: -1rem 0 2rem;
+    margin: calc(-1 * var(--space-sm)) 0 var(--space-xl);
 }
 
 /* ========================================
@@ -34,9 +34,9 @@ section h2 {
    ======================================== */
 .about-hero {
     text-align: left;
-    margin-bottom: 4rem;
+    margin-bottom: var(--space-2xl);
     border-left: var(--border-main);
-    padding-left: 2rem;
+    padding-left: var(--space-lg);
 }
 
 .about-greeting {
@@ -76,7 +76,7 @@ section h2 {
 .about-content {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: 2rem;
+    gap: var(--space-lg);
 }
 
 .about-card.about-intro {
@@ -93,7 +93,7 @@ section h2 {
     background: var(--bg-card);
     border: var(--border-main);
     box-shadow: var(--shadow-main);
-    padding: 2rem;
+    padding: 1.75rem;
     position: relative;
     border-radius: 8px;
     transition: all 0.35s cubic-bezier(0.22, 1, 0.36, 1);
@@ -160,13 +160,13 @@ section h2 {
 .projects-grid {
     display: grid;
     grid-template-columns: repeat(12, minmax(0, 1fr));
-    gap: 1.75rem;
+    gap: var(--space-lg);
 }
 
 .achievements-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 2rem;
+    gap: var(--space-lg);
 }
 
 .project-card {
@@ -192,8 +192,8 @@ section h2 {
 
 .project-header {
     border-bottom: 1px solid var(--line-color);
-    padding-bottom: 0.75rem;
-    margin-bottom: 1rem;
+    padding-bottom: var(--space-sm);
+    margin-bottom: 0.9rem;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -210,7 +210,7 @@ section h2 {
 }
 
 .project-card p {
-    margin-bottom: 1.2rem;
+    margin-bottom: var(--space-md);
     display: -webkit-box;
     -webkit-box-orient: vertical;
     -webkit-line-clamp: 3;
@@ -234,18 +234,18 @@ section h2 {
 
 .project-links {
     margin-top: auto;
-    padding-top: 1rem;
+    padding-top: var(--space-sm);
     display: flex;
     align-items: center;
     justify-content: space-between;
-    gap: 0.75rem;
+    gap: var(--space-sm);
 }
 
 .project-tags {
     display: flex;
     flex-wrap: wrap;
     justify-content: flex-end;
-    gap: 0.5rem;
+    gap: var(--space-xs);
 }
 
 .project-link {
@@ -324,17 +324,18 @@ section h2 {
     }
 
     .about-hero {
-        padding-left: 1rem;
+        margin-bottom: var(--space-lg);
+        padding-left: var(--space-md);
         border-left-width: 2px;
     }
 
     .section-lead {
-        margin: -1rem 0 1.6rem;
+        margin: calc(-1 * var(--space-xs)) 0 var(--space-lg);
         font-size: var(--type-body-sm);
     }
 
     .projects-grid {
-        gap: 1rem;
+        gap: var(--space-md);
     }
 
     .project-card,
