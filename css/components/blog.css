@@ -28,42 +28,55 @@
 
 .blog-hero h1 {
     font-family: var(--font-display);
-    font-size: 4rem;
-    font-weight: 800;
+    font-size: var(--type-display-lg);
+    font-weight: 700;
     color: var(--ink);
-    letter-spacing: -3px;
-    text-shadow: 3px 3px 0px var(--accent-pink);
+    letter-spacing: var(--tracking-display);
+    text-shadow: 2px 2px 0px var(--accent-pink);
     margin-bottom: 0.5rem;
-    line-height: 1;
+    line-height: var(--leading-display);
     text-transform: uppercase;
 }
 
 .blog-hero .blog-subtitle {
-    font-family: var(--font-mono);
+    font-family: var(--font-body);
     color: var(--text-secondary);
-    font-size: 1.05rem;
+    font-size: var(--type-body-lg);
     font-weight: 500;
-    line-height: 1.6;
-    max-width: 600px;
+    line-height: 1.65;
+    max-width: 36ch;
 }
 
 .blog-hero .blog-repo-badge {
     display: inline-flex;
     align-items: center;
     gap: 8px;
-    font-family: var(--font-mono);
-    font-size: 0.82rem;
+    font-family: var(--font-body);
+    font-size: var(--type-label);
     font-weight: 700;
     text-transform: uppercase;
     color: var(--ink);
     background: var(--accent-yellow);
     border: var(--border-thin);
     border-radius: 999px;
-    padding: 5px 14px;
+    padding: 6px 14px;
     margin-top: 1rem;
     box-shadow: 2px 2px 0 var(--ink);
     text-decoration: none;
     transition: all 0.2s ease;
+    letter-spacing: var(--tracking-label);
+}
+
+#blog-post-count {
+    display: inline-block;
+    margin-left: 0.45rem;
+    font-family: var(--font-body);
+    font-size: 0.95rem;
+    font-weight: 500;
+    color: var(--ink-light);
+    letter-spacing: 0;
+    text-transform: none;
+    vertical-align: middle;
 }
 
 .blog-hero .blog-repo-badge:hover {
@@ -163,8 +176,8 @@
     display: inline-flex;
     align-items: center;
     gap: 6px;
-    font-family: var(--font-mono);
-    font-size: 0.72rem;
+    font-family: var(--font-body);
+    font-size: var(--type-meta);
     font-weight: 700;
     text-transform: uppercase;
     color: var(--ink);
@@ -174,7 +187,7 @@
     padding: 3px 10px;
     box-shadow: 1px 1px 0 var(--ink);
     margin-bottom: 0.5rem;
-    letter-spacing: 0.3px;
+    letter-spacing: var(--tracking-label);
 }
 
 .blog-post-date i {
@@ -184,13 +197,13 @@
 /* Post title */
 .blog-post-title {
     font-family: var(--font-display);
-    font-size: 1.2rem;
+    font-size: 1.3rem;
     font-weight: 700;
     color: var(--ink);
     margin-bottom: 0.4rem;
-    letter-spacing: -0.5px;
+    letter-spacing: var(--tracking-heading);
     text-transform: uppercase;
-    line-height: 1.3;
+    line-height: var(--leading-snug);
 }
 
 /* Tags — inline in header for collapsed cards */
@@ -204,9 +217,9 @@
 /* Post summary */
 .blog-post-summary {
     font-family: var(--font-body);
-    font-size: 1rem;
+    font-size: var(--type-body);
     color: var(--ink-light);
-    line-height: 1.7;
+    line-height: var(--leading-body);
     font-weight: 500;
     margin-bottom: 1.2rem;
 }
@@ -219,13 +232,13 @@
 }
 
 .blog-post-commits-label {
-    font-family: var(--font-mono);
-    font-size: 0.75rem;
+    font-family: var(--font-body);
+    font-size: var(--type-meta);
     font-weight: 700;
     text-transform: uppercase;
     color: var(--ink);
     margin-bottom: 0.5rem;
-    letter-spacing: 0.5px;
+    letter-spacing: var(--tracking-label);
 }
 
 .blog-commit-list {
@@ -238,13 +251,13 @@
 }
 
 .blog-commit-item {
-    font-family: var(--font-mono);
-    font-size: 0.85rem;
+    font-family: var(--font-body);
+    font-size: var(--type-body-sm);
     color: var(--ink-light);
     font-weight: 500;
     padding-left: 1rem;
     position: relative;
-    line-height: 1.5;
+    line-height: 1.65;
 }
 
 .blog-commit-item::before {
@@ -258,8 +271,8 @@
 
 
 .blog-tag {
-    font-family: var(--font-mono);
-    font-size: 0.72rem;
+    font-family: var(--font-body);
+    font-size: var(--type-meta);
     font-weight: 700;
     text-transform: uppercase;
     color: var(--ink);
@@ -267,7 +280,7 @@
     background: var(--bg-card);
     padding: 3px 10px;
     border-radius: 999px;
-    letter-spacing: 0.3px;
+    letter-spacing: var(--tracking-label);
 }
 
 /* Post accent stripe (alternating colors) */
@@ -297,7 +310,7 @@
     padding: 4rem 2rem;
     font-family: var(--font-display);
     font-weight: 700;
-    font-size: 1.2rem;
+    font-size: 1.1rem;
     color: var(--ink-light);
 }
 
@@ -336,16 +349,18 @@
 .blog-empty h3 {
     font-family: var(--font-display);
     font-weight: 700;
-    font-size: 1.5rem;
+    font-size: 1.4rem;
     color: var(--ink);
     text-transform: uppercase;
     margin-bottom: 0.5rem;
+    letter-spacing: var(--tracking-heading);
 }
 
 .blog-empty p {
     font-family: var(--font-body);
     color: var(--ink-light);
     font-weight: 500;
+    line-height: var(--leading-body);
 }
 
 
@@ -356,7 +371,7 @@
     padding: 2rem 0;
     font-family: var(--font-body);
     color: var(--text-secondary);
-    font-size: 0.9rem;
+    font-size: var(--type-label);
     font-weight: 500;
 }
 

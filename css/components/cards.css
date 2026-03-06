@@ -8,24 +8,25 @@ section {
 
 section h2 {
     font-family: var(--font-display);
-    font-size: 3rem;
+    font-size: var(--type-heading-xl);
     font-weight: 700;
     text-transform: uppercase;
     text-align: left;
-    margin-bottom: 3rem;
+    margin-bottom: 2.4rem;
     color: var(--ink);
     padding-bottom: 1rem;
-    letter-spacing: -2px;
+    letter-spacing: var(--tracking-display);
+    line-height: var(--leading-display);
 }
 
 .section-lead {
     font-family: var(--font-body);
     color: var(--text-secondary);
-    font-size: 1.05rem;
+    font-size: var(--type-body-lg);
     line-height: 1.65;
     font-weight: 500;
-    max-width: 680px;
-    margin: -1.5rem 0 2.2rem;
+    max-width: 60ch;
+    margin: -1rem 0 2rem;
 }
 
 /* ========================================
@@ -41,30 +42,34 @@ section h2 {
 .about-greeting {
     display: flex;
     align-items: center;
-    gap: 1rem;
-    margin-bottom: 0.5rem;
-    font-family: var(--font-mono);
+    gap: 0.75rem;
+    margin-bottom: 0.75rem;
+    font-family: var(--font-body);
     color: var(--text-secondary);
-    font-weight: bold;
-    font-size: 1.2rem;
+    font-weight: 700;
+    font-size: var(--type-label);
+    letter-spacing: var(--tracking-label);
+    text-transform: uppercase;
 }
 
 .about-name {
-    font-size: 5rem;
-    font-weight: 800;
+    font-family: var(--font-display);
+    font-size: var(--type-display-xl);
+    font-weight: 700;
     color: var(--text-primary);
-    margin-bottom: 0.5rem;
-    line-height: 1;
-    letter-spacing: -3px;
-    text-shadow: 3px 3px 0px var(--accent-pink);
+    margin-bottom: 0.35rem;
+    line-height: var(--leading-display);
+    letter-spacing: var(--tracking-display);
+    text-shadow: 2px 2px 0px var(--accent-pink);
 }
 
 .about-tagline {
-    font-family: var(--font-mono);
+    font-family: var(--font-body);
     color: var(--text-secondary);
-    font-size: 1.1rem;
-    font-weight: bold;
-    max-width: 600px;
+    font-size: var(--type-body-lg);
+    font-weight: 600;
+    line-height: 1.6;
+    max-width: 34ch;
 }
 
 /* Content Grid */
@@ -122,29 +127,30 @@ section h2 {
 .project-header h3,
 .achievement-card h3 {
     font-family: var(--font-display);
-    font-size: 1.5rem;
+    font-size: var(--type-heading-lg);
     font-weight: 700;
     text-transform: uppercase;
     color: var(--ink);
-    margin-bottom: 1rem;
-    letter-spacing: -1px;
+    margin-bottom: 0.85rem;
+    letter-spacing: var(--tracking-heading);
+    line-height: var(--leading-snug);
 }
 
 .about-card p,
 .project-card p,
 .achievement-card p {
     font-family: var(--font-body);
-    font-size: 1rem;
+    font-size: var(--type-body);
     color: var(--ink-light);
-    line-height: 1.6;
+    line-height: var(--leading-body);
     font-weight: 500;
 }
 
 .keyword {
     color: var(--ink);
-    font-weight: 800;
+    font-weight: 700;
     background: var(--accent-yellow);
-    padding: 0 4px;
+    padding: 0 5px;
     border-radius: 4px;
 }
 
@@ -214,15 +220,15 @@ section h2 {
 }
 
 .project-lang {
-    font-family: var(--font-mono);
-    font-size: 0.72rem;
+    font-family: var(--font-body);
+    font-size: var(--type-meta);
     color: var(--ink);
     border: var(--border-thin);
     background: var(--bg-card);
-    padding: 3px 10px;
+    padding: 4px 10px;
     border-radius: 999px;
     font-weight: 700;
-    letter-spacing: 0.3px;
+    letter-spacing: var(--tracking-label);
     text-transform: uppercase;
 }
 
@@ -243,14 +249,15 @@ section h2 {
 }
 
 .project-link {
-    font-family: var(--font-mono);
-    font-size: 0.82rem;
+    font-family: var(--font-body);
+    font-size: var(--type-label);
     font-weight: 700;
     text-transform: uppercase;
     display: flex;
     align-items: center;
     gap: 0.5rem;
     color: var(--text-secondary);
+    letter-spacing: var(--tracking-label);
 }
 
 .project-link:hover {
@@ -269,16 +276,17 @@ section h2 {
     position: absolute;
     top: 14px;
     right: 14px;
-    font-family: var(--font-mono);
-    font-size: 0.68rem;
+    font-family: var(--font-body);
+    font-size: var(--type-meta);
     font-weight: 700;
     text-transform: uppercase;
     border: var(--border-thin);
     border-radius: 999px;
     background: var(--bg-card);
     color: var(--ink);
-    padding: 3px 10px;
+    padding: 4px 10px;
     box-shadow: 1px 1px 0 var(--ink);
+    letter-spacing: var(--tracking-label);
 }
 
 .project-card.featured p {
@@ -321,8 +329,8 @@ section h2 {
     }
 
     .section-lead {
-        margin: -1.25rem 0 1.6rem;
-        font-size: 0.95rem;
+        margin: -1rem 0 1.6rem;
+        font-size: var(--type-body-sm);
     }
 
     .projects-grid {

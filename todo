@@ -1,30 +1,104 @@
-1. The "Polish" (Technical Execution)
-The magic of those high-end sites lies in the invisible details. You don't need a crazy layout to amaze people; you need flawless execution.
+Portfolio design review - March 2026
 
-Master Typography: Limit yourself to one or two high-quality fonts (like Inter, Geist, or a sleek monospace font). Make the headings massive and bold, and keep the paragraph text muted (e.g., a soft gray instead of stark white).
+What is actually working
+- The site already has a clear personality. The pastel palette, rounded type, thick borders, and playful shapes make it recognizable.
+- The blog page feels closest to polished because it is more restrained than the rest of the site.
+- The project content is solid. The problem is mostly presentation, hierarchy, and editing discipline, not lack of substance.
 
-The "Bento Box" Layout: Instead of a single column of text, organize your skills and projects into a grid of rounded, subtly glowing cards. This makes complex information look digestible and engineered.
+Core diagnosis
+- The site does not need more effects. It needs a stricter system.
+- Right now multiple directions are competing at once: playful rounded typography, neo-brutalist borders and shadows, editorial whitespace, and toy-like motion.
+- Each of those directions can work on its own, but together they make the site feel noisy instead of intentional.
 
-Micro-interactions: This is where the amazement happens. Buttons shouldn't just change color; they should subtly scale up, perhaps with a soft, magnetic pull toward the cursor. Use libraries like Framer Motion (if you use React) or GSAP to add smooth, spring-based easing to your animations so they feel physical rather than robotic.
+Why Awwwards-level sites feel sharper
+- They usually pick one visual metaphor and apply it everywhere.
+- Their type system does more work, so they need fewer decorative tricks.
+- Their motion is custom to the concept of the site, not a collection of recognizable hover effects.
+- They remove more than they add. The polish is mostly in editing and consistency.
 
-Texture and Depth: Pure black backgrounds can feel flat. Add a very faint, animated grain/noise overlay to the background, and use subtle, blurred, colored radial gradients behind your project cards to create a glowing effect.
+Main problems on the current site
 
-2. The "Personality" (Making it Uniquely Yours)
-A portfolio stands out when it physically embodies the developer's specific interests. Instead of a generic "Hello, I am a developer" hero section, weave your actual passions into the fabric of the site:
+1. Motion language is overloaded
+- Home hero has a breathing loop.
+- Buttons rotate and jump.
+- Cards tilt in 3D.
+- About cards wobble.
+- Keywords shimmer.
+- Contact button has its own jelly effect.
+- Each interaction might be fine alone, but together they feel like a stack of effects rather than one motion system.
 
-The Astrophysics/Motion Aesthetic: A hero section featuring a custom WebGL render of a black hole, or subtle global illumination lighting effects tracking the user's mouse, immediately sets a dramatic, high-tech tone. It proves your technical capability before they even read a word.
+2. Typography has personality but not enough hierarchy
+- Fredoka works for hero moments, but using the same expressive tone too broadly makes the site feel softer and less sharp.
+- Too much uppercase reduces contrast between headings, nav items, tags, and buttons.
+- Body text is a bit small and muted in a way that feels more casual than premium.
+- The large pink text shadow on headings adds charm, but it also reduces crispness.
 
-The Math & AI Aesthetic: For your project showcases—especially complex ones involving machine learning, symbolic regression, or your work on Operational Neural Networks like GlassBox—don't just list the tech stack. Design an interactive "glass-morphism" card that visually reveals the underlying mathematical formulations or node structures when a user hovers over it.
+3. Too many colors carry equal weight
+- The palette itself is not bad.
+- The problem is that pink, mint, blue, yellow, and lavender all appear as active UI surfaces across the site.
+- When every accent color gets to be loud, nothing feels primary.
 
-The Interactive Easter Egg: Build a small, hidden command-line interface into the site. Maybe typing a specific keyboard shortcut opens a minimalist, fast-paced terminal typing game or a hidden log of your photography experiments. Things like this turn a static page into an interactive experience.
+4. Elevation is too loud everywhere
+- Thick border plus hard shadow appears on hero card, nav, cards, buttons, and popovers.
+- Because everything uses the same visual volume, the site has weak emphasis.
+- Premium-feeling interfaces usually define only a few elevation levels and use them consistently.
 
-High-Resolution Visuals: If you feature images, perhaps showcasing high-resolution mosaics or image stacking techniques, ensure they load flawlessly. Use scroll-triggered animations to let the images parallax slightly as the user moves down the page, giving a sense of deep perspective.
+5. The design system has drifted in code
+- There are still older tokens and mismatched style ideas in the CSS.
+- That usually means the visual system is no longer governed by a clean set of rules.
+- Cleaning the system will make future design decisions easier.
 
-Tools to Get You There
-You don't have to build all these complex animations from absolute scratch. The developers behind those top-tier sites rely on incredible tools:
+What to do next
 
-Three.js / React Three Fiber: For rendering 3D objects (like that black hole) directly in the browser.
+1. Do a typography pass first
+- Keep the display font mainly for hero moments and maybe section titles.
+- Move nav, buttons, tags, and body copy to a cleaner text face.
+- Increase paragraph size slightly.
+- Reduce all-caps usage.
+- Remove or soften heavy text shadows.
 
-Lenis: A lightweight library that creates "smooth scrolling," which instantly makes a website feel premium and fluid.
+2. Remove at least half of the current animations
+- Keep one reveal system.
+- Keep one hover response system.
+- Remove the hero breathing loop, button rotation, card wobble, keyword shimmer, and jelly hover.
+- Motion should support the structure of the page, not compete with it.
 
-Tailwind CSS + Aceternity UI / Magic UI: These are component libraries that give you copy-paste access to those exact "Huly-style" glowing borders, animated backgrounds, and bento grids.
+3. Reduce the active color hierarchy
+- Use cream and ink as the base.
+- Choose one main accent per page or section.
+- Use the other colors as occasional punctuation, not dominant surfaces.
+
+4. Simplify the elevation system
+- Define only three states: flat, raised, focal.
+- Small controls should not feel as loud as large cards.
+- Use thicker shadows and borders only where emphasis is actually needed.
+
+5. Rework the home composition, not just the styling
+- The centered card on a dotted background feels like a nice component placed in empty space.
+- A sharper home page would have one dominant layout move, stronger negative space, and one signature visual idea.
+
+6. Make motion specific to the site concept
+- Generic magnetic buttons and 3D tilt feel borrowed.
+- Interactions should feel tied to your identity as someone working on systems, AI, and research.
+- Think in terms of annotations, diagrams, notebooks, data cards, terminals, or modular systems rather than toy-like hover tricks.
+
+Recommended visual direction
+- Editorial research notebook
+- Soft brutalist systems lab
+
+That direction suggests
+- cleaner typography
+- fewer active colors
+- more intentional whitespace
+- fewer but better interactions
+- motion that feels analytical, not playful for its own sake
+
+Practical rewrite order
+1. Typography and spacing cleanup.
+2. Motion cleanup and simplification.
+3. Color and elevation cleanup.
+4. Home page redesign around one stronger concept.
+
+Rule for future changes
+- Before adding any visual effect, ask: does this belong to the site's core idea, or is it just another cool thing?
+- If the answer is just another cool thing, cut it.
