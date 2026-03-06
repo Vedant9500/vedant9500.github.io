@@ -1,0 +1,30 @@
+{
+  "date": "2026-03-05",
+  "title": "made glassbox public",
+  "summary": "finally made the glassbox repo public. it was private for a long time because i was still working on things but i think its ready now.\n\nbefore that i cleaned up a lot. removed the TeacherRNN and all the files related to it because i was not using it anymore. also fixed the pareto front filtering in the C++ engine. it was including extra solutions because of the age objective. changed it to only filter by MSE and complexity and updated the python tests.\n\nalso fixed requirements.txt, added issue templates and contributing guidelines, and moved my research notes to a separate folder. updated the docs to show the correct feature dimension of 366.",
+  "commits": [
+    "ed65469",
+    "aac9d8c",
+    "c9616e6",
+    "853f343",
+    "11b26b7",
+    "4ebdcff",
+    "4448eea"
+  ],
+  "commitMessages": [
+    "feat: add issue templates for bug reports, feature requests, and pull requests; include contributing guidelines, security policy, and code of conduct",
+    "fix: P8 CppGraphModule tuple unpacking and NSGA-II Pareto front filtering",
+    "Remove Teacher and Student models along with their training scripts and tests",
+    "Merge branch 'master' of https://github.com/Vedant9500/Glassbox",
+    "chore(repo): apply release-hardening cleanup and docs reorganization",
+    "chore(repo): apply release-hardening cleanup and docs reorganization",
+    "chore(repo): apply release-hardening cleanup and docs reorganization"
+  ],
+  "repo": "Vedant9500/Glassbox",
+  "tags": [
+    "symbolic-regression",
+    "cpp",
+    "research",
+    "evolutionary-algorithms"
+  ]
+}
