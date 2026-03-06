@@ -66,11 +66,11 @@
 }
 
 .toolbox-kicker {
-    font-family: var(--font-mono);
-    font-size: 0.72rem;
+    font-family: var(--font-body);
+    font-size: var(--type-meta);
     text-transform: uppercase;
     font-weight: 700;
-    letter-spacing: 0.5px;
+    letter-spacing: var(--tracking-label);
     color: var(--ink-light);
     margin: 0;
     align-self: flex-start;
@@ -86,19 +86,21 @@
     align-items: center;
     gap: 12px;
     font-family: var(--font-display);
-    font-size: 1.4rem;
-    font-weight: 800;
+    font-size: 1.45rem;
+    font-weight: 700;
     color: var(--ink);
     border-bottom: 1px solid var(--line-color);
     padding-bottom: 0.5rem;
     margin-bottom: 0.5rem;
+    letter-spacing: var(--tracking-heading);
+    line-height: var(--leading-snug);
 }
 
 .toolbox-context {
     margin: 0 0 0.25rem;
     font-family: var(--font-body);
-    font-size: 0.9rem;
-    line-height: 1.55;
+    font-size: var(--type-body-sm);
+    line-height: 1.65;
     color: var(--ink-light);
     font-weight: 500;
 }
@@ -122,8 +124,8 @@
 }
 
 .skill-pill {
-    font-family: var(--font-mono);
-    font-size: 0.85rem;
+    font-family: var(--font-body);
+    font-size: var(--type-label);
     font-weight: 600;
     color: var(--ink);
     border: var(--border-thin);
@@ -132,6 +134,7 @@
     border-radius: 20px;
     box-shadow: 1px 1px 0 var(--ink);
     cursor: default;
+    letter-spacing: 0.02em;
     transition: all 0.3s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
@@ -166,6 +169,6 @@
     }
 
     .toolbox-context {
-        font-size: 0.86rem;
+        font-size: 0.9rem;
     }
 }

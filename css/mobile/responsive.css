@@ -18,7 +18,8 @@
     }
 
     .nav-section-btn {
-        font-size: 0.8rem;
+        font-size: 0.75rem;
+        letter-spacing: var(--tracking-label);
         padding: 6px 10px;
     }
 
@@ -59,11 +60,12 @@
     }
 
     .about-name {
-        font-size: 1.75rem;
+        font-size: clamp(2.4rem, 11vw, 3rem);
     }
 
     .about-tagline {
-        font-size: 0.95rem;
+        font-size: 1rem;
+        line-height: 1.5;
     }
 
     .about-greeting {
@@ -128,16 +130,16 @@
     }
 
     .about-card.about-intro .about-card-content p {
-        font-size: 0.95rem;
+        font-size: var(--type-body-sm);
     }
 
     .about-card h3 {
-        font-size: 1rem;
+        font-size: 1.1rem;
     }
 
     .about-card p {
-        font-size: 0.875rem;
-        line-height: 1.6;
+        font-size: 0.95rem;
+        line-height: 1.65;
     }
 
     .about-card-icon {
@@ -183,8 +185,8 @@
     .content-section[data-section="projects"] .section-inner .container .section-lead,
     .content-section[data-section="toolbox"] .section-inner .container .section-lead {
         margin: -0.75rem 0 1.25rem;
-        font-size: 0.9rem;
-        line-height: 1.55;
+        font-size: 0.95rem;
+        line-height: 1.6;
     }
 
     .projects-grid {
@@ -239,12 +241,12 @@
     }
 
     .project-card h3 {
-        font-size: 1.15rem;
+        font-size: 1.2rem;
     }
 
     .project-card p {
-        font-size: 0.9rem;
-        line-height: 1.6;
+        font-size: 0.95rem;
+        line-height: 1.65;
         margin-bottom: 1rem;
     }
 
@@ -255,11 +257,11 @@
 
     .project-link {
         padding: 8px 12px;
-        font-size: 0.8rem;
+        font-size: var(--type-label);
     }
 
     .project-lang {
-        font-size: 0.75rem;
+        font-size: var(--type-meta);
         padding: 5px 12px;
     }
 
@@ -309,7 +311,7 @@
     }
 
     .skill-pill {
-        font-size: 0.75rem;
+        font-size: 0.78rem;
         padding: 5px 10px;
     }
 
