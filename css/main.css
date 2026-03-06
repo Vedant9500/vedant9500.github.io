@@ -26,6 +26,7 @@
    ===================================== */
 @import './desktop/layout.css';
 @import './desktop/animations.css';
+@import './desktop/micro-interactions.css';
 @import './desktop/cursor.css';
 
 /* =====================================

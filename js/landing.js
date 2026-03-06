@@ -5,11 +5,13 @@
  */
 import { initCustomCursor } from './desktop/cursor.js';
 import { initPetals } from './desktop/petals.js';
+import { initMicroInteractions } from './desktop/micro-interactions.js';
 
 document.addEventListener('DOMContentLoaded', () => {
     // Initialize global UX
     initCustomCursor();
     initPetals();
+    initMicroInteractions();
 
     const main = document.querySelector('main');
     const heroCard = document.querySelector('.hero-card');
@@ -167,7 +169,7 @@ document.addEventListener('DOMContentLoaded', () => {
             popAnim.cancel();
             el.style.opacity = '1';
             startFloatAnimation(el, parseFloat(el.dataset.xOffset) || 0, parseFloat(el.dataset.yOffset) || 0);
-        }).catch(() => {});
+        }).catch(() => { });
     }
 
     // ========================================
