@@ -3,7 +3,7 @@
    ======================================== */
 
 section {
-    padding: 4rem 0;
+    padding: var(--section-space) 0;
 }
 
 section h2 {
@@ -12,9 +12,9 @@ section h2 {
     font-weight: 700;
     text-transform: uppercase;
     text-align: left;
-    margin-bottom: var(--space-xl);
+    margin-bottom: var(--space-lg);
     color: var(--ink);
-    padding-bottom: var(--space-sm);
+    padding-bottom: var(--space-xs);
     letter-spacing: var(--tracking-display);
     line-height: var(--leading-display);
 }
@@ -25,8 +25,8 @@ section h2 {
     font-size: var(--type-body-lg);
     line-height: 1.65;
     font-weight: 500;
-    max-width: 60ch;
-    margin: calc(-1 * var(--space-sm)) 0 var(--space-xl);
+    max-width: 58ch;
+    margin: calc(-1 * var(--space-xs)) 0 var(--section-stack-gap);
 }
 
 /* ========================================
@@ -34,9 +34,9 @@ section h2 {
    ======================================== */
 .about-hero {
     text-align: left;
-    margin-bottom: var(--space-2xl);
+    margin-bottom: var(--section-stack-gap);
     border-left: var(--border-main);
-    padding-left: var(--space-lg);
+    padding-left: var(--space-md);
 }
 
 .about-greeting {
@@ -76,7 +76,7 @@ section h2 {
 .about-content {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: var(--space-lg);
+    gap: var(--space-md);
 }
 
 .about-card.about-intro {
@@ -93,7 +93,7 @@ section h2 {
     background: var(--bg-card);
     border: var(--border-main);
     box-shadow: var(--shadow-main);
-    padding: 1.75rem;
+    padding: var(--card-padding);
     position: relative;
     border-radius: 8px;
     transition: all 0.35s cubic-bezier(0.22, 1, 0.36, 1);
@@ -131,7 +131,7 @@ section h2 {
     font-weight: 700;
     text-transform: uppercase;
     color: var(--ink);
-    margin-bottom: 0.85rem;
+    margin-bottom: var(--space-sm);
     letter-spacing: var(--tracking-heading);
     line-height: var(--leading-snug);
 }
@@ -160,13 +160,13 @@ section h2 {
 .projects-grid {
     display: grid;
     grid-template-columns: repeat(12, minmax(0, 1fr));
-    gap: var(--space-lg);
+    gap: var(--space-md);
 }
 
 .achievements-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: var(--space-lg);
+    gap: var(--space-md);
 }
 
 .project-card {
@@ -192,8 +192,8 @@ section h2 {
 
 .project-header {
     border-bottom: 1px solid var(--line-color);
-    padding-bottom: var(--space-sm);
-    margin-bottom: 0.9rem;
+    padding-bottom: var(--space-xs);
+    margin-bottom: var(--space-sm);
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -210,7 +210,7 @@ section h2 {
 }
 
 .project-card p {
-    margin-bottom: var(--space-md);
+    margin-bottom: var(--space-sm);
     display: -webkit-box;
     -webkit-box-orient: vertical;
     -webkit-line-clamp: 3;
@@ -234,11 +234,11 @@ section h2 {
 
 .project-links {
     margin-top: auto;
-    padding-top: var(--space-sm);
+    padding-top: var(--space-xs);
     display: flex;
     align-items: center;
     justify-content: space-between;
-    gap: var(--space-sm);
+    gap: var(--space-xs);
 }
 
 .project-tags {
@@ -274,8 +274,8 @@ section h2 {
 .project-card.featured::before {
     content: 'Featured';
     position: absolute;
-    top: 14px;
-    right: 14px;
+    top: 12px;
+    right: 12px;
     font-family: var(--font-body);
     font-size: var(--type-meta);
     font-weight: 700;
@@ -324,18 +324,18 @@ section h2 {
     }
 
     .about-hero {
-        margin-bottom: var(--space-lg);
-        padding-left: var(--space-md);
+        margin-bottom: var(--space-md);
+        padding-left: var(--space-sm);
         border-left-width: 2px;
     }
 
     .section-lead {
-        margin: calc(-1 * var(--space-xs)) 0 var(--space-lg);
+        margin: calc(-1 * var(--space-2xs)) 0 var(--space-md);
         font-size: var(--type-body-sm);
     }
 
     .projects-grid {
-        gap: var(--space-md);
+        gap: var(--space-sm);
     }
 
     .project-card,

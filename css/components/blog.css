@@ -8,22 +8,22 @@
     background: var(--bg-cream);
     background-image: radial-gradient(rgba(113, 90, 110, 0.12) 1.2px, transparent 1.2px);
     background-size: 28px 28px;
-    padding-top: 90px;
+    padding-top: calc(var(--header-height) + var(--space-xs));
 }
 
 .blog-container {
-    max-width: 860px;
+    max-width: var(--blog-container-max);
     width: 100%;
     margin: 0 auto;
-    padding: 0 var(--page-gutter) var(--space-3xl);
+    padding: 0 var(--page-gutter) var(--section-space);
 }
 
 /* Blog Header */
 .blog-hero {
     text-align: left;
-    margin-bottom: var(--space-2xl);
+    margin-bottom: var(--section-stack-gap);
     border-left: var(--border-main);
-    padding-left: var(--space-lg);
+    padding-left: var(--space-md);
 }
 
 .blog-hero h1 {
@@ -33,7 +33,7 @@
     color: var(--ink);
     letter-spacing: var(--tracking-display);
     text-shadow: 2px 2px 0px var(--accent-pink);
-    margin-bottom: var(--space-xs);
+    margin-bottom: var(--space-2xs);
     line-height: var(--leading-display);
     text-transform: uppercase;
 }
@@ -44,7 +44,7 @@
     font-size: var(--type-body-lg);
     font-weight: 500;
     line-height: 1.65;
-    max-width: 36ch;
+    max-width: 38ch;
 }
 
 .blog-hero .blog-repo-badge {
@@ -60,7 +60,7 @@
     border: var(--border-thin);
     border-radius: 999px;
     padding: 6px 14px;
-    margin-top: var(--space-md);
+    margin-top: var(--space-sm);
     box-shadow: 2px 2px 0 var(--ink);
     text-decoration: none;
     transition: all 0.2s ease;
@@ -89,7 +89,7 @@
 .blog-feed {
     display: flex;
     flex-direction: column;
-    gap: var(--space-md);
+    gap: var(--space-sm);
 }
 
 /* Blog Post Card */
@@ -98,7 +98,7 @@
     border: var(--border-main);
     box-shadow: var(--shadow-main);
     border-radius: 12px;
-    padding: 1.4rem 1.6rem;
+    padding: var(--card-padding) calc(var(--card-padding) + var(--space-2xs));
     transition: all 0.35s cubic-bezier(0.22, 1, 0.36, 1);
     position: relative;
     overflow: hidden;
@@ -164,11 +164,11 @@
 .blog-post-card.expanded .blog-post-body {
     max-height: 2000px;
     opacity: 1;
-    margin-top: var(--space-md);
+    margin-top: var(--space-sm);
 }
 
 .blog-post-card.expanded {
-    padding: 1.6rem 1.9rem;
+    padding: calc(var(--card-padding) + var(--space-2xs)) calc(var(--card-padding) + var(--space-sm));
 }
 
 /* Date badge */
@@ -186,7 +186,7 @@
     border-radius: 999px;
     padding: 3px 10px;
     box-shadow: 1px 1px 0 var(--ink);
-    margin-bottom: 0.5rem;
+    margin-bottom: var(--space-xs);
     letter-spacing: var(--tracking-label);
 }
 
@@ -200,7 +200,7 @@
     font-size: 1.3rem;
     font-weight: 700;
     color: var(--ink);
-    margin-bottom: 0.4rem;
+    margin-bottom: var(--space-2xs);
     letter-spacing: var(--tracking-heading);
     text-transform: uppercase;
     line-height: var(--leading-snug);
@@ -221,14 +221,14 @@
     color: var(--ink-light);
     line-height: var(--leading-body);
     font-weight: 500;
-    margin-bottom: var(--space-md);
+    margin-bottom: var(--space-sm);
 }
 
 /* Commit list */
 .blog-post-commits {
     border-top: 1px dashed var(--ink);
-    padding-top: var(--space-md);
-    margin-top: var(--space-xs);
+    padding-top: var(--space-sm);
+    margin-top: var(--space-2xs);
 }
 
 .blog-post-commits-label {
@@ -307,7 +307,7 @@
 /* Loading state */
 .blog-loading {
     text-align: center;
-    padding: 4rem 2rem;
+    padding: var(--section-space) var(--space-lg);
     font-family: var(--font-display);
     font-weight: 700;
     font-size: 1.1rem;
@@ -334,7 +334,7 @@
 /* Empty state */
 .blog-empty {
     text-align: center;
-    padding: 4rem 2rem;
+    padding: var(--section-space) var(--space-lg);
     background: var(--bg-card);
     border: var(--border-main);
     box-shadow: var(--shadow-main);
@@ -368,7 +368,7 @@
 /* Blog footer */
 .blog-footer {
     text-align: center;
-    padding: var(--space-xl) 0;
+    padding: var(--space-xl) 0 var(--space-lg);
     font-family: var(--font-body);
     color: var(--text-secondary);
     font-size: var(--type-label);
@@ -380,18 +380,18 @@
    ======================================== */
 @media (max-width: 768px) {
     .blog-page {
-        padding-top: 24px;
-        padding-bottom: 100px;
+        padding-top: var(--space-lg);
+        padding-bottom: calc(var(--space-4xl) + var(--space-lg));
     }
 
     .blog-container {
-        padding: 0 1rem var(--space-xl);
+        padding: 0 clamp(1rem, 5vw, 1.25rem) calc(var(--space-4xl) + var(--space-sm));
     }
 
     .blog-hero {
-        padding-left: var(--space-md);
+        padding-left: var(--space-sm);
         border-left-width: 2px;
-        margin-bottom: var(--space-xl);
+        margin-bottom: var(--space-lg);
     }
 
     .blog-hero h1 {
@@ -400,11 +400,11 @@
     }
 
     .blog-post-card {
-        padding: 1rem 1.15rem;
+        padding: 1rem 1.05rem;
     }
 
     .blog-post-card.expanded {
-        padding: 1.2rem 1.35rem;
+        padding: 1.15rem 1.2rem;
     }
 
     .blog-post-title {
@@ -412,6 +412,6 @@
     }
 
     .blog-feed {
-        gap: var(--space-sm);
+        gap: var(--space-xs);
     }
 }

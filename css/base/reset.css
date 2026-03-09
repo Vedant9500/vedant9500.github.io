@@ -57,7 +57,7 @@ body {
 .container {
     max-width: var(--container-max);
     margin: 0 auto;
-    padding: 0 40px;
+    padding: 0 var(--page-gutter);
     position: relative;
 }
 

@@ -6,8 +6,8 @@
 .toolbox-grid {
     display: grid;
     grid-template-columns: repeat(12, minmax(0, 1fr));
-    gap: var(--space-lg);
-    max-width: 1000px;
+    gap: var(--space-md);
+    max-width: 960px;
     margin: 0 auto;
 }
 
@@ -16,18 +16,18 @@
     background: var(--bg-card);
     border: var(--border-thin);
     box-shadow: 3px 3px 0 var(--ink);
-    padding: 1.4rem;
+    padding: var(--card-padding);
     border-radius: 12px;
     transition: transform 0.28s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.28s cubic-bezier(0.22, 1, 0.36, 1);
     display: flex;
     flex-direction: column;
-    gap: var(--space-sm);
-    min-height: 212px;
+    gap: var(--space-xs);
+    min-height: 204px;
 }
 
 .toolbox-card--featured {
     grid-column: span 6;
-    min-height: 228px;
+    min-height: 218px;
 }
 
 .toolbox-card--mint {
@@ -90,14 +90,14 @@
     font-weight: 700;
     color: var(--ink);
     border-bottom: 1px solid var(--line-color);
-    padding-bottom: var(--space-sm);
-    margin-bottom: var(--space-sm);
+    padding-bottom: var(--space-xs);
+    margin-bottom: var(--space-xs);
     letter-spacing: var(--tracking-heading);
     line-height: var(--leading-snug);
 }
 
 .toolbox-context {
-    margin: 0 0 var(--space-2xs);
+    margin: 0;
     font-family: var(--font-body);
     font-size: var(--type-body-sm);
     line-height: 1.65;
@@ -113,13 +113,13 @@
     display: flex;
     flex-direction: column;
     flex-grow: 1;
-    gap: var(--space-sm);
+    gap: var(--space-xs);
 }
 
 .skill-pills {
     display: flex;
     flex-wrap: wrap;
-    gap: var(--space-xs);
+    gap: var(--space-2xs);
     margin-top: auto;
 }
 
@@ -156,6 +156,7 @@
 @media (max-width: 768px) {
     .toolbox-grid {
         grid-template-columns: 1fr;
+        gap: var(--space-sm);
     }
 
     .toolbox-card,

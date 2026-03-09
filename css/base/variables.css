@@ -86,6 +86,10 @@
     --space-3xl: 3.5rem;
     --space-4xl: 4.5rem;
     --page-gutter: clamp(1.25rem, 3vw, 2.5rem);
+    --section-space: clamp(3rem, 5vw, 4rem);
+    --section-space-mobile: clamp(2rem, 6vw, 2.75rem);
+    --section-stack-gap: clamp(1.25rem, 2.4vw, 1.75rem);
+    --card-padding: clamp(1.25rem, 2vw, 1.6rem);
 
     /* Shadows & Borders (Neo-brutalist) */
     --border-main: 3px solid var(--ink);
@@ -98,6 +102,8 @@
     /* Spacing & Layout */
     --header-height: 80px;
     --container-max: 1400px;
+    --section-container-max: 1080px;
+    --blog-container-max: 820px;
 }
 
 html {
