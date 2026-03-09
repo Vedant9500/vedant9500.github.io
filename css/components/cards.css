@@ -60,7 +60,7 @@ section h2 {
     margin-bottom: 0.35rem;
     line-height: var(--leading-display);
     letter-spacing: var(--tracking-display);
-    text-shadow: 2px 2px 0px var(--accent-pink);
+    text-shadow: 1.5px 1.5px 0px var(--accent-rose-shadow);
 }
 
 .about-tagline {
@@ -81,7 +81,8 @@ section h2 {
 
 .about-card.about-intro {
     grid-column: 1 / -1;
-    background: var(--accent-pink);
+    --about-tone: var(--accent-pink);
+    background: linear-gradient(180deg, var(--about-tone) 0, var(--about-tone) 80px, var(--bg-card) 80px, var(--bg-card) 100%);
 }
 
 /* ========================================
@@ -173,6 +174,7 @@ section h2 {
     grid-column: span 4;
     display: flex;
     flex-direction: column;
+    background: linear-gradient(180deg, var(--project-tone, var(--bg-card)) 0, var(--project-tone, var(--bg-card)) 84px, var(--bg-card) 84px, var(--bg-card) 100%);
     border: var(--border-thin);
     border-radius: 12px;
     box-shadow: 3px 3px 0 var(--ink);
@@ -267,6 +269,7 @@ section h2 {
 /* Featured Project */
 .project-card.featured {
     grid-column: span 8;
+    background: linear-gradient(180deg, var(--project-tone, var(--bg-card)) 0, var(--project-tone, var(--bg-card)) 96px, var(--bg-card) 96px, var(--bg-card) 100%);
     min-height: 300px;
     position: relative;
 }

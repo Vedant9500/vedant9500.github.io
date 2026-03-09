@@ -89,11 +89,11 @@
 }
 
 .nav-section-btn:hover {
-    background: var(--accent-mint);
+    background: var(--accent-blue);
 }
 
 .nav-section-btn.active {
-    background: var(--accent-pink);
+    background: var(--accent-mint);
     font-weight: 700;
 }
 
@@ -122,7 +122,7 @@
 }
 
 .contact-toggle:hover {
-    background: var(--accent-yellow);
+    background: var(--accent-blue);
     transform: translate(-2px, -2px);
     box-shadow: 4px 4px 0 var(--ink);
 }
@@ -174,7 +174,7 @@
 }
 
 .contact-popover a:hover {
-    background: var(--accent-mint);
+    background: var(--accent-blue);
     border: 2px solid var(--ink);
     box-shadow: 2px 2px 0 var(--ink);
     transform: translate(-1px, -1px);

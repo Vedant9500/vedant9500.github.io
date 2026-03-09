@@ -48,7 +48,7 @@ body {
     -moz-osx-font-smoothing: grayscale;
     text-rendering: geometricPrecision;
     font-size: 16px;
-    background-image: radial-gradient(rgba(113, 90, 110, 0.06) 2px, transparent 2px);
+    background-image: radial-gradient(rgba(104, 93, 103, 0.05) 2px, transparent 2px);
     background-size: 30px 30px;
     background-position: var(--bg-x, 0px) var(--bg-y, 0px);
 }
@@ -73,7 +73,7 @@ body {
     top: -100px;
     left: 16px;
     background: var(--accent-cyan);
-    color: var(--bg-blue);
+    color: var(--ink);
     padding: 12px 24px;
     font-family: var(--font-mono);
     text-transform: uppercase;

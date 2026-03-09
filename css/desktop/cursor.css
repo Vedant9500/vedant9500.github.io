@@ -20,7 +20,7 @@
 .custom-cursor.hovering {
     width: 40px;
     height: 40px;
-    background: var(--accent-pink);
+    background: var(--accent-cyan);
     mix-blend-mode: difference;
     opacity: 0.8;
 }
@@ -47,7 +47,7 @@
         width: 0;
         height: 0;
         opacity: 0.6;
-        background: var(--accent-pink);
+        background: var(--accent-cyan);
     }
 
     50% {
@@ -58,7 +58,7 @@
         width: 100px;
         height: 100px;
         opacity: 0;
-        background: var(--accent-cyan);
+        background: var(--accent-mint);
     }
 }
 

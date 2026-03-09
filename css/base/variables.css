@@ -9,31 +9,31 @@
        ======================================== */
 
     /* Backgrounds */
-    --bg-cream: #FDFBF7;
+    --bg-cream: #F6F1E8;
     /* Soft rice paper / warm white */
-    --bg-card: #FFFFFF;
+    --bg-card: #FFFCF8;
 
     /* Accents (Japanese Summer / Sakura) */
-    --accent-pink: #FFB7C5;
+    --accent-pink: #D7A9AE;
     /* Sakura Pink */
-    --accent-mint: #C1D5A4;
+    --accent-mint: #B5C29C;
     /* Matcha Green */
-    --accent-yellow: #FDFD96;
+    --accent-yellow: #D8C488;
     /* Soft Sunlight */
-    --accent-blue: #A2D2FF;
+    --accent-blue: #9EB5BF;
     /* Summer Sky */
-    --accent-lavender: #E0C4FF;
+    --accent-lavender: #C8BEC6;
 
     /* Text & Ink */
-    --ink: #3A2E39;
+    --ink: #342C32;
     /* Deep warm plum/brown instead of harsh black */
-    --ink-light: #715A6E;
+    --ink-light: #685D67;
 
     /* Semantic Mapping */
     --bg-app: var(--bg-cream);
     --text-primary: var(--ink);
     --text-secondary: var(--ink-light);
-    --text-dim: #8D7C8B;
+    --text-dim: #8D818A;
     --text-muted: var(--ink-light);
     --line-color: var(--ink);
     --bg-panel: var(--bg-card);
@@ -41,11 +41,12 @@
     --bg-primary: var(--bg-cream);
     --bg-blue: var(--bg-card);
     --accent-cyan: var(--accent-blue);
-    --pastel-primary: var(--accent-pink);
-    --pastel-primary-light: #FFD7E0;
-    --pastel-primary-soft: rgba(255, 183, 197, 0.22);
+    --pastel-primary: var(--accent-mint);
+    --pastel-primary-light: #D9E2C8;
+    --pastel-primary-soft: rgba(181, 194, 156, 0.2);
     /* Replacing old translucent panel */
-    --primary: var(--accent-pink);
+    --primary: var(--accent-mint);
+    --accent-rose-shadow: rgba(173, 128, 137, 0.38);
 
     /* Fonts */
     --font-display: 'Fredoka', sans-serif;

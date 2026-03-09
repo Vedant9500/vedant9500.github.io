@@ -57,12 +57,12 @@
 
 .btn-primary:hover,
 .btn-tech:hover {
-    background: var(--accent-pink);
+    background: var(--accent-blue);
 }
 
 .btn-secondary,
 .btn-outline {
-    background: var(--accent-blue);
+    background: var(--bg-card);
 }
 
 .btn-secondary:hover,
@@ -78,6 +78,6 @@
 }
 
 .footer-link:hover {
-    color: var(--accent-pink);
+    color: var(--accent-cyan);
     text-decoration: underline;
 }

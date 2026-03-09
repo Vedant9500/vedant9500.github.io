@@ -20,7 +20,7 @@
     left: 50%;
     width: 0;
     height: 3px;
-    background: var(--accent-pink);
+    background: var(--accent-cyan);
     transform: translateX(-50%);
     transition: width 0.28s cubic-bezier(0.22, 1, 0.36, 1);
 }
@@ -60,7 +60,7 @@
     left: 0;
     width: 0;
     height: 2px;
-    background: var(--accent-pink);
+    background: var(--accent-cyan);
     transition: width 0.3s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
