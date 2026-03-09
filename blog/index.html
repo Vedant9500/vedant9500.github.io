@@ -174,44 +174,18 @@
 
     <!-- Blog-specific JS -->
     <script src="../js/blog.js"></script>
-    <!-- Custom cursor (reuse from desktop module) -->
+    <!-- Shared cursor and popover behaviors -->
     <script type="module">
         import { initCustomCursor } from '../js/desktop/cursor.js';
-        if (!window.matchMedia('(pointer: coarse)').matches) {
-            document.addEventListener('DOMContentLoaded', () => initCustomCursor());
-        }
-    </script>
-    <!-- Contact popover toggle (reuse from core) -->
-    <script>
-        // Contact popover toggle
-        document.querySelectorAll('.contact-toggle, .contact-toggle-mobile').forEach(btn => {
-            btn.addEventListener('click', () => {
-                const popover = document.getElementById('contact-popover');
-                if (popover) {
-                    const isHidden = popover.hasAttribute('hidden');
-                    if (isHidden) {
-                        popover.removeAttribute('hidden');
-                        btn.setAttribute('aria-expanded', 'true');
-                    } else {
-                        popover.setAttribute('hidden', '');
-                        btn.setAttribute('aria-expanded', 'false');
-                    }
-                }
-            });
-        });
+        import { initThemeAndPopover } from '../js/core/theme.js';
+        import { initMobileToggles } from '../js/mobile/bottom-nav.js';
 
-        // Close popover on outside click
-        document.addEventListener('click', (e) => {
-            const popover = document.getElementById('contact-popover');
-            if (popover && !popover.hasAttribute('hidden')) {
-                if (!e.target.closest('.contact-popover') &&
-                    !e.target.closest('.contact-toggle') &&
-                    !e.target.closest('.contact-toggle-mobile')) {
-                    popover.setAttribute('hidden', '');
-                    document.querySelectorAll('.contact-toggle, .contact-toggle-mobile').forEach(b => {
-                        b.setAttribute('aria-expanded', 'false');
-                    });
-                }
+        document.addEventListener('DOMContentLoaded', () => {
+            initThemeAndPopover();
+            initMobileToggles();
+
+            if (!window.matchMedia('(pointer: coarse)').matches) {
+                initCustomCursor();
             }
         });
     </script>
