@@ -13,9 +13,14 @@ Moved out of todo after the first implementation pass.
 - Cleaned typography-related inline overrides from the landing page and blog page.
 - Synced css/main.bundled.css with the updated source styles.
 
+3. Motion simplification pass completed
+- Removed the hero breathing loop and trimmed the stacked landing-page entrance effects.
+- Removed the JS-driven novelty interactions: magnetic buttons, 3D tilt, card wobble, skill pill pop, heading underline reveal, and keyword shimmer.
+- Simplified buttons to one shared lift response and kept only lightweight nav/link accents in the desktop motion layer.
+- Synced css/main.bundled.css with the updated motion source styles.
+
 Still intentionally left in todo
 - Reduce all-caps usage further across the site.
 - Spacing cleanup across layout, containers, cards, and mobile section rhythm.
-- Motion cleanup and simplification.
 - Color and elevation cleanup.
 - Home page redesign around a stronger concept.

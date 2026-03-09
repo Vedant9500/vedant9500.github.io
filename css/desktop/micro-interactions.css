@@ -1,239 +1,7 @@
 /* ========================================
-   MICRO-INTERACTIONS - Spring Physics & Polish
-   Desktop-only enhancements (respects prefers-reduced-motion)
+   MICRO-INTERACTIONS - Trimmed Motion Layer
+   Lightweight accents only; shared hover behavior lives in component styles.
    ======================================== */
-
-/* ========================================
-   3D PERSPECTIVE CONTAINERS
-   ======================================== */
-.projects-grid,
-.toolbox-grid,
-.about-content {
-    perspective: 800px;
-}
-
-/* ========================================
-   BUTTONS - MAGNETIC PULL & SPRING SCALE
-   ======================================== */
-.btn,
-.btn-primary,
-.btn-secondary,
-.btn-tech,
-.btn-outline {
-    --mag-x: 0px;
-    --mag-y: 0px;
-    transition:
-        transform 0.4s cubic-bezier(0.22, 1, 0.36, 1),
-        box-shadow 0.4s cubic-bezier(0.22, 1, 0.36, 1),
-        background-color 0.25s ease;
-}
-
-.btn:hover,
-.btn-primary:hover,
-.btn-secondary:hover,
-.btn-tech:hover,
-.btn-outline:hover {
-    transform: translate(var(--mag-x), var(--mag-y)) scale(1.06);
-}
-
-.btn:active,
-.btn-primary:active,
-.btn-secondary:active,
-.btn-tech:active,
-.btn-outline:active {
-    transform: translate(var(--mag-x), var(--mag-y)) scale(0.95) translate(2px, 2px);
-    transition-duration: 0.1s;
-}
-
-/* ========================================
-   PROJECT & TOOLBOX CARDS - 3D TILT
-   ======================================== */
-.project-card,
-.toolbox-card {
-    --tilt-x: 0deg;
-    --tilt-y: 0deg;
-    transform-style: preserve-3d;
-    transition:
-        transform 0.45s cubic-bezier(0.22, 1, 0.36, 1),
-        box-shadow 0.45s cubic-bezier(0.22, 1, 0.36, 1);
-}
-
-.project-card:hover,
-.toolbox-card:hover {
-    transform: perspective(800px) rotateX(var(--tilt-x)) rotateY(var(--tilt-y)) translate(-1px, -1px);
-}
-
-/* Inner content lift on card hover */
-.project-card:hover .project-header h3,
-.toolbox-card:hover .toolbox-header {
-    transform: translateZ(8px);
-    transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1);
-}
-
-/* ========================================
-   ABOUT CARDS - WOBBLE ON ENTER
-   ======================================== */
-@keyframes cardWobble {
-    0% {
-        transform: rotate(0deg);
-    }
-
-    20% {
-        transform: rotate(1.5deg);
-    }
-
-    40% {
-        transform: rotate(-1deg);
-    }
-
-    60% {
-        transform: rotate(0.5deg);
-    }
-
-    80% {
-        transform: rotate(-0.3deg);
-    }
-
-    100% {
-        transform: rotate(0deg);
-    }
-}
-
-.about-card {
-    transition:
-        transform 0.4s cubic-bezier(0.22, 1, 0.36, 1),
-        box-shadow 0.4s cubic-bezier(0.22, 1, 0.36, 1);
-}
-
-.about-card:hover {
-    animation: cardWobble 0.5s cubic-bezier(0.22, 1, 0.36, 1) both;
-    box-shadow: var(--shadow-hover);
-    transform: translate(-2px, -2px);
-}
-
-/* ========================================
-   SKILL PILLS - BOUNCY POP ENTRANCE
-   ======================================== */
-@keyframes pillPop {
-    0% {
-        opacity: 0;
-        transform: scale(0.6) translateY(8px);
-    }
-
-    60% {
-        opacity: 1;
-        transform: scale(1.12) translateY(-2px);
-    }
-
-    80% {
-        transform: scale(0.95) translateY(1px);
-    }
-
-    100% {
-        opacity: 1;
-        transform: scale(1) translateY(0);
-    }
-}
-
-.skill-pill {
-    transition:
-        transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1),
-        box-shadow 0.3s cubic-bezier(0.34, 1.56, 0.64, 1),
-        background-color 0.2s ease;
-}
-
-.skill-pill:hover {
-    transform: scale(1.12) translate(-1px, -1px);
-    box-shadow: 3px 3px 0 var(--ink);
-    background: var(--accent-yellow);
-}
-
-/* Staggered entrance (applied via JS) */
-.skill-pill.pill-animate {
-    animation: pillPop 0.45s cubic-bezier(0.34, 1.56, 0.64, 1) both;
-}
-
-/* ========================================
-   SECTION HEADINGS - ANIMATED UNDERLINE
-   ======================================== */
-section h2 {
-    position: relative;
-    width: fit-content;
-    padding-right: 2px;
-    /* Compensate for letter-spacing: -2px */
-}
-
-section h2::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 0;
-    height: 4px;
-    background: var(--accent-pink);
-    border-radius: 2px;
-    transition: width 0.8s cubic-bezier(0.22, 1, 0.36, 1);
-}
-
-section h2.heading-revealed::after {
-    width: calc(100% - 2px);
-}
-
-/* ========================================
-   KEYWORD SHIMMER
-   ======================================== */
-@keyframes shimmer {
-    0% {
-        background-position: -200% center;
-    }
-
-    100% {
-        background-position: 200% center;
-    }
-}
-
-.keyword.shimmer-active {
-    background: linear-gradient(90deg,
-            var(--accent-yellow) 0%,
-            var(--accent-yellow) 35%,
-            rgba(255, 255, 255, 0.8) 50%,
-            var(--accent-yellow) 65%,
-            var(--accent-yellow) 100%);
-    background-size: 200% 100%;
-    animation: shimmer 1.8s ease-in-out 1;
-}
-
-/* ========================================
-   CONTACT TOGGLE - JELLY WOBBLE
-   ======================================== */
-@keyframes jelly {
-    0% {
-        transform: scale(1, 1);
-    }
-
-    25% {
-        transform: scale(0.9, 1.1);
-    }
-
-    50% {
-        transform: scale(1.1, 0.9);
-    }
-
-    75% {
-        transform: scale(0.95, 1.05);
-    }
-
-    100% {
-        transform: scale(1, 1);
-    }
-}
-
-.contact-toggle:hover {
-    animation: jelly 0.4s cubic-bezier(0.22, 1, 0.36, 1);
-    background: var(--accent-yellow);
-    transform: translate(-2px, -2px);
-    box-shadow: 4px 4px 0 var(--ink);
-}
 
 /* ========================================
    NAVBAR BUTTONS - INK FILL UNDERLINE
@@ -241,7 +9,7 @@ section h2.heading-revealed::after {
 .nav-section-btn {
     position: relative;
     transition:
-        background-color 0.3s ease,
+        background-color 0.24s ease,
         color 0.2s ease;
 }
 
@@ -253,8 +21,8 @@ section h2.heading-revealed::after {
     width: 0;
     height: 3px;
     background: var(--accent-pink);
-    transition: all 0.3s cubic-bezier(0.22, 1, 0.36, 1);
     transform: translateX(-50%);
+    transition: width 0.28s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 .nav-section-btn:hover::after {
@@ -270,11 +38,11 @@ section h2.heading-revealed::after {
    PROJECT LINK ARROWS - NUDGE ON CARD HOVER
    ======================================== */
 .project-link i {
-    transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+    transition: transform 0.24s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 .project-card:hover .project-link i {
-    transform: translateX(4px);
+    transform: translateX(3px);
 }
 
 /* ========================================
@@ -305,47 +73,9 @@ section h2.heading-revealed::after {
 }
 
 /* ========================================
-   REDUCED MOTION - KILL ALL MICRO-INTERACTIONS
+   REDUCED MOTION - KILL REMAINING ACCENTS
    ======================================== */
 @media (prefers-reduced-motion: reduce) {
-
-    .btn:hover,
-    .btn-primary:hover,
-    .btn-secondary:hover,
-    .btn-tech:hover,
-    .btn-outline:hover {
-        transform: none;
-    }
-
-    .project-card:hover,
-    .toolbox-card:hover {
-        transform: translate(-1px, -1px);
-    }
-
-    .about-card:hover {
-        animation: none;
-    }
-
-    .skill-pill.pill-animate {
-        animation: none;
-        opacity: 1;
-    }
-
-    section h2::after {
-        transition: none;
-    }
-
-    section h2.heading-revealed::after {
-        width: 100%;
-    }
-
-    .keyword.shimmer-active {
-        animation: none;
-    }
-
-    .contact-toggle:hover {
-        animation: none;
-    }
 
     .nav-section-btn::after {
         transition: none;
