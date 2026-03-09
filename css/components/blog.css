@@ -6,7 +6,7 @@
 .blog-page {
     min-height: 100vh;
     background: var(--bg-cream);
-    background-image: radial-gradient(rgba(113, 90, 110, 0.12) 1.2px, transparent 1.2px);
+    background-image: radial-gradient(rgba(104, 93, 103, 0.08) 1.2px, transparent 1.2px);
     background-size: 28px 28px;
     padding-top: calc(var(--header-height) + var(--space-xs));
 }
@@ -32,7 +32,7 @@
     font-weight: 700;
     color: var(--ink);
     letter-spacing: var(--tracking-display);
-    text-shadow: 2px 2px 0px var(--accent-pink);
+    text-shadow: 1.5px 1.5px 0px var(--accent-rose-shadow);
     margin-bottom: var(--space-2xs);
     line-height: var(--leading-display);
     text-transform: uppercase;
@@ -181,7 +181,7 @@
     font-weight: 700;
     text-transform: uppercase;
     color: var(--ink);
-    background: var(--accent-lavender);
+    background: var(--bg-cream);
     border: var(--border-thin);
     border-radius: 999px;
     padding: 3px 10px;
@@ -264,7 +264,7 @@
     content: '→';
     position: absolute;
     left: 0;
-    color: var(--accent-pink);
+    color: var(--accent-cyan);
     font-weight: 700;
 }
 
@@ -285,7 +285,7 @@
 
 /* Post accent stripe (alternating colors) */
 .blog-post-card:nth-child(5n+1) {
-    border-left: 6px solid var(--accent-pink);
+    border-left: 6px solid var(--accent-blue);
 }
 
 .blog-post-card:nth-child(5n+2) {
@@ -301,7 +301,7 @@
 }
 
 .blog-post-card:nth-child(5n+5) {
-    border-left: 6px solid var(--accent-lavender);
+    border-left: 6px solid var(--accent-pink);
 }
 
 /* Loading state */
@@ -319,7 +319,7 @@
     width: 28px;
     height: 28px;
     border: var(--border-thin);
-    border-top-color: var(--accent-pink);
+    border-top-color: var(--accent-cyan);
     border-radius: 50%;
     animation: blogSpin 0.6s linear infinite;
     margin-bottom: 1rem;

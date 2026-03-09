@@ -9,31 +9,31 @@
        ======================================== */
 
     /* Backgrounds */
-    --bg-cream: #FDFBF7;
+    --bg-cream: #F6F1E8;
     /* Soft rice paper / warm white */
-    --bg-card: #FFFFFF;
+    --bg-card: #FFFCF8;
 
     /* Accents (Japanese Summer / Sakura) */
-    --accent-pink: #FFB7C5;
+    --accent-pink: #D7A9AE;
     /* Sakura Pink */
-    --accent-mint: #C1D5A4;
+    --accent-mint: #B5C29C;
     /* Matcha Green */
-    --accent-yellow: #FDFD96;
+    --accent-yellow: #D8C488;
     /* Soft Sunlight */
-    --accent-blue: #A2D2FF;
+    --accent-blue: #9EB5BF;
     /* Summer Sky */
-    --accent-lavender: #E0C4FF;
+    --accent-lavender: #C8BEC6;
 
     /* Text & Ink */
-    --ink: #3A2E39;
+    --ink: #342C32;
     /* Deep warm plum/brown instead of harsh black */
-    --ink-light: #715A6E;
+    --ink-light: #685D67;
 
     /* Semantic Mapping */
     --bg-app: var(--bg-cream);
     --text-primary: var(--ink);
     --text-secondary: var(--ink-light);
-    --text-dim: #8D7C8B;
+    --text-dim: #8D818A;
     --text-muted: var(--ink-light);
     --line-color: var(--ink);
     --bg-panel: var(--bg-card);
@@ -41,11 +41,12 @@
     --bg-primary: var(--bg-cream);
     --bg-blue: var(--bg-card);
     --accent-cyan: var(--accent-blue);
-    --pastel-primary: var(--accent-pink);
-    --pastel-primary-light: #FFD7E0;
-    --pastel-primary-soft: rgba(255, 183, 197, 0.22);
+    --pastel-primary: var(--accent-mint);
+    --pastel-primary-light: #D9E2C8;
+    --pastel-primary-soft: rgba(181, 194, 156, 0.2);
     /* Replacing old translucent panel */
-    --primary: var(--accent-pink);
+    --primary: var(--accent-mint);
+    --accent-rose-shadow: rgba(173, 128, 137, 0.38);
 
     /* Fonts */
     --font-display: 'Fredoka', sans-serif;
@@ -160,7 +161,7 @@ body {
     -moz-osx-font-smoothing: grayscale;
     text-rendering: geometricPrecision;
     font-size: 16px;
-    background-image: radial-gradient(rgba(113, 90, 110, 0.06) 2px, transparent 2px);
+    background-image: radial-gradient(rgba(104, 93, 103, 0.05) 2px, transparent 2px);
     background-size: 30px 30px;
     background-position: var(--bg-x, 0px) var(--bg-y, 0px);
 }
@@ -185,7 +186,7 @@ body {
     top: -100px;
     left: 16px;
     background: var(--accent-cyan);
-    color: var(--bg-blue);
+    color: var(--ink);
     padding: 12px 24px;
     font-family: var(--font-mono);
     text-transform: uppercase;
@@ -375,11 +376,11 @@ small,
 }
 
 .nav-section-btn:hover {
-    background: var(--accent-mint);
+    background: var(--accent-blue);
 }
 
 .nav-section-btn.active {
-    background: var(--accent-pink);
+    background: var(--accent-mint);
     font-weight: 700;
 }
 
@@ -408,7 +409,7 @@ small,
 }
 
 .contact-toggle:hover {
-    background: var(--accent-yellow);
+    background: var(--accent-blue);
     transform: translate(-2px, -2px);
     box-shadow: 4px 4px 0 var(--ink);
 }
@@ -460,7 +461,7 @@ small,
 }
 
 .contact-popover a:hover {
-    background: var(--accent-mint);
+    background: var(--accent-blue);
     border: 2px solid var(--ink);
     box-shadow: 2px 2px 0 var(--ink);
     transform: translate(-1px, -1px);
@@ -730,12 +731,12 @@ html[data-theme="dark"] .popover button:hover {
 
 .btn-primary:hover,
 .btn-tech:hover {
-    background: var(--accent-pink);
+    background: var(--accent-blue);
 }
 
 .btn-secondary,
 .btn-outline {
-    background: var(--accent-blue);
+    background: var(--bg-card);
 }
 
 .btn-secondary:hover,
@@ -751,7 +752,7 @@ html[data-theme="dark"] .popover button:hover {
 }
 
 .footer-link:hover {
-    color: var(--accent-pink);
+    color: var(--accent-cyan);
     text-decoration: underline;
 }
 
@@ -817,7 +818,7 @@ section h2 {
     margin-bottom: 0.35rem;
     line-height: var(--leading-display);
     letter-spacing: var(--tracking-display);
-    text-shadow: 2px 2px 0px var(--accent-pink);
+    text-shadow: 1.5px 1.5px 0px var(--accent-rose-shadow);
 }
 
 .about-tagline {
@@ -838,7 +839,8 @@ section h2 {
 
 .about-card.about-intro {
     grid-column: 1 / -1;
-    background: var(--accent-pink);
+    --about-tone: var(--accent-pink);
+    background: linear-gradient(180deg, var(--about-tone) 0, var(--about-tone) 80px, var(--bg-card) 80px, var(--bg-card) 100%);
 }
 
 /* ========================================
@@ -930,6 +932,7 @@ section h2 {
     grid-column: span 4;
     display: flex;
     flex-direction: column;
+    background: linear-gradient(180deg, var(--project-tone, var(--bg-card)) 0, var(--project-tone, var(--bg-card)) 84px, var(--bg-card) 84px, var(--bg-card) 100%);
     border: var(--border-thin);
     border-radius: 12px;
     box-shadow: 3px 3px 0 var(--ink);
@@ -1024,6 +1027,7 @@ section h2 {
 /* Featured Project */
 .project-card.featured {
     grid-column: span 8;
+    background: linear-gradient(180deg, var(--project-tone, var(--bg-card)) 0, var(--project-tone, var(--bg-card)) 96px, var(--bg-card) 96px, var(--bg-card) 100%);
     min-height: 300px;
     position: relative;
 }
@@ -1140,7 +1144,7 @@ section h2 {
 
 .toolbox-card {
     grid-column: span 4;
-    background: var(--bg-card);
+    background: linear-gradient(180deg, var(--toolbox-tone, var(--bg-card)) 0, var(--toolbox-tone, var(--bg-card)) 74px, var(--bg-card) 74px, var(--bg-card) 100%);
     border: var(--border-thin);
     box-shadow: 3px 3px 0 var(--ink);
     padding: var(--card-padding);
@@ -1154,31 +1158,32 @@ section h2 {
 
 .toolbox-card--featured {
     grid-column: span 6;
+    background: linear-gradient(180deg, var(--toolbox-tone, var(--bg-card)) 0, var(--toolbox-tone, var(--bg-card)) 84px, var(--bg-card) 84px, var(--bg-card) 100%);
     min-height: 218px;
 }
 
 .toolbox-card--mint {
-    background: var(--accent-mint);
+    --toolbox-tone: var(--accent-mint);
 }
 
 .toolbox-card--pink {
-    background: var(--accent-pink);
+    --toolbox-tone: var(--accent-pink);
 }
 
 .toolbox-card--blue {
-    background: var(--accent-blue);
+    --toolbox-tone: var(--accent-blue);
 }
 
 .toolbox-card--yellow {
-    background: var(--accent-yellow);
+    --toolbox-tone: var(--accent-yellow);
 }
 
 .toolbox-card--cream {
-    background: var(--bg-cream);
+    --toolbox-tone: var(--bg-cream);
 }
 
 .toolbox-card--lavender {
-    background: var(--accent-lavender);
+    --toolbox-tone: var(--accent-lavender);
 }
 
 .toolbox-card:hover {
@@ -1309,7 +1314,7 @@ section h2 {
 .blog-page {
     min-height: 100vh;
     background: var(--bg-cream);
-    background-image: radial-gradient(rgba(113, 90, 110, 0.12) 1.2px, transparent 1.2px);
+    background-image: radial-gradient(rgba(104, 93, 103, 0.08) 1.2px, transparent 1.2px);
     background-size: 28px 28px;
     padding-top: calc(var(--header-height) + var(--space-xs));
 }
@@ -1335,7 +1340,7 @@ section h2 {
     font-weight: 700;
     color: var(--ink);
     letter-spacing: var(--tracking-display);
-    text-shadow: 2px 2px 0px var(--accent-pink);
+    text-shadow: 1.5px 1.5px 0px var(--accent-rose-shadow);
     margin-bottom: var(--space-2xs);
     line-height: var(--leading-display);
     text-transform: uppercase;
@@ -1484,7 +1489,7 @@ section h2 {
     font-weight: 700;
     text-transform: uppercase;
     color: var(--ink);
-    background: var(--accent-lavender);
+    background: var(--bg-cream);
     border: var(--border-thin);
     border-radius: 999px;
     padding: 3px 10px;
@@ -1567,7 +1572,7 @@ section h2 {
     content: '→';
     position: absolute;
     left: 0;
-    color: var(--accent-pink);
+    color: var(--accent-cyan);
     font-weight: 700;
 }
 
@@ -1588,7 +1593,7 @@ section h2 {
 
 /* Post accent stripe (alternating colors) */
 .blog-post-card:nth-child(5n+1) {
-    border-left: 6px solid var(--accent-pink);
+    border-left: 6px solid var(--accent-blue);
 }
 
 .blog-post-card:nth-child(5n+2) {
@@ -1604,7 +1609,7 @@ section h2 {
 }
 
 .blog-post-card:nth-child(5n+5) {
-    border-left: 6px solid var(--accent-lavender);
+    border-left: 6px solid var(--accent-pink);
 }
 
 /* Loading state */
@@ -1622,7 +1627,7 @@ section h2 {
     width: 28px;
     height: 28px;
     border: var(--border-thin);
-    border-top-color: var(--accent-pink);
+    border-top-color: var(--accent-cyan);
     border-radius: 50%;
     animation: blogSpin 0.6s linear infinite;
     margin-bottom: 1rem;
@@ -2114,7 +2119,7 @@ html[data-theme="dark"] .scroll-progress {
    SELECTION STYLING
    ======================================== */
 ::selection {
-    background: var(--accent-pink);
+    background: var(--accent-yellow);
     color: var(--ink);
 }
 
@@ -2145,7 +2150,7 @@ html[data-theme="dark"] .scroll-progress {
     left: 50%;
     width: 0;
     height: 3px;
-    background: var(--accent-pink);
+    background: var(--accent-cyan);
     transform: translateX(-50%);
     transition: width 0.28s cubic-bezier(0.22, 1, 0.36, 1);
 }
@@ -2185,7 +2190,7 @@ html[data-theme="dark"] .scroll-progress {
     left: 0;
     width: 0;
     height: 2px;
-    background: var(--accent-pink);
+    background: var(--accent-cyan);
     transition: width 0.3s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
@@ -2237,7 +2242,7 @@ html[data-theme="dark"] .scroll-progress {
 .custom-cursor.hovering {
     width: 40px;
     height: 40px;
-    background: var(--accent-pink);
+    background: var(--accent-cyan);
     mix-blend-mode: difference;
     opacity: 0.8;
 }
@@ -2264,7 +2269,7 @@ html[data-theme="dark"] .scroll-progress {
         width: 0;
         height: 0;
         opacity: 0.6;
-        background: var(--accent-pink);
+        background: var(--accent-cyan);
     }
 
     50% {
@@ -2275,7 +2280,7 @@ html[data-theme="dark"] .scroll-progress {
         width: 100px;
         height: 100px;
         opacity: 0;
-        background: var(--accent-cyan);
+        background: var(--accent-mint);
     }
 }
 
@@ -2315,7 +2320,7 @@ html[data-theme="dark"] .scroll-progress {
     width: clamp(40px, 6vh, 52px);
     height: clamp(40px, 6vh, 52px);
     border-radius: 8px;
-    background: var(--accent-pink);
+    background: var(--accent-blue);
     /* Sakura theme */
     border: var(--border-thin);
     pointer-events: none;
