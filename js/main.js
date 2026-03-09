@@ -21,7 +21,6 @@ import {
 } from './desktop/scroll-effects.js';
 import { initCustomCursor } from './desktop/cursor.js';
 import { initPetals } from './desktop/petals.js';
-import { initMicroInteractions } from './desktop/micro-interactions.js';
 
 // Mobile modules
 import { initMobileToggles, initNavIndicator } from './mobile/bottom-nav.js';
@@ -46,7 +45,6 @@ document.addEventListener('DOMContentLoaded', () => {
     initBackgroundParallax();
     initCustomCursor();
     initPetals();
-    initMicroInteractions();
 
     // Section-based page features (about/ page)
     SectionNavigator.init();

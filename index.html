@@ -97,63 +97,6 @@
             }
         }
 
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-            }
-
-            to {
-                opacity: 1;
-            }
-        }
-
-        @keyframes shapePop {
-            from {
-                opacity: 0;
-                transform: scale(0.5) rotate(0deg);
-            }
-
-            to {
-                opacity: 1;
-                transform: scale(1);
-            }
-        }
-
-        @property --hero-hover-x {
-            syntax: '<length>';
-            inherits: false;
-            initial-value: 0px;
-        }
-
-        @property --hero-hover-y {
-            syntax: '<length>';
-            inherits: false;
-            initial-value: 0px;
-        }
-
-        @property --hero-hover-shadow {
-            syntax: '<length>';
-            inherits: false;
-            initial-value: 0px;
-        }
-
-        @keyframes cardBreathe {
-
-            0%,
-            100% {
-                transform: translate(var(--hero-hover-x), var(--hero-hover-y)) scale(1);
-                box-shadow:
-                    calc(8px + var(--hero-hover-shadow)) calc(8px + var(--hero-hover-shadow)) 0 var(--ink);
-            }
-
-            50% {
-                transform: translate(calc(var(--hero-hover-x) - 1px), calc(var(--hero-hover-y) - 1px)) scale(1.008);
-                box-shadow:
-                    calc(8px + var(--hero-hover-shadow)) calc(8px + var(--hero-hover-shadow)) 8px rgba(255, 183, 197, 0.18),
-                    calc(8px + var(--hero-hover-shadow)) calc(8px + var(--hero-hover-shadow)) 0 var(--ink);
-            }
-        }
-
         main {
             display: flex;
             align-items: center;
@@ -168,9 +111,6 @@
         }
 
         .hero-card {
-            --hero-hover-x: 0px;
-            --hero-hover-y: 0px;
-            --hero-hover-shadow: 0px;
             background: var(--bg-card);
             border: var(--border-main);
             padding: 56px;
@@ -180,32 +120,19 @@
             box-shadow: 8px 8px 0 var(--ink);
             border-radius: 20px;
             transition:
-                --hero-hover-x 280ms cubic-bezier(0.22, 1, 0.36, 1),
-                --hero-hover-y 280ms cubic-bezier(0.22, 1, 0.36, 1),
-                --hero-hover-shadow 280ms cubic-bezier(0.22, 1, 0.36, 1);
-            will-change: transform, box-shadow;
+                box-shadow 280ms cubic-bezier(0.22, 1, 0.36, 1),
+                border-color 280ms ease;
+            will-change: box-shadow;
             z-index: 10;
-            animation: heroSlideUp 1s cubic-bezier(0.22, 1, 0.36, 1) both,
-                cardBreathe 6s ease-in-out 2.5s infinite;
+            animation: heroSlideUp 0.9s cubic-bezier(0.22, 1, 0.36, 1) both;
         }
 
         .hero-card .about-name {
-            animation: heroSlideUp 0.8s cubic-bezier(0.22, 1, 0.36, 1) 0.15s both;
             margin-bottom: 0.25rem;
         }
 
-        .hero-card .role {
-            animation: heroSlideUp 0.8s cubic-bezier(0.22, 1, 0.36, 1) 0.35s both;
-        }
-
-        .hero-card .bio-intro {
-            animation: heroSlideUp 0.8s cubic-bezier(0.22, 1, 0.36, 1) 0.55s both;
-        }
-
         .hero-card:hover {
-            --hero-hover-x: -4px;
-            --hero-hover-y: -4px;
-            --hero-hover-shadow: 4px;
+            box-shadow: 10px 10px 0 var(--ink);
         }
 
         /* Decorative Background Shapes */
@@ -258,7 +185,6 @@
             display: flex;
             gap: 0.875rem;
             flex-wrap: wrap;
-            animation: fadeIn 1.2s ease 0.65s both;
         }
 
         /* Header */
@@ -272,7 +198,6 @@
             justify-content: space-between;
             align-items: center;
             z-index: 20;
-            animation: fadeIn 0.6s ease 0.2s both;
             pointer-events: none;
         }
 
@@ -292,11 +217,6 @@
             box-shadow: 4px 4px 0 var(--ink);
             border-radius: 12px;
             transition: transform 0.2s, box-shadow 0.2s;
-        }
-
-        .brand:hover {
-            transform: translateY(-2px);
-            box-shadow: 6px 6px 0 var(--ink);
         }
 
         .landing-mascot {

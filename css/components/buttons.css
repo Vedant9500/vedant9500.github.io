@@ -14,7 +14,11 @@
     color: var(--ink);
     text-decoration: none;
     font-weight: 700;
-    transition: all 0.2s ease;
+    transition:
+        transform 0.22s cubic-bezier(0.22, 1, 0.36, 1),
+        box-shadow 0.22s cubic-bezier(0.22, 1, 0.36, 1),
+        background-color 0.22s ease,
+        color 0.22s ease;
     display: inline-flex;
     align-items: center;
     justify-content: center;
@@ -28,12 +32,21 @@
     overflow: hidden;
 }
 
+.btn:hover,
+.btn-primary:hover,
+.btn-secondary:hover,
+.btn-tech:hover,
+.btn-outline:hover {
+    box-shadow: var(--shadow-hover);
+    transform: translate(-2px, -2px);
+}
+
 .btn:active,
 .btn-primary:active,
 .btn-secondary:active,
 .btn-tech:active,
 .btn-outline:active {
-    transform: translate(2px, 2px);
+    transform: translate(1px, 1px);
     box-shadow: var(--shadow-active);
 }
 
@@ -45,8 +58,6 @@
 .btn-primary:hover,
 .btn-tech:hover {
     background: var(--accent-pink);
-    box-shadow: var(--shadow-hover);
-    transform: translate(-4px, -4px) rotate(-2deg);
 }
 
 .btn-secondary,
@@ -57,8 +68,6 @@
 .btn-secondary:hover,
 .btn-outline:hover {
     background: var(--accent-yellow);
-    box-shadow: var(--shadow-hover);
-    transform: translate(-4px, -4px) rotate(2deg);
 }
 
 .footer-link {

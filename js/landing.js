@@ -5,13 +5,11 @@
  */
 import { initCustomCursor } from './desktop/cursor.js';
 import { initPetals } from './desktop/petals.js';
-import { initMicroInteractions } from './desktop/micro-interactions.js';
 
 document.addEventListener('DOMContentLoaded', () => {
     // Initialize global UX
     initCustomCursor();
     initPetals();
-    initMicroInteractions();
 
     const main = document.querySelector('main');
     const heroCard = document.querySelector('.hero-card');
