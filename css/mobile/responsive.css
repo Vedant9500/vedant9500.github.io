@@ -38,11 +38,11 @@
     }
 
     .section-inner {
-        padding: 24px 0 96px 0;
+        padding: var(--section-space-mobile) 0 calc(var(--section-space-mobile) + 4.25rem);
     }
 
     .section-inner .container {
-        padding: 0 18px;
+        padding: 0 clamp(1rem, 5vw, 1.25rem);
     }
 
     /* ===== About Section Mobile ===== */
@@ -51,11 +51,11 @@
     }
 
     .about-card {
-        padding: 1.25rem;
+        padding: var(--card-padding);
     }
 
     .about-hero {
-        margin-bottom: 1.25rem;
+        margin-bottom: var(--space-md);
         padding-top: 0;
     }
 
@@ -84,12 +84,12 @@
     .about-content {
         display: flex;
         flex-direction: column;
-        gap: 16px;
+        gap: var(--space-sm);
         scroll-snap-type: y proximity;
     }
 
     .about-card {
-        padding: 18px;
+        padding: var(--card-padding);
         scroll-snap-align: start;
         min-height: auto;
         transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
@@ -126,7 +126,7 @@
 
     /* First card (intro) - more prominent */
     .about-card.about-intro {
-        padding: 20px;
+        padding: calc(var(--card-padding) + var(--space-2xs));
     }
 
     .about-card.about-intro .about-card-content p {
@@ -167,16 +167,16 @@
     }
 
     .content-section[data-section="projects"] .section-inner {
-        padding: 24px 0 112px 0;
+        padding: var(--section-space-mobile) 0 calc(var(--section-space-mobile) + 5rem);
     }
 
     .content-section[data-section="projects"] .section-inner .container {
         max-width: 100%;
-        padding: 0 18px;
+        padding: 0 clamp(1rem, 5vw, 1.25rem);
     }
 
     .content-section[data-section="projects"] .section-inner .container h2 {
-        margin-bottom: 20px;
+        margin-bottom: var(--space-md);
         opacity: 1 !important;
         transform: none !important;
         scroll-snap-align: start;
@@ -184,15 +184,15 @@
 
     .content-section[data-section="projects"] .section-inner .container .section-lead,
     .content-section[data-section="toolbox"] .section-inner .container .section-lead {
-        margin: calc(-1 * var(--space-xs)) 0 var(--space-md);
-        font-size: 0.95rem;
+        margin: calc(-1 * var(--space-2xs)) 0 var(--space-md);
+        font-size: var(--type-body-sm);
         line-height: 1.6;
     }
 
     .projects-grid {
         display: flex !important;
         flex-direction: column !important;
-        gap: 16px !important;
+        gap: var(--space-sm) !important;
         margin: 0 !important;
     }
 
@@ -206,7 +206,7 @@
         max-width: 100% !important;
         min-height: auto !important;
         height: auto !important;
-        padding: 20px !important;
+        padding: var(--card-padding) !important;
         scroll-snap-align: start;
         scroll-snap-stop: always;
         transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
@@ -230,7 +230,7 @@
         max-width: 100% !important;
         min-height: auto !important;
         grid-column: unset !important;
-        padding: 20px !important;
+        padding: calc(var(--card-padding) + var(--space-2xs)) !important;
     }
 
     .project-card.featured::before {
@@ -247,12 +247,12 @@
     .project-card p {
         font-size: 0.95rem;
         line-height: 1.65;
-        margin-bottom: 1rem;
+        margin-bottom: var(--space-sm);
     }
 
     .project-links {
         padding-top: 0;
-        gap: var(--space-sm);
+        gap: var(--space-xs);
     }
 
     .project-link {
@@ -271,7 +271,7 @@
 
     /* ===== Toolbox Mobile - Always Expanded ===== */
     .toolbox-accordion {
-        gap: 14px;
+        gap: var(--space-sm);
     }
 
     .toolbox-chevron {
@@ -280,7 +280,7 @@
 
     .toolbox-header {
         cursor: default;
-        padding: 12px 14px;
+        padding: var(--space-sm) var(--space-md);
     }
 
     .toolbox-header:hover {
@@ -299,7 +299,7 @@
 
     .toolbox-content {
         grid-template-rows: 1fr !important;
-        padding: 0 14px 14px 14px !important;
+        padding: 0 var(--space-md) var(--space-md) !important;
     }
 
     .toolbox-category {
@@ -307,7 +307,7 @@
     }
 
     .skill-pills {
-        gap: 6px;
+        gap: var(--space-2xs);
     }
 
     .skill-pill {
@@ -384,7 +384,7 @@
 
     /* ===== Hero Mobile ===== */
     .hero-container {
-        padding: 60px 20px 100px;
+        padding: calc(var(--space-4xl) + var(--space-xs)) 20px calc(var(--space-4xl) + var(--space-md));
         min-height: 100vh;
     }
 
@@ -451,11 +451,11 @@
 
     .toolbox-grid {
         grid-template-columns: 1fr;
-        gap: 16px;
+        gap: var(--space-sm);
     }
 
     .section-inner {
-        padding: 16px;
+        padding: calc(var(--section-space-mobile) - var(--space-xs)) 0 calc(var(--section-space-mobile) + 4rem);
     }
 }
 

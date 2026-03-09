@@ -130,7 +130,7 @@ html[data-theme="dark"] .content-section::after {
 }
 
 .section-inner {
-    padding: calc(var(--header-height) + var(--space-lg)) 0 var(--space-3xl);
+    padding: calc(var(--header-height) + var(--space-md)) 0 var(--section-space);
     min-height: 100%;
     opacity: 0;
     transform: translateX(30px);
@@ -143,7 +143,7 @@ html[data-theme="dark"] .content-section::after {
 
 .section-inner .container {
     width: 100%;
-    max-width: 1160px;
+    max-width: var(--section-container-max);
     margin: 0 auto;
     padding: 0 var(--page-gutter);
 }
@@ -194,16 +194,16 @@ html[data-theme="dark"] .content-section::after {
 .contact-intro {
     color: var(--text-muted);
     font-size: 1.1rem;
-    margin-bottom: var(--space-xl);
-    max-width: 400px;
+    margin-bottom: var(--space-lg);
+    max-width: 36ch;
     margin-inline: auto;
 }
 
 .social-links {
     display: flex;
     justify-content: center;
-    gap: var(--space-lg);
-    margin-bottom: var(--space-xl);
+    gap: var(--space-md);
+    margin-bottom: var(--space-lg);
 }
 
 .social-link {
@@ -229,7 +229,7 @@ html[data-theme="dark"] .content-section::after {
 }
 
 .footer {
-    padding: var(--space-xl) 0;
+    padding: var(--space-lg) 0 var(--space-md);
     text-align: center;
     background: transparent;
     border-top: none;
