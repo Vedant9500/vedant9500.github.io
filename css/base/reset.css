@@ -76,7 +76,6 @@ body {
     color: var(--ink);
     padding: 12px 24px;
     font-family: var(--font-mono);
-    text-transform: uppercase;
     font-weight: 700;
     text-decoration: none;
     z-index: 10000;
