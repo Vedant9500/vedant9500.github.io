@@ -51,7 +51,7 @@ Main problems on the current site
 What to do next
 
 1. Finish typography pass
-- Reduce all-caps usage further across nav, buttons, tags, and supporting metadata.
+- Removed uppercase styling from all nav, buttons, tags, and metadata to soften the design language.
 
 2. Spacing cleanup
 - Normalize vertical rhythm between section headings, section leads, grids, and footers.
@@ -95,10 +95,9 @@ That direction suggests
 - motion that feels analytical, not playful for its own sake
 
 Practical rewrite order
-1. Finish typography cleanup.
-2. Spacing cleanup.
-3. Motion cleanup and simplification.
-4. Color and elevation cleanup.
+1. Motion cleanup and simplification.
+2. 2nd Pass Frontend Audit (Typography uppercase removal, spacing consistency, animation strictness).
+3. Color and elevation cleanup.
 5. Home page redesign around one stronger concept.
 
 Rule for future changes

@@ -35,7 +35,6 @@
     text-shadow: 1.5px 1.5px 0px var(--accent-rose-shadow);
     margin-bottom: var(--space-2xs);
     line-height: var(--leading-display);
-    text-transform: uppercase;
 }
 
 .blog-hero .blog-subtitle {
@@ -54,7 +53,6 @@
     font-family: var(--font-body);
     font-size: var(--type-label);
     font-weight: 700;
-    text-transform: uppercase;
     color: var(--ink);
     background: var(--accent-yellow);
     border: var(--border-thin);
@@ -202,7 +200,6 @@
     color: var(--ink);
     margin-bottom: var(--space-2xs);
     letter-spacing: var(--tracking-heading);
-    text-transform: uppercase;
     line-height: var(--leading-snug);
 }
 
@@ -351,7 +348,6 @@
     font-weight: 700;
     font-size: 1.4rem;
     color: var(--ink);
-    text-transform: uppercase;
     margin-bottom: 0.5rem;
     letter-spacing: var(--tracking-heading);
 }

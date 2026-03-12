@@ -10,7 +10,6 @@ section h2 {
     font-family: var(--font-display);
     font-size: var(--type-heading-xl);
     font-weight: 700;
-    text-transform: uppercase;
     text-align: left;
     margin-bottom: var(--space-lg);
     color: var(--ink);
@@ -49,7 +48,6 @@ section h2 {
     font-weight: 700;
     font-size: var(--type-label);
     letter-spacing: var(--tracking-label);
-    text-transform: uppercase;
 }
 
 .about-name {
@@ -106,15 +104,15 @@ section h2 {
 .achievement-card:hover {
     box-shadow: var(--shadow-hover);
     transform: translate(-2px, -2px);
-    transition: all 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+    transition: all 0.2s ease;
 }
 
 .about-card:active,
 .project-card:active,
 .achievement-card:active {
     box-shadow: var(--shadow-active);
-    transform: translate(2px, 2px);
-    transition: all 0.15s ease;
+    transform: translate(1px, 1px);
+    transition: all 0.1s ease;
 }
 
 /* Card Content */
@@ -130,7 +128,6 @@ section h2 {
     font-family: var(--font-display);
     font-size: var(--type-heading-lg);
     font-weight: 700;
-    text-transform: uppercase;
     color: var(--ink);
     margin-bottom: var(--space-sm);
     letter-spacing: var(--tracking-heading);
@@ -231,7 +228,6 @@ section h2 {
     border-radius: 999px;
     font-weight: 700;
     letter-spacing: var(--tracking-label);
-    text-transform: uppercase;
 }
 
 .project-links {
@@ -254,7 +250,6 @@ section h2 {
     font-family: var(--font-body);
     font-size: var(--type-label);
     font-weight: 700;
-    text-transform: uppercase;
     display: flex;
     align-items: center;
     gap: 0.5rem;
@@ -282,7 +277,6 @@ section h2 {
     font-family: var(--font-body);
     font-size: var(--type-meta);
     font-weight: 700;
-    text-transform: uppercase;
     border: var(--border-thin);
     border-radius: 999px;
     background: var(--bg-card);

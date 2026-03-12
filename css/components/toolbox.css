@@ -69,7 +69,6 @@
 .toolbox-kicker {
     font-family: var(--font-body);
     font-size: var(--type-meta);
-    text-transform: uppercase;
     font-weight: 700;
     letter-spacing: var(--tracking-label);
     color: var(--ink-light);
