@@ -50,42 +50,99 @@ Main problems on the current site
 
 What to do next
 
-1. Finish typography pass
-- Removed uppercase styling from all nav, buttons, tags, and metadata to soften the design language.
+1. Lock the site structure
+- Keep home as a single-page introduction.
+- Keep the blog as a separate page and link to it from nav and footer only.
+- Use the homepage as the front door: fast scan first, depth second.
+- Keep long-form writing, archive browsing, and extra detail off the homepage.
 
-2. Spacing cleanup
-- Normalize vertical rhythm between section headings, section leads, grids, and footers.
+2. Lock the creative direction
+- Chosen direction: editorial research notebook / soft brutalist systems lab.
+- Use one visual metaphor consistently: annotated cards, modular panels, system diagrams, orbital paths, data notes.
+- The page should feel analytical, warm, and authored, not playful for its own sake.
+- Awwwards-level here should mean one strong concept, crisp typography, and controlled motion, not more effects.
+
+3. Define the job of the homepage
+- In under 20 seconds, communicate who Vedant is, what field he fits into, and which projects matter most.
+- Make Computer Engineering, AI, simulation, systems thinking, and tooling visible immediately.
+- Highlight 4 to 6 strongest projects only.
+- Give clear paths to GitHub, resume, blog, and LinkedIn.
+
+4. Finish typography pass
+- Use one display font and one body / UI font.
+- Keep expressive typography for hero and section headings only.
+- Remove broad uppercase styling from nav, buttons, tags, and metadata.
+- Build a sharper hierarchy: hero, section title, card title, body, meta.
+- Reduce decorative text shadows and improve body-text clarity.
+
+5. Spacing and layout cleanup
+- Normalize vertical rhythm between section headings, leads, grids, and footers.
 - Tighten hero, card, and container spacing across home, about, toolbox, and blog.
 - Make mobile spacing less jumpy across stacked sections.
+- Move away from the centered-card-in-empty-space composition.
+- Use stronger negative space, asymmetry, and full-page composition.
 
-3. Remove at least half of the current animations
+6. Remove at least half of the current animations
 - Keep one reveal system.
 - Keep one hover response system.
 - Remove the hero breathing loop, button rotation, card wobble, keyword shimmer, and jelly hover.
 - Motion should support the structure of the page, not compete with it.
 
-4. Reduce the active color hierarchy
+7. Make motion specific to the site concept
+- Generic magnetic buttons and 3D tilt feel borrowed.
+- Interactions should feel tied to systems, AI, and research.
+- Think in terms of annotations, diagrams, notebooks, terminals, modular cards, and subtle path-drawing transitions.
+- Section transitions should come from layered reveals, background shifts, and diagram-like movement rather than gimmicks.
+- Add reduced-motion support from the start.
+
+8. Reduce the active color hierarchy
 - Use cream and ink as the base.
 - Choose one main accent per page or section.
 - Use the other colors as occasional punctuation, not dominant surfaces.
+- Make sure one color clearly leads and the others support.
 
-5. Simplify the elevation system
+9. Simplify the elevation system
 - Define only three states: flat, raised, focal.
 - Small controls should not feel as loud as large cards.
 - Use thicker shadows and borders only where emphasis is actually needed.
+- Avoid giving nav, buttons, cards, and popovers the same visual volume.
 
-6. Rework the home composition, not just the styling
-- The centered card on a dotted background feels like a nice component placed in empty space.
-- A sharper home page would have one dominant layout move, stronger negative space, and one signature visual idea.
+10. Rework the home composition, not just the styling
+- Build the homepage as a full narrative instead of a single centered component.
+- Give the hero one dominant layout move and one signature visual idea.
+- Make each section feel like a deliberate transition, not another block stacked below.
+- Use the full page for creativity through composition, type scale, and rhythm rather than more decorative widgets.
 
-7. Make motion specific to the site concept
-- Generic magnetic buttons and 3D tilt feel borrowed.
-- Interactions should feel tied to your identity as someone working on systems, AI, and research.
-- Think in terms of annotations, diagrams, notebooks, data cards, terminals, or modular systems rather than toy-like hover tricks.
+Proposed homepage sections
+1. Hero / identity
+- One strong statement about who Vedant is.
+- One short supporting paragraph.
+- Two clear actions such as View Projects and Resume / About.
+
+2. Selected work
+- One featured project with a wide layout.
+- Three to five supporting projects in a more dynamic grid.
+- Each project should show problem, build, stack, and outcome or why it matters.
+
+3. Focus pillars
+- AI and ML.
+- Simulation and visualization.
+- Systems thinking / tooling.
+
+4. Process / philosophy
+- A short section explaining how projects begin, how ideas are tested, and what kind of work is exciting.
+
+5. Proof / current interests
+- GitHub signals, current explorations, preferred tools, or current technical interests.
+
+6. Footer / next step
+- GitHub, LinkedIn, resume, blog, and contact.
+- Blog remains a separate destination.
 
 Recommended visual direction
 - Editorial research notebook
 - Soft brutalist systems lab
+- Warm computational atlas
 
 That direction suggests
 - cleaner typography
@@ -94,11 +151,42 @@ That direction suggests
 - fewer but better interactions
 - motion that feels analytical, not playful for its own sake
 
+Professional baseline features
+- Sticky navigation with active section highlighting.
+- Deep-linkable sections.
+- Strong project cards with clear content hierarchy.
+- Clear resume / GitHub / LinkedIn access.
+- Mobile-first behavior that still feels designed.
+- Performance pass for fonts, animation cost, and image weight.
+- Accessibility pass for contrast, focus states, keyboard navigation, and reduced motion.
+
 Practical rewrite order
-1. Motion cleanup and simplification.
-2. 2nd Pass Frontend Audit (Typography uppercase removal, spacing consistency, animation strictness).
-3. Color and elevation cleanup.
-5. Home page redesign around one stronger concept.
+1. Lock homepage structure and content hierarchy.
+2. Audit and remove old motion and typography drift.
+3. Expand design tokens for type, space, color, elevation, and motion.
+4. Rebuild the homepage composition around one stronger concept.
+5. Add a signature motion system and section transitions.
+6. Polish mobile layout, accessibility, and performance.
+7. Keep the blog separate and more restrained than the homepage.
+
+Implementation map
+- index.html: new single-page homepage structure.
+- blog/index.html: separate writing destination, not part of homepage flow.
+- css/base/variables.css: typography scale, spacing system, color roles, elevation, motion timings.
+- css/components/hero.css: hero composition and identity section.
+- css/components/cards.css: featured and supporting project cards.
+- css/components/navbar.css: sticky navigation and active states.
+- css/desktop/animations.css: reveal system and section transitions.
+- js/landing.js: homepage-specific interactions.
+- js/desktop/scroll-effects.js: scroll-linked transitions and active-section behavior.
+
+Success criteria
+- The page feels intentional within the first 10 seconds.
+- HR can understand the profile without clicking multiple pages.
+- Engineers can immediately identify technical depth and strongest projects.
+- Motion feels custom to the site's idea instead of borrowed.
+- Every section justifies its existence.
+- No visual effect survives unless it supports the core concept.
 
 Rule for future changes
 - Before adding any visual effect, ask: does this belong to the site's core idea, or is it just another cool thing?
