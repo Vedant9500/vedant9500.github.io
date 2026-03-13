@@ -4,34 +4,31 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Vedant Deshmukh (Vedant Sudhir Deshmukh) | Systems & AI Engineer Portfolio</title>
+    <title>Vedant Deshmukh | Computer Engineering, AI, Simulation, and Systems Projects</title>
 
-    <!-- SEO Meta Tags -->
     <meta name="description"
-        content="Vedant Deshmukh (Vedant Sudhir Deshmukh) — Systems & AI Engineer. Computer Engineering student building scalable systems, deep learning projects, and low-level optimizations. Explore Vedant's portfolio, projects, and skills.">
+        content="Vedant Deshmukh is a Computer Engineering student building AI experiments, simulations, and practical developer tools across machine learning, browser simulation, and systems-oriented software.">
     <meta name="author" content="Vedant Sudhir Deshmukh">
     <meta name="keywords"
-        content="Vedant Deshmukh, Vedant Sudhir Deshmukh, systems engineer, AI engineer, machine learning, deep learning, portfolio, computer engineering, vedantium.dev">
+        content="Vedant Deshmukh, Computer Engineering, AI portfolio, machine learning, simulation, systems engineering, symbolic regression, developer tools, vedantium.dev">
+    <meta name="theme-color" content="#F6F1E8">
     <link rel="canonical" href="https://vedantium.dev/">
 
-    <!-- Open Graph -->
-    <meta property="og:title" content="Vedant Deshmukh (Vedant Sudhir Deshmukh) | Systems & AI Engineer">
+    <meta property="og:title" content="Vedant Deshmukh | Computer Engineering, AI, Simulation, and Systems Projects">
     <meta property="og:description"
-        content="Portfolio of Vedant Deshmukh — Systems & AI Engineer. Computer Engineering student building scalable systems and deep learning projects.">
+        content="Single-page portfolio of Vedant Deshmukh, a Computer Engineering student building AI experiments, simulations, and practical tools.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://vedantium.dev/">
     <meta property="og:site_name" content="Vedantium.dev">
     <meta property="og:locale" content="en_US">
     <meta property="og:image" content="https://vedantium.dev/assets/og-image.png">
 
-    <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Vedant Deshmukh | Systems & AI Engineer">
+    <meta name="twitter:title" content="Vedant Deshmukh | Computer Engineering, AI, Simulation, and Systems Projects">
     <meta name="twitter:description"
-        content="Portfolio of Vedant Deshmukh — Systems & AI Engineer building scalable systems and deep learning projects.">
+        content="Single-page portfolio of Vedant Deshmukh, focused on AI, simulation, and practical software systems.">
     <meta name="twitter:image" content="https://vedantium.dev/assets/og-image.png">
 
-    <!-- JSON-LD Structured Data -->
     <script type="application/ld+json">
     {
         "@context": "https://schema.org",
@@ -39,14 +36,25 @@
         "name": "Vedant Deshmukh",
         "alternateName": ["Vedant Sudhir Deshmukh", "Vedantium"],
         "url": "https://vedantium.dev",
-        "jobTitle": "Systems & AI Engineer",
-        "description": "Computer Engineering Student & AI Enthusiast building scalable systems, exploring deep learning, and working on low-level optimization.",
+        "jobTitle": "Computer Engineering Student",
+        "description": "Computer Engineering student building AI experiments, simulations, and practical developer tools.",
         "sameAs": [
             "https://github.com/Vedant9500",
             "https://www.linkedin.com/in/vedant-deshmukh-82441928b/",
             "https://instagram.com/vedant_s_d"
         ],
-        "knowsAbout": ["Artificial Intelligence", "Machine Learning", "Deep Learning", "Systems Engineering", "Computer Vision", "Reinforcement Learning", "C++", "Python", "Go"],
+        "knowsAbout": [
+            "Artificial Intelligence",
+            "Machine Learning",
+            "Simulation",
+            "Systems Engineering",
+            "Symbolic Regression",
+            "Computer Vision",
+            "C++",
+            "Python",
+            "Go",
+            "JavaScript"
+        ],
         "alumniOf": {
             "@type": "EducationalOrganization",
             "name": "Computer Engineering Program"
@@ -54,277 +62,387 @@
     }
     </script>
 
-    <!-- Fonts (async — prevent render blocking) -->
+    <script>
+        document.documentElement.classList.add('js');
+    </script>
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="preload" as="style"
-        href="https://fonts.googleapis.com/css2?family=Fredoka:wght@300..700&family=Outfit:wght@300..900&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Outfit:wght@400;500;600;700;800&display=swap"
         onload="this.onload=null;this.rel='stylesheet'">
     <noscript>
         <link rel="stylesheet"
-            href="https://fonts.googleapis.com/css2?family=Fredoka:wght@300..700&family=Outfit:wght@300..900&display=swap">
+            href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Outfit:wght@400;500;600;700;800&display=swap">
     </noscript>
 
-    <!-- Add an expressive serif or bolder display font if needed later -->
-
-    <!-- Styles (bundled — eliminates @import waterfall) -->
-    <link rel="stylesheet" href="css/main.bundled.css">
-
-    <style>
-        .sr-only {
-            position: absolute;
-            width: 1px;
-            height: 1px;
-            padding: 0;
-            margin: -1px;
-            overflow: hidden;
-            clip: rect(0, 0, 0, 0);
-            white-space: nowrap;
-            border: 0;
-        }
-
-        /* LANDING SPECIFIC STYLES - PLAYFUL & BRUTALIST */
-
-        @keyframes heroSlideUp {
-            from {
-                opacity: 0;
-                transform: translateY(60px);
-            }
-
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        main {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            min-height: 100vh;
-            padding: clamp(88px, 10vw, 116px) clamp(24px, 3vw, 40px) clamp(72px, 8vw, 96px);
-            overflow: hidden;
-            position: relative;
-            background-color: var(--bg-cream);
-            background-image: radial-gradient(rgba(104, 93, 103, 0.14) 1.2px, transparent 1.2px);
-            background-size: 28px 28px;
-        }
-
-        .hero-card {
-            background: var(--bg-card);
-            border: var(--border-main);
-            padding: clamp(2rem, 4vw, 3rem);
-            max-width: 720px;
-            width: 100%;
-            position: relative;
-            box-shadow: 8px 8px 0 var(--ink);
-            border-radius: 20px;
-            transition:
-                box-shadow 280ms cubic-bezier(0.22, 1, 0.36, 1),
-                border-color 280ms ease;
-            will-change: box-shadow;
-            z-index: 10;
-            animation: heroSlideUp 0.9s cubic-bezier(0.22, 1, 0.36, 1) both;
-        }
-
-        .hero-card .about-name {
-            margin-bottom: 0.25rem;
-        }
-
-        .hero-card:hover {
-            box-shadow: 10px 10px 0 var(--ink);
-        }
-
-        /* Decorative Background Shapes */
-        .decor {
-            position: absolute;
-            border: var(--border-main);
-            z-index: 1;
-            cursor: grab;
-            user-select: none;
-            -webkit-user-select: none;
-            transition: box-shadow 0.25s ease, filter 0.3s ease;
-        }
-
-        .decor:hover {
-            filter: brightness(1.08) saturate(1.2);
-        }
-
-        .decor:active {
-            cursor: grabbing;
-        }
-
-        /* Role Tag */
-        .role {
-            font-family: var(--font-body);
-            font-weight: 700;
-            color: var(--ink);
-            margin-bottom: var(--space-lg);
-            display: inline-block;
-            background: var(--accent-yellow);
-            padding: 6px 16px;
-            border: var(--border-thin);
-            border-radius: 20px;
-            box-shadow: 3px 3px 0 var(--ink);
-            letter-spacing: var(--tracking-label);
-            font-size: var(--type-label);
-        }
-
-        .bio-intro {
-            font-family: var(--font-body);
-            color: var(--ink);
-            font-weight: 500;
-            font-size: var(--type-body-lg);
-            margin-bottom: var(--space-xl);
-            line-height: 1.68;
-            max-width: 32ch;
-        }
-
-        .cta-container {
-            display: flex;
-            gap: var(--space-sm);
-            flex-wrap: wrap;
-        }
-
-        /* Header */
-        .landing-header {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            padding: clamp(20px, 3vw, 32px);
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            z-index: 20;
-            pointer-events: none;
-        }
-
-        .landing-header>* {
-            pointer-events: auto;
-        }
-
-        .brand {
-            font-family: var(--font-display);
-            font-size: 1.25rem;
-            font-weight: 700;
-            letter-spacing: var(--tracking-heading);
-            color: var(--ink);
-            padding: 6px 14px;
-            border: var(--border-main);
-            background: var(--bg-card);
-            box-shadow: 4px 4px 0 var(--ink);
-            border-radius: 12px;
-            transition: transform 0.2s, box-shadow 0.2s;
-        }
-
-        .landing-mascot {
-            font-family: var(--font-display);
-            font-size: 0.95rem;
-            font-weight: 700;
-            letter-spacing: var(--tracking-label);
-            background: var(--accent-pink);
-            padding: 6px 16px;
-            border: var(--border-main);
-            box-shadow: 4px 4px 0 var(--ink);
-            border-radius: 16px;
-            transform: rotate(4deg);
-            display: inline-block;
-            cursor: pointer;
-        }
-
-        /* Footer */
-        .landing-footer {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            padding: 18px clamp(20px, 3vw, 32px);
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            font-family: var(--font-body);
-            font-weight: 600;
-            font-size: var(--type-label);
-            letter-spacing: 0.01em;
-            color: var(--ink);
-            width: 100%;
-            z-index: 20;
-            pointer-events: none;
-        }
-
-        .landing-footer>* {
-            pointer-events: auto;
-        }
-
-        @media screen and (max-width: 768px) {
-            main {
-                padding: 88px 20px 84px;
-            }
-
-            .hero-card {
-                padding: 24px;
-            }
-
-            .about-name {
-                font-size: 3.5rem;
-            }
-
-            .bio-intro {
-                margin-bottom: var(--space-lg);
-            }
-
-            .cta-container {
-                gap: var(--space-xs);
-            }
-
-            .landing-header,
-            .landing-footer {
-                padding: 20px;
-            }
-
-            .decor {
-                opacity: 0.5;
-            }
-        }
-    </style>
+    <link rel="stylesheet" href="css/home-intro.css">
 </head>
 
 <body>
+    <a class="skip-link" href="#content">Skip to content</a>
 
-    <header class="landing-header">
-        <div class="brand">vedantium.dev</div>
-        <div class="landing-mascot">(🌸^^)</div>
-    </header>
+    <div class="page-shell">
+        <header class="site-header">
+            <a class="brand" href="#top" aria-label="Back to top">
+                <span class="brand-badge">VD</span>
+                <span class="brand-copy">
+                    <span class="brand-name">Vedant Deshmukh</span>
+                    <span class="brand-subtitle">AI, simulation, and systems projects</span>
+                </span>
+            </a>
 
-    <main>
-        <!-- Fun Decorative Elements (Dynamically Generated in landing.js) -->
+            <nav class="site-nav" aria-label="Primary navigation">
+                <a class="nav-chip" href="#work" data-section-link="work">Work</a>
+                <a class="nav-chip" href="#focus" data-section-link="focus">Focus</a>
+                <a class="nav-chip" href="#process" data-section-link="process">Process</a>
+                <a class="nav-chip" href="about/index.html">About</a>
+                <a class="nav-chip" href="blog/index.html">Blog</a>
+            </nav>
+        </header>
 
-        <div class="hero-card">
-            <h1 class="about-name">Vedant<br>Deshmukh</h1>
-            <span class="sr-only">Also known as Vedant Sudhir Deshmukh</span>
-            <span class="role">Systems & AI Engineer</span>
+        <main id="content">
+            <section class="hero" id="top">
+                <article class="hero-copy surface-panel" data-reveal>
+                    <span class="eyebrow">Computer Engineering, machine learning, simulation, and tooling</span>
+                    <h1>Building projects where the behavior is visible and the idea is testable.</h1>
+                    <p class="hero-lead">
+                        I am Vedant Deshmukh, a Computer Engineering student building AI experiments, browser
+                        simulations, and practical software tools. I like work that can be demonstrated clearly: a
+                        model converges, a simulation moves, or a tool makes a messy task easier to use.
+                    </p>
 
-            <div class="bio-intro">
-                Computer Engineering Student & AI Enthusiast.<br>
-                Building scalable systems, exploring deep learning, and wondering why my code works.
-            </div>
+                    <div class="hero-actions">
+                        <a class="button button-primary" href="#work">See selected work</a>
+                        <a class="button button-secondary" href="about/index.html">Read about me</a>
+                        <a class="button button-secondary" href="https://github.com/Vedant9500?tab=repositories" target="_blank"
+                            rel="noreferrer">Open GitHub</a>
+                    </div>
 
-            <div class="cta-container">
-                <a href="about/index.html" class="btn btn-primary">Enter Portfolio!</a>
-                <a href="blog/index.html" class="btn btn-secondary">Research Blog</a>
-                <a href="https://github.com/Vedant9500" target="_blank" class="btn btn-secondary">My GitHub</a>
-            </div>
-        </div>
-    </main>
+                    <div class="signal-list" aria-label="Quick profile tags">
+                        <span class="signal-chip">Field: Computer Engineering</span>
+                        <span class="signal-chip">20+ public repos</span>
+                        <span class="signal-chip">Python, Go, C++, JavaScript</span>
+                        <span class="signal-chip">AI + simulation + tooling</span>
+                    </div>
+                </article>
 
-    <footer class="landing-footer">
-        <div>© 2026 Vedant Deshmukh</div>
-        <div>Made with ☕ and 💖</div>
-    </footer>
+                <aside class="hero-atlas surface-panel" data-reveal style="--delay: 100ms;">
+                    <div class="atlas-card">
+                        <span class="atlas-title">Current work map</span>
+                        <span class="core-node">Visible systems</span>
+                        <span class="node node-ai">AI models</span>
+                        <span class="node node-sim">Simulations</span>
+                        <span class="node node-sys">Systems thinking</span>
+                        <span class="node node-tools">Developer tools</span>
+                    </div>
 
-    <!-- Playful Interactions -->
-    <script type="module" src="js/landing.js"></script>
+                    <div class="atlas-grid">
+                        <article class="atlas-note">
+                            <span class="label">Angle</span>
+                            <h2 class="note-title">Projects that start with a technical question.</h2>
+                            <p class="note-copy">The build is usually how I learn. I prefer ideas that can be run, tested, and discussed concretely.</p>
+                        </article>
 
+                        <article class="atlas-note">
+                            <span class="label">Working definition</span>
+                            <p class="note-copy">Not a generic portfolio. More like a front page for the projects that best represent how I think and build.</p>
+                            <div class="status-list" aria-label="Current orientation tags">
+                                <span>Symbolic regression</span>
+                                <span>Browser simulation</span>
+                            </div>
+                        </article>
+                    </div>
+                </aside>
+            </section>
+
+            <section class="signal-band surface-panel" aria-label="Homepage stats" data-reveal>
+                <article class="stat-card">
+                    <span class="label">Public work</span>
+                    <span class="stat-value">20+</span>
+                    <p class="note-copy">Repositories across AI, utilities, simulations, and experiments.</p>
+                </article>
+
+                <article class="stat-card">
+                    <span class="label">Strongest repo signal</span>
+                    <span class="stat-value">Glassbox</span>
+                    <p class="note-copy">Symbolic regression and equation search with a clear research angle.</p>
+                </article>
+
+                <article class="stat-card">
+                    <span class="label">Browser build</span>
+                    <span class="stat-value">CelestialSim</span>
+                    <p class="note-copy">Gravitational simulation and visualization in the browser.</p>
+                </article>
+
+                <article class="stat-card">
+                    <span class="label">Tooling signal</span>
+                    <span class="stat-value">WTF</span>
+                    <p class="note-copy">A Go utility project with traction and a stronger developer-tools flavor.</p>
+                </article>
+            </section>
+
+            <section class="page-section surface-panel" id="work" data-reveal>
+                <div class="section-head">
+                    <div>
+                        <span class="section-index">01. Selected work</span>
+                        <h2>Projects with the clearest signal</h2>
+                    </div>
+
+                    <p class="section-note">
+                        The homepage stays selective on purpose. These are the repositories that communicate my fit
+                        fastest across AI, simulation, systems curiosity, and developer tooling.
+                    </p>
+                </div>
+
+                <div class="projects-grid">
+                    <a class="project-card featured" style="--tint: var(--mint-soft); --delay: 60ms;" href="https://github.com/Vedant9500/Glassbox"
+                        target="_blank" rel="noreferrer" data-reveal>
+                        <div class="project-header">
+                            <span class="project-type">AI and ML</span>
+                            <span class="project-stack">Python</span>
+                        </div>
+                        <h3>Glassbox</h3>
+                        <p class="project-desc">
+                            Symbolic regression with operation neural networks, fast-path equation search, and
+                            evolutionary optimization. It is the strongest summary of your research-leaning technical
+                            side because the problem, method, and ambition are immediately visible.
+                        </p>
+                        <div class="project-tags">
+                            <span>Neuro-symbolic</span>
+                            <span>Equation discovery</span>
+                            <span>2026</span>
+                        </div>
+                        <span class="project-link">Open repository</span>
+                    </a>
+
+                    <a class="project-card" style="--tint: var(--sky-soft); --delay: 120ms;" href="https://github.com/Vedant9500/CelestialSim"
+                        target="_blank" rel="noreferrer" data-reveal>
+                        <div class="project-header">
+                            <span class="project-type">Simulation</span>
+                            <span class="project-stack">JavaScript</span>
+                        </div>
+                        <h3>CelestialSim</h3>
+                        <p class="project-desc">
+                            A browser-based gravitational simulation that makes the system behavior easy to see and easy
+                            to explain in interviews.
+                        </p>
+                        <div class="project-tags">
+                            <span>Visualization</span>
+                            <span>Physics intuition</span>
+                            <span>Realtime</span>
+                        </div>
+                        <span class="project-link">Open repository</span>
+                    </a>
+
+                    <a class="project-card" style="--tint: var(--rose-soft); --delay: 180ms;" href="https://github.com/Vedant9500/Celestialsim_C-GL"
+                        target="_blank" rel="noreferrer" data-reveal>
+                        <div class="project-header">
+                            <span class="project-type">Graphics and systems</span>
+                            <span class="project-stack">C++</span>
+                        </div>
+                        <h3>Celestialsim_C-GL</h3>
+                        <p class="project-desc">
+                            A lower-level path for the same simulation curiosity, expressed through C++ and
+                            graphics-oriented implementation choices.
+                        </p>
+                        <div class="project-tags">
+                            <span>OpenGL path</span>
+                            <span>Performance mindset</span>
+                        </div>
+                        <span class="project-link">Open repository</span>
+                    </a>
+
+                    <a class="project-card" style="--tint: var(--yellow-soft); --delay: 240ms;" href="https://github.com/Vedant9500/WTF"
+                        target="_blank" rel="noreferrer" data-reveal>
+                        <div class="project-header">
+                            <span class="project-type">Developer tooling</span>
+                            <span class="project-stack">Go</span>
+                        </div>
+                        <h3>WTF</h3>
+                        <p class="project-desc">
+                            A Go project with a stronger tooling personality and enough public traction to be worth
+                            surfacing early.
+                        </p>
+                        <div class="project-tags">
+                            <span>5 stars</span>
+                            <span>CLI thinking</span>
+                        </div>
+                        <span class="project-link">Open repository</span>
+                    </a>
+
+                    <a class="project-card" style="--tint: rgba(200, 190, 198, 0.22); --delay: 300ms;"
+                        href="https://github.com/Vedant9500/Jikan_Filler_Fetcher" target="_blank" rel="noreferrer" data-reveal>
+                        <div class="project-header">
+                            <span class="project-type">API utility</span>
+                            <span class="project-stack">Go</span>
+                        </div>
+                        <h3>Jikan Filler Fetcher</h3>
+                        <p class="project-desc">
+                            A smaller but clear utility that shows API integration, practical use, and clean scope.
+                        </p>
+                        <div class="project-tags">
+                            <span>2 stars</span>
+                            <span>Public API</span>
+                        </div>
+                        <span class="project-link">Open repository</span>
+                    </a>
+
+                    <article class="project-card collection" style="--tint: rgba(158, 181, 191, 0.16); --delay: 360ms;"
+                        data-reveal>
+                        <div class="project-header">
+                            <span class="project-type">Experiment shelf</span>
+                            <span class="project-stack">Python and more</span>
+                        </div>
+                        <h3>Other predictive and vision studies</h3>
+                        <p class="project-desc">
+                            Additional repos around handwritten digit recognition, waste segregation, stock prediction,
+                            climate forecasting, and F1 Elo analytics. They matter less as branding pieces, but they do
+                            show repetition, range, and a habit of learning by building.
+                        </p>
+                        <div class="collection-list" aria-label="Additional repositories">
+                            <span>Handwritten-Digit-Recognizer</span>
+                            <span>waste-segregation</span>
+                            <span>Stock_Predictor</span>
+                            <span>climate-predictor</span>
+                            <span>F1_elo_analytics</span>
+                        </div>
+                    </article>
+                </div>
+            </section>
+
+            <section class="page-section surface-panel" id="focus" data-reveal>
+                <div class="section-head">
+                    <div>
+                        <span class="section-index">02. Focus</span>
+                        <h2>What ties the work together</h2>
+                    </div>
+
+                    <p class="section-note">
+                        The page should make the through-line obvious. This is not a random collection of student
+                        projects. It is a set of builds around visible behavior, technical curiosity, and concrete
+                        software experiments.
+                    </p>
+                </div>
+
+                <div class="focus-grid">
+                    <article class="focus-card" data-reveal style="--delay: 80ms;">
+                        <span class="label">Computer Engineering</span>
+                        <h3>Comfortable with the layer below the interface.</h3>
+                        <p>
+                            There is a recurring systems angle in the work: lower-level curiosity, performance thinking,
+                            graphics-oriented implementation, and interest in how software behaves under the hood.
+                        </p>
+                    </article>
+
+                    <article class="focus-card" data-reveal style="--delay: 140ms;">
+                        <span class="label">AI and ML</span>
+                        <h3>Learning through concrete model experiments.</h3>
+                        <p>
+                            From symbolic regression to classification and predictive projects, the strongest pattern is
+                            using working builds to understand ideas rather than keeping them abstract.
+                        </p>
+                    </article>
+
+                    <article class="focus-card" data-reveal style="--delay: 200ms;">
+                        <span class="label">Tooling and communication</span>
+                        <h3>Useful tools, clear interfaces, visible outcomes.</h3>
+                        <p>
+                            The simulation and utility work balance technical depth with demonstrability, which makes the
+                            portfolio easier to discuss with both recruiters and engineers.
+                        </p>
+                    </article>
+                </div>
+            </section>
+
+            <section class="page-section surface-panel" id="process" data-reveal>
+                <div class="section-head">
+                    <div>
+                        <span class="section-index">03. Process</span>
+                        <h2>Build first, understand deeper</h2>
+                    </div>
+
+                    <p class="section-note">
+                        This is where the homepage becomes more than a repository list. It should explain how ideas turn
+                        into projects and why the work feels coherent.
+                    </p>
+                </div>
+
+                <div class="process-layout">
+                    <aside class="process-side" data-reveal style="--delay: 80ms;">
+                        <span class="label">Notebook summary</span>
+                        <h3>Good projects start with a technical question that can be tested.</h3>
+                        <ul>
+                            <li>Pick a problem where the behavior can be seen, measured, or explained clearly.</li>
+                            <li>Build the smallest honest version first, then improve the structure and presentation.</li>
+                            <li>Keep the result discussable in interviews, not just technically interesting in isolation.</li>
+                        </ul>
+                    </aside>
+
+                    <div class="process-grid">
+                        <article class="process-card" data-reveal style="--delay: 120ms;">
+                            <span class="label">01. Start with behavior</span>
+                            <h3>Prefer ideas that produce something observable.</h3>
+                            <p>
+                                Models, simulations, and tools all have one advantage in common: they give you something
+                                tangible to evaluate instead of vague claims.
+                            </p>
+                        </article>
+
+                        <article class="process-card" data-reveal style="--delay: 180ms;">
+                            <span class="label">02. Build the honest version</span>
+                            <h3>Clarity matters more than looking advanced too early.</h3>
+                            <p>
+                                The strongest portfolio pieces are the ones where the idea, build, and outcome are easy
+                                to follow without extra decoding.
+                            </p>
+                        </article>
+
+                        <article class="process-card" data-reveal style="--delay: 240ms;">
+                            <span class="label">03. Refine the explanation</span>
+                            <h3>Make the project legible to someone else.</h3>
+                            <p>
+                                A good homepage does not just show work. It gives enough framing that a recruiter or
+                                interviewer can understand why each project is here.
+                            </p>
+                        </article>
+                    </div>
+                </div>
+            </section>
+
+            <section class="writing-callout surface-panel" id="writing" data-reveal>
+                <div>
+                    <span class="section-index">04. Writing</span>
+                    <h2>The blog lives separately now.</h2>
+                    <p>
+                        The homepage should scan quickly. Research notes, experiments, and archive browsing belong on
+                        the blog page, where the writing can breathe without competing with the main portfolio story.
+                    </p>
+                </div>
+
+                <div class="hero-actions">
+                    <a class="button button-primary" href="blog/index.html">Open blog</a>
+                    <a class="button button-secondary" href="playful-home.html">Playful archive</a>
+                </div>
+            </section>
+
+            <footer class="footer surface-panel" data-reveal>
+                <div>
+                    <p class="footer-copy">Vedant Deshmukh. Computer Engineering student building AI experiments, simulations, and practical software tools.</p>
+                </div>
+
+                <div class="footer-links">
+                    <a href="about/index.html">About</a>
+                    <a href="https://github.com/Vedant9500" target="_blank" rel="noreferrer">GitHub</a>
+                    <a href="https://www.linkedin.com/in/vedant-deshmukh-82441928b/" target="_blank" rel="noreferrer">LinkedIn</a>
+                    <a href="blog/index.html">Blog</a>
+                    <a href="playful-home.html">Playful version</a>
+                </div>
+            </footer>
+        </main>
+    </div>
+
+    <script src="js/home-intro.js" defer></script>
 </body>
 
 </html>
