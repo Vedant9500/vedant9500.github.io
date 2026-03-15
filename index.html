@@ -1,266 +1,200 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Vedant Deshmukh | Computer Engineering, AI, Simulation, and Systems Projects</title>
+    <title>Vedant Deshmukh | Soft Brutalist Systems Lab</title>
 
-    <meta name="description"
-        content="Vedant Deshmukh is a Computer Engineering student building AI experiments, simulations, and practical developer tools across machine learning, browser simulation, and systems-oriented software.">
+    <meta name="description" content="Vedant Deshmukh is a Computer Engineering student building AI experiments, simulations, and practical developer tools.">
     <meta name="author" content="Vedant Sudhir Deshmukh">
-    <meta name="keywords"
-        content="Vedant Deshmukh, Computer Engineering, AI portfolio, machine learning, simulation, systems engineering, symbolic regression, developer tools, vedantium.dev">
-    <meta name="theme-color" content="#F6F1E8">
-    <link rel="canonical" href="https://vedantium.dev/">
+    <meta name="theme-color" content="#f2ece4">
 
-    <meta property="og:title" content="Vedant Deshmukh | Computer Engineering, AI, Simulation, and Systems Projects">
-    <meta property="og:description"
-        content="Single-page portfolio of Vedant Deshmukh, a Computer Engineering student building AI experiments, simulations, and practical tools.">
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://vedantium.dev/">
-    <meta property="og:site_name" content="Vedantium.dev">
-    <meta property="og:locale" content="en_US">
-    <meta property="og:image" content="https://vedantium.dev/assets/og-image.png">
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <!-- Fraunces for Display, Outfit for Body, JetBrains Mono for system-level metadata -->
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,700;1,9..144,400&family=Outfit:wght@400;500;600&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
 
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Vedant Deshmukh | Computer Engineering, AI, Simulation, and Systems Projects">
-    <meta name="twitter:description"
-        content="Single-page portfolio of Vedant Deshmukh, focused on AI, simulation, and practical software systems.">
-    <meta name="twitter:image" content="https://vedantium.dev/assets/og-image.png">
-
-    <script type="application/ld+json">
-    {
-        "@context": "https://schema.org",
-        "@type": "Person",
-        "name": "Vedant Deshmukh",
-        "alternateName": ["Vedant Sudhir Deshmukh", "Vedantium"],
-        "url": "https://vedantium.dev",
-        "jobTitle": "Computer Engineering Student",
-        "description": "Computer Engineering student building AI experiments, simulations, and practical developer tools.",
-        "sameAs": [
-            "https://github.com/Vedant9500",
-            "https://www.linkedin.com/in/vedant-deshmukh-82441928b/",
-            "https://instagram.com/vedant_s_d"
-        ],
-        "knowsAbout": [
-            "Artificial Intelligence",
-            "Machine Learning",
-            "Simulation",
-            "Systems Engineering",
-            "Symbolic Regression",
-            "Computer Vision",
-            "C++",
-            "Python",
-            "Go",
-            "JavaScript"
-        ],
-        "alumniOf": {
-            "@type": "EducationalOrganization",
-            "name": "Computer Engineering Program"
-        }
-    }
-    </script>
-
+    <!-- Styles -->
+    <link rel="stylesheet" href="css/desktop/systems.css">
+    
     <script>
         document.documentElement.classList.add('js');
     </script>
-
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="preload" as="style"
-        href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Outfit:wght@400;500;600;700;800&display=swap"
-        onload="this.onload=null;this.rel='stylesheet'">
-    <noscript>
-        <link rel="stylesheet"
-            href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Outfit:wght@400;500;600;700;800&display=swap">
-    </noscript>
-
-    <link rel="stylesheet" href="css/home-intro.css">
 </head>
-
 <body>
-    <a class="skip-link" href="#content">Skip to content</a>
 
-    <div class="page-shell">
-        <header class="site-header">
-            <a class="brand" href="#top" aria-label="Back to top">
-                <span class="brand-badge">VD</span>
-                <span class="brand-copy">
-                    <span class="brand-name">Vedant Deshmukh</span>
-                    <span class="brand-subtitle">Computer Engineering, AI, simulation, and systems projects</span>
-                </span>
-            </a>
+    <!-- Fixed Global UI -->
+    <nav class="fixed-nav reveal-fade">
+        <div class="brand-block">
+            <a href="#hero" class="brand-name">Vedant Deshmukh</a>
+            <span class="brand-sys">Sys. ENG / AI LAB</span>
+        </div>
+        <div class="nav-links">
+            <a href="#about" class="nav-link">About</a>
+            <a href="#work" class="nav-link">Selected Work</a>
+            <a href="blog/index.html" class="nav-link">Journal</a>
+        </div>
+    </nav>
 
-            <nav class="site-nav" aria-label="Primary navigation">
-                <a class="nav-chip" href="#about" data-section-link="about">About</a>
-                <a class="nav-chip" href="#work" data-section-link="work">Work</a>
-                <a class="nav-chip" href="blog/index.html">Blog</a>
-            </nav>
-        </header>
-
-        <main id="content">
-            <section class="section-shell hero-intro" id="top" data-reveal>
-                <article class="hero-copy">
-                    <span class="eyebrow">Single-page portfolio</span>
-                    <h1>Building AI and simulation projects that are easy to run, inspect, and discuss.</h1>
-                    <p class="hero-lead">
-                        I am Vedant Deshmukh, a Computer Engineering student focused on machine learning experiments,
-                        simulation systems, and practical software tooling. This page is intentionally structured so you
-                        can scan identity, technical signal, and strongest work without jumping through mismatched page
-                        designs.
-                    </p>
-
-                    <div class="hero-actions">
-                        <a class="button button-primary" href="#work">See selected projects</a>
-                        <a class="button button-secondary" href="#about">Read about me</a>
-                        <a class="button button-secondary" href="https://github.com/Vedant9500?tab=repositories" target="_blank"
-                            rel="noreferrer">Open GitHub</a>
-                    </div>
-                </article>
-
-                <aside class="hero-aside">
-                    <span class="panel-label">Current focus</span>
-                    <ul class="focus-points">
-                        <li>Symbolic regression and model behavior</li>
-                        <li>Browser and C++ simulation experiments</li>
-                        <li>Developer tooling with practical utility</li>
-                        <li>Clear technical communication in portfolio work</li>
-                    </ul>
-                </aside>
-            </section>
-
-            <section class="section-shell page-section" id="about" data-reveal>
-                <div class="section-head">
-                    <div>
-                        <span class="section-kicker">01 · About</span>
-                        <h2>One coherent profile, not scattered pages.</h2>
-                    </div>
-                    <p class="section-summary">
-                        This section replaces the old handoff to a different visual system. The goal is consistency: one
-                        design language, clear section transitions, and less visual noise.
-                    </p>
-                </div>
-
-                <div class="about-layout">
-                    <article class="about-copy">
-                        <p>
-                            My work usually starts with a technical question and becomes a buildable artifact: a model,
-                            a simulation, or a tool. I prefer projects where behavior is visible and decisions are
-                            explainable.
-                        </p>
-                        <p>
-                            I am most interested in intersections between machine learning, systems thinking, and
-                            practical product execution. That means not just training models, but building the interface
-                            and structure needed to make the work usable and discussable.
-                        </p>
-                        <div class="inline-pills" aria-label="Core skills">
-                            <span>Python</span>
-                            <span>Go</span>
-                            <span>C++</span>
-                            <span>JavaScript</span>
-                            <span>Machine Learning</span>
-                            <span>Simulation</span>
-                        </div>
-                    </article>
-
-                    <div class="stat-grid" aria-label="Quick profile stats">
-                        <article class="stat-block">
-                            <span class="stat-label">Field</span>
-                            <span class="stat-value">Computer Engineering</span>
-                        </article>
-                        <article class="stat-block">
-                            <span class="stat-label">Public repositories</span>
-                            <span class="stat-value">20+</span>
-                        </article>
-                        <article class="stat-block">
-                            <span class="stat-label">Strongest signal</span>
-                            <span class="stat-value">Glassbox</span>
-                        </article>
-                    </div>
-                </div>
-            </section>
-
-            <section class="section-shell page-section" id="work" data-reveal>
-                <div class="section-head">
-                    <div>
-                        <span class="section-kicker">02 · Work</span>
-                        <h2>Selected projects with the clearest signal.</h2>
-                    </div>
-                    <p class="section-summary">
-                        Curated to reduce noise. Each card reflects a different capability: ML research, simulation,
-                        systems-level implementation, and developer tooling.
-                    </p>
-                </div>
-
-                <div class="work-grid">
-                    <a class="work-card work-card-featured" href="https://github.com/Vedant9500/Glassbox" target="_blank"
-                        rel="noreferrer" data-reveal>
-                        <div class="work-meta">
-                            <span class="work-type">AI + ML</span>
-                            <span class="work-stack">Python</span>
-                        </div>
-                        <h3>Glassbox</h3>
-                        <p>
-                            Symbolic regression with operation neural networks and equation search. It best represents
-                            my research-oriented direction because the problem and output are both concrete.
-                        </p>
-                        <div class="tag-row">
-                            <span class="tag">Neuro-symbolic</span>
-                            <span class="tag">Equation discovery</span>
-                            <span class="tag">2026</span>
-                        </div>
-                    </a>
-
-                    <a class="work-card" href="https://github.com/Vedant9500/CelestialSim" target="_blank" rel="noreferrer"
-                        data-reveal>
-                        <div class="work-meta">
-                            <span class="work-type">Simulation</span>
-                            <span class="work-stack">JavaScript</span>
-                        </div>
-                        <h3>CelestialSim</h3>
-                        <p>Browser-based gravitational simulation focused on visible behavior and explainable dynamics.</p>
-                    </a>
-
-                    <a class="work-card" href="https://github.com/Vedant9500/Celestialsim_C-GL" target="_blank" rel="noreferrer"
-                        data-reveal>
-                        <div class="work-meta">
-                            <span class="work-type">Systems + Graphics</span>
-                            <span class="work-stack">C++</span>
-                        </div>
-                        <h3>Celestialsim_C-GL</h3>
-                        <p>Lower-level simulation path with graphics and performance-oriented implementation choices.</p>
-                    </a>
-
-                    <a class="work-card" href="https://github.com/Vedant9500/WTF" target="_blank" rel="noreferrer" data-reveal>
-                        <div class="work-meta">
-                            <span class="work-type">Developer tooling</span>
-                            <span class="work-stack">Go</span>
-                        </div>
-                        <h3>WTF</h3>
-                        <p>Go utility project with stronger public traction and practical developer use.</p>
-                    </a>
-                </div>
-            </section>
-
-            <footer class="section-shell footer" data-reveal>
-                <p class="footer-copy">
-                    Vedant Deshmukh. Computer Engineering student building AI experiments, simulations, and practical
-                    software tools.
-                </p>
-
-                <div class="footer-links">
-                    <a href="#about">About</a>
-                    <a href="#work">Work</a>
-                    <a href="blog/index.html">Blog</a>
-                    <a href="https://github.com/Vedant9500" target="_blank" rel="noreferrer">GitHub</a>
-                    <a href="https://www.linkedin.com/in/vedant-deshmukh-82441928b/" target="_blank" rel="noreferrer">LinkedIn</a>
-                </div>
-            </footer>
-        </main>
+    <div class="scroll-progress reveal-fade">
+        <span class="progress-text">01 / 04</span>
+        <div class="progress-line">
+            <div class="progress-fill"></div>
+        </div>
     </div>
 
-    <script src="js/home-intro.js" defer></script>
-</body>
+    <!-- Main Scroll Container -->
+    <main id="content">
 
+        <!-- 01: Hero Section -->
+        <section class="section-slide" id="hero" data-scroll-section>
+            <div class="bg-grid"></div>
+            
+            <div class="split-layout">
+                <div>
+                    <span class="meta-label reveal-fade delay-1">v.2026.1 / Initializing</span>
+                    <h1 class="display-title">
+                        <span class="reveal-inner"><div class="reveal-text">Building</div></span>
+                        <span class="reveal-inner"><div class="reveal-text delay-1"><i>Intelligent</i></div></span>
+                        <span class="reveal-inner"><div class="reveal-text delay-2">Systems.</div></span>
+                    </h1>
+                </div>
+                <div>
+                    <p class="body-lead reveal-text delay-3">
+                        I am Vedant, a Computer Engineering student researching machine learning behavior, building deep browser simulations, and engineering low-level software utilities.
+                    </p>
+                    <div class="reveal-fade delay-4">
+                        <a href="#work" class="btn-brutal">View Data & Work</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 02: About Section -->
+        <section class="section-slide" id="about" data-scroll-section>
+            <div class="bg-grid"></div>
+            
+            <div class="split-layout">
+                <div>
+                    <span class="meta-label reveal-fade delay-1">Profile Data</span>
+                    <h2 class="display-title">
+                        <span class="reveal-inner"><div class="reveal-text">Explainable</div></span>
+                        <span class="reveal-inner"><div class="reveal-text delay-1">Mechanics.</div></span>
+                    </h2>
+                    <div class="sys-line reveal-fade delay-2"></div>
+                </div>
+                <div>
+                    <div class="sys-box reveal-text delay-3">
+                        <p class="body-lead">
+                            My work begins at the intersection of mathematical theory and systems implementation. I prefer projects where mechanics are visible, behavior is explainable, and architecture is intentional.
+                        </p>
+                        <p class="body-lead" style="font-size: 1rem;">
+                            Currently focusing on symbolic regression, operation neural networks, and spatial simulations.
+                        </p>
+                        
+                        <div class="sys-line" style="margin: 1.5rem 0;"></div>
+                        
+                        <div style="font-family: var(--font-mono); font-size: 0.75rem; color: var(--ink-soft); display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+                            <div>> Lang: Python, C++, Go, JS</div>
+                            <div>> Focus: ML, Graphics, Tools</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 03: Selected Work -->
+        <section class="section-slide" id="work" data-scroll-section>
+            <div class="bg-grid"></div>
+            
+            <div style="width: 100%; max-width: 1200px; margin: 0 auto; z-index: 10; position: relative;">
+                <span class="meta-label reveal-fade">Operation Index</span>
+                
+                <div class="work-list">
+                    <div class="work-item delay-1 reveal-text">
+                        <div class="work-header">
+                            <div class="work-title">Glassbox</div>
+                            <div class="work-meta">
+                                <span>Neuro-Symbolic Search</span>
+                                <span>Python</span>
+                                <span class="work-toggle">+</span>
+                            </div>
+                        </div>
+                        <div class="work-body">
+                            <div class="work-inner">
+                                <p class="body-lead" style="margin-bottom: 2rem; max-width: 60ch;">Glassbox is a neuro-symbolic search engine that uses operation neural networks to discover mathematical equations directly from data. By enforcing algebraic structure during training, it ensures that output models are inherently interpretable rather than black-box approximations.</p>
+                                <a href="https://github.com/Vedant9500/Glassbox" target="_blank" class="btn-brutal">View Repository</a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="work-item delay-2 reveal-text">
+                        <div class="work-header">
+                            <div class="work-title">CelestialSim</div>
+                            <div class="work-meta">
+                                <span>Web-based N-Body</span>
+                                <span>JS / WebGL</span>
+                                <span class="work-toggle">+</span>
+                            </div>
+                        </div>
+                        <div class="work-body">
+                            <div class="work-inner">
+                                <p class="body-lead" style="margin-bottom: 2rem; max-width: 60ch;">A browser-based gravitational simulation focused on visible behavior and explainable dynamics. It processes hundreds of orbital bodies in real-time, leveraging Web Workers for physics calculations and a minimalist interface for interaction.</p>
+                                <a href="https://github.com/Vedant9500/CelestialSim" target="_blank" class="btn-brutal">View Repository</a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="work-item delay-3 reveal-text" style="border-bottom: none;">
+                        <div class="work-header">
+                            <div class="work-title">WTF</div>
+                            <div class="work-meta">
+                                <span>Developer Tools</span>
+                                <span>Go</span>
+                                <span class="work-toggle">+</span>
+                            </div>
+                        </div>
+                        <div class="work-body">
+                            <div class="work-inner">
+                                <p class="body-lead" style="margin-bottom: 2rem; max-width: 60ch;">A minimalist utility built in Go engineered for practical, daily developer use. It focuses on low latency, rigorous error handling, and a zero-dependency deployment model to solve immediate terminal-based workflows.</p>
+                                <a href="https://github.com/Vedant9500/WTF" target="_blank" class="btn-brutal">View Repository</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 04: Footer / Connect -->
+        <section class="section-slide section-dark" id="contact" data-scroll-section>
+            <div class="split-layout">
+                <div>
+                    <span class="meta-label reveal-fade">Terminal</span>
+                    <div class="footer-links">
+                        <a href="https://github.com/Vedant9500" class="footer-link reveal-text delay-1">Github</a>
+                        <a href="https://www.linkedin.com/in/vedant-deshmukh-82441928b/" class="footer-link reveal-text delay-2">LinkedIn</a>
+                        <a href="blog/index.html" class="footer-link reveal-text delay-3">Journal</a>
+                    </div>
+                </div>
+                <div>
+                    <div class="sys-box reveal-text delay-4" style="background: transparent; border-color: rgba(255,253,249,0.2);">
+                        <p class="body-lead" style="color: var(--paper);">
+                            Based in the intersection of theory and deployment. Open for discussion on systems programming, neuro-symbolic research, and well-designed tooling.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            
+            <div style="position: absolute; bottom: 2vw; left: 2vw; font-family: var(--font-mono); font-size: 0.65rem; color: rgba(255,253,249,0.5);" class="reveal-fade delay-4">
+                © 2026 Vedant Deshmukh. Soft Brutalist Systems Lab v1.0
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Scripts -->
+    <script src="js/desktop/scroll-engine.js"></script>
+
+</body>
 </html>
