@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,7 +10,7 @@
     <meta name="author" content="Vedant Sudhir Deshmukh">
     <meta name="keywords"
         content="Vedant Deshmukh, research blog, AI, machine learning, symbolic regression, simulation, systems, project notes, vedantium.dev">
-    <meta name="theme-color" content="#F6F1E8">
+    <meta name="theme-color" content="#f2ece4">
     <link rel="canonical" href="https://vedantium.dev/blog/">
 
     <meta property="og:title" content="Research Blog — Vedant Deshmukh | Vedantium.dev">
@@ -49,15 +48,16 @@
         document.documentElement.classList.add('js');
     </script>
 
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="../assets/favicon.png">
+    <link rel="apple-touch-icon" href="../assets/favicon.png">
+
+    <!-- Fonts: Fraunces (display), Outfit (body), JetBrains Mono (system metadata) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="preload" as="style"
-        href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Outfit:wght@400;500;600;700;800&display=swap"
-        onload="this.onload=null;this.rel='stylesheet'">
-    <noscript>
-        <link rel="stylesheet"
-            href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Outfit:wght@400;500;600;700;800&display=swap">
-    </noscript>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,700;1,9..144,400&family=Outfit:wght@400;500;600&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome (used by blog.js for icons) -->
     <link rel="preload" as="style" crossorigin
         href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
         onload="this.onload=null;this.rel='stylesheet'">
@@ -65,65 +65,120 @@
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     </noscript>
 
-    <link rel="stylesheet" href="../css/home-intro.css">
+    <!-- Systems CSS (current UI) -->
+    <link rel="stylesheet" href="../css/desktop/systems.css">
+
+    <!-- Blog-specific overrides: disable scroll-snap, use natural scroll -->
+    <style>
+        /* Blog is a normal-scroll page, not a full-screen snap experience */
+        html {
+            scroll-snap-type: none !important;
+        }
+
+        /* Hero: min-height viewport but doesn't trap scroll */
+        .section-blog-hero {
+            position: relative;
+            width: 100%;
+            min-height: 100dvh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 8rem 5vw 6rem 5vw;
+        }
+
+        /* Footer: dark full-width section, natural height */
+        .section-blog-footer {
+            position: relative;
+            width: 100%;
+            min-height: 60vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 6rem 5vw 5rem 5vw;
+        }
+
+        /* On the blog, is-inview is added directly to animated elements,
+           not to parent sections. These rules mirror the parent-child pattern
+           from systems.css but work when the class is self-applied. */
+        .reveal-text.is-inview {
+            transform: translateY(0) !important;
+            opacity: 1 !important;
+        }
+
+        .reveal-fade.is-inview {
+            opacity: 1 !important;
+            filter: blur(0) !important;
+        }
+
+        /* Also make the nav immediately visible */
+        .fixed-nav.is-inview {
+            opacity: 1 !important;
+            filter: blur(0) !important;
+        }
+    </style>
 </head>
 
 <body>
-    <a class="skip-link" href="#content">Skip to content</a>
 
-    <div class="page-shell">
-        <header class="site-header">
-            <a class="brand" href="../" aria-label="Go to homepage">
-                <span class="brand-badge">VD</span>
-                <span class="brand-copy">
-                    <span class="brand-name">Vedant Deshmukh</span>
-                    <span class="brand-subtitle">Research notes, experiments, and build logs</span>
-                </span>
-            </a>
+    <!-- Fixed Global Navigation (matches index.html exactly) -->
+    <nav class="fixed-nav reveal-fade">
+        <div class="brand-block">
+            <a href="../" class="brand-name">Vedant Deshmukh</a>
+            <span class="brand-sys">Sys. ENG / AI LAB</span>
+        </div>
+        <div class="nav-links">
+            <a href="../#about" class="nav-link">About</a>
+            <a href="../#work" class="nav-link">Selected Work</a>
+            <a href="#hero" class="nav-link">Journal</a>
+        </div>
+    </nav>
 
-            <nav class="site-nav" aria-label="Blog navigation">
-                <a class="nav-chip" href="../">Home</a>
-                <a class="nav-chip" href="../#about">About</a>
-                <a class="nav-chip" href="../#work">Work</a>
-                <a class="nav-chip" href="#top" aria-current="true">Blog</a>
-            </nav>
-        </header>
+    <main id="content">
 
-        <main id="content">
-            <section class="section-shell hero-intro journal-hero" id="top" data-reveal>
-                <article class="hero-copy">
-                    <span class="eyebrow">Research blog</span>
-                    <h1>Build notes, experiments, and what changed each day.</h1>
-                    <p class="hero-lead">
-                        This page tracks progress in AI experiments and related systems work. Entries include practical
-                        implementation notes, what broke, what got fixed, and why decisions changed.
-                    </p>
+        <!-- 01: Journal Hero -->
+        <section class="section-blog-hero" id="hero" data-reveal-instant>
+            <div class="bg-grid"></div>
 
-                    <div class="hero-actions">
-                        <a class="button button-primary" href="https://github.com/Vedant9500/Glassbox" target="_blank" rel="noopener">Open Glassbox</a>
-                        <a class="button button-secondary" href="../">Back to homepage</a>
+            <div class="split-layout">
+                <div>
+                    <span class="meta-label reveal-fade delay-1">Research Journal</span>
+                    <h1 class="display-title">
+                        <span class="reveal-inner"><div class="reveal-text">Build</div></span>
+                        <span class="reveal-inner"><div class="reveal-text delay-1"><i>notes &</i></div></span>
+                        <span class="reveal-inner"><div class="reveal-text delay-2">experiments.</div></span>
+                    </h1>
+                </div>
+                <div>
+                    <div class="sys-box reveal-text delay-3">
+                        <span class="meta-label" style="margin-bottom: 0.75rem;">Feed Status</span>
+                        <p class="body-lead" style="font-size: 1rem; margin-bottom: 1rem;">
+                            Progress tracked across AI experiments, simulations, and systems work. What broke, what got fixed, and why decisions changed.
+                        </p>
+                        <div class="sys-line" style="margin: 1rem 0;"></div>
+                        <div style="font-family: var(--font-mono); font-size: 0.75rem; color: var(--ink-soft); display: grid; gap: 0.4rem;">
+                            <div>&gt; <strong id="blog-post-count">Loading posts...</strong></div>
+                            <div>&gt; Newest posts appear first</div>
+                            <div>&gt; Cards are expandable</div>
+                        </div>
                     </div>
-                </article>
-
-                <aside class="hero-aside">
-                    <span class="panel-label">Feed status</span>
-                    <ul class="focus-points">
-                        <li><strong id="blog-post-count">Loading posts...</strong></li>
-                        <li>Newest posts appear first</li>
-                        <li>Cards are expandable for full notes</li>
-                    </ul>
-                </aside>
-            </section>
-
-            <section class="section-shell page-section" id="entries" data-reveal>
-                <div class="section-head">
-                    <div>
-                        <span class="section-kicker">Entries</span>
-                        <h2>Chronological project updates</h2>
+                    <div class="reveal-fade delay-4" style="margin-top: 1.5rem;">
+                        <a href="https://github.com/Vedant9500/Glassbox" target="_blank" rel="noopener" class="btn-brutal">Open Glassbox</a>
                     </div>
-                    <p class="section-summary">
-                        Structured as compact cards for scanning, with expandable details for deeper review.
-                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 02: Journal Feed -->
+        <section class="section-blog-feed" id="entries">
+            <div class="bg-grid"></div>
+
+            <div class="blog-feed-inner">
+                <div class="reveal-fade" style="margin-bottom: 2rem;">
+                    <span class="meta-label">Entries</span>
+                    <div style="display: flex; justify-content: space-between; align-items: flex-end; border-bottom: 1px solid var(--line-strong); padding-bottom: 1.5rem; margin-top: 0.5rem;">
+                        <h2 class="display-title" style="font-size: clamp(2rem, 4vw, 4rem); margin-bottom: 0;">Chronological updates</h2>
+                        <span style="font-family: var(--font-mono); font-size: 0.75rem; color: var(--ink-faint); text-transform: uppercase; letter-spacing: 0.1em;">Newest first</span>
+                    </div>
                 </div>
 
                 <div class="blog-feed" id="blog-feed">
@@ -132,20 +187,98 @@
                         <div>Loading posts...</div>
                     </div>
                 </div>
-            </section>
+            </div>
+        </section>
 
-            <footer class="section-shell footer" data-reveal>
-                <p class="footer-copy">Research notes by Vedant Deshmukh.</p>
-                <div class="footer-links">
-                    <a href="../">Home</a>
-                    <a href="../#work">Work</a>
+        <!-- 03: Footer -->
+        <section class="section-blog-footer section-dark" id="contact">
+            <div class="split-layout">
+                <div>
+                    <span class="meta-label reveal-fade">Terminal</span>
+                    <div class="footer-links">
+                        <a href="https://github.com/Vedant9500" class="footer-link reveal-text delay-1">Github</a>
+                        <a href="https://www.linkedin.com/in/vedant-deshmukh-82441928b/" class="footer-link reveal-text delay-2">LinkedIn</a>
+                        <a href="../" class="footer-link reveal-text delay-3">Home</a>
+                    </div>
                 </div>
-            </footer>
-        </main>
-    </div>
+                <div>
+                    <div class="sys-box reveal-text delay-4" style="background: transparent; border-color: rgba(255,253,249,0.2);">
+                        <p class="body-lead" style="color: var(--paper);">
+                            Research notes and build logs across AI experiments, symbolic regression, and systems work.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div style="position: absolute; bottom: 2vw; left: 2vw; font-family: var(--font-mono); font-size: 0.65rem; color: rgba(255,253,249,0.5);" class="reveal-fade delay-4">
+                © 2026 Vedant Deshmukh. Research Journal.
+            </div>
+        </section>
+
+    </main>
 
     <script src="../js/blog.js"></script>
-    <script src="../js/home-intro.js" defer></script>
+    <script>
+        /* Blog reveal + dark-nav observer
+           Triggers .is-inview on elements with .reveal-fade or .reveal-text
+           when they enter the viewport. Also swaps nav color for dark footer. */
+        (function () {
+            const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+            const nav = document.querySelector('.fixed-nav');
+
+            // Immediately show the nav
+            if (nav) nav.classList.add('is-inview');
+
+            if (prefersReduced) {
+                document.querySelectorAll('.reveal-fade, .reveal-text').forEach(el => {
+                    el.classList.add('is-inview');
+                });
+            } else {
+                // Above-the-fold (hero): reveal immediately on next frame
+                const heroSection = document.querySelector('[data-reveal-instant]');
+                if (heroSection) {
+                    requestAnimationFrame(() => {
+                        heroSection.querySelectorAll('.reveal-fade, .reveal-text').forEach((el, i) => {
+                            // Stagger via setTimeout to honor delay classes
+                            const delay = parseFloat(getComputedStyle(el).transitionDelay || 0) * 1000;
+                            setTimeout(() => el.classList.add('is-inview'), delay);
+                        });
+                    });
+                }
+
+                // Below-fold elements: use IntersectionObserver
+                const belowFold = Array.from(
+                    document.querySelectorAll('.reveal-fade, .reveal-text')
+                ).filter(el => !el.closest('[data-reveal-instant]'));
+
+                const revealObs = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            entry.target.classList.add('is-inview');
+                            revealObs.unobserve(entry.target);
+                        }
+                    });
+                }, { threshold: 0.1, rootMargin: '0px 0px -6% 0px' });
+
+                belowFold.forEach(el => revealObs.observe(el));
+
+                // Dark-footer observer: swap nav colours
+                const footer = document.getElementById('contact');
+                if (footer && nav) {
+                    const darkObs = new IntersectionObserver((entries) => {
+                        entries.forEach(entry => {
+                            const isDark = entry.isIntersecting;
+                            const color = isDark ? 'var(--paper)' : 'var(--ink)';
+                            nav.querySelectorAll('.brand-name, .brand-sys, .nav-link').forEach(el => {
+                                el.style.color = color;
+                            });
+                        });
+                    }, { threshold: 0.3 });
+                    darkObs.observe(footer);
+                }
+            }
+        })();
+    </script>
 </body>
 
 </html>
