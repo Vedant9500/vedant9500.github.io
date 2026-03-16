@@ -172,13 +172,11 @@ Practical rewrite order
 Implementation map
 - index.html: new single-page homepage structure.
 - blog/index.html: separate writing destination, not part of homepage flow.
-- css/base/variables.css: typography scale, spacing system, color roles, elevation, motion timings.
-- css/components/hero.css: hero composition and identity section.
-- css/components/cards.css: featured and supporting project cards.
-- css/components/navbar.css: sticky navigation and active states.
-- css/desktop/animations.css: reveal system and section transitions.
-- js/landing.js: homepage-specific interactions.
-- js/desktop/scroll-effects.js: scroll-linked transitions and active-section behavior.
+- css/desktop/systems.css: homepage visual system, tokens, and section styling.
+- css/home-intro.css: about/blog page visual language and shared reveal states.
+- js/desktop/scroll-engine.js: homepage-specific interactions and section progress behavior.
+- js/home-intro.js: reveal + section link behavior for about/blog pages.
+- js/blog.js: dynamic blog post loading and card expansion behavior.
 
 Success criteria
 - The page feels intentional within the first 10 seconds.
