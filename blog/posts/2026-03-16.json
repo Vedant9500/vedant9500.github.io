@@ -1,0 +1,20 @@
+{
+  "date": "2026-03-16",
+  "title": "improved formula simplification in Glassbox",
+  "summary": "been working on the formula simplifier for Glassbox. the old version was leaving expressions a bit messy. i added multi-pass simplification using SymPy. it now cleans up trig identities and recovers constants better.\n\nthere is also an optional mode for fourier-like approximations if you want dominant-harmonic cleanup. i also had to fix the setup.py file to use absolute paths because it was failing to build for some reason. fixed the import paths for tests so pytest runs correctly now. code feels much cleaner to work with.",
+  "commits": [
+    "a35ced3",
+    "8767c39"
+  ],
+  "commitMessages": [
+    "fix: update setup.py to use absolute paths for source files and include directories",
+    "Improve formula simplification with multi-pass identity cleanup"
+  ],
+  "repo": "Vedant9500/Glassbox",
+  "tags": [
+    "symbolic-regression",
+    "python",
+    "sympy",
+    "research"
+  ]
+}
