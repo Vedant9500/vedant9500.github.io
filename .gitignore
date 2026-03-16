@@ -13,7 +13,9 @@ Thumbs.db
 *.swp
 *.swo
 *~
-.agent/
+.agent
+.github
+bugs/
 
 # Logs
 *.log

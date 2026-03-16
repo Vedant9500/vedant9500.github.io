@@ -3,7 +3,7 @@
 ## What has been done so far
 - **Strategic Direction Locked:** Established a new visual concept—"Editorial research notebook / Soft brutalist systems lab"—moving away from generic SaaS aesthetics.
 - **Core Diagnosis Documented:** Created the `todo` document that breaks down the competing design systems, identifying issues with overloaded motion, disjointed color hierarchy, and overly playful typography.
-- **Initial Structural Passes:** Rebuilt `index.html` as a coherent, single-page introduction with clear sections (Hero, About, Work), leaving out excessive animations while archiving the previous state in `playful-home.html`.
+- **Initial Structural Passes:** Rebuilt `index.html` as a coherent, single-page introduction with clear sections (Hero, About, Work), and removed the previously archived playful homepage variant.
 
 ## Next Task Selected
 Looking at the `todo` file and the current state of `index.html`, step 1 ("Lock homepage structure and content hierarchy") looks largely established. 
