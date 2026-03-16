@@ -624,3 +624,273 @@ body {
         transition-duration: 0.8s;
     }
 }
+
+/* ========================================
+   BLOG / JOURNAL — Soft Brutalist Systems
+   ======================================== */
+
+/* Blog feed section — scrollable, not scroll-snap locked */
+.section-blog-feed {
+    position: relative;
+    width: 100vw;
+    min-height: 100dvh;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    padding: 8rem 5vw 6rem 5vw;
+}
+
+.blog-feed-inner {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 10;
+}
+
+/* Blog Feed Container */
+.blog-feed {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    border-top: 1px solid var(--line-strong);
+}
+
+/* Individual Post Card */
+.blog-post-card {
+    border-bottom: 1px solid var(--line-strong);
+    cursor: pointer;
+    transition: background 0.4s var(--ease-out-expo);
+    position: relative;
+    overflow: hidden;
+}
+
+.blog-post-card:hover {
+    background: rgba(28, 26, 23, 0.03);
+}
+
+/* Post Header (always visible) */
+.blog-post-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 2rem;
+    padding: 1.75rem 0;
+    transition: padding 0.3s var(--ease-out-expo);
+}
+
+.blog-post-card:hover .blog-post-header,
+.blog-post-card.expanded .blog-post-header {
+    padding: 1.75rem 1rem;
+}
+
+.blog-post-header-left {
+    display: grid;
+    gap: 0.5rem;
+    flex: 1;
+    min-width: 0;
+}
+
+/* Date */
+.blog-post-date {
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--ink-faint);
+}
+
+/* Title */
+.blog-post-title {
+    font-family: var(--font-display);
+    font-size: clamp(1.5rem, 2.8vw, 2.4rem);
+    line-height: 1;
+    letter-spacing: -0.02em;
+    color: var(--ink);
+}
+
+/* Tags */
+.blog-post-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.45rem;
+    margin-top: 0.2rem;
+}
+
+.blog-tag {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.3rem 0.6rem;
+    border: 1px solid var(--line-strong);
+    font-family: var(--font-mono);
+    font-size: 0.68rem;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--ink-soft);
+    background: transparent;
+    transition: border-color 0.3s ease, color 0.3s ease;
+}
+
+/* Expand icon */
+.blog-expand-icon {
+    width: 32px;
+    height: 32px;
+    border: 1px solid var(--line-strong);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--ink-soft);
+    flex-shrink: 0;
+    margin-top: 0.25rem;
+    font-size: 0.75rem;
+    transition: transform 0.4s var(--ease-out-expo), border-color 0.3s ease, color 0.3s ease;
+}
+
+.blog-post-card.expanded .blog-expand-icon {
+    transform: rotate(180deg);
+    border-color: rgba(246, 241, 232, 0.35);
+    color: rgba(246, 241, 232, 0.65);
+}
+
+/* Expanded state — warm dark stone background */
+.blog-post-card.expanded {
+    background: #3d3830;
+    color: var(--paper);
+}
+
+.blog-post-card.expanded .blog-post-title,
+.blog-post-card.expanded .blog-post-date {
+    color: var(--paper);
+}
+
+.blog-post-card.expanded .blog-tag {
+    border-color: rgba(246, 241, 232, 0.3);
+    color: rgba(246, 241, 232, 0.6);
+}
+
+/* Post Body (collapsible via grid-template-rows trick) */
+.blog-post-body {
+    display: grid;
+    grid-template-rows: 0fr;
+    transition: grid-template-rows 0.5s var(--ease-out-expo);
+}
+
+.blog-post-card.expanded .blog-post-body {
+    grid-template-rows: 1fr;
+}
+
+.blog-post-body-inner {
+    overflow: hidden;
+    opacity: 0;
+    padding: 0 1rem;
+    transition: opacity 0.35s ease, padding 0.4s var(--ease-out-expo);
+}
+
+.blog-post-card.expanded .blog-post-body-inner {
+    opacity: 1;
+    padding: 0 1rem 2.5rem 1rem;
+}
+
+/* Summary text */
+.blog-post-summary {
+    border-top: 1px solid rgba(246, 241, 232, 0.18);
+    padding-top: 1rem;
+    margin-bottom: 1rem;
+}
+
+.blog-post-summary p {
+    color: rgba(246, 241, 232, 0.82);
+    font-size: 1rem;
+    line-height: 1.55;
+    max-width: 64ch;
+}
+
+.blog-post-summary p + p {
+    margin-top: 0.72rem;
+}
+
+/* Commit section */
+.blog-post-commits {
+    margin-top: 1.25rem;
+}
+
+.blog-post-commits-label {
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: rgba(246, 241, 232, 0.5);
+    margin-bottom: 0.6rem;
+}
+
+.blog-commit-list {
+    list-style: none;
+    display: grid;
+    gap: 0.4rem;
+}
+
+.blog-commit-item {
+    border: 1px solid rgba(246, 241, 232, 0.15);
+    background: rgba(246, 241, 232, 0.05);
+    padding: 0.45rem 0.7rem;
+    font-family: var(--font-mono);
+    font-size: 0.82rem;
+    color: rgba(246, 241, 232, 0.7);
+}
+
+/* Loading & Empty states */
+.blog-loading,
+.blog-empty {
+    min-height: 160px;
+    display: grid;
+    place-items: center;
+    text-align: center;
+    gap: 0.6rem;
+    padding: 2rem;
+    color: var(--ink-faint);
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+}
+
+.blog-empty h3 {
+    font-family: var(--font-display);
+    font-size: 1.5rem;
+    letter-spacing: -0.02em;
+    color: var(--ink);
+    text-transform: none;
+}
+
+.blog-loading-spinner {
+    width: 24px;
+    height: 24px;
+    border: 1px solid var(--line);
+    border-top-color: var(--ink);
+    animation: spin 0.9s linear infinite;
+}
+
+/* Blog-specific mobile overrides */
+@media (max-width: 768px) {
+    .section-blog-feed {
+        padding: 6rem 5vw 4rem 5vw;
+    }
+
+    .blog-post-title {
+        font-size: clamp(1.3rem, 6vw, 1.8rem);
+    }
+
+    .blog-post-header {
+        gap: 1rem;
+        padding: 1.25rem 0;
+    }
+
+    .blog-post-card:hover .blog-post-header,
+    .blog-post-card.expanded .blog-post-header {
+        padding: 1.25rem 0.5rem;
+    }
+
+    .blog-post-card.expanded .blog-post-body-inner {
+        padding: 0 0.5rem 4rem 0.5rem;
+    }
+}

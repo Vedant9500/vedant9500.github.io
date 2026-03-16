@@ -24,7 +24,7 @@ function formatDate(dateStr) {
  */
 function createPostCard(post, index) {
     const card = document.createElement('article');
-    card.className = 'blog-post-card collapsed';
+    card.className = 'blog-post-card';
     card.setAttribute('role', 'button');
     card.setAttribute('tabindex', '0');
     card.setAttribute('aria-expanded', 'false');
@@ -70,16 +70,20 @@ function createPostCard(post, index) {
     header.appendChild(headerLeft);
     header.appendChild(expandIcon);
 
-    // Body (hidden when collapsed)
+    // Body (hidden when collapsed via grid-template-rows)
     const body = document.createElement('div');
     body.className = 'blog-post-body';
+
+    // Inner wrapper required for grid collapse animation
+    const bodyInner = document.createElement('div');
+    bodyInner.className = 'blog-post-body-inner';
 
     // Summary
     const summaryEl = document.createElement('div');
     summaryEl.className = 'blog-post-summary';
     const paragraphs = post.summary.split('\n\n');
     summaryEl.innerHTML = paragraphs.map(p => `<p>${p.trim()}</p>`).join('');
-    body.appendChild(summaryEl);
+    bodyInner.appendChild(summaryEl);
 
     // Commit messages
     if (post.commitMessages && post.commitMessages.length > 0) {
@@ -104,17 +108,17 @@ function createPostCard(post, index) {
         if (post.commitMessages.length > 5) {
             const more = document.createElement('li');
             more.className = 'blog-commit-item';
-            more.textContent = `...and ${post.commitMessages.length - 5} more`;
-            more.style.color = 'var(--ink-light)';
             more.style.fontStyle = 'italic';
+            more.textContent = `...and ${post.commitMessages.length - 5} more`;
             commitList.appendChild(more);
         }
 
         commitsSection.appendChild(commitsLabel);
         commitsSection.appendChild(commitList);
-        body.appendChild(commitsSection);
+        bodyInner.appendChild(commitsSection);
     }
 
+    body.appendChild(bodyInner);
     card.appendChild(header);
     card.appendChild(body);
 
@@ -129,7 +133,6 @@ function createPostCard(post, index) {
 
     // Auto-expand the newest post
     if (index === 0) {
-        card.classList.remove('collapsed');
         card.classList.add('expanded');
         card.setAttribute('aria-expanded', 'true');
     }
@@ -141,15 +144,13 @@ function createPostCard(post, index) {
  * Toggle a card between collapsed and expanded
  */
 function toggleCard(card) {
-    const isCollapsed = card.classList.contains('collapsed');
-    if (isCollapsed) {
-        card.classList.remove('collapsed');
+    const isExpanded = card.classList.contains('expanded');
+    if (isExpanded) {
+        card.classList.remove('expanded');
+        card.setAttribute('aria-expanded', 'false');
+    } else {
         card.classList.add('expanded');
         card.setAttribute('aria-expanded', 'true');
-    } else {
-        card.classList.remove('expanded');
-        card.classList.add('collapsed');
-        card.setAttribute('aria-expanded', 'false');
     }
 }
 
