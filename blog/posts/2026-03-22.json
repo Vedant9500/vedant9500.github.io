@@ -1,0 +1,22 @@
+{
+  "date": "2026-03-22",
+  "title": "benchmarking updates for Glassbox",
+  "summary": "Spent last few days fixing issues with the benchmark pipeline. Previously, the engine would hang or overfit on easy problems. Now I added deterministic seeding so multiple runs are consistent. Also implemented an adaptive compute budget that scales based on problem difficulty.\n\nAdded native support for integer powers and explicit division in the C++ engine. This helps recover rational functions better. I also added a greedy noise reduction step using BIC to prune unnecessary terms. Finally, added native timeouts through OpenMP to stop infinite loops. Everything passed smoke tests, and the multi-start protocol now matches the standard SRBench format.",
+  "commits": [
+    "2a08de6",
+    "eb37d9e",
+    "44b4a47"
+  ],
+  "commitMessages": [
+    "Benchmark instrumentation & evolution core reliability",
+    "feat(srbench): enhance formula evaluation and timeout management with adaptive options",
+    "feat(srbench): implement robust fast-path noise reduction and C++ timeouts"
+  ],
+  "repo": "Vedant9500/Glassbox",
+  "tags": [
+    "symbolic-regression",
+    "cpp",
+    "research",
+    "benchmarking"
+  ]
+}
