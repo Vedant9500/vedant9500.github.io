@@ -7,16 +7,16 @@
     --ink-faint: #99938b;
     --line: rgba(28, 26, 23, 0.12);
     --line-strong: rgba(28, 26, 23, 1);
-    
+
     /* Accents - Used extremely sparingly */
     --accent-mint: #b5c29c;
     --accent-rose: #d7a9ae;
     --accent-yellow: #d8c488;
-    
+
     --font-display: 'Fraunces', serif;
     --font-body: 'Outfit', sans-serif;
     --font-mono: 'JetBrains Mono', 'Fira Code', monospace;
-    
+
     /* Reveal ease */
     --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
 }
@@ -31,7 +31,8 @@ html {
     /* Full viewport scroll snapping */
     scroll-snap-type: y mandatory;
     scroll-behavior: smooth;
-    background-color: var(--ink); /* For overscroll bounce */
+    background-color: var(--ink);
+    /* For overscroll bounce */
 }
 
 body {
@@ -48,13 +49,15 @@ body {
     inset: 0;
     pointer-events: none;
     z-index: 0;
-    background-image: 
-        linear-gradient(to right, var(--line) 1px, transparent 1px),
-        linear-gradient(to bottom, var(--line) 1px, transparent 1px);
-    background-size: 4vw 4vw;
-    opacity: 0.4;
-    mask-image: radial-gradient(ellipse at center, white 20%, transparent 80%);
-    -webkit-mask-image: radial-gradient(ellipse at center, white 20%, transparent 80%);
+    background-image: radial-gradient(circle, rgba(28, 26, 23, 0.2) 1px, transparent 1px);
+    background-size: 3vw 3vw;
+    opacity: 0.5;
+    mask-image: radial-gradient(ellipse at center, white 50%, transparent 90%);
+    -webkit-mask-image: radial-gradient(ellipse at center, white 50%, transparent 90%);
+}
+
+.section-dark .bg-grid {
+    background-image: radial-gradient(circle, rgba(255, 253, 249, 0.08) 1px, transparent 1px);
 }
 
 /* Global Navigation (Fixed) */
@@ -67,11 +70,14 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
-    pointer-events: none; /* Let clicks pass through empty areas */
+    pointer-events: none;
+    /* Let clicks pass through empty areas */
 }
 
-.brand-block, .nav-links {
-    pointer-events: auto; /* Re-enable clicks to links */
+.brand-block,
+.nav-links {
+    pointer-events: auto;
+    /* Re-enable clicks to links */
 }
 
 .brand-block {
@@ -189,7 +195,7 @@ body {
 .display-title {
     font-family: var(--font-display);
     font-size: clamp(3rem, 8vw, 8rem);
-    line-height: 0.85;
+    line-height: 0.95;
     letter-spacing: -0.04em;
     font-weight: 500;
     color: var(--ink);
@@ -199,6 +205,8 @@ body {
 .display-title span {
     display: block;
     overflow: hidden;
+    padding-bottom: 0.12em;
+    margin-bottom: -0.1em;
 }
 
 .display-title span i {
@@ -264,7 +272,7 @@ body {
 
 .work-item::before {
     /* Kept for subtle background layering if needed, but background color swap handles it */
-    content: none; 
+    content: none;
 }
 
 .work-header {
@@ -383,10 +391,21 @@ body {
 }
 
 /* Staggering reveals */
-.is-inview .delay-1 { transition-delay: 0.1s; }
-.is-inview .delay-2 { transition-delay: 0.2s; }
-.is-inview .delay-3 { transition-delay: 0.3s; }
-.is-inview .delay-4 { transition-delay: 0.4s; }
+.is-inview .delay-1 {
+    transition-delay: 0.1s;
+}
+
+.is-inview .delay-2 {
+    transition-delay: 0.2s;
+}
+
+.is-inview .delay-3 {
+    transition-delay: 0.3s;
+}
+
+.is-inview .delay-4 {
+    transition-delay: 0.4s;
+}
 
 .reveal-fade {
     opacity: 0;
@@ -480,11 +499,119 @@ body {
     font-style: italic;
 }
 
+/* ========================================
+   TIER 1 — ATMOSPHERE & TEXTURE
+   ======================================== */
+
+body::after {
+    content: '';
+    position: fixed;
+    inset: 0;
+    z-index: 10000;
+    pointer-events: none;
+    opacity: 0.035;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.7' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    background-size: 200px 200px;
+}
+
+body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    pointer-events: none;
+    background: radial-gradient(ellipse at center, transparent 40%, rgba(28, 26, 23, 0.06) 100%);
+}
+
+.section-idx {
+    position: absolute;
+    right: 5vw;
+    bottom: 2vw;
+    font-family: var(--font-display);
+    font-size: clamp(8rem, 15vw, 18rem);
+    font-weight: 400;
+    line-height: 0.8;
+    color: var(--ink);
+    opacity: 0;
+    z-index: 1;
+    pointer-events: none;
+    user-select: none;
+    letter-spacing: -0.04em;
+    transform: translateY(20px);
+    transition: opacity 1.5s ease 0.4s, transform 1.5s var(--ease-out-expo) 0.4s;
+}
+
+.is-inview .section-idx {
+    opacity: 0.04;
+    transform: translateY(0);
+}
+
+.section-dark .section-idx {
+    color: var(--paper);
+}
+
+.section-dark.is-inview .section-idx {
+    opacity: 0.05;
+}
+
+.section-annotation {
+    position: absolute;
+    bottom: 3vw;
+    left: 5vw;
+    font-family: var(--font-mono);
+    font-size: 0.6rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+    z-index: 2;
+    opacity: 0;
+    transition: opacity 0.8s ease 0.7s;
+}
+
+.is-inview .section-annotation {
+    opacity: 0.45;
+}
+
+.section-dark .section-annotation {
+    color: rgba(255, 253, 249, 0.3);
+}
+
+.meta-label::before {
+    content: '';
+    display: inline-block;
+    width: 14px;
+    height: 2px;
+    background: var(--accent-mint);
+    margin-right: 0.6rem;
+    vertical-align: middle;
+}
+
+.accent-mark {
+    color: var(--accent-yellow);
+}
+
+#hero .display-title::before {
+    content: '';
+    display: block;
+    width: 0;
+    height: 2px;
+    background: var(--accent-mint);
+    margin-bottom: 1.5rem;
+    opacity: 0;
+    transition: opacity 1s ease 0.6s, width 1s var(--ease-out-expo) 0.6s;
+}
+
+#hero.is-inview .display-title::before {
+    opacity: 1;
+    width: 40px;
+}
+
 @media (max-width: 900px) {
     .split-layout {
         grid-template-columns: 1fr;
         gap: 2rem;
     }
+
     .work-meta {
         flex-direction: column;
         gap: 0.2rem;
@@ -498,7 +625,7 @@ body {
 @media (max-width: 768px) {
     html {
         /* Re-enabling strict snapping on mobile layout per user request */
-        scroll-snap-type: y mandatory; 
+        scroll-snap-type: y mandatory;
     }
 
     .section-slide {
@@ -506,7 +633,8 @@ body {
         min-height: 100vh;
         scroll-snap-align: start;
         scroll-snap-stop: always;
-        padding: 6rem 5vw 8rem 5vw; /* Extra padding top/bottom for nav clearance */
+        padding: 6rem 5vw 8rem 5vw;
+        /* Extra padding top/bottom for nav clearance */
     }
 
     /* Typography Overrides */
@@ -582,12 +710,14 @@ body {
         padding: 1.25rem 0;
     }
 
-    .work-header:hover, .work-item.is-expanded .work-header {
+    .work-header:hover,
+    .work-item.is-expanded .work-header {
         padding: 1.25rem 0.5rem;
     }
 
     .work-item.is-expanded .work-inner {
-        padding: 0 1rem 4rem 1rem; /* Extra bottom padding on mobile so buttons aren't cut by screen bottom */
+        padding: 0 1rem 4rem 1rem;
+        /* Extra bottom padding on mobile so buttons aren't cut by screen bottom */
     }
 
     .work-meta {
@@ -805,7 +935,7 @@ body {
     max-width: 64ch;
 }
 
-.blog-post-summary p + p {
+.blog-post-summary p+p {
     margin-top: 0.72rem;
 }
 
@@ -892,5 +1022,22 @@ body {
 
     .blog-post-card.expanded .blog-post-body-inner {
         padding: 0 0.5rem 4rem 0.5rem;
+    }
+}
+
+/* Tier 1 — Mobile atmospheric overrides */
+@media (max-width: 768px) {
+    .section-idx {
+        font-size: clamp(4rem, 18vw, 7rem);
+        bottom: 6rem;
+    }
+
+    .section-annotation {
+        bottom: 6rem;
+        font-size: 0.5rem;
+    }
+
+    #hero .display-title::before {
+        margin-bottom: 1rem;
     }
 }
