@@ -1,0 +1,22 @@
+{
+  "date": "2026-03-20",
+  "title": "C++ evolution updates for Glassbox",
+  "summary": "I spent the last few days working on the C++ side of Glassbox. The evolution loop was getting stuck in local minima, so I added staged evolution and adaptive restarts. The model now detects if it is stagnant and triggers a mix of mutated elites and random immigrants. This helps it find better expressions.\n\nI also updated the reliability scoring. Now it keeps track of both raw MSE and display-formula MSE. If the evaluator fails or gets non-finite values, it handles them properly instead of crashing. I added native JSONL trace logging so I can debug the generations easier. Everything is exposed through pybind so I can tune the arithmetic temperature from Python. Ran the regression tests and they passed.",
+  "commits": [
+    "31e73b9",
+    "b04fedd",
+    "c80d61b"
+  ],
+  "commitMessages": [
+    "feat: enhance README with new features including reliability scoring, C++ tracing, and evolution controls",
+    "feat(sr-cpp): added staged evolution and adaptive restart controls",
+    "feat(sr): harden C++ evolution reliability and add native trace logging"
+  ],
+  "repo": "Vedant9500/Glassbox",
+  "tags": [
+    "symbolic-regression",
+    "cpp",
+    "glassbox",
+    "research"
+  ]
+}

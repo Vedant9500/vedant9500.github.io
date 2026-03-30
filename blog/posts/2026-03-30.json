@@ -1,0 +1,22 @@
+{
+  "date": "2026-03-30",
+  "title": "Glassbox updates and C++ fixes",
+  "summary": "I spent the last few days working on Glassbox stability. I was having trouble with NaN correlation values. Instead of just replacing them with 0.0, I added a RuntimeWarning so I can actually see what is happening to the predictions.\n\nI also fixed the BFGS optimizer. It was diverging because of Inf values, so now it returns a large finite number instead. I changed the HardConcreteSelector to use straight-through one-hot to match inference time, which helps close the gap between training and testing.\n\nFor the C++ side, I cleaned up the test suite. Now I can use pytest to check parity properly. I also fixed the EvolutionaryONNTrainer so all parameters like random_seed and timeout actually get passed down correctly. It should be much more robust now.",
+  "commits": [
+    "a9e44ca",
+    "a2d47e0",
+    "b6c6fab"
+  ],
+  "commitMessages": [
+    "fix: improve diagnostics, configurability, and robustness",
+    "fix: harden BFGS optimizer, pruning convergence, gate discretization, and BN fusion",
+    "fix: resolve critical C++ bridge gaps from Phase 1 code review"
+  ],
+  "repo": "Vedant9500/Glassbox",
+  "tags": [
+    "symbolic-regression",
+    "c++",
+    "python",
+    "research"
+  ]
+}

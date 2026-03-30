@@ -1,0 +1,19 @@
+{
+  "date": "2026-03-18",
+  "title": "updates to Glassbox",
+  "summary": "today i updated the Glassbox code. i added formula normalization and some postprocessing functions. now the output is more consistent. earlier the models were giving messy results but this helps clean them up.\n\nalso updated the benchmark and tester scripts. now they support guided evolution. i wanted to compare it with the fast-path regression. it works okay now. the scripts run better after these changes. will keep testing this week.",
+  "commits": [
+    "ed5a766",
+    "fc35be9"
+  ],
+  "commitMessages": [
+    "feat: add formula normalization and postprocessing functions for improved output consistency",
+    "feat: enhance benchmark and tester scripts to support guided evolution alongside fast-path regression"
+  ],
+  "repo": "Vedant9500/Glassbox",
+  "tags": [
+    "symbolic-regression",
+    "research",
+    "coding"
+  ]
+}

@@ -1,0 +1,25 @@
+{
+  "date": "2026-03-21",
+  "title": "Glassbox updates and exp support",
+  "summary": "Spent the last few days fixing some weird bugs in Glassbox. The log function was using '|' which Python thought was bitwise OR, so it failed. Fixed that with a regex. Also fixed the power clamp; it was stuck at 100, which killed high-degree polynomials. Raised it to 1e8 and now the MSE matches up.\n\nAdded support for exp(-x) by adding omega parameters to the exp operator. The evolution engine is also better now. I increased Adam steps and tightened the cleanup tolerances so it doesn't delete good terms by mistake. \n\nFinally, I added some better logging tools. You can now use --analyze or shrink logs with gzip. It helps keep the file size down when running long evolutions. The C++ backend is now the default.",
+  "commits": [
+    "8f11094",
+    "1b9d693",
+    "6510070",
+    "548b798",
+    "0288b4e"
+  ],
+  "commitMessages": [
+    "fix(eval+benchmark): log formula parsing + Power epsilon precision",
+    "feat(evolution): Power clamp fix for high-degree polynomials",
+    "feat(evolution): evolution engine improvements for pure SR",
+    "feat(evolution): add exp(-x) support + tighten cleanup tolerances",
+    "feat(logging): optimize evolution pipeline logs and add shrinkage utility"
+  ],
+  "repo": "Vedant9500/Glassbox",
+  "tags": [
+    "symbolic-regression",
+    "coding",
+    "research"
+  ]
+}

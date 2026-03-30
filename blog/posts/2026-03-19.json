@@ -1,0 +1,17 @@
+{
+  "date": "2026-03-19",
+  "title": "polynomial evolution update",
+  "summary": "I worked on Glassbox today to make polynomial recovery better. I added adaptive high-power evolution in the C++ backend. I exposed p_min and p_max in the API so I can control power ranges.\n\nI enabled polynomial-aware p_max expansion in the beam search. I also changed the init and mutation logic to seed exponents from integer candidates. This helps when the target is something simple like x^5. I rebuilt the backend and tested it. It now recovers x^5 exactly in evolution-only mode. The search is much more focused on polynomials now.",
+  "commits": [
+    "e38c923"
+  ],
+  "commitMessages": [
+    "feat(sr): add adaptive high-power evolution for polynomial formulas"
+  ],
+  "repo": "Vedant9500/Glassbox",
+  "tags": [
+    "symbolic-regression",
+    "cpp",
+    "research"
+  ]
+}
