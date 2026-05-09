@@ -1,0 +1,17 @@
+{
+  "date": "2026-04-03",
+  "title": "updated license for Glassbox",
+  "summary": "today i worked on the legal side of Glassbox. i changed the project license from MIT to Apache License 2.0. \n\ni want more people to use the code without worrying about patents. my symbolic regression research is going okay. i am still testing the new evolution strategy. it is finding better equations than the old method. next week i will try to optimize the memory usage for large datasets.",
+  "commits": [
+    "77df689"
+  ],
+  "commitMessages": [
+    "chore: update project license from MIT to Apache License 2.0"
+  ],
+  "repo": "Vedant9500/Glassbox",
+  "tags": [
+    "coding",
+    "research",
+    "opensource"
+  ]
+}

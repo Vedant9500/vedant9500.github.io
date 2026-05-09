@@ -1,0 +1,18 @@
+{
+  "date": "2026-04-30",
+  "title": "Optimized beam search in Glassbox",
+  "summary": "I was working on Glassbox today. I tried using proposer hints to make the beam search faster. At first, the performance got much worse. The runtime went from 1346 seconds up to 4051 seconds because it was evaluating too many seeds.\n\nI fixed it by wiring the proposer sequence uncertainty into the run_guided_evolution function. Now it uses fewer beams and smaller populations when it has valid skeletons. The runtime is down to 911 seconds. It works much better now.",
+  "commits": [
+    "a89c695"
+  ],
+  "commitMessages": [
+    "perf(sr): optimize beam search using proposer hints"
+  ],
+  "repo": "Vedant9500/Glassbox",
+  "tags": [
+    "symbolic-regression",
+    "research",
+    "optimization",
+    "python"
+  ]
+}

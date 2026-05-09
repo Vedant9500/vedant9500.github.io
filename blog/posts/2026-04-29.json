@@ -1,0 +1,23 @@
+{
+  "date": "2026-04-29",
+  "title": "Universal Fast-Path is live",
+  "summary": "Finished the Universal Fast-Path for Glassbox. It uses a new neural proposer architecture now. I added a toggle to switch back to the legacy mode if something breaks. Testing showed the performance is better with hybrid mode.\n\nAlso did some tuning to the symbolic recovery. I increased the exact term limit from 5 to 10 so it handles polynomials better. Fixed the constant recovery too by widening the snapping tolerance to 0.05. The old 0.01 limit was failing on noisy data from LASSO. Seeding the evolution with fast-path results makes the constant refinement much faster now.",
+  "commits": [
+    "511fba9",
+    "4ed02fd",
+    "af7f393",
+    "967cf8e"
+  ],
+  "commitMessages": [
+    "fix: optimize symbolic recovery accuracy and benchmark classification",
+    "feat: Enhance universal proposer integration and optimize classifier fast-path parameters",
+    "feat: Update universal proposer path and optimize data loading in training scripts",
+    "feat: Complete Universal Fast-Path  with Hybrid mode enabled by default"
+  ],
+  "repo": "Vedant9500/Glassbox",
+  "tags": [
+    "symbolic-regression",
+    "coding",
+    "research"
+  ]
+}

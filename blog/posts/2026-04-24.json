@@ -1,0 +1,23 @@
+{
+  "date": "2026-04-24",
+  "title": "updates to Glassbox regression",
+  "summary": "This week I worked on Glassbox. I updated the fast-path so it keeps the top 5 diverse formulas instead of just one. I rank them using a complexity-penalized score after OLS refit. Now the metadata is consistent across all branches.\n\nI also added logic to route outputs to guided evolution if the model confidence is low or the residual data looks bad. I added a decision helper to track why it routes certain things. For the evolution part, I added sensitivity-aware scaling to the mutations. Finally, I added isotonic regression for the curve classifiers to make calibration better. It was tricky to handle the NaN values in the residuals, but the regression tests now pass.",
+  "commits": [
+    "625b131",
+    "483b84d",
+    "f2e3f58",
+    "19c1dd8"
+  ],
+  "commitMessages": [
+    "feat(fast-path): retain top-K diverse candidate formulas and expose them to benchmark routing",
+    "feat(sr-benchmark): add adaptive guided-evolution routing from uncertainty and residual risk",
+    "feat(evolution): enhance gradient-informed mutation with sensitivity-aware scaling",
+    "feat(calibration): implement isotonic regression calibration for curve classifiers"
+  ],
+  "repo": "Vedant9500/Glassbox",
+  "tags": [
+    "symbolic-regression",
+    "coding",
+    "research"
+  ]
+}

@@ -1,0 +1,18 @@
+{
+  "date": "2026-05-01",
+  "title": "Fixing the NaN and enum bugs",
+  "summary": "Today I worked on the Glassbox backend. I had some problems with the Python operators not matching the C++ ast.h file. This caused some out of bounds errors. I synchronized the lists to fix this.\n\nI also had issues with negative numbers causing NaN results during power operations. I implemented safe_numpy_power to handle signed powers correctly. I also increased the omega bounds in C++ so the model can handle decaying exponentials better.\n\nFor the benchmarks, I added an early exit if the model finds the exact answer. My score went up from 47% to 64%. It was 433/615 and now it is 518/615.",
+  "commits": [
+    "1cbe691"
+  ],
+  "commitMessages": [
+    "fix(sr): align backend enums and stabilize numeric evaluation"
+  ],
+  "repo": "Vedant9500/Glassbox",
+  "tags": [
+    "symbolic regression",
+    "c++",
+    "python",
+    "research"
+  ]
+}

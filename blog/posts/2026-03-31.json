@@ -1,0 +1,17 @@
+{
+  "date": "2026-03-31",
+  "title": "upgraded Glassbox optimization",
+  "summary": "I updated the optimization part of Glassbox today. Switched from Adam to Levenberg-Marquardt using Eigen. It is much faster now. It takes 5-15 iterations instead of 200. The old way had too much overhead with finite differences.\n\nAlso fixed a ranking issue. Sometimes the C++ engine scores did not match the actual formula output because of soft operators. Now I added a display_mse step to check the real string output. Added a drift_penalty too, so it ignores formulas that look good in the engine but perform bad in reality.",
+  "commits": [
+    "90f1352"
+  ],
+  "commitMessages": [
+    "feat(evolution): implement Levenberg-Marquardt optimization and honest MSE ranking"
+  ],
+  "repo": "Vedant9500/Glassbox",
+  "tags": [
+    "symbolic-regression",
+    "c++",
+    "optimization"
+  ]
+}
