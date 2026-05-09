@@ -1,0 +1,26 @@
+{
+  "date": "2026-04-27",
+  "title": "Glassbox universal proposer update",
+  "summary": "finished Phase 1 and 2 for the universal proposer in Glassbox. i added the FPIP v2 schema and the proposer now injects decoded formulas into the C++ evolution engine. \n\ngetting the neural proposer to talk to the C++ beam search was tricky. i used sequence entropy to make the compute budget dynamic. if the model is confident, it uses less time. if the fold stability in CV is bad, the code forces a run through the evolution even if R2 is high. \n\nvalidated everything with the new test suite. things are running faster now with the fast-path integration. planning to do more performance benchmarks next week.",
+  "commits": [
+    "ee18539",
+    "7b5af7d",
+    "46f4bef",
+    "2060c81",
+    "07d59a3"
+  ],
+  "commitMessages": [
+    "feat(sr): implement Universal Proposer Phase 2 - Evolution Integration",
+    "feat(sr): complete Phase 1 core proposer tasks",
+    "feat(sr): scaffold Phase 1 universal proposer MVP",
+    "feat(sr): add FPIP v2 contract and fast-path integration",
+    "feat(sr): add fast-path CV skip guard and validate roadmap completion"
+  ],
+  "repo": "Vedant9500/Glassbox",
+  "tags": [
+    "symbolic-regression",
+    "glassbox",
+    "c++",
+    "machine-learning"
+  ]
+}

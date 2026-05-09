@@ -1,0 +1,19 @@
+{
+  "date": "2026-04-25",
+  "title": "updates on Glassbox FPIP",
+  "summary": "Spent the last few days finishing the FPIP work for Glassbox. I made the FFT detect phase angles now, which helps identify harmonic series properly. I also added a compute budget feature. If the classifier is sure, it uses less compute. If it is uncertain, it spends more resources to be accurate.\n\nFor the population, I added a way to inject fast-path candidates as seeds into the beam search. This makes the evolution start with better guesses. I also added holdout scoring. Now it keeps 10% of data back to check for overfitting. Finally, I added uncertainty-aware blending for operator priors. The model now trusts the prior less when the uncertainty is high. The roadmap is mostly updated and things are moving forward.",
+  "commits": [
+    "93b8b8b",
+    "de7b2ab"
+  ],
+  "commitMessages": [
+    "feat(fpip): complete remaining high-priority FPIP enhancements",
+    "feat(sr): add uncertainty-aware prior blending and refresh roadmap progress"
+  ],
+  "repo": "Vedant9500/Glassbox",
+  "tags": [
+    "symbolic-regression",
+    "research",
+    "coding"
+  ]
+}
