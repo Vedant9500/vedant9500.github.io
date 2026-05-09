@@ -223,6 +223,118 @@ body::-webkit-scrollbar {
     opacity: 0.6;
 }
 
+/* Hero Annotation Block */
+.hero-annotation-block {
+    position: absolute;
+    top: 10vw;
+    right: 5vw;
+    z-index: 10;
+    font-family: var(--font-mono);
+    font-size: 0.65rem;
+    color: var(--ink-soft);
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    border-left: 1px solid var(--accent-mint);
+    padding-left: 1rem;
+}
+
+.anno-item span {
+    color: var(--ink-faint);
+    margin-right: 0.5rem;
+}
+
+/* Ticker Ribbon */
+.ticker-wrap {
+    width: 100%;
+    overflow: hidden;
+    background: var(--ink);
+    padding: 0.6rem 0;
+    z-index: 50;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+}
+
+.ticker {
+    display: flex;
+    flex-shrink: 0;
+    width: fit-content;
+    animation: ticker 40s linear infinite;
+}
+
+.ticker__group {
+    display: flex;
+    flex-shrink: 0;
+    align-items: center;
+    justify-content: space-around;
+    min-width: 100%;
+}
+
+.ticker__item {
+    font-family: var(--font-mono);
+    font-size: 0.65rem;
+    color: var(--paper);
+    white-space: nowrap;
+    padding: 0 2.5rem;
+    letter-spacing: 0.15em;
+}
+
+.ticker__item::after {
+    content: '·';
+    margin-left: 2.5rem;
+    color: var(--accent-mint);
+}
+
+@keyframes ticker {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-100%); }
+}
+
+/* Skills Matrix */
+.skills-matrix {
+    display: grid;
+    gap: 1.5rem;
+    margin-top: 2rem;
+    border-top: 1px solid var(--line);
+    padding-top: 1.5rem;
+}
+
+.matrix-item {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+}
+
+.matrix-label {
+    font-family: var(--font-mono);
+    font-size: 0.6rem;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+    letter-spacing: 0.1em;
+}
+
+.matrix-value {
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+    color: var(--ink);
+}
+
+/* Project Stats */
+.work-header-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 1rem;
+}
+
+.meta-stats {
+    font-family: var(--font-mono);
+    font-size: 0.65rem;
+    color: var(--ink-faint);
+    text-transform: uppercase;
+}
+
 /* Split Layout */
 .split-layout {
     display: grid;
