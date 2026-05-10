@@ -121,10 +121,10 @@
 <body>
 
     <!-- Fixed Global Navigation (matches index.html exactly) -->
-    <nav class="fixed-nav reveal-fade">
+    <nav class="fixed-nav reveal-fade" aria-label="Main Navigation">
         <div class="brand-block">
-            <a href="../" class="brand-name">Vedant Deshmukh</a>
-            <span class="brand-sys">Sys. ENG / AI LAB</span>
+            <a href="../" class="brand-name" aria-label="Vedant Deshmukh - Home">Vedant Deshmukh</a>
+            <span class="brand-sys" aria-hidden="true">Sys. ENG / AI LAB</span>
         </div>
         <div class="nav-links">
             <a href="../#about" class="nav-link">About</a>
@@ -136,13 +136,13 @@
     <main id="content">
 
         <!-- 01: Journal Hero -->
-        <section class="section-blog-hero" id="hero" data-reveal-instant>
-            <div class="bg-grid"></div>
+        <section class="section-blog-hero" id="hero" data-reveal-instant aria-labelledby="hero-title">
+            <div class="bg-grid" aria-hidden="true"></div>
 
             <div class="split-layout">
                 <div>
-                    <span class="meta-label reveal-fade delay-1">Research Journal</span>
-                    <h1 class="display-title">
+                    <span class="meta-label reveal-fade delay-1" aria-hidden="true">Research Journal</span>
+                    <h1 class="display-title" id="hero-title">
                         <span class="reveal-inner"><div class="reveal-text">Build</div></span>
                         <span class="reveal-inner"><div class="reveal-text delay-1"><i>notes &</i></div></span>
                         <span class="reveal-inner"><div class="reveal-text delay-2">experiments.</div></span>
@@ -150,34 +150,34 @@
                 </div>
                 <div>
                     <div class="sys-box reveal-text delay-3">
-                        <span class="meta-label" style="margin-bottom: 0.75rem;">Feed Status</span>
+                        <span class="meta-label" style="margin-bottom: 0.75rem;" aria-hidden="true">Feed Status</span>
                         <p class="body-lead" style="font-size: 1rem; margin-bottom: 1rem;">
                             Progress tracked across AI experiments, simulations, and systems work. What broke, what got fixed, and why decisions changed.
                         </p>
-                        <div class="sys-line" style="margin: 1rem 0;"></div>
-                        <div style="font-family: var(--font-mono); font-size: 0.75rem; color: var(--ink-soft); display: grid; gap: 0.4rem;">
+                        <div class="sys-line" style="margin: 1rem 0;" aria-hidden="true"></div>
+                        <div style="font-family: var(--font-mono); font-size: 0.75rem; color: var(--ink-soft); display: grid; gap: 0.4rem;" aria-hidden="true">
                             <div>&gt; <strong id="blog-post-count">Loading posts...</strong></div>
                             <div>&gt; Newest posts appear first</div>
                             <div>&gt; Cards are expandable</div>
                         </div>
                     </div>
                     <div class="reveal-fade delay-4" style="margin-top: 1.5rem;">
-                        <a href="https://github.com/Vedant9500/Glassbox" target="_blank" rel="noopener" class="btn-brutal">Open Glassbox</a>
+                        <a href="https://github.com/Vedant9500/Glassbox" target="_blank" rel="noopener" class="btn-brutal" aria-label="Open Glassbox repository on GitHub">Open Glassbox</a>
                     </div>
                 </div>
             </div>
         </section>
 
         <!-- 02: Journal Feed -->
-        <section class="section-blog-feed" id="entries">
-            <div class="bg-grid"></div>
+        <section class="section-blog-feed" id="entries" aria-labelledby="entries-title">
+            <div class="bg-grid" aria-hidden="true"></div>
 
             <div class="blog-feed-inner">
                 <div class="reveal-fade" style="margin-bottom: 2rem;">
-                    <span class="meta-label">Entries</span>
+                    <span class="meta-label" aria-hidden="true">Entries</span>
                     <div style="display: flex; justify-content: space-between; align-items: flex-end; border-bottom: 1px solid var(--line-strong); padding-bottom: 1.5rem; margin-top: 0.5rem;">
-                        <h2 class="display-title" style="font-size: clamp(2rem, 4vw, 4rem); margin-bottom: 0;">Chronological updates</h2>
-                        <span style="font-family: var(--font-mono); font-size: 0.75rem; color: var(--ink-faint); text-transform: uppercase; letter-spacing: 0.1em;">Newest first</span>
+                        <h2 class="display-title" id="entries-title" style="font-size: clamp(2rem, 4vw, 4rem); margin-bottom: 0;">Chronological updates</h2>
+                        <span style="font-family: var(--font-mono); font-size: 0.75rem; color: var(--ink-faint); text-transform: uppercase; letter-spacing: 0.1em;" aria-hidden="true">Newest first</span>
                     </div>
                 </div>
 
@@ -191,13 +191,14 @@
         </section>
 
         <!-- 03: Footer -->
-        <section class="section-blog-footer section-dark" id="contact">
+        <section class="section-blog-footer section-dark" id="contact" aria-labelledby="footer-title">
             <div class="split-layout">
                 <div>
-                    <span class="meta-label reveal-fade">Terminal</span>
+                    <h2 id="footer-title" class="sr-only">Connect</h2>
+                    <span class="meta-label reveal-fade" aria-hidden="true">Terminal</span>
                     <div class="footer-links">
-                        <a href="https://github.com/Vedant9500" class="footer-link reveal-text delay-1">Github</a>
-                        <a href="https://www.linkedin.com/in/vedant-deshmukh-82441928b/" class="footer-link reveal-text delay-2">LinkedIn</a>
+                        <a href="https://github.com/Vedant9500" class="footer-link reveal-text delay-1" aria-label="Visit my GitHub profile">Github</a>
+                        <a href="https://www.linkedin.com/in/vedant-deshmukh-82441928b/" class="footer-link reveal-text delay-2" aria-label="Connect on LinkedIn">LinkedIn</a>
                         <a href="../" class="footer-link reveal-text delay-3">Home</a>
                     </div>
                 </div>
@@ -225,6 +226,7 @@
         (function () {
             const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
             const nav = document.querySelector('.fixed-nav');
+            const body = document.body;
 
             // Immediately show the nav
             if (nav) nav.classList.add('is-inview');
@@ -262,16 +264,16 @@
 
                 belowFold.forEach(el => revealObs.observe(el));
 
-                // Dark-footer observer: swap nav colours
+                // Dark-footer observer: swap nav colours using theme engine
                 const footer = document.getElementById('contact');
-                if (footer && nav) {
+                if (footer && body) {
                     const darkObs = new IntersectionObserver((entries) => {
                         entries.forEach(entry => {
-                            const isDark = entry.isIntersecting;
-                            const color = isDark ? 'var(--paper)' : 'var(--ink)';
-                            nav.querySelectorAll('.brand-name, .brand-sys, .nav-link').forEach(el => {
-                                el.style.color = color;
-                            });
+                            if (entry.isIntersecting) {
+                                body.setAttribute('data-theme', 'dark');
+                            } else {
+                                body.removeAttribute('data-theme');
+                            }
                         });
                     }, { threshold: 0.3 });
                     darkObs.observe(footer);
