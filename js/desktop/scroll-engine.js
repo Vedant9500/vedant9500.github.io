@@ -53,30 +53,17 @@ document.addEventListener("DOMContentLoaded", () => {
         checkTheme(currentSection);
     }
     
-    // 3. Dark Theme Navigation Check
-    const fixedNav = document.querySelector('.fixed-nav');
-    const scrollProgress = document.querySelector('.scroll-progress');
+    // 3. Theme Toggle Engine
+    const body = document.body;
     
     function checkTheme(section) {
-        if (!fixedNav || !scrollProgress) return;
+        if (!body) return;
         
-        // If the section being viewed into is dark, we swap some styles
+        // If the section being viewed into is dark, we swap the global theme attribute
         if (section.classList.contains('section-dark')) {
-            fixedNav.style.color = 'var(--paper)';
-            // We use specific CSS inheritance tricks or targeted styling here
-            document.querySelectorAll('.brand-name, .nav-link').forEach(el => {
-                el.style.color = 'var(--paper)';
-            });
-            document.querySelectorAll('.nav-link').forEach(el => {
-                el.style.setProperty('--after-bg', 'var(--paper)'); // custom prop if needed
-            });
-            document.querySelector('.progress-fill').style.background = 'var(--paper)';
+            body.setAttribute('data-theme', 'dark');
         } else {
-            // Reset to default ink
-            document.querySelectorAll('.brand-name, .nav-link').forEach(el => {
-                el.style.color = 'var(--ink)';
-            });
-            document.querySelector('.progress-fill').style.background = 'var(--ink)';
+            body.removeAttribute('data-theme');
         }
     }
 

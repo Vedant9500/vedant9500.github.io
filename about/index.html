@@ -79,15 +79,15 @@
 
     <div class="page-shell">
         <header class="site-header">
-            <a class="brand" href="../" aria-label="Go to homepage">
-                <span class="brand-badge">VD</span>
+            <a class="brand" href="../" aria-label="Vedant Deshmukh - Go to home page">
+                <span class="brand-badge" aria-hidden="true">VD</span>
                 <span class="brand-copy">
                     <span class="brand-name">Vedant Deshmukh</span>
                     <span class="brand-subtitle">About, background, and technical direction</span>
                 </span>
             </a>
 
-            <nav class="site-nav" aria-label="About navigation">
+            <nav class="site-nav" aria-label="About page navigation">
                 <a class="nav-chip" href="#overview" data-section-link="overview">Overview</a>
                 <a class="nav-chip" href="#approach" data-section-link="approach">Approach</a>
                 <a class="nav-chip" href="#contact" data-section-link="contact">Contact</a>
@@ -96,10 +96,10 @@
         </header>
 
         <main id="content">
-            <section class="section-shell hero-intro" id="top" data-reveal>
+            <section class="section-shell hero-intro" id="top" data-reveal aria-labelledby="about-hero-title">
                 <article class="hero-copy">
-                    <span class="eyebrow">About Vedant</span>
-                    <h1>Computer Engineering student focused on AI, simulation, and systems clarity.</h1>
+                    <span class="eyebrow" aria-hidden="true">About Vedant</span>
+                    <h1 id="about-hero-title">Computer Engineering student focused on AI, simulation, and systems clarity.</h1>
                     <p class="hero-lead">
                         I build projects where technical behavior is visible and testable. My strongest work sits at the
                         intersection of machine learning, simulation-driven thinking, and software tooling that reduces
@@ -107,14 +107,14 @@
                     </p>
 
                     <div class="hero-actions">
-                        <a class="button button-primary" href="../#work">View selected work</a>
-                        <a class="button button-secondary" href="https://github.com/Vedant9500" target="_blank" rel="noreferrer">GitHub</a>
+                        <a class="button button-primary" href="../#work" aria-label="View Selected Work and Projects">View selected work</a>
+                        <a class="button button-secondary" href="https://github.com/Vedant9500" target="_blank" rel="noreferrer" aria-label="Visit my GitHub profile">GitHub</a>
                         <a class="button button-secondary" href="../blog/index.html">Research blog</a>
                     </div>
                 </article>
 
-                <aside class="hero-aside">
-                    <span class="panel-label">Working lanes</span>
+                <aside class="hero-aside" aria-labelledby="working-lanes-label">
+                    <span class="panel-label" id="working-lanes-label">Working lanes</span>
                     <ul class="focus-points">
                         <li>Machine learning experiments and symbolic methods</li>
                         <li>Interactive simulation projects in browser and C++</li>
@@ -124,11 +124,11 @@
                 </aside>
             </section>
 
-            <section class="section-shell page-section" id="overview" data-reveal>
+            <section class="section-shell page-section" id="overview" data-reveal aria-labelledby="overview-title">
                 <div class="section-head">
                     <div>
-                        <span class="section-kicker">01 · Overview</span>
-                        <h2>What I optimize for in projects.</h2>
+                        <span class="section-kicker" aria-hidden="true">01 · Overview</span>
+                        <h2 id="overview-title">What I optimize for in projects.</h2>
                     </div>
                     <p class="section-summary">
                         I care about build quality and explainability equally. A project is stronger when both code and
@@ -146,7 +146,7 @@
                             That process led to a mix of repositories in symbolic regression, predictive modeling,
                             simulation systems, and tools. The common theme is visible behavior and explainable choices.
                         </p>
-                        <div class="inline-pills" aria-label="Technical stack">
+                        <div class="inline-pills" aria-label="Technical skill stack">
                             <span>Python</span>
                             <span>Go</span>
                             <span>C++</span>
@@ -156,7 +156,7 @@
                         </div>
                     </article>
 
-                    <div class="stat-grid" aria-label="Profile facts">
+                    <div class="stat-grid" aria-label="Profile metrics">
                         <article class="stat-block">
                             <span class="stat-label">Program</span>
                             <span class="stat-value">Computer Engineering</span>
@@ -173,11 +173,11 @@
                 </div>
             </section>
 
-            <section class="section-shell page-section" id="approach" data-reveal>
+            <section class="section-shell page-section" id="approach" data-reveal aria-labelledby="approach-title">
                 <div class="section-head">
                     <div>
-                        <span class="section-kicker">02 · Approach</span>
-                        <h2>Principles behind my project decisions.</h2>
+                        <span class="section-kicker" aria-hidden="true">02 · Approach</span>
+                        <h2 id="approach-title">Principles behind my project decisions.</h2>
                     </div>
                     <p class="section-summary">
                         These principles keep work practical and interview-ready instead of becoming disconnected
@@ -187,42 +187,42 @@
 
                 <div class="process-grid">
                     <article class="process-step" data-reveal>
-                        <span class="panel-label">Principle 1</span>
+                        <span class="panel-label" aria-hidden="true">Principle 1</span>
                         <h3>Pick problems with observable output.</h3>
                         <p>Models should converge, simulations should move, and tools should demonstrate utility quickly.</p>
                     </article>
 
                     <article class="process-step" data-reveal>
-                        <span class="panel-label">Principle 2</span>
+                        <span class="panel-label" aria-hidden="true">Principle 2</span>
                         <h3>Keep complexity intentional.</h3>
                         <p>Use advanced methods where they matter, but keep project framing understandable and grounded.</p>
                     </article>
 
                     <article class="process-step" data-reveal>
-                        <span class="panel-label">Principle 3</span>
+                        <span class="panel-label" aria-hidden="true">Principle 3</span>
                         <h3>Communicate design choices clearly.</h3>
                         <p>Good engineering includes making assumptions, tradeoffs, and outcomes legible to reviewers.</p>
                     </article>
                 </div>
             </section>
 
-            <section class="section-shell writing-callout" id="contact" data-reveal>
+            <section class="section-shell writing-callout" id="contact" data-reveal aria-labelledby="contact-title">
                 <div>
-                    <span class="section-kicker">03 · Contact</span>
-                    <h2>Open to project conversations, technical reviews, and collaboration.</h2>
+                    <span class="section-kicker" aria-hidden="true">03 · Contact</span>
+                    <h2 id="contact-title">Open to project conversations, technical reviews, and collaboration.</h2>
                     <p>
                         Reach out through GitHub or LinkedIn. For deeper build context, my blog tracks ongoing work and
                         implementation notes.
                     </p>
                 </div>
                 <div class="hero-actions">
-                    <a class="button button-primary" href="https://github.com/Vedant9500" target="_blank" rel="noreferrer">GitHub</a>
-                    <a class="button button-secondary" href="https://www.linkedin.com/in/vedant-deshmukh-82441928b/" target="_blank" rel="noreferrer">LinkedIn</a>
+                    <a class="button button-primary" href="https://github.com/Vedant9500" target="_blank" rel="noreferrer" aria-label="Visit my GitHub profile">GitHub</a>
+                    <a class="button button-secondary" href="https://www.linkedin.com/in/vedant-deshmukh-82441928b/" target="_blank" rel="noreferrer" aria-label="Connect on LinkedIn">LinkedIn</a>
                     <a class="button button-secondary" href="../blog/index.html">Blog</a>
                 </div>
             </section>
 
-            <footer class="section-shell footer" data-reveal>
+            <footer class="section-shell footer" data-reveal aria-label="Page footer">
                 <p class="footer-copy">Consistent design system across Home, About, and Blog.</p>
                 <div class="footer-links">
                     <a href="../">Home</a>

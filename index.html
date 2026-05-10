@@ -35,24 +35,11 @@
 </head>
 <body>
 
-    <!-- Custom Cursor -->
-    <div class="custom-cursor">
-        <div class="cursor-dot"></div>
-        <div class="cursor-crosshair"></div>
-    </div>
-
     <!-- Fixed Global UI -->
-    <nav class="fixed-nav reveal-fade">
+    <nav class="fixed-nav reveal-fade" aria-label="Main Navigation">
         <div class="brand-block">
-            <a href="#hero" class="brand-name">Vedant Deshmukh</a>
-            <span class="brand-sys">Sys. ENG / AI LAB</span>
-            
-            <div class="scroll-progress">
-                <span class="progress-text">01 / 04</span>
-                <div class="progress-line">
-                    <div class="progress-fill"></div>
-                </div>
-            </div>
+            <a href="#hero" class="brand-name" aria-label="Vedant Deshmukh - Home">Vedant Deshmukh</a>
+            <span class="brand-sys" aria-hidden="true">Sys. ENG / AI LAB</span>
         </div>
         <div class="nav-links">
             <a href="#about" class="nav-link">About</a>
@@ -65,12 +52,11 @@
     <main id="content">
 
         <!-- 01: Hero Section -->
-        <section class="section-slide" id="hero" data-scroll-section>
-            <canvas id="signature-canvas"></canvas>
-            <span class="section-idx">01</span>
-            <span class="section-annotation">sys.identity</span>
+        <section class="section-slide" id="hero" data-scroll-section aria-labelledby="hero-title">
+            <canvas id="signature-canvas" aria-hidden="true"></canvas>
+            <span class="section-annotation" aria-hidden="true">sys.identity</span>
             
-            <div class="hero-annotation-block reveal-fade delay-4">
+            <div class="hero-annotation-block reveal-fade delay-4" aria-hidden="true">
                 <div class="anno-item"><span>LOC:</span> INDIA (IST)</div>
                 <div class="anno-item"><span>FLD:</span> AI / SYSTEMS</div>
                 <div class="anno-item"><span>STS:</span> BUILDING</div>
@@ -78,55 +64,36 @@
             
             <div class="split-layout">
                 <div>
-                    <h1 class="display-title">
+                    <h1 class="display-title" id="hero-title">
                         <span class="reveal-inner"><div class="reveal-text">Building</div></span>
                         <span class="reveal-inner"><div class="reveal-text delay-1"><i>Intelligent</i></div></span>
-                        <span class="reveal-inner"><div class="reveal-text delay-2">Systems<span class="accent-mark">.</span></div></span>
+                        <span class="reveal-inner"><div class="reveal-text delay-2">Systems<span class="accent-mark" aria-hidden="true">.</span></div></span>
                     </h1>
                 </div>
                 <div>
                     <p class="body-lead reveal-text delay-3">
-                        I am Vedant, a Computer Engineering student researching machine learning behavior, building deep browser simulations, and engineering low-level software utilities.
+                        I am Vedant, a Computer Engineering student researching machine learning behavior and engineering low-level software utilities for MCP environments.
                     </p>
                     <div class="reveal-fade delay-4">
-                        <a href="#work" class="btn-brutal">View Data & Work</a>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Ticker Ribbon -->
-            <div class="ticker-wrap">
-                <div class="ticker">
-                    <div class="ticker__group">
-                        <div class="ticker__item">SYMBOLIC REGRESSION</div>
-                        <div class="ticker__item">N-BODY SIMULATION</div>
-                        <div class="ticker__item">DEVELOPER TOOLING</div>
-                        <div class="ticker__item">OPERATION NEURAL NETWORKS</div>
-                    </div>
-                    <div class="ticker__group" aria-hidden="true">
-                        <div class="ticker__item">SYMBOLIC REGRESSION</div>
-                        <div class="ticker__item">N-BODY SIMULATION</div>
-                        <div class="ticker__item">DEVELOPER TOOLING</div>
-                        <div class="ticker__item">OPERATION NEURAL NETWORKS</div>
+                        <a href="#work" class="btn-brutal" aria-label="View Selected Work and Projects">View Data & Work</a>
                     </div>
                 </div>
             </div>
         </section>
 
         <!-- 02: About Section -->
-        <section class="section-slide" id="about" data-scroll-section>
-            <div class="bg-grid"></div>
-            <span class="section-idx">02</span>
-            <span class="section-annotation">sys.profile</span>
+        <section class="section-slide" id="about" data-scroll-section aria-labelledby="about-title">
+            <div class="bg-grid" aria-hidden="true"></div>
+            <span class="section-annotation" aria-hidden="true">sys.profile</span>
             
             <div class="split-layout">
                 <div>
-                    <span class="meta-label reveal-fade delay-1">Profile Data</span>
-                    <h2 class="display-title">
+                    <span class="meta-label reveal-fade delay-1" aria-hidden="true">Profile Data</span>
+                    <h2 class="display-title" id="about-title">
                         <span class="reveal-inner"><div class="reveal-text">Explainable</div></span>
-                        <span class="reveal-inner"><div class="reveal-text delay-1">Mechanics<span class="accent-mark">.</span></div></span>
+                        <span class="reveal-inner"><div class="reveal-text delay-1">Mechanics<span class="accent-mark" aria-hidden="true">.</span></div></span>
                     </h2>
-                    <div class="sys-line reveal-fade delay-2"></div>
+                    <div class="sys-line reveal-fade delay-2" aria-hidden="true"></div>
                 </div>
                 <div>
                     <div class="sys-box reveal-text delay-3">
@@ -134,7 +101,7 @@
                             My work begins at the intersection of mathematical theory and systems implementation. I prefer projects where mechanics are visible, behavior is explainable, and architecture is intentional.
                         </p>
                         
-                        <div class="skills-matrix">
+                        <div class="skills-matrix" aria-label="Technical Skills Matrix">
                             <div class="matrix-item">
                                 <span class="matrix-label">Core</span>
                                 <span class="matrix-value">Python, C++, Go, JS</span>
@@ -145,7 +112,7 @@
                             </div>
                             <div class="matrix-item">
                                 <span class="matrix-label">Status</span>
-                                <span class="matrix-value">Building Glassbox v3</span>
+                                <span class="matrix-value">Building OpenLMlib</span>
                             </div>
                         </div>
                     </div>
@@ -154,68 +121,69 @@
         </section>
 
         <!-- 03: Selected Work -->
-        <section class="section-slide" id="work" data-scroll-section>
-            <div class="bg-grid"></div>
-            <span class="section-idx">03</span>
-            <span class="section-annotation">sys.operations</span>
+        <section class="section-slide" id="work" data-scroll-section aria-labelledby="work-title-heading">
+            <div class="bg-grid" aria-hidden="true"></div>
+            <span class="section-annotation" aria-hidden="true">sys.operations</span>
             
             <div class="work-wide-layout">
-                <div class="work-header-meta reveal-fade">
+                <div class="work-header-meta reveal-fade" aria-hidden="true">
                     <span class="meta-label">Operation Index</span>
                     <span class="meta-stats">3 active // 2 research // 1 tooling</span>
                 </div>
                 
+                <h2 id="work-title-heading" class="sr-only">Selected Projects</h2>
+                
                 <div class="work-list">
                     <div class="work-item delay-1 reveal-text">
-                        <div class="work-header">
-                            <span class="work-item-index">01</span>
+                        <div class="work-header" role="button" aria-expanded="false" aria-controls="work-glassbox" tabindex="0">
+                            <span class="work-item-index" aria-hidden="true">01</span>
                             <div class="work-title">Glassbox</div>
                             <div class="work-meta">
                                 <span>Neuro-Symbolic Search</span>
-                                <span>Python</span>
-                                <span class="work-toggle">+</span>
+                                <span class="sr-only">Built with Python</span>
+                                <span class="work-toggle" aria-hidden="true">+</span>
                             </div>
                         </div>
-                        <div class="work-body">
+                        <div class="work-body" id="work-glassbox">
                             <div class="work-inner">
                                 <p class="body-lead" style="margin-bottom: 2rem; max-width: 60ch;">Glassbox is a neuro-symbolic search engine that uses operation neural networks to discover mathematical equations directly from data. By enforcing algebraic structure during training, it ensures that output models are inherently interpretable rather than black-box approximations.</p>
-                                <a href="https://github.com/Vedant9500/Glassbox" target="_blank" class="btn-brutal">View Repository</a>
+                                <a href="https://github.com/Vedant9500/Glassbox" target="_blank" class="btn-brutal" aria-label="View Glassbox repository on GitHub">View Repository</a>
                             </div>
                         </div>
                     </div>
                     
                     <div class="work-item delay-2 reveal-text">
-                        <div class="work-header">
-                            <span class="work-item-index">02</span>
-                            <div class="work-title">CelestialSim</div>
+                        <div class="work-header" role="button" aria-expanded="false" aria-controls="work-openlmlib" tabindex="0">
+                            <span class="work-item-index" aria-hidden="true">02</span>
+                            <div class="work-title">OpenLMlib</div>
                             <div class="work-meta">
-                                <span>Web-based N-Body</span>
-                                <span>JS / WebGL</span>
-                                <span class="work-toggle">+</span>
+                                <span>Memory-Augmented MCP</span>
+                                <span class="sr-only">Built with Python and SQLite</span>
+                                <span class="work-toggle" aria-hidden="true">+</span>
                             </div>
                         </div>
-                        <div class="work-body">
+                        <div class="work-body" id="work-openlmlib">
                             <div class="work-inner">
-                                <p class="body-lead" style="margin-bottom: 2rem; max-width: 60ch;">A browser-based gravitational simulation focused on visible behavior and explainable dynamics. It processes hundreds of orbital bodies in real-time, leveraging Web Workers for physics calculations and a minimalist interface for interaction.</p>
-                                <a href="https://github.com/Vedant9500/CelestialSim" target="_blank" class="btn-brutal">View Repository</a>
+                                <p class="body-lead" style="margin-bottom: 2rem; max-width: 60ch;">A specialized knowledge management library engineered for Large Language Models. It implements a persistent, searchable memory layer for MCP-capable agents, allowing for long-term context retention and structured research retrieval without token-drift.</p>
+                                <a href="https://github.com/Vedant9500/OpenLMlib" target="_blank" class="btn-brutal" aria-label="View OpenLMlib repository on GitHub">View Repository</a>
                             </div>
                         </div>
                     </div>
                     
                     <div class="work-item delay-3 reveal-text" style="border-bottom: none;">
-                        <div class="work-header">
-                            <span class="work-item-index">03</span>
+                        <div class="work-header" role="button" aria-expanded="false" aria-controls="work-wtf" tabindex="0">
+                            <span class="work-item-index" aria-hidden="true">03</span>
                             <div class="work-title">WTF</div>
                             <div class="work-meta">
                                 <span>Developer Tools</span>
-                                <span>Go</span>
-                                <span class="work-toggle">+</span>
+                                <span class="sr-only">Built with Go</span>
+                                <span class="work-toggle" aria-hidden="true">+</span>
                             </div>
                         </div>
-                        <div class="work-body">
+                        <div class="work-body" id="work-wtf">
                             <div class="work-inner">
                                 <p class="body-lead" style="margin-bottom: 2rem; max-width: 60ch;">A minimalist utility built in Go engineered for practical, daily developer use. It focuses on low latency, rigorous error handling, and a zero-dependency deployment model to solve immediate terminal-based workflows.</p>
-                                <a href="https://github.com/Vedant9500/WTF" target="_blank" class="btn-brutal">View Repository</a>
+                                <a href="https://github.com/Vedant9500/WTF" target="_blank" class="btn-brutal" aria-label="View WTF repository on GitHub">View Repository</a>
                             </div>
                         </div>
                     </div>
@@ -224,15 +192,15 @@
         </section>
 
         <!-- 04: Footer / Connect -->
-        <section class="section-slide section-dark" id="contact" data-scroll-section>
-            <div class="bg-grid"></div>
-            <span class="section-idx">04</span>
-            <span class="section-annotation">sys.signal</span>
+        <section class="section-slide section-dark" id="contact" data-scroll-section aria-labelledby="contact-title">
+            <div class="bg-grid" aria-hidden="true"></div>
+            <span class="section-annotation" aria-hidden="true">sys.signal</span>
             <div class="split-layout">
                 <div>
+                    <h2 id="contact-title" class="sr-only">Connect</h2>
                     <div class="footer-links">
-                        <a href="https://github.com/Vedant9500" class="footer-link reveal-text delay-1">Github</a>
-                        <a href="https://www.linkedin.com/in/vedant-deshmukh-82441928b/" class="footer-link reveal-text delay-2">LinkedIn</a>
+                        <a href="https://github.com/Vedant9500" class="footer-link reveal-text delay-1" aria-label="Visit my GitHub profile">Github</a>
+                        <a href="https://www.linkedin.com/in/vedant-deshmukh-82441928b/" class="footer-link reveal-text delay-2" aria-label="Connect on LinkedIn">LinkedIn</a>
                         <a href="blog/index.html" class="footer-link reveal-text delay-3">Journal</a>
                     </div>
                 </div>
@@ -254,7 +222,6 @@
 
     <!-- Scripts -->
     <script src="js/signature-moment.js"></script>
-    <script src="js/interactive-moments.js"></script>
     <script src="js/desktop/scroll-engine.js"></script>
 
 </body>
