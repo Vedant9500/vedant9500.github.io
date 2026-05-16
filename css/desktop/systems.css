@@ -999,6 +999,7 @@ body::before {
     line-height: 1;
     letter-spacing: -0.02em;
     color: var(--ink);
+    transition: color 0.4s var(--ease-out-expo);
 }
 
 /* Tags */
@@ -1050,7 +1051,10 @@ body::before {
     color: var(--paper);
 }
 
-.blog-post-card.expanded .blog-post-title,
+.blog-post-card.expanded .blog-post-title {
+    color: var(--accent-mint);
+}
+
 .blog-post-card.expanded .blog-post-date {
     color: var(--paper);
 }
