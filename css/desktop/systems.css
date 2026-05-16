@@ -26,7 +26,16 @@
     padding: 0;
     -webkit-tap-highlight-color: transparent;
 }
-    -webkit-tap-highlight-color: transparent;
+
+/* Brutalist Focus States (Accessibility) */
+:focus-visible {
+    outline: 2px solid var(--accent-mint);
+    outline-offset: 4px;
+}
+
+.blog-post-card:focus-visible {
+    outline: 2px solid var(--accent-mint);
+    outline-offset: -2px; /* Inward outline for cards */
 }
 
 html {
@@ -1021,7 +1030,48 @@ body::before {
     letter-spacing: 0.06em;
     color: var(--ink-soft);
     background: transparent;
-    transition: border-color 0.3s ease, color 0.3s ease;
+    transition: border-color 0.3s ease, color 0.3s ease, background 0.3s ease;
+    cursor: pointer;
+}
+
+.blog-tag:hover {
+    border-color: var(--ink);
+    color: var(--ink);
+}
+
+.blog-tag.active {
+    background: var(--ink);
+    color: var(--paper);
+    border-color: var(--ink);
+}
+
+/* Anchor Link Icon */
+.blog-anchor-link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: 0.5rem;
+    color: var(--ink-faint);
+    opacity: 0;
+    transition: opacity 0.2s ease, color 0.2s ease;
+    text-decoration: none;
+}
+
+.blog-post-card:hover .blog-anchor-link {
+    opacity: 1;
+}
+
+.blog-anchor-link:hover {
+    color: var(--accent-mint);
+}
+
+.blog-post-card.expanded .blog-anchor-link {
+    color: rgba(246, 241, 232, 0.5);
+    opacity: 1;
+}
+
+.blog-post-card.expanded .blog-anchor-link:hover {
+    color: var(--accent-mint);
 }
 
 /* Expand icon */
