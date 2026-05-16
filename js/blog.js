@@ -266,4 +266,64 @@ async function loadBlog() {
 
 document.addEventListener('DOMContentLoaded', () => {
     loadBlog();
+
+    let isNewestFirst = true;
+    const sortBtn = document.getElementById('sort-toggle-btn');
+    if (sortBtn) {
+        sortBtn.addEventListener('click', () => {
+            isNewestFirst = !isNewestFirst;
+            sortBtn.textContent = isNewestFirst ? 'Newest first' : 'Oldest first';
+            allPosts.reverse();
+            renderPosts();
+        });
+    }
+
+    const jumpBtn = document.getElementById('quick-jump-btn');
+    const nav = document.querySelector('.fixed-nav');
+    let lastScrollY = window.scrollY;
+    let navOffset = 0;
+
+    if (jumpBtn) {
+        // Initial state
+        jumpBtn.style.transform = 'translateY(10px)';
+        
+        window.addEventListener('scroll', () => {
+            const currentScrollY = window.scrollY;
+            const deltaY = currentScrollY - lastScrollY;
+
+            // Quick jump button visibility
+            if (currentScrollY > 500) {
+                jumpBtn.style.opacity = '1';
+                jumpBtn.style.pointerEvents = 'auto';
+                jumpBtn.style.transform = 'translateY(0)';
+            } else {
+                jumpBtn.style.opacity = '0';
+                jumpBtn.style.pointerEvents = 'none';
+                jumpBtn.style.transform = 'translateY(10px)';
+            }
+
+            // Smart Navbar auto-hide logic (scroll-linked)
+            if (nav) {
+                const navHeight = nav.offsetHeight;
+                
+                if (currentScrollY <= 0) {
+                    navOffset = 0;
+                } else {
+                    navOffset -= deltaY;
+                    navOffset = Math.max(-navHeight, Math.min(0, navOffset));
+                }
+                
+                nav.style.transform = `translateY(${navOffset}px)`;
+            }
+            
+            lastScrollY = currentScrollY;
+        }, { passive: true });
+
+        jumpBtn.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+    }
 });
