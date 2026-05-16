@@ -196,6 +196,11 @@
                         <h2 class="display-title" id="entries-title" style="font-size: clamp(2rem, 4vw, 4rem); margin-bottom: 0;">Chronological updates</h2>
                         <button id="sort-toggle-btn" class="btn-brutal" style="padding: 0.25rem 0.75rem; font-size: 0.75rem; font-family: var(--font-mono); text-transform: uppercase; letter-spacing: 0.1em;" aria-label="Toggle sort order">Newest first</button>
                     </div>
+                    
+                    <!-- Tag Filter Bar -->
+                    <div id="blog-tag-filters" style="display: flex; gap: 0.5rem; overflow-x: auto; padding: 1rem 0; margin-bottom: -1rem; scrollbar-width: none; -ms-overflow-style: none;">
+                        <!-- Tags injected by JS -->
+                    </div>
                 </div>
 
                 <div class="blog-feed" id="blog-feed">
@@ -203,6 +208,11 @@
                         <div class="blog-loading-spinner"></div>
                         <div>Loading posts...</div>
                     </div>
+                </div>
+
+                <!-- Load More Button -->
+                <div style="display: flex; justify-content: center; margin-top: 3rem; margin-bottom: 2rem;">
+                    <button id="load-more-btn" class="btn-brutal reveal-fade" style="display: none; width: 100%; max-width: 400px;">Load Older Entries</button>
                 </div>
             </div>
         </section>
