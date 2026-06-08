@@ -4,6 +4,41 @@
  */
 
 document.addEventListener("DOMContentLoaded", () => {
+    const nav = document.querySelector('.fixed-nav');
+    if (nav) {
+        nav.classList.add('is-inview');
+    }
+
+    let lastScrollY = window.scrollY;
+    let navOffset = 0;
+
+    function getNavHiddenDistance() {
+        if (!nav) return 0;
+
+        const navTop = Number.parseFloat(window.getComputedStyle(nav).top);
+        return nav.offsetHeight + (Number.isFinite(navTop) ? Math.max(navTop, 0) : 0);
+    }
+
+    window.addEventListener('scroll', () => {
+        const currentScrollY = window.scrollY;
+        const deltaY = currentScrollY - lastScrollY;
+
+        if (nav) {
+            const navHiddenDistance = getNavHiddenDistance();
+
+            if (currentScrollY <= 0) {
+                navOffset = 0;
+            } else {
+                navOffset -= deltaY;
+                navOffset = Math.max(-navHiddenDistance, Math.min(0, navOffset));
+            }
+
+            nav.style.transform = `translateY(${navOffset}px)`;
+        }
+
+        lastScrollY = currentScrollY;
+    }, { passive: true });
+
     // 1. Setup Intersection Observer for Sections
     const sections = document.querySelectorAll('[data-scroll-section]');
     
@@ -69,20 +104,33 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // 4. Accordion Logic for Work Items
     const workHeaders = document.querySelectorAll('.work-header');
+
+    function setWorkItemExpanded(item, expanded) {
+        const header = item.querySelector('.work-header');
+        const body = item.querySelector('.work-body');
+
+        item.classList.toggle('is-expanded', expanded);
+        if (header) header.setAttribute('aria-expanded', String(expanded));
+        if (body) body.setAttribute('aria-hidden', String(!expanded));
+    }
     
     workHeaders.forEach(header => {
-        header.addEventListener('click', () => {
-            const currentItem = header.closest('.work-item');
-            
-            // Close other items
+        const currentItem = header.closest('.work-item');
+        const body = currentItem ? currentItem.querySelector('.work-body') : null;
+
+        if (body) {
+            body.setAttribute('aria-hidden', 'true');
+        }
+
+        const toggleHeader = () => {
+            if (!currentItem) return;
+            const shouldExpand = !currentItem.classList.contains('is-expanded');
+
             document.querySelectorAll('.work-item').forEach(item => {
-                if(item !== currentItem) {
-                    item.classList.remove('is-expanded');
-                }
+                setWorkItemExpanded(item, item === currentItem && shouldExpand);
             });
-            
-            // Toggle current
-            currentItem.classList.toggle('is-expanded');
-        });
+        };
+
+        header.addEventListener('click', toggleHeader);
     });
 });

@@ -66,7 +66,7 @@
     </noscript>
 
     <!-- Systems CSS (current UI) -->
-    <link rel="stylesheet" href="../css/desktop/systems.css">
+    <link rel="stylesheet" href="../css/desktop/systems.css?v=20260525d">
 
     <!-- Blog-specific overrides: disable scroll-snap, use natural scroll -->
     <style>
@@ -131,6 +131,45 @@
         }
         .brand-block, .nav-links {
             margin: 0;
+        }
+
+        @media (max-width: 768px) {
+            .fixed-nav {
+                align-items: center;
+                flex-direction: column;
+                justify-content: center;
+                gap: 0.65rem;
+                padding: 0.85rem 5vw;
+            }
+
+            .brand-block {
+                align-items: center;
+                text-align: center;
+            }
+
+            .brand-name {
+                font-size: 1.25rem;
+            }
+
+            .brand-sys {
+                font-size: 0.58rem;
+            }
+
+            .nav-links {
+                position: static;
+                inset: auto;
+                width: auto;
+                padding: 0;
+                border: 0;
+                background: transparent;
+                display: flex;
+                justify-content: center;
+                gap: 1rem;
+            }
+
+            .nav-link {
+                font-size: 0.62rem;
+            }
         }
     </style>
 </head>
@@ -224,8 +263,8 @@
                     <h2 id="footer-title" class="sr-only">Connect</h2>
                     <span class="meta-label reveal-fade" aria-hidden="true">Terminal</span>
                     <div class="footer-links">
-                        <a href="https://github.com/Vedant9500" class="footer-link reveal-text delay-1" aria-label="Visit my GitHub profile">Github</a>
-                        <a href="https://www.linkedin.com/in/vedant-deshmukh-82441928b/" class="footer-link reveal-text delay-2" aria-label="Connect on LinkedIn">LinkedIn</a>
+                        <a href="https://github.com/Vedant9500" target="_blank" rel="noopener noreferrer" class="footer-link reveal-text delay-1" aria-label="Visit my GitHub profile">Github</a>
+                        <a href="https://www.linkedin.com/in/vedant-deshmukh-82441928b/" target="_blank" rel="noopener noreferrer" class="footer-link reveal-text delay-2" aria-label="Connect on LinkedIn">LinkedIn</a>
                         <a href="../" class="footer-link reveal-text delay-3">Home</a>
                     </div>
                 </div>
@@ -250,7 +289,7 @@
         <i class="fas fa-arrow-up"></i>
     </button>
 
-    <script src="../js/blog.js"></script>
+    <script src="../js/blog.js?v=20260525"></script>
     <script>
         /* Blog reveal + dark-nav observer
            Triggers .is-inview on elements with .reveal-fade or .reveal-text
