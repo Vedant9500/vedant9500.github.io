@@ -1,0 +1,29 @@
+# Vedant Sudhir Deshmukh (Vedant9500)
+
+Computer Engineering Student building symbolic regression systems, Model Context Protocol (MCP) memory tooling, and Go CLI utilities.
+
+## Profile Summary
+*   **Role:** Computer Engineering Student
+*   **Focus:** Machine Learning, C++, Go, Developer Tools, Systems Programming
+*   **Location:** India (IST)
+*   **GitHub:** [github.com/Vedant9500](https://github.com/Vedant9500)
+*   **LinkedIn:** [linkedin.com/in/vedant-deshmukh-82441928b/](https://www.linkedin.com/in/vedant-deshmukh-82441928b/)
+*   **Website:** [vedantium.dev](https://vedantium.dev/)
+
+## Core Projects
+
+### [Glassbox](https://github.com/Vedant9500/Glassbox)
+Symbolic regression engine that uses operation neural networks to discover mathematical equations directly from data. Features fast-path equation search, evolutionary optimization, and C++ backends.
+*   **Stack:** Python, C++
+
+### [OpenLMlib](https://github.com/Vedant9500/OpenLMlib)
+Model Context Protocol (MCP) server providing persistent, searchable note memory for AI agents. Designed to prevent token-drift in long chat sessions through SQLite vector/text search integration.
+*   **Stack:** Python, SQLite
+
+### [What's The Function (WTF)](https://github.com/Vedant9500/WTF)
+Go-based CLI utility that translates natural language intent into shell commands. Combines fuzzy search, platform filters, context-based boosts, and history logs for faster terminal workflows.
+*   **Stack:** Go
+
+## Navigation
+*   [Home](https://vedantium.dev/) - Developer portfolio and project summaries.
+*   [Journal / Blog](https://vedantium.dev/blog/) - Engineering updates, build journal, and project writeups.
