@@ -8,7 +8,7 @@ Computer Engineering Student building symbolic regression systems, Model Context
 *   **Location:** India (IST)
 *   **GitHub:** [github.com/Vedant9500](https://github.com/Vedant9500)
 *   **LinkedIn:** [linkedin.com/in/vedant-deshmukh-82441928b/](https://www.linkedin.com/in/vedant-deshmukh-82441928b/)
-*   **Website:** [vedantium.dev](https://vedantium.dev/)
+*   **Website:** [vedant9500.github.io](https://vedant9500.github.io/)
 
 ## Core Projects
 
@@ -25,5 +25,5 @@ Go-based CLI utility that translates natural language intent into shell commands
 *   **Stack:** Go
 
 ## Navigation
-*   [Home](https://vedantium.dev/) - Developer portfolio and project summaries.
-*   [Journal / Blog](https://vedantium.dev/blog/) - Engineering updates, build journal, and project writeups.
+*   [Home](https://vedant9500.github.io/) - Developer portfolio and project summaries.
+*   [Journal / Blog](https://vedant9500.github.io/blog/) - Engineering updates, build journal, and project writeups.
