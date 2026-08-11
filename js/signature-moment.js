@@ -1,7 +1,7 @@
 /**
  * signature-moment.js
  * Generative Node Graph (Neural Network Topology)
- * Implements Tier 6: Signature Moment for Vedantium.dev
+ * Implements Tier 6: Signature Moment for Vedant9500.dev portfolio
  */
 
 class NodeGraph {
