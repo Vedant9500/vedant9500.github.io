@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Hark: a native Linux command palette | Vedant Deshmukh</title>
+    <meta name="description" content="Hark is a resident-daemon command palette for Linux, built in Rust and GTK4. One keystroke, no cold start.">
+    <meta name="author" content="Vedant Deshmukh">
+    <meta name="theme-color" content="#f7f4ec">
+    <meta name="color-scheme" content="light">
+
+    <meta property="og:title" content="Hark: a native Linux command palette">
+    <meta property="og:description" content="A resident-daemon launcher for Linux, built in Rust and GTK4.">
+    <meta property="og:type" content="article">
+    <meta property="og:site_name" content="Vedant Deshmukh">
+    <meta property="og:url" content="https://vroid-is.my.id/work/hark/">
+
+    <link rel="canonical" href="https://vroid-is.my.id/work/hark/">
+
+    <link rel="icon" href="../../favicon.svg" type="image/svg+xml">
+    <link rel="preload" href="../../fonts/newsreader-latin.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="../../fonts/newsreader-italic-latin.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="stylesheet" href="../../styles.css">
+</head>
+<body>
+    <a class="skip-link" href="#main">Skip to content</a>
+
+    <header class="masthead">
+        <div class="wrap masthead-inner">
+            <div class="identity">
+                <a class="name" href="../../">Vedant Deshmukh</a>
+                <p class="role">AI models &middot; simulations &middot; systems &amp; tools</p>
+            </div>
+            <nav class="nav" aria-label="Primary">
+                <a href="../" aria-current="page">Work</a>
+                <a href="../../about/">About</a>
+                <a href="../../#contact">Contact</a>
+            </nav>
+        </div>
+    </header>
+
+    <main id="main">
+        <article class="project wrap">
+            <div class="project-layout">
+                <header class="project-head">
+                    <div class="project-head-main">
+                        <p class="crumb"><a href="../">Work</a> <span aria-hidden="true">/</span> Hark</p>
+                        <h1>Hark</h1>
+                        <p class="project-abstract">A native command palette for Linux. One keystroke, no cold start.</p>
+                    </div>
+                    <dl class="project-meta">
+                        <div>
+                            <dt>Year</dt>
+                            <dd>2026</dd>
+                        </div>
+                        <div>
+                            <dt>Stack</dt>
+                            <dd>Rust, GTK4</dd>
+                        </div>
+                        <div>
+                            <dt>Status</dt>
+                            <dd><a href="https://github.com/Vedant9500/Hark/releases/latest" target="_blank" rel="noopener noreferrer">v0.2.0<span class="arrow" aria-hidden="true"></span></a></dd>
+                        </div>
+                        <div>
+                            <dt>Code</dt>
+                            <dd><a href="https://github.com/Vedant9500/Hark" target="_blank" rel="noopener noreferrer">GitHub<span class="arrow" aria-hidden="true"></span></a></dd>
+                        </div>
+                    </dl>
+                </header>
+
+                <div class="project-main">
+                    <section class="project-section" aria-labelledby="problem-title">
+                        <h2 class="section-label" id="problem-title">Problem</h2>
+                        <div class="project-body">
+                            <p>Linux launchers tend to be either slow, split across a dozen small utilities, or both.</p>
+
+                            <aside class="project-aside" aria-label="Screenshot">
+                                <figure class="project-figure">
+                                    <img src="hark-light.webp" width="785" height="549" alt="Hark's overlay in light mode, showing app search results for Cursor, Firefox, blink, Hark, and Alacritty." decoding="async">
+                                    <figcaption>Hark in light mode. The overlay is a GTK4 surface; the daemon keeps the index warm.</figcaption>
+                                </figure>
+                            </aside>
+
+                            <p>Hark is a resident daemon with a GTK4 overlay: it stays warm, so the hotkey path does not pay for a cold start.</p>
+                        </div>
+                    </section>
+
+                    <section class="project-section" aria-labelledby="approach-title">
+                        <h2 class="section-label" id="approach-title">Approach</h2>
+                        <div class="project-body">
+                            <p>A resident Rust daemon owns the index and the overlay. The <code>hark-hotkey</code> stub is GTK-free: it writes a toggle to the daemon instead of starting the full binary. Triggering the overlay is about 5x cheaper than spawning a fresh GTK process.</p>
+                            <p>Search is local-first: apps, files, math, units, currency, timezones, battery state, definitions, translation, and a web fallback. Network-backed providers are cached.</p>
+                        </div>
+                    </section>
+
+                    <section class="project-section" aria-labelledby="result-title">
+                        <h2 class="section-label" id="result-title">Result</h2>
+                        <div class="project-body">
+                            <p class="result-figure">~8<span> &micro;s</span></p>
+                            <p class="result-caption">Median isolated app search across ~9,100 indexed items, October 2026.</p>
+                            <p>The binary is ~7.8 MB and idle daemon RSS is ~60&ndash;65 MB.</p>
+                        </div>
+                    </section>
+
+                    <section class="project-section" aria-labelledby="use-title">
+                        <h2 class="section-label" id="use-title">Use</h2>
+                        <div class="project-body">
+                            <p class="code-note">Hyprland: keep the daemon warm and bind the cheap stub.</p>
+                            <pre class="code"><code>exec-once = hark --daemon
+bind = ALT, A, exec, hark-hotkey</code></pre>
+
+                            <p class="subhead">A few queries it accepts:</p>
+                            <ul class="examples">
+                                <li><code>2+2</code><span>calculator</span></li>
+                                <li><code>100 km to mi</code><span>unit conversion</span></li>
+                                <li><code>100 usd to eur</code><span>live FX, cached</span></li>
+                                <li><code>15:00 here to tokyo</code><span>timezones</span></li>
+                                <li><code>tr Hola</code><span>translation</span></li>
+                                <li><code>battery</code><span>power status</span></li>
+                            </ul>
+                        </div>
+                    </section>
+
+                    <section class="project-section" aria-labelledby="next-title">
+                        <h2 class="section-label" id="next-title">Next</h2>
+                        <div class="project-body">
+                            <p>It targets Linux x86_64, with layer-shell recommended on Hyprland. Remaining work is distro packaging (AUR, Flatpak), daemon lifecycle edge cases, and test coverage for the search providers.</p>
+                        </div>
+                    </section>
+                </div>
+            </div>
+
+            <nav class="project-next" aria-label="Project navigation">
+                <a href="../">All work</a>
+                <a href="../glassbox/">Next: Glassbox<span class="arrow-next" aria-hidden="true"></span></a>
+            </nav>
+        </article>
+    </main>
+</body>
+</html>

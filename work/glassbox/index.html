@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Glassbox: symbolic regression | Vedant Deshmukh</title>
+    <meta name="description" content="Glassbox is a hybrid symbolic regression engine that returns readable equations. 598/615 on the local benchmark, September 2026.">
+    <meta name="author" content="Vedant Deshmukh">
+    <meta name="theme-color" content="#f7f4ec">
+    <meta name="color-scheme" content="light">
+
+    <meta property="og:title" content="Glassbox: symbolic regression">
+    <meta property="og:description" content="A hybrid symbolic regression engine that returns readable equations.">
+    <meta property="og:type" content="article">
+    <meta property="og:site_name" content="Vedant Deshmukh">
+    <meta property="og:url" content="https://vroid-is.my.id/work/glassbox/">
+
+    <link rel="canonical" href="https://vroid-is.my.id/work/glassbox/">
+
+    <link rel="icon" href="../../favicon.svg" type="image/svg+xml">
+    <link rel="preload" href="../../fonts/newsreader-latin.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="../../fonts/newsreader-italic-latin.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="stylesheet" href="../../styles.css">
+</head>
+<body>
+    <a class="skip-link" href="#main">Skip to content</a>
+
+    <header class="masthead">
+        <div class="wrap masthead-inner">
+            <div class="identity">
+                <a class="name" href="../../">Vedant Deshmukh</a>
+                <p class="role">AI models &middot; simulations &middot; systems &amp; tools</p>
+            </div>
+            <nav class="nav" aria-label="Primary">
+                <a href="../" aria-current="page">Work</a>
+                <a href="../../about/">About</a>
+                <a href="../../#contact">Contact</a>
+            </nav>
+        </div>
+    </header>
+
+    <main id="main">
+        <article class="project wrap">
+            <div class="project-layout">
+                <header class="project-head">
+                    <div class="project-head-main">
+                        <p class="crumb"><a href="../">Work</a> <span aria-hidden="true">/</span> Glassbox</p>
+                        <h1>Glassbox</h1>
+                        <p class="project-abstract">Symbolic regression that returns a readable equation, not a black box.</p>
+                    </div>
+                    <dl class="project-meta">
+                        <div>
+                            <dt>Year</dt>
+                            <dd>2026</dd>
+                        </div>
+                        <div>
+                            <dt>Stack</dt>
+                            <dd>Python, C++</dd>
+                        </div>
+                        <div>
+                            <dt>Status</dt>
+                            <dd>Active</dd>
+                        </div>
+                        <div>
+                            <dt>Code</dt>
+                            <dd><a href="https://github.com/Vedant9500/Glassbox" target="_blank" rel="noopener noreferrer">GitHub<span class="arrow" aria-hidden="true"></span></a></dd>
+                        </div>
+                    </dl>
+                </header>
+
+                <div class="project-main">
+                    <section class="project-section" aria-labelledby="problem-title">
+                        <h2 class="section-label" id="problem-title">Problem</h2>
+                        <div class="project-body">
+                            <p>Most regression models predict well and explain nothing. Glassbox is an attempt to recover the formula itself: a short expression that fits the data and can be checked by hand. The output is the equation, not a model that approximates one.</p>
+                            <p>A candidate has to be accurate and legible. A slightly worse fit with a simpler expression is often the better result.</p>
+                        </div>
+                    </section>
+
+                    <section class="project-section" aria-labelledby="approach-title">
+                        <h2 class="section-label" id="approach-title">Approach</h2>
+                        <div class="project-body">
+                            <p>The runtime is a hybrid pipeline, not a single model:</p>
+                            <ol>
+                                <li>Validate the input and optionally reduce black-box features.</li>
+                                <li>Build basis terms with the classifier fast path; check exact matches.</li>
+                                <li>Propose skeletons with the neural proposer and specialist passes.</li>
+                                <li>Search structure and constants with C++ island evolution.</li>
+                                <li>Simplify the displayed formula and score it directly.</li>
+                            </ol>
+                            <p>Only the last step decides the score. Benchmarks evaluate the displayed formula, not the engine&rsquo;s internal fitness, so a good number cannot hide an unreadable expression. The C++ extension is optional; the Python layer falls back when <code>_core</code> is unavailable.</p>
+                        </div>
+                    </section>
+
+                    <section class="project-section" aria-labelledby="result-title">
+                        <h2 class="section-label" id="result-title">Result</h2>
+                        <div class="project-body">
+                            <p class="result-figure">598<span>/615</span></p>
+                            <p class="result-caption">Latest recorded full-suite run, 9 September 2026. 189 of 205 formulas exact.</p>
+
+                            <aside class="project-aside" aria-label="Glassbox benchmark summary">
+                                <div class="gb-pane">
+                                    <p class="gb-pane-label">
+                                        <span class="gb-pane-title">Local benchmark</span>
+                                        <span class="gb-pane-meta">205 formulas &middot; 615 max</span>
+                                    </p>
+
+                                    <figure class="gb-artifact">
+                                        <figcaption class="gb-fig-head">
+                                            <span class="gb-fig-title">Best score to date</span>
+                                            <span class="gb-fig-meta">33 runs &middot; 19 May&ndash;9 Sep 2026</span>
+                                        </figcaption>
+
+                                        <svg class="gb-chart" viewBox="0 0 548 200" width="548" height="200" role="img" aria-labelledby="gb-title gb-desc">
+                                            <title id="gb-title">Glassbox best full-suite score, May to September 2026</title>
+                                            <desc id="gb-desc">Best full-suite score after each of 33 recorded runs. The line rises from 529 on 19 May to 591 on 3 June, stays at 591 through the summer, and reaches 598 on 9 September. A single 611 run from an experimental search-power pass is excluded; it never reproduced.</desc>
+
+                                            <line class="gb-grid" x1="44" y1="168" x2="532" y2="168"/>
+                                            <line class="gb-grid" x1="44" y1="107.2" x2="532" y2="107.2"/>
+                                            <line class="gb-grid gb-grid-strong" x1="44" y1="46.3" x2="532" y2="46.3"/>
+
+                                            <text class="gb-axis" x="38" y="172" text-anchor="end">500</text>
+                                            <text class="gb-axis" x="38" y="111.2" text-anchor="end">550</text>
+                                            <text class="gb-axis" x="38" y="50.3" text-anchor="end">600</text>
+
+                                            <line class="gb-tick" x1="44" y1="168" x2="44" y2="172"/>
+                                            <text class="gb-axis" x="44" y="187" text-anchor="start">19 May</text>
+                                            <line class="gb-tick" x1="288" y1="168" x2="288" y2="172"/>
+                                            <text class="gb-axis" x="288" y="187" text-anchor="middle">3 Jun</text>
+                                            <g class="gb-x-optional">
+                                                <line class="gb-tick" x1="440.5" y1="168" x2="440.5" y2="172"/>
+                                                <text class="gb-axis" x="440.5" y="187" text-anchor="middle">26 Jul</text>
+                                            </g>
+                                            <line class="gb-tick" x1="532" y1="168" x2="532" y2="172"/>
+                                            <text class="gb-axis" x="532" y="187" text-anchor="end">9 Sep</text>
+
+                                            <path class="gb-line" d="M44.0 132.7 H74.5 V126.6 H89.8 V120.6 H120.2 V118.1 H135.5 V108.4 H196.5 V71.9 H211.8 V63.4 H242.2 V62.2 H272.8 V58.5 H288.0 V57.3 H486.2 V51.2 H501.5 V50.0 H532.0 V48.8"/>
+
+                                            <circle class="gb-dot" cx="44" cy="132.7" r="2.6"/>
+                                            <circle class="gb-dot" cx="288" cy="57.3" r="2.6"/>
+                                            <circle class="gb-dot-latest" cx="532" cy="48.8" r="4.2"/>
+
+                                            <text class="gb-value" x="44" y="127" text-anchor="start">529</text>
+                                            <text class="gb-value" x="288" y="80" text-anchor="middle">591</text>
+                                            <text class="gb-value" x="532" y="70" text-anchor="end">598</text>
+                                        </svg>
+
+                                        <p class="gb-figure-note">Best full-suite score; axis from 500. It held 588&ndash;591 from June through July, then reached 596&ndash;598 on 9 September. A single 611 run from an experimental search-power pass is excluded; it never reproduced.</p>
+                                    </figure>
+
+                                    <figure class="gb-artifact">
+                                        <figcaption class="gb-fig-head">
+                                            <span class="gb-fig-title">Where the 17 points are lost</span>
+                                            <span class="gb-fig-meta">9 Sep 2026</span>
+                                        </figcaption>
+
+                                        <ul class="gb-losses">
+                                            <li>
+                                                <span class="gb-tier"><span class="gb-tier-no">01</span>Trivial</span>
+                                                <span class="gb-track" aria-hidden="true"><span class="gb-fill" style="width:0"></span></span>
+                                                <span class="gb-loss">0</span>
+                                            </li>
+                                            <li>
+                                                <span class="gb-tier"><span class="gb-tier-no">02</span>Simple polynomial</span>
+                                                <span class="gb-track" aria-hidden="true"><span class="gb-fill" style="width:0"></span></span>
+                                                <span class="gb-loss">0</span>
+                                            </li>
+                                            <li>
+                                                <span class="gb-tier"><span class="gb-tier-no">03</span>Basic transcendental</span>
+                                                <span class="gb-track" aria-hidden="true"><span class="gb-fill" style="width:0"></span></span>
+                                                <span class="gb-loss">0</span>
+                                            </li>
+                                            <li>
+                                                <span class="gb-tier"><span class="gb-tier-no">04</span>Nguyen suite</span>
+                                                <span class="gb-track" aria-hidden="true"><span class="gb-fill" style="width:50%"></span></span>
+                                                <span class="gb-loss">3</span>
+                                            </li>
+                                            <li>
+                                                <span class="gb-tier"><span class="gb-tier-no">05</span>Sums &amp; products</span>
+                                                <span class="gb-track" aria-hidden="true"><span class="gb-fill" style="width:16.6667%"></span></span>
+                                                <span class="gb-loss">1</span>
+                                            </li>
+                                            <li>
+                                                <span class="gb-tier"><span class="gb-tier-no">06</span>Rational &amp; nested</span>
+                                                <span class="gb-track" aria-hidden="true"><span class="gb-fill" style="width:50%"></span></span>
+                                                <span class="gb-loss">3</span>
+                                            </li>
+                                            <li>
+                                                <span class="gb-tier"><span class="gb-tier-no">07</span>Hard compositions</span>
+                                                <span class="gb-track" aria-hidden="true"><span class="gb-fill" style="width:66.6667%"></span></span>
+                                                <span class="gb-loss">4</span>
+                                            </li>
+                                            <li>
+                                                <span class="gb-tier"><span class="gb-tier-no">08</span>Frontier</span>
+                                                <span class="gb-track" aria-hidden="true"><span class="gb-fill" style="width:100%"></span></span>
+                                                <span class="gb-loss">6</span>
+                                            </li>
+                                        </ul>
+
+                                        <p class="gb-figure-note">Tiers 1&ndash;3 are exact. Tiers 7&ndash;8 account for 10 of the 17 lost points.</p>
+                                    </figure>
+                                </div>
+                            </aside>
+                            <p>The score is weighted: 3 for exact, 2 for approximate, 1 for loose. Most of the gain came between May and early June; the specialist path has held near 590 since, with a late push to 598.</p>
+                        </div>
+                    </section>
+
+                    <section class="project-section" aria-labelledby="use-title">
+                        <h2 class="section-label" id="use-title">Use</h2>
+                        <div class="project-body">
+                            <p class="code-note">The sklearn-compatible entry point:</p>
+                            <pre class="code"><code>import numpy as np
+from glassbox.sr.sklearn_wrapper import GlassboxRegressor
+
+X = np.linspace(-3, 3, 300).reshape(-1, 1)
+y = X[:, 0] ** 2 + np.sin(X[:, 0])
+
+est = GlassboxRegressor(timeout=60, random_state=42)
+est.fit(X, y)
+
+print(est.get_formula())
+print(est.best_mse_)</code></pre>
+                        </div>
+                    </section>
+
+                    <section class="project-section" aria-labelledby="next-title">
+                        <h2 class="section-label" id="next-title">Next</h2>
+                        <div class="project-body">
+                            <p>Running a clean SRBench pass with multiple seeds, plus cutting a release that matches the current hybrid runtime. The repository still carries research paths the default runtime no longer uses; removing them is part of making the result reproducible.</p>
+                        </div>
+                    </section>
+                </div>
+            </div>
+
+            <nav class="project-next" aria-label="Project navigation">
+                <a href="../">All work</a>
+                <a href="../hark/">Next: Hark<span class="arrow-next" aria-hidden="true"></span></a>
+            </nav>
+        </article>
+    </main>
+</body>
+</html>

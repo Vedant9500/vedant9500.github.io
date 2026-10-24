@@ -1,29 +1,73 @@
-# Vedant Sudhir Deshmukh (Vedant9500)
+# Vedant Deshmukh
 
-Computer Engineering Student building symbolic regression systems, Model Context Protocol (MCP) memory tooling, and Go CLI utilities.
+Computer engineering student in India building equation discovery, N-body
+simulation, and developer tools. Mostly Rust, C++, Python, and Go.
 
-## Profile Summary
-*   **Role:** Computer Engineering Student
-*   **Focus:** Machine Learning, C++, Go, Developer Tools, Systems Programming
-*   **Location:** India (IST)
-*   **GitHub:** [github.com/Vedant9500](https://github.com/Vedant9500)
-*   **LinkedIn:** [linkedin.com/in/vedant-deshmukh-82441928b/](https://www.linkedin.com/in/vedant-deshmukh-82441928b/)
-*   **Website:** [vroid-is.my.id](https://vroid-is.my.id/)
+## Profile
 
-## Core Projects
+- Role: Computer engineering student
+- Location: India (IST)
+- GitHub: https://github.com/Vedant9500
+- LinkedIn: https://www.linkedin.com/in/vedant-deshmukh-82441928b/
+- Telegram: https://t.me/Vedant_s_d
+- Website: https://vroid-is.my.id/
 
-### [Glassbox](https://github.com/Vedant9500/Glassbox)
-Symbolic regression engine that uses operation neural networks to discover mathematical equations directly from data. Features fast-path equation search, evolutionary optimization, and C++ backends.
-*   **Stack:** Python, C++
+## Pages
 
-### [OpenLMlib](https://github.com/Vedant9500/OpenLMlib)
-Model Context Protocol (MCP) server providing persistent, searchable note memory for AI agents. Designed to prevent token-drift in long chat sessions through SQLite vector/text search integration.
-*   **Stack:** Python, SQLite
+- [Home](https://vroid-is.my.id/): introduction, featured work, about, contact.
+- [Work](https://vroid-is.my.id/work/): every public project, plus a selection
+  of private ones.
+- [About](https://vroid-is.my.id/about/): background, work lanes, stack.
+- [Glassbox](https://vroid-is.my.id/work/glassbox/): symbolic regression.
+- [Hark](https://vroid-is.my.id/work/hark/): Linux command palette.
 
-### [What's The Function (WTF)](https://github.com/Vedant9500/WTF)
-Go-based CLI utility that translates natural language intent into shell commands. Combines fuzzy search, platform filters, context-based boosts, and history logs for faster terminal workflows.
-*   **Stack:** Go
+## Public projects
 
-## Navigation
-*   [Home](https://vroid-is.my.id/) - Developer portfolio and project summaries.
-*   [Journal / Blog](https://vroid-is.my.id/blog/) - Engineering updates, build journal, and project writeups.
+### Glassbox
+Symbolic regression engine that recovers readable equations from data.
+598/615 on its local benchmark, September 2026.
+Stack: Python, C++.
+https://github.com/Vedant9500/Glassbox
+
+### Hark
+Native Linux command palette. A resident Rust daemon with a GTK4 overlay;
+about 8 microseconds median app search across roughly 9,100 indexed items.
+Stack: Rust, GTK4.
+https://github.com/Vedant9500/Hark
+
+### freeze-bench
+Execution-graded benchmark for coding models.
+Stack: Shell.
+https://github.com/Vedant9500/freeze-bench
+
+### FMMS
+Fast-multipole N-body solver in Rust, O(N).
+Stack: Rust.
+https://github.com/Vedant9500/FMMS
+
+### OpenLMlib
+Model Context Protocol server providing persistent, searchable memory for
+coding agents. 76 tools.
+Stack: Python, SQLite.
+https://github.com/Vedant9500/OpenLMlib
+
+### WTF
+Natural-language search for shell commands, about 6,600 entries.
+Stack: Go.
+https://github.com/Vedant9500/WTF
+
+### CelestialSim
+RK4 N-body simulation in the browser.
+Stack: JavaScript.
+https://github.com/Vedant9500/CelestialSim
+
+### Jikan Fetcher
+Anime filler-episode list fetcher.
+Stack: Go.
+https://github.com/Vedant9500/Jikan_Filler_Fetcher
+
+## Private work
+
+Other repositories are private until they are ready to be read. A selection is
+named with one-line descriptions on the Work page: assay, rt-approx,
+rusty-ocean, grist, LiNN, CLOE, VEA, AD-DSP, Blastd.

@@ -167,7 +167,7 @@ body::-webkit-scrollbar {
 }
 
 /* ========================================
-   TIER 2 — WORK SECTION ENHANCEMENTS
+   TIER 2: WORK SECTION ENHANCEMENTS
    ======================================== */
 
 .work-wide-layout {
@@ -743,7 +743,7 @@ body::-webkit-scrollbar {
     transform: scaleY(0);
 }
 
-/* Dark Section Mode — Deprecated by Variable Theme Engine, kept for specific overrides if needed */
+/* Dark Section Mode: deprecated by Variable Theme Engine, kept for specific overrides if needed */
 .section-dark {
     background: var(--ink);
     color: var(--paper);
@@ -1024,10 +1024,10 @@ body::before {
 }
 
 /* ========================================
-   BLOG / JOURNAL — Soft Brutalist Systems
+   BLOG / JOURNAL: Soft Brutalist Systems
    ======================================== */
 
-/* Blog feed section — scrollable, not scroll-snap locked */
+/* Blog feed section: scrollable, not scroll-snap locked */
 .section-blog-feed {
     position: relative;
     width: 100%;
@@ -1192,7 +1192,7 @@ body::before {
     color: rgba(246, 241, 232, 0.65);
 }
 
-/* Expanded state — warm dark stone background */
+/* Expanded state: warm dark stone background */
 .blog-post-card.expanded {
     background: #3d3830;
     color: var(--paper);

@@ -1,7 +1,7 @@
 /* ========================================
    BLOG - Dynamic Post Loader
    Loads posts from blog/posts/manifest.json
-   Cards are collapsible — click to expand
+   Cards are collapsible: click to expand
    ======================================== */
 
 let allPosts = [];
