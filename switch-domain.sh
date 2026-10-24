@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 # switch-domain.sh — switch the site between a custom domain and the default
-# GitHub Pages URL. See DOMAIN-CONFIG-BACKUP.md for full instructions.
+# GitHub Pages URL.
 #
 # Usage:
 #   ./switch-domain.sh https://vroid-is.my.id        # enable a custom domain
