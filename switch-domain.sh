@@ -31,8 +31,14 @@ FILES=(
   robots.txt
   llms.txt
   index.html
+  404.html
   about/index.html
-  blog/index.html
+  work/index.html
+  work/glassbox/index.html
+  work/fmms/index.html
+  work/freeze-bench/index.html
+  work/hark/index.html
+  work/openlmlib/index.html
 )
 
 git restore --staged . 2>/dev/null || true

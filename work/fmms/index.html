@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>FMMS: fast-multipole N-body in Rust | Vedant Deshmukh</title>
+    <meta name="description" content="FMMS is a fast-multipole N-body solver in Rust: verified O(N) scaling and 48x faster than direct summation at one million bodies.">
+    <meta name="author" content="Vedant Deshmukh">
+    <meta name="theme-color" content="#f7f4ec">
+    <meta name="color-scheme" content="light">
+
+    <meta property="og:title" content="FMMS: fast-multipole N-body in Rust">
+    <meta property="og:description" content="Verified O(N) scaling and 48x faster than direct summation at one million bodies.">
+    <meta property="og:type" content="article">
+    <meta property="og:site_name" content="Vedant Deshmukh">
+    <meta property="og:url" content="https://vroid-is.my.id/work/fmms/">
+    <meta property="og:image" content="https://vroid-is.my.id/assets/og/og-fmms.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="FMMS, a fast-multipole N-body solver in Rust. 48x faster than direct summation at 10 to the 6 bodies.">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="FMMS: fast-multipole N-body in Rust">
+    <meta name="twitter:description" content="Verified O(N) scaling and 48x faster than direct summation at one million bodies.">
+    <meta name="twitter:image" content="https://vroid-is.my.id/assets/og/og-fmms.png">
+
+    <link rel="canonical" href="https://vroid-is.my.id/work/fmms/">
+
+    <link rel="icon" href="../../favicon.svg" type="image/svg+xml">
+    <link rel="preload" href="../../fonts/newsreader-latin.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="../../fonts/newsreader-italic-latin.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="stylesheet" href="../../styles.css">
+    <noscript>
+        <style>.demo-controls, [data-demo-time], .demo-live { display: none; }</style>
+    </noscript>
+</head>
+<body>
+    <a class="skip-link" href="#main">Skip to content</a>
+
+    <header class="masthead">
+        <div class="wrap masthead-inner">
+            <div class="identity">
+                <a class="name" href="../../">Vedant Deshmukh</a>
+                <p class="role">AI models &middot; simulations &middot; systems &amp; tools</p>
+            </div>
+            <nav class="nav" aria-label="Primary">
+                <a href="../" aria-current="page">Work</a>
+                <a href="../../about/">About</a>
+                <a href="../../#contact">Contact</a>
+            </nav>
+        </div>
+    </header>
+
+    <main id="main">
+        <article class="project wrap">
+            <div class="project-layout">
+                <header class="project-head">
+                    <div class="project-head-main">
+                        <p class="crumb"><a href="../">Work</a> <span aria-hidden="true">/</span> FMMS</p>
+                        <h1>FMMS</h1>
+                        <p class="project-abstract">A fast-multipole N-body solver in Rust, built to measure every constant, not just the asymptotic.</p>
+                    </div>
+                    <dl class="project-meta">
+                        <div>
+                            <dt>Year</dt>
+                            <dd>2026</dd>
+                        </div>
+                        <div>
+                            <dt>Stack</dt>
+                            <dd>Rust</dd>
+                        </div>
+                        <div>
+                            <dt>Status</dt>
+                            <dd>Phase 1 active</dd>
+                        </div>
+                        <div>
+                            <dt>Code</dt>
+                            <dd><a href="https://github.com/Vedant9500/FMMS" target="_blank" rel="noopener noreferrer">GitHub<span class="arrow" aria-hidden="true"></span></a></dd>
+                        </div>
+                    </dl>
+                </header>
+
+                <div class="project-main">
+                    <section class="project-section" aria-labelledby="problem-title">
+                        <h2 class="section-label" id="problem-title">Problem</h2>
+                        <div class="project-body">
+                            <p>Direct summation is exact and O(N&sup2;). At a million bodies, one force evaluation is a trillion interactions. Barnes&ndash;Hut drops that to O(N log N), but it gives up accuracy at the high end. The Fast Multipole Method groups distant bodies into multipole expansions and reaches O(N).</p>
+                            <p>Getting the O(N) scaling is only half the battle. The real headache is keeping energy and momentum conserved while tracking down where the constant-factor overhead actually goes.</p>
+                        </div>
+                    </section>
+
+                    <section class="project-section" aria-labelledby="approach-title">
+                        <h2 class="section-label" id="approach-title">Approach</h2>
+                        <div class="project-body">
+                            <p>FMMS is a Dehnen-style dual-tree-walk solver. The tree, walk, and integrator are Rust; the math is written against a direct N&sup2; reference so every approximation has a check.</p>
+                            <ul>
+                                <li>Solid-harmonic expansions with an error-controlled multipole-acceptance criterion. The MAC factor of 8 is load-bearing for the rms error check.</li>
+                                <li>Rotation-accelerated M2L at O(p&sup3;) above p&nbsp;&asymp;&nbsp;20, with the naive O(p&#8308;) path below the measured crossover.</li>
+                                <li>Deterministic Plummer models, force comparison against direct summation, and energy and momentum checks.</li>
+                                <li>SoA body layout and a cache-blocked P2P kernel. The P2P kernel is already saturating the FP64 hardware ceiling.</li>
+                            </ul>
+                            <p>I keep the library, benchmark binary, and live GPU visual harness separate in the workspace, so a visualization bug cannot hide in the solver.</p>
+                        </div>
+                    </section>
+
+                    <section class="project-section" aria-labelledby="result-title">
+                        <h2 class="section-label" id="result-title">Result</h2>
+                        <div class="project-body">
+                            <p class="result-figure">48&times;<span> vs direct</span></p>
+                            <p class="result-caption">Single core, N=10&#8310;, p=8, &epsilon;=10&#8315;&#8309;, August 2026. The profile below uses eight threads.</p>
+                            <p>Right now a full N=10&#8310; step takes about 20 seconds. Almost all of that is spent in the tree walk and the two serial passes rather than the multipole math itself, which means the bottleneck is memory layout and parallelization rather than the algorithm.</p>
+
+                            <aside class="project-aside" aria-label="FMMS N=10 to the 6 force-evaluation profile">
+                                <div class="data-pane">
+                                    <p class="data-pane-label">
+                                        <span class="data-pane-title">One force evaluation</span>
+                                        <span class="data-pane-meta">N=10&#8310; &middot; 8 threads</span>
+                                    </p>
+
+                                    <figure class="data-figure">
+                                        <figcaption class="data-fig-head">
+                                            <span class="data-fig-title">Where the 20 seconds go</span>
+                                            <span class="data-fig-meta">16 Aug 2026</span>
+                                        </figcaption>
+
+                                        <ul class="bar-list">
+                                            <li>
+                                                <span class="bar-label">Dual-tree walk</span>
+                                                <span class="bar-track" aria-hidden="true"><span class="bar-fill" style="width:100%"></span></span>
+                                                <span class="bar-value">11.89s</span>
+                                            </li>
+                                            <li>
+                                                <span class="bar-label">f_prepass</span>
+                                                <span class="bar-track" aria-hidden="true"><span class="bar-fill" style="width:37.4%"></span></span>
+                                                <span class="bar-value">4.45s</span>
+                                            </li>
+                                            <li>
+                                                <span class="bar-label">Tree rebuild</span>
+                                                <span class="bar-track" aria-hidden="true"><span class="bar-fill" style="width:12.6%"></span></span>
+                                                <span class="bar-value">1.50s</span>
+                                            </li>
+                                            <li>
+                                                <span class="bar-label">Moments (P2M, M2M)</span>
+                                                <span class="bar-track" aria-hidden="true"><span class="bar-fill" style="width:10.3%"></span></span>
+                                                <span class="bar-value">1.22s</span>
+                                            </li>
+                                            <li>
+                                                <span class="bar-label">L2P and scatter</span>
+                                                <span class="bar-track" aria-hidden="true"><span class="bar-fill" style="width:3.9%"></span></span>
+                                                <span class="bar-value">0.46s</span>
+                                            </li>
+                                            <li>
+                                                <span class="bar-label">L2L</span>
+                                                <span class="bar-track" aria-hidden="true"><span class="bar-fill" style="width:3.8%"></span></span>
+                                                <span class="bar-value">0.45s</span>
+                                            </li>
+                                        </ul>
+
+                                        <p class="data-note">Bars are scaled to the 11.89s walk. The walk is DRAM-bandwidth-bound; the serial phases beside it are the next bottleneck.</p>
+                                    </figure>
+                                </div>
+                            </aside>
+
+                            <p>Scaling fits N<sup>0.91&ndash;1.0</sup> from N=10&sup3; to N=10&#8310;. The serial sweep runs 0.73s at N=10&#8308; and 51.7s at N=10&#8310;. Momentum conservation holds to netF/|F| &asymp; 10&#8315;&#185;&#8309;.</p>
+                        </div>
+                    </section>
+
+                    <section class="project-section" aria-labelledby="demo-title">
+                        <h2 class="section-label" id="demo-title">Demo</h2>
+                        <div class="project-body">
+                            <p>A 160-body Plummer sphere, virialized and run live in the browser. This is a direct-summation demo, not the Rust solver: at this size FMM's tree bookkeeping would cost more than it saves.</p>
+
+                            <aside class="project-aside demo-pane" data-demo aria-label="Live N-body simulation">
+                                <div class="data-pane">
+                                    <p class="data-pane-label">
+                                        <span class="data-pane-title"><span class="demo-live">Live &middot; </span><span data-demo-count>160</span> bodies</span>
+                                        <span class="data-pane-meta" data-demo-time aria-hidden="true">t 0.00</span>
+                                    </p>
+
+                                    <div class="demo-stage">
+                                        <canvas data-demo-canvas width="1200" height="800" role="img" aria-label="A live 160-body Plummer sphere evolving under gravity." aria-describedby="demo-note"></canvas>
+                                        <noscript><p class="demo-fallback">The live demo needs JavaScript. The rest of this page works without it.</p></noscript>
+                                    </div>
+
+                                    <div class="demo-controls">
+                                        <button class="demo-control" type="button" data-demo-toggle disabled>Pause</button>
+                                        <button class="demo-control" type="button" data-demo-reset disabled>Reset</button>
+                                    </div>
+
+                                    <p class="data-note" id="demo-note">Softened gravity, leapfrog integration, equal masses; G = M = a = 1. Direct O(N&sup2;): 12,720 pair interactions per step.</p>
+                                </div>
+                            </aside>
+                        </div>
+                    </section>
+
+                    <section class="project-section" aria-labelledby="use-title">
+                        <h2 class="section-label" id="use-title">Use</h2>
+                        <div class="project-body">
+                            <p class="code-note">Reproduce the N=10&#8310; phase profile:</p>
+                            <pre class="code"><code>cargo run --release -p fmm-bench -- 1000000 8 1e-5 1000000 8</code></pre>
+                            <p class="code-note">Run the force, energy, and momentum checks:</p>
+                            <pre class="code"><code>cargo test --release</code></pre>
+                        </div>
+                    </section>
+
+                    <section class="project-section" aria-labelledby="next-title">
+                        <h2 class="section-label" id="next-title">Next</h2>
+                        <div class="project-body">
+                            <p>Next up: parallelizing those two serial passes and fixing the memory layout on the tree walk, so I can rerun the N=10&#8310; benchmark without being bottlenecked by DRAM. After that: wider SIMD kernels and the GPU visual harness.</p>
+                        </div>
+                    </section>
+                </div>
+            </div>
+
+            <nav class="project-next" aria-label="Project navigation">
+                <a class="project-prev" href="../openlmlib/"><span class="arrow-prev" aria-hidden="true"></span>Previous: OpenLMlib</a>
+                <a class="project-all" href="../">All work</a>
+                <a class="project-fwd" href="../freeze-bench/">Next: freeze-bench<span class="arrow-next" aria-hidden="true"></span></a>
+            </nav>
+        </article>
+    </main>
+    <script src="demo.js" defer></script>
+</body>
+</html>

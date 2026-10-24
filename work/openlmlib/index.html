@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>OpenLMlib: persistent memory for coding agents | Vedant Deshmukh</title>
+    <meta name="description" content="OpenLMlib is a local knowledge library for coding agents: 76 MCP tools over SQLite, JSON findings, and semantic search.">
+    <meta name="author" content="Vedant Deshmukh">
+    <meta name="theme-color" content="#f7f4ec">
+    <meta name="color-scheme" content="light">
+
+    <meta property="og:title" content="OpenLMlib: persistent memory for coding agents">
+    <meta property="og:description" content="A local knowledge library for coding agents. 76 MCP tools, three memory layers, one local store.">
+    <meta property="og:type" content="article">
+    <meta property="og:site_name" content="Vedant Deshmukh">
+    <meta property="og:url" content="https://vroid-is.my.id/work/openlmlib/">
+    <meta property="og:image" content="https://vroid-is.my.id/assets/og/og-openlmlib.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="OpenLMlib, a local knowledge library for coding agents with 76 MCP tools.">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="OpenLMlib: persistent memory for coding agents">
+    <meta name="twitter:description" content="A local knowledge library for coding agents. 76 MCP tools, three memory layers, one local store.">
+    <meta name="twitter:image" content="https://vroid-is.my.id/assets/og/og-openlmlib.png">
+
+    <link rel="canonical" href="https://vroid-is.my.id/work/openlmlib/">
+
+    <link rel="icon" href="../../favicon.svg" type="image/svg+xml">
+    <link rel="preload" href="../../fonts/newsreader-latin.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="../../fonts/newsreader-italic-latin.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="stylesheet" href="../../styles.css">
+</head>
+<body>
+    <a class="skip-link" href="#main">Skip to content</a>
+
+    <header class="masthead">
+        <div class="wrap masthead-inner">
+            <div class="identity">
+                <a class="name" href="../../">Vedant Deshmukh</a>
+                <p class="role">AI models &middot; simulations &middot; systems &amp; tools</p>
+            </div>
+            <nav class="nav" aria-label="Primary">
+                <a href="../" aria-current="page">Work</a>
+                <a href="../../about/">About</a>
+                <a href="../../#contact">Contact</a>
+            </nav>
+        </div>
+    </header>
+
+    <main id="main">
+        <article class="project wrap">
+            <div class="project-layout">
+                <header class="project-head">
+                    <div class="project-head-main">
+                        <p class="crumb"><a href="../">Work</a> <span aria-hidden="true">/</span> OpenLMlib</p>
+                        <h1>OpenLMlib</h1>
+                        <p class="project-abstract">Persistent notes for coding agents, with 76 MCP tools over a local knowledge base.</p>
+                    </div>
+                    <dl class="project-meta">
+                        <div>
+                            <dt>Year</dt>
+                            <dd>2026</dd>
+                        </div>
+                        <div>
+                            <dt>Stack</dt>
+                            <dd>Python, SQLite</dd>
+                        </div>
+                        <div>
+                            <dt>Status</dt>
+                            <dd>v0.2.7</dd>
+                        </div>
+                        <div>
+                            <dt>Code</dt>
+                            <dd><a href="https://github.com/Vedant9500/OpenLMlib" target="_blank" rel="noopener noreferrer">GitHub<span class="arrow" aria-hidden="true"></span></a></dd>
+                        </div>
+                    </dl>
+                </header>
+
+                <div class="project-main">
+                    <section class="project-section" aria-labelledby="problem-title">
+                        <h2 class="section-label" id="problem-title">Problem</h2>
+                        <div class="project-body">
+                            <p>Coding agents have amnesia the second a session ends. Usually people fix this by dumping giant markdown transcripts into the next prompt, which burns through context and still leaves everything trapped inside a single editor.</p>
+                            <p>I built OpenLMlib to treat memory as a library instead. A finding carries a claim, confidence, evidence, reasoning, caveats, and tags. A session can end with a summary instead of a transcript. The agent asks for what it needs through MCP, and the same store is available to the CLI and to other agents.</p>
+                        </div>
+                    </section>
+
+                    <section class="project-section" aria-labelledby="approach-title">
+                        <h2 class="section-label" id="approach-title">Approach</h2>
+                        <div class="project-body">
+                            <p>Storage is local: SQLite for metadata and FTS5 search, JSON findings for portability, and a FAISS or NumPy vector index. The default embedding model is BAAI/bge-small-en-v1.5 at 384 dimensions.</p>
+                            <p>The MCP server is the main surface, and everything runs against local files with no hosted service.</p>
+                            <ul>
+                                <li>Retrieval merges semantic and lexical candidates, then reranks and deduplicates them. A trace records which path matched and how each score was built.</li>
+                                <li>The memory layer adds session start and end, three levels of disclosure from a search index to a full observation, and retroactive ingestion from git history.</li>
+                                <li>Saving or deleting a finding requires explicit confirmation. The retrieval path has a sanitized context form for prompt use.</li>
+                                <li>CollabSessions adds a message bus, artifacts, templates, and a Co-Scientist workflow with scope screening and citation checks.</li>
+                            </ul>
+                        </div>
+                    </section>
+
+                    <section class="project-section" aria-labelledby="result-title">
+                        <h2 class="section-label" id="result-title">Result</h2>
+                        <div class="project-body">
+                            <p class="result-figure">76<span> MCP tools</span></p>
+                            <p class="result-caption">Registered in OpenLMlib v0.2.7 and checked 24 October 2026. 17 core, 11 memory, 48 collaboration.</p>
+
+                            <aside class="project-aside" aria-label="OpenLMlib MCP tool surface">
+                                <div class="data-pane">
+                                    <p class="data-pane-label">
+                                        <span class="data-pane-title">MCP tool surface</span>
+                                        <span class="data-pane-meta">76 tools &middot; v0.2.7</span>
+                                    </p>
+
+                                    <figure class="data-figure">
+                                        <figcaption class="data-fig-head">
+                                            <span class="data-fig-title">Three groups, one server</span>
+                                            <span class="data-fig-meta">24 Oct 2026</span>
+                                        </figcaption>
+
+                                        <ul class="bar-list">
+                                            <li>
+                                                <span class="bar-label">Collaboration</span>
+                                                <span class="bar-track" aria-hidden="true"><span class="bar-fill" style="width:100%"></span></span>
+                                                <span class="bar-value">48</span>
+                                            </li>
+                                            <li>
+                                                <span class="bar-label">Core library</span>
+                                                <span class="bar-track" aria-hidden="true"><span class="bar-fill" style="width:35.4%"></span></span>
+                                                <span class="bar-value">17</span>
+                                            </li>
+                                            <li>
+                                                <span class="bar-label">Memory</span>
+                                                <span class="bar-track" aria-hidden="true"><span class="bar-fill" style="width:22.9%"></span></span>
+                                                <span class="bar-value">11</span>
+                                            </li>
+                                        </ul>
+
+                                        <p class="data-note">Registered tools counted with <code>scripts/count_mcp_tools.py</code>.</p>
+                                    </figure>
+                                </div>
+                            </aside>
+
+                            <p>I also track latency across 66 of the tools, with 50 warm and 10 cold iterations on Windows 11. Warm calls range from under a millisecond for simple lookups (0.28 ms for <code>session_statistics</code>) to 191 ms for <code>ingest_git_history</code>.</p>
+                            <p>Cold start is still the main bottleneck: <code>session_start</code> takes about 5.1 seconds on a cold run while loading the embedding model.</p>
+                        </div>
+                    </section>
+
+                    <section class="project-section" aria-labelledby="use-title">
+                        <h2 class="section-label" id="use-title">Use</h2>
+                        <div class="project-body">
+                            <p class="code-note">Install, bootstrap, and check the local setup:</p>
+                            <pre class="code"><code>npm install -g openlmlib
+openlmlib setup
+openlmlib doctor</code></pre>
+                            <p class="code-note">Register MCP clients, then query the same library from the CLI:</p>
+                            <pre class="code"><code>openlmlib mcp-config --ide vscode \
+  --ide cursor
+openlmlib query "retrieval" \
+  --final-k 5</code></pre>
+                            <p>Setup downloads the embedding model on first run, roughly 100 to 500 MB.</p>
+                        </div>
+                    </section>
+
+                    <section class="project-section" aria-labelledby="next-title">
+                        <h2 class="section-label" id="next-title">Next</h2>
+                        <div class="project-body">
+                            <p>I already wrote the eval harness, so the next step is running and publishing precision/recall numbers across the memory layers for each release. After that, I really need to get that cold start down.</p>
+                        </div>
+                    </section>
+                </div>
+            </div>
+
+            <nav class="project-next" aria-label="Project navigation">
+                <a class="project-prev" href="../hark/"><span class="arrow-prev" aria-hidden="true"></span>Previous: Hark</a>
+                <a class="project-all" href="../">All work</a>
+                <a class="project-fwd" href="../fmms/">Next: FMMS<span class="arrow-next" aria-hidden="true"></span></a>
+            </nav>
+        </article>
+    </main>
+</body>
+</html>

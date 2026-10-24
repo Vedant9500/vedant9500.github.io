@@ -14,6 +14,14 @@
     <meta property="og:type" content="article">
     <meta property="og:site_name" content="Vedant Deshmukh">
     <meta property="og:url" content="https://vroid-is.my.id/work/glassbox/">
+    <meta property="og:image" content="https://vroid-is.my.id/assets/og/og-glassbox.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="Glassbox, a symbolic regression engine. 598 out of 615 on its local benchmark.">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Glassbox: symbolic regression">
+    <meta name="twitter:description" content="A hybrid symbolic regression engine that returns readable equations.">
+    <meta name="twitter:image" content="https://vroid-is.my.id/assets/og/og-glassbox.png">
 
     <link rel="canonical" href="https://vroid-is.my.id/work/glassbox/">
 
@@ -99,25 +107,25 @@
                             <p class="result-caption">Latest recorded full-suite run, 9 September 2026. 189 of 205 formulas exact.</p>
 
                             <aside class="project-aside" aria-label="Glassbox benchmark summary">
-                                <div class="gb-pane">
-                                    <p class="gb-pane-label">
-                                        <span class="gb-pane-title">Local benchmark</span>
-                                        <span class="gb-pane-meta">205 formulas &middot; 615 max</span>
+                                <div class="data-pane data-pane--two">
+                                    <p class="data-pane-label">
+                                        <span class="data-pane-title">Local benchmark</span>
+                                        <span class="data-pane-meta">205 formulas &middot; 615 max</span>
                                     </p>
 
-                                    <figure class="gb-artifact">
-                                        <figcaption class="gb-fig-head">
-                                            <span class="gb-fig-title">Best score to date</span>
-                                            <span class="gb-fig-meta">33 runs &middot; 19 May&ndash;9 Sep 2026</span>
+                                    <figure class="data-figure">
+                                        <figcaption class="data-fig-head">
+                                            <span class="data-fig-title">Best score to date</span>
+                                            <span class="data-fig-meta">33 runs &middot; 19 May&ndash;9 Sep 2026</span>
                                         </figcaption>
 
                                         <svg class="gb-chart" viewBox="0 0 548 200" width="548" height="200" role="img" aria-labelledby="gb-title gb-desc">
                                             <title id="gb-title">Glassbox best full-suite score, May to September 2026</title>
                                             <desc id="gb-desc">Best full-suite score after each of 33 recorded runs. The line rises from 529 on 19 May to 591 on 3 June, stays at 591 through the summer, and reaches 598 on 9 September. A single 611 run from an experimental search-power pass is excluded; it never reproduced.</desc>
 
-                                            <line class="gb-grid" x1="44" y1="168" x2="532" y2="168"/>
+                                            <line class="gb-grid gb-grid-strong" x1="44" y1="168" x2="532" y2="168"/>
                                             <line class="gb-grid" x1="44" y1="107.2" x2="532" y2="107.2"/>
-                                            <line class="gb-grid gb-grid-strong" x1="44" y1="46.3" x2="532" y2="46.3"/>
+                                            <line class="gb-grid" x1="44" y1="46.3" x2="532" y2="46.3"/>
 
                                             <text class="gb-axis" x="38" y="172" text-anchor="end">500</text>
                                             <text class="gb-axis" x="38" y="111.2" text-anchor="end">550</text>
@@ -145,59 +153,59 @@
                                             <text class="gb-value" x="532" y="70" text-anchor="end">598</text>
                                         </svg>
 
-                                        <p class="gb-figure-note">Best full-suite score; axis from 500. It held 588&ndash;591 from June through July, then reached 596&ndash;598 on 9 September. A single 611 run from an experimental search-power pass is excluded; it never reproduced.</p>
+                                        <p class="data-note">Best full-suite score; axis from 500. It held 588&ndash;591 from June through July, then reached 596&ndash;598 on 9 September. A single 611 run from an experimental search-power pass is excluded; it never reproduced.</p>
                                     </figure>
 
-                                    <figure class="gb-artifact">
-                                        <figcaption class="gb-fig-head">
-                                            <span class="gb-fig-title">Where the 17 points are lost</span>
-                                            <span class="gb-fig-meta">9 Sep 2026</span>
+                                    <figure class="data-figure">
+                                        <figcaption class="data-fig-head">
+                                            <span class="data-fig-title">Where the 17 points are lost</span>
+                                            <span class="data-fig-meta">9 Sep 2026</span>
                                         </figcaption>
 
-                                        <ul class="gb-losses">
-                                            <li>
-                                                <span class="gb-tier"><span class="gb-tier-no">01</span>Trivial</span>
-                                                <span class="gb-track" aria-hidden="true"><span class="gb-fill" style="width:0"></span></span>
-                                                <span class="gb-loss">0</span>
+                                        <ul class="bar-list">
+                                            <li class="bar-zero">
+                                                <span class="bar-label"><span class="bar-no">01</span>Trivial</span>
+                                                <span class="bar-track" aria-hidden="true"><span class="bar-fill" style="width:0"></span></span>
+                                                <span class="bar-value">0</span>
+                                            </li>
+                                            <li class="bar-zero">
+                                                <span class="bar-label"><span class="bar-no">02</span>Simple polynomial</span>
+                                                <span class="bar-track" aria-hidden="true"><span class="bar-fill" style="width:0"></span></span>
+                                                <span class="bar-value">0</span>
+                                            </li>
+                                            <li class="bar-zero">
+                                                <span class="bar-label"><span class="bar-no">03</span>Basic transcendental</span>
+                                                <span class="bar-track" aria-hidden="true"><span class="bar-fill" style="width:0"></span></span>
+                                                <span class="bar-value">0</span>
                                             </li>
                                             <li>
-                                                <span class="gb-tier"><span class="gb-tier-no">02</span>Simple polynomial</span>
-                                                <span class="gb-track" aria-hidden="true"><span class="gb-fill" style="width:0"></span></span>
-                                                <span class="gb-loss">0</span>
+                                                <span class="bar-label"><span class="bar-no">04</span>Nguyen suite</span>
+                                                <span class="bar-track" aria-hidden="true"><span class="bar-fill" style="width:50%"></span></span>
+                                                <span class="bar-value">3</span>
                                             </li>
                                             <li>
-                                                <span class="gb-tier"><span class="gb-tier-no">03</span>Basic transcendental</span>
-                                                <span class="gb-track" aria-hidden="true"><span class="gb-fill" style="width:0"></span></span>
-                                                <span class="gb-loss">0</span>
+                                                <span class="bar-label"><span class="bar-no">05</span>Sums &amp; products</span>
+                                                <span class="bar-track" aria-hidden="true"><span class="bar-fill" style="width:16.6667%"></span></span>
+                                                <span class="bar-value">1</span>
                                             </li>
                                             <li>
-                                                <span class="gb-tier"><span class="gb-tier-no">04</span>Nguyen suite</span>
-                                                <span class="gb-track" aria-hidden="true"><span class="gb-fill" style="width:50%"></span></span>
-                                                <span class="gb-loss">3</span>
+                                                <span class="bar-label"><span class="bar-no">06</span>Rational &amp; nested</span>
+                                                <span class="bar-track" aria-hidden="true"><span class="bar-fill" style="width:50%"></span></span>
+                                                <span class="bar-value">3</span>
                                             </li>
                                             <li>
-                                                <span class="gb-tier"><span class="gb-tier-no">05</span>Sums &amp; products</span>
-                                                <span class="gb-track" aria-hidden="true"><span class="gb-fill" style="width:16.6667%"></span></span>
-                                                <span class="gb-loss">1</span>
+                                                <span class="bar-label"><span class="bar-no">07</span>Hard compositions</span>
+                                                <span class="bar-track" aria-hidden="true"><span class="bar-fill" style="width:66.6667%"></span></span>
+                                                <span class="bar-value">4</span>
                                             </li>
                                             <li>
-                                                <span class="gb-tier"><span class="gb-tier-no">06</span>Rational &amp; nested</span>
-                                                <span class="gb-track" aria-hidden="true"><span class="gb-fill" style="width:50%"></span></span>
-                                                <span class="gb-loss">3</span>
-                                            </li>
-                                            <li>
-                                                <span class="gb-tier"><span class="gb-tier-no">07</span>Hard compositions</span>
-                                                <span class="gb-track" aria-hidden="true"><span class="gb-fill" style="width:66.6667%"></span></span>
-                                                <span class="gb-loss">4</span>
-                                            </li>
-                                            <li>
-                                                <span class="gb-tier"><span class="gb-tier-no">08</span>Frontier</span>
-                                                <span class="gb-track" aria-hidden="true"><span class="gb-fill" style="width:100%"></span></span>
-                                                <span class="gb-loss">6</span>
+                                                <span class="bar-label"><span class="bar-no">08</span>Frontier</span>
+                                                <span class="bar-track" aria-hidden="true"><span class="bar-fill" style="width:100%"></span></span>
+                                                <span class="bar-value">6</span>
                                             </li>
                                         </ul>
 
-                                        <p class="gb-figure-note">Tiers 1&ndash;3 are exact. Tiers 7&ndash;8 account for 10 of the 17 lost points.</p>
+                                        <p class="data-note">Tiers 1&ndash;3 are exact. Tiers 7&ndash;8 account for 10 of the 17 lost points.</p>
                                     </figure>
                                 </div>
                             </aside>
@@ -233,8 +241,9 @@ print(est.best_mse_)</code></pre>
             </div>
 
             <nav class="project-next" aria-label="Project navigation">
-                <a href="../">All work</a>
-                <a href="../hark/">Next: Hark<span class="arrow-next" aria-hidden="true"></span></a>
+                <a class="project-prev" href="../freeze-bench/"><span class="arrow-prev" aria-hidden="true"></span>Previous: freeze-bench</a>
+                <a class="project-all" href="../">All work</a>
+                <a class="project-fwd" href="../hark/">Next: Hark<span class="arrow-next" aria-hidden="true"></span></a>
             </nav>
         </article>
     </main>

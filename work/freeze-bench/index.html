@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>freeze-bench: execution-graded coding eval | Vedant Deshmukh</title>
+    <meta name="description" content="freeze-bench is a coding benchmark that removes the answer before the model starts. 32 active tasks, execution-graded, no LLM judge.">
+    <meta name="author" content="Vedant Deshmukh">
+    <meta name="theme-color" content="#f7f4ec">
+    <meta name="color-scheme" content="light">
+
+    <meta property="og:title" content="freeze-bench: execution-graded coding eval">
+    <meta property="og:description" content="A coding benchmark that removes the answer before the model starts. 32 active tasks, execution-graded, no LLM judge.">
+    <meta property="og:type" content="article">
+    <meta property="og:site_name" content="Vedant Deshmukh">
+    <meta property="og:url" content="https://vroid-is.my.id/work/freeze-bench/">
+    <meta property="og:image" content="https://vroid-is.my.id/assets/og/og-freeze-bench.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="freeze-bench, an execution-graded coding eval with 32 active tasks.">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="freeze-bench: execution-graded coding eval">
+    <meta name="twitter:description" content="A coding benchmark that removes the answer before the model starts. 32 active tasks, execution-graded, no LLM judge.">
+    <meta name="twitter:image" content="https://vroid-is.my.id/assets/og/og-freeze-bench.png">
+
+    <link rel="canonical" href="https://vroid-is.my.id/work/freeze-bench/">
+
+    <link rel="icon" href="../../favicon.svg" type="image/svg+xml">
+    <link rel="preload" href="../../fonts/newsreader-latin.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="../../fonts/newsreader-italic-latin.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="stylesheet" href="../../styles.css">
+</head>
+<body>
+    <a class="skip-link" href="#main">Skip to content</a>
+
+    <header class="masthead">
+        <div class="wrap masthead-inner">
+            <div class="identity">
+                <a class="name" href="../../">Vedant Deshmukh</a>
+                <p class="role">AI models &middot; simulations &middot; systems &amp; tools</p>
+            </div>
+            <nav class="nav" aria-label="Primary">
+                <a href="../" aria-current="page">Work</a>
+                <a href="../../about/">About</a>
+                <a href="../../#contact">Contact</a>
+            </nav>
+        </div>
+    </header>
+
+    <main id="main">
+        <article class="project wrap">
+            <div class="project-layout">
+                <header class="project-head">
+                    <div class="project-head-main">
+                        <p class="crumb"><a href="../">Work</a> <span aria-hidden="true">/</span> freeze-bench</p>
+                        <h1>freeze-bench</h1>
+                        <p class="project-abstract">A coding benchmark that removes the answer before the model starts.</p>
+                    </div>
+                    <dl class="project-meta">
+                        <div>
+                            <dt>Year</dt>
+                            <dd>2026</dd>
+                        </div>
+                        <div>
+                            <dt>Stack</dt>
+                            <dd>Shell</dd>
+                        </div>
+                        <div>
+                            <dt>Status</dt>
+                            <dd>Active</dd>
+                        </div>
+                        <div>
+                            <dt>Code</dt>
+                            <dd><a href="https://github.com/Vedant9500/freeze-bench" target="_blank" rel="noopener noreferrer">GitHub<span class="arrow" aria-hidden="true"></span></a></dd>
+                        </div>
+                    </dl>
+                </header>
+
+                <div class="project-main">
+                    <section class="project-section" aria-labelledby="problem-title">
+                        <h2 class="section-label" id="problem-title">Problem</h2>
+                        <div class="project-body">
+                            <p>Most coding benchmarks accidentally hand the model the answer key. It can run <code>git log</code>, grep the commit message, or read the tests added by the patch and repeat the answer. The run looks like reasoning, but it is retrieval.</p>
+                            <p>An LLM judge makes the problem worse: a fluent explanation can outscore a correct patch. So I built freeze-bench around a reconstruction problem instead. The model gets the repository before the fix, with no history, no answer key, and no network. Grading runs the patch and checks the result.</p>
+                        </div>
+                    </section>
+
+                    <section class="project-section" aria-labelledby="approach-title">
+                        <h2 class="section-label" id="approach-title">Approach</h2>
+                        <div class="project-body">
+                            <p>Every task goes through the same five stages:</p>
+                            <ol>
+                                <li><strong>Freeze.</strong> Mine a real bug and record the base commit, fix commit, dates, and the issue text as it appeared before the fix.</li>
+                                <li><strong>Sanitize.</strong> Export the base commit to a detached worktree with no git history, no reference solution, no new tests, and no network.</li>
+                                <li><strong>Run.</strong> Use the same worktree and prompt for every model under comparison.</li>
+                                <li><strong>Grade.</strong> The repro must flip fail-to-pass, regressions must stay green, and every cheat check must hold. A run that reads git history or the rubric scores zero.</li>
+                                <li><strong>Date.</strong> Tag every task with its fixed date so it can be filtered against a model's cutoff.</li>
+                            </ol>
+                            <p>Tasks come in three types: known-answer (a fix exists), open-limitation (no fix exists yet), and synthetic (a fix is reverted on top of HEAD). Known-answer tasks carry the highest leak risk and the strongest signal.</p>
+                        </div>
+                    </section>
+
+                    <section class="project-section" aria-labelledby="result-title">
+                        <h2 class="section-label" id="result-title">Result</h2>
+                        <div class="project-body">
+                            <p class="result-figure">32<span> tasks</span></p>
+                            <p class="result-caption">Active execution-graded set, drawn from 38 mined tasks. October 2026.</p>
+
+                            <aside class="project-aside" aria-label="What freeze-bench withholds">
+                                <div class="data-pane">
+                                    <p class="data-pane-label">
+                                        <span class="data-pane-title">Task isolation</span>
+                                        <span class="data-pane-meta">32 active &middot; 38 mined</span>
+                                    </p>
+
+                                    <figure class="data-figure">
+                                        <figcaption class="data-fig-head">
+                                            <span class="data-fig-title">What the model never sees</span>
+                                            <span class="data-fig-meta">Before a run</span>
+                                        </figcaption>
+
+                                        <table class="contract">
+                                            <thead>
+                                                <tr>
+                                                    <th scope="col">Removed</th>
+                                                    <th scope="col">Because</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <th scope="row">Git history</th>
+                                                    <td>No <code>log</code>, <code>show</code>, or <code>blame</code> to retrieve the fix from.</td>
+                                                </tr>
+                                                <tr>
+                                                    <th scope="row">Fix commit and gold patch</th>
+                                                    <td>The answer is not in the worktree.</td>
+                                                </tr>
+                                                <tr>
+                                                    <th scope="row">Rubrics and new tests</th>
+                                                    <td>The model cannot read its own grader.</td>
+                                                </tr>
+                                                <tr>
+                                                    <th scope="row">Network access</th>
+                                                    <td>No looking up the upstream fix mid-run.</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </figure>
+                                </div>
+                            </aside>
+
+                            <p>The set is built from real work, including FMMS, Glassbox, OpenLMlib, and CLOE. Each known-answer task ships with a repro command and a regression command, so grading is just a zero/non-zero exit code instead of an LLM opinion.</p>
+                        </div>
+                    </section>
+
+                    <section class="project-section" aria-labelledby="use-title">
+                        <h2 class="section-label" id="use-title">Use</h2>
+                        <div class="project-body">
+                            <p class="code-note">Build a sanitized worktree, then run one model across three tasks:</p>
+                            <pre class="code"><code>scripts/make-worktree.sh ISSUE-009
+scripts/run-batch.sh "provider/model" ISSUE-009 ISSUE-011 ISSUE-039</code></pre>
+                            <p class="code-note">Grade the reports in <code>runs/</code> against the matching rubric. The rubric never enters the evaluated repository.</p>
+                        </div>
+                    </section>
+
+                    <section class="project-section" aria-labelledby="next-title">
+                        <h2 class="section-label" id="next-title">Next</h2>
+                        <div class="project-body">
+                            <p>I want to expand the active set beyond 32 tasks, publish comparable model runs with cutoff dates, and package the harness so the results can be reproduced outside this machine.</p>
+                        </div>
+                    </section>
+                </div>
+            </div>
+
+            <nav class="project-next" aria-label="Project navigation">
+                <a class="project-prev" href="../fmms/"><span class="arrow-prev" aria-hidden="true"></span>Previous: FMMS</a>
+                <a class="project-all" href="../">All work</a>
+                <a class="project-fwd" href="../glassbox/">Next: Glassbox<span class="arrow-next" aria-hidden="true"></span></a>
+            </nav>
+        </article>
+    </main>
+</body>
+</html>

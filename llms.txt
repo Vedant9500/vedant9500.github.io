@@ -19,7 +19,13 @@ simulation, and developer tools. Mostly Rust, C++, Python, and Go.
   of private ones.
 - [About](https://vroid-is.my.id/about/): background, work lanes, stack.
 - [Glassbox](https://vroid-is.my.id/work/glassbox/): symbolic regression.
+- [FMMS](https://vroid-is.my.id/work/fmms/): fast-multipole N-body in Rust,
+  with a live 160-body browser demo.
+- [freeze-bench](https://vroid-is.my.id/work/freeze-bench/): execution-graded
+  coding eval.
 - [Hark](https://vroid-is.my.id/work/hark/): Linux command palette.
+- [OpenLMlib](https://vroid-is.my.id/work/openlmlib/): local knowledge library
+  for coding agents, with 76 MCP tools.
 
 ## Public projects
 
@@ -36,19 +42,23 @@ Stack: Rust, GTK4.
 https://github.com/Vedant9500/Hark
 
 ### freeze-bench
-Execution-graded benchmark for coding models.
+Execution-graded benchmark for coding models. 32 active tasks; the model
+never sees git history, the fix commit, the rubric, or the network.
 Stack: Shell.
 https://github.com/Vedant9500/freeze-bench
 
 ### FMMS
-Fast-multipole N-body solver in Rust, O(N).
+Fast-multipole N-body solver in Rust. Verified O(N) scaling; 48x faster than
+direct summation at one million bodies. The project page runs a live 160-body
+direct-summation demo in the browser.
 Stack: Rust.
 https://github.com/Vedant9500/FMMS
 
 ### OpenLMlib
-Model Context Protocol server providing persistent, searchable memory for
-coding agents. 76 tools.
+Local knowledge library for coding agents, with persistent, searchable memory
+over SQLite, JSON findings, and semantic search. 76 MCP tools.
 Stack: Python, SQLite.
+https://vroid-is.my.id/work/openlmlib/
 https://github.com/Vedant9500/OpenLMlib
 
 ### WTF

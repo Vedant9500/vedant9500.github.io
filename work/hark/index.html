@@ -14,6 +14,14 @@
     <meta property="og:type" content="article">
     <meta property="og:site_name" content="Vedant Deshmukh">
     <meta property="og:url" content="https://vroid-is.my.id/work/hark/">
+    <meta property="og:image" content="https://vroid-is.my.id/assets/og/og-hark.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="Hark, a native Linux command palette in Rust and GTK4. About 8 microseconds median app search.">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Hark: a native Linux command palette">
+    <meta name="twitter:description" content="A resident-daemon launcher for Linux, built in Rust and GTK4.">
+    <meta name="twitter:image" content="https://vroid-is.my.id/assets/og/og-hark.png">
 
     <link rel="canonical" href="https://vroid-is.my.id/work/hark/">
 
@@ -76,7 +84,9 @@
 
                             <aside class="project-aside" aria-label="Screenshot">
                                 <figure class="project-figure">
-                                    <img src="hark-light.webp" width="785" height="549" alt="Hark's overlay in light mode, showing app search results for Cursor, Firefox, blink, Hark, and Alacritty." decoding="async">
+                                    <div class="project-figure-media">
+                                        <img src="hark-light.webp" width="785" height="549" alt="Hark's overlay in light mode, showing app search results for Cursor, Firefox, blink, Hark, and Alacritty." decoding="async">
+                                    </div>
                                     <figcaption>Hark in light mode. The overlay is a GTK4 surface; the daemon keeps the index warm.</figcaption>
                                 </figure>
                             </aside>
@@ -131,8 +141,9 @@ bind = ALT, A, exec, hark-hotkey</code></pre>
             </div>
 
             <nav class="project-next" aria-label="Project navigation">
-                <a href="../">All work</a>
-                <a href="../glassbox/">Next: Glassbox<span class="arrow-next" aria-hidden="true"></span></a>
+                <a class="project-prev" href="../glassbox/"><span class="arrow-prev" aria-hidden="true"></span>Previous: Glassbox</a>
+                <a class="project-all" href="../">All work</a>
+                <a class="project-fwd" href="../openlmlib/">Next: OpenLMlib<span class="arrow-next" aria-hidden="true"></span></a>
             </nav>
         </article>
     </main>
