@@ -70,7 +70,7 @@
                         </div>
                         <div>
                             <dt>Status</dt>
-                            <dd>Phase 1 active</dd>
+                            <dd>Active</dd>
                         </div>
                         <div>
                             <dt>Code</dt>
@@ -105,7 +105,7 @@
                     <section class="project-section" aria-labelledby="result-title">
                         <h2 class="section-label" id="result-title">Result</h2>
                         <div class="project-body">
-                            <p class="result-figure">48&times;<span> vs direct</span></p>
+                            <p class="result-figure">48&times; <span>vs direct</span></p>
                             <p class="result-caption">Single core, N=10&#8310;, p=8, &epsilon;=10&#8315;&#8309;, August 2026. The profile below uses eight threads.</p>
                             <p>Right now a full N=10&#8310; step takes about 20 seconds. Almost all of that is spent in the tree walk and the two serial passes rather than the multipole math itself, which means the bottleneck is memory layout and parallelization rather than the algorithm.</p>
 
@@ -218,6 +218,13 @@
             </nav>
         </article>
     </main>
+
+    <footer class="footer">
+        <div class="wrap footer-inner footer-inner--narrow">
+            <p>Vedant Deshmukh &middot; 2026</p>
+        </div>
+    </footer>
+
     <script src="demo.js" defer></script>
 </body>
 </html>
