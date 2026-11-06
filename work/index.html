@@ -68,42 +68,42 @@
                 <li>
                     <span class="num">01</span>
                     <a class="project" href="glassbox/">Glassbox<span class="arrow-next" aria-hidden="true"></span><span class="vh"> project page</span></a>
-                    <span class="desc"><em>discovery</em> &middot; symbolic regression &middot; <b class="metric">598/615</b> benchmark score</span>
+                    <span class="desc"><em>discovery</em> &middot; symbolic regression &middot; <span class="metric-phrase"><b class="metric">598/615</b> benchmark score</span></span>
                     <span class="stack">Python, C++</span>
                     <span class="year">2026</span>
                 </li>
                 <li>
                     <span class="num">02</span>
                     <a class="project" href="hark/">Hark<span class="arrow-next" aria-hidden="true"></span><span class="vh"> project page</span></a>
-                    <span class="desc"><em>tooling</em> &middot; native Linux command palette &middot; <b class="metric">~8&nbsp;&micro;s</b> search</span>
+                    <span class="desc"><em>tooling</em> &middot; native Linux command palette &middot; <span class="metric-phrase"><b class="metric">~8&nbsp;&micro;s</b> search</span></span>
                     <span class="stack">Rust, GTK4</span>
                     <span class="year">2026</span>
                 </li>
                 <li>
                     <span class="num">03</span>
                     <a class="project" href="openlmlib/">OpenLMlib<span class="arrow-next" aria-hidden="true"></span><span class="vh"> project page</span></a>
-                    <span class="desc"><em>memory</em> &middot; persistent notes for coding agents &middot; <b class="metric">76</b> MCP tools</span>
+                    <span class="desc"><em>memory</em> &middot; persistent notes for coding agents &middot; <span class="metric-phrase"><b class="metric">76</b> MCP tools</span></span>
                     <span class="stack">Python, SQLite</span>
                     <span class="year">2026</span>
                 </li>
                 <li>
                     <span class="num">04</span>
                     <a class="project" href="fmms/">FMMS<span class="arrow-next" aria-hidden="true"></span><span class="vh"> project page</span></a>
-                    <span class="desc"><em>simulation</em> &middot; fast-multipole N-body &middot; <b class="metric">48&times;</b> vs direct</span>
+                    <span class="desc"><em>simulation</em> &middot; fast-multipole N-body &middot; <span class="metric-phrase"><b class="metric">48&times;</b> vs direct</span></span>
                     <span class="stack">Rust</span>
                     <span class="year">2026</span>
                 </li>
                 <li>
                     <span class="num">05</span>
                     <a class="project" href="freeze-bench/">freeze-bench<span class="arrow-next" aria-hidden="true"></span><span class="vh"> project page</span></a>
-                    <span class="desc"><em>evaluation</em> &middot; execution-graded coding benchmark &middot; <b class="metric">32</b> tasks</span>
+                    <span class="desc"><em>evaluation</em> &middot; execution-graded coding benchmark &middot; <span class="metric-phrase"><b class="metric">32</b> tasks</span></span>
                     <span class="stack">Shell</span>
                     <span class="year">2026</span>
                 </li>
                 <li>
                     <span class="num">06</span>
                     <a class="project" href="https://github.com/Vedant9500/WTF" target="_blank" rel="noopener noreferrer">WTF<span class="arrow" aria-hidden="true"></span><span class="vh"> on GitHub</span></a>
-                    <span class="desc"><em>tooling</em> &middot; natural-language shell search &middot; <b class="metric">6,600</b> commands</span>
+                    <span class="desc"><em>tooling</em> &middot; natural-language shell search &middot; <span class="metric-phrase"><b class="metric">6,600</b> commands</span></span>
                     <span class="stack">Go</span>
                     <span class="year">2025</span>
                 </li>
@@ -130,16 +130,12 @@
             <div class="marginal">
                 <h2 class="section-label" id="private-title">Not public</h2>
                 <div class="body">
-                    <p>Some of what I&rsquo;m building isn&rsquo;t public yet. Not stealth-mode stuff, just repos that aren&rsquo;t ready to be read by strangers. Here&rsquo;s what I&rsquo;m tinkering with:</p>
+                    <p>Some of what I&rsquo;m building isn&rsquo;t public yet. Not stealth-mode stuff, just repos that aren&rsquo;t ready to be read by strangers. Here&rsquo;s what&rsquo;s in progress:</p>
 
                     <dl class="private-list">
                         <div>
                             <dt>assay</dt>
                             <dd>Automated code cleanup without LLMs. It only keeps a rewrite if the tests pass, golden outputs match, and it&rsquo;s actually faster.</dd>
-                        </div>
-                        <div>
-                            <dt>rt-approx</dt>
-                            <dd>Approximated ray and path tracing on CPU and GPU. Seeing how much compute I can skip before the image actually degrades.</dd>
                         </div>
                         <div>
                             <dt>rusty-ocean</dt>
@@ -150,26 +146,39 @@
                             <dd>Compact, append-only working memory format for coding agents. Uses 40.9% of the tokens JSON would, with lossless round-tripping. Reasoning held flat in its controlled test.</dd>
                         </div>
                         <div>
-                            <dt>LiNN</dt>
-                            <dd>A tiny (0.5M to 5M param) CPU-first chess net that outputs both policy and value, paired with a real move generator to keep moves legal.</dd>
-                        </div>
-                        <div>
-                            <dt>CLOE</dt>
-                            <dd>A Chrome MV3 extension for RAM, power, and load: capped preloading, script de-dupe, a declarative net guard, media lazy-loading, and DOM stripping.</dd>
-                        </div>
-                        <div>
-                            <dt>VEA</dt>
-                            <dd>A hardware-accelerated image viewer in Rust with a Photos-style gallery: month timeline, background scanning, thumbnail cache, search, and RAW, SVG, EXR, and AVIF support.</dd>
-                        </div>
-                        <div>
-                            <dt>AD-DSP</dt>
-                            <dd>System-wide Linux DSP that learns your EQ preferences per headphone using blind A/B tests.</dd>
-                        </div>
-                        <div>
                             <dt>Blastd</dt>
                             <dd>A real-time call-graph daemon for Rust, Python, and C++: who-calls queries in microseconds and token-budgeted context packets for agents.</dd>
                         </div>
                     </dl>
+
+                    <details class="private-more">
+                        <summary>
+                            <span class="more-closed">Show the other five</span>
+                            <span class="more-open">Show fewer</span>
+                        </summary>
+                        <dl class="private-list">
+                            <div>
+                                <dt>rt-approx</dt>
+                                <dd>Approximated ray and path tracing on CPU and GPU. Seeing how much compute I can skip before the image actually degrades.</dd>
+                            </div>
+                            <div>
+                                <dt>LiNN</dt>
+                                <dd>A tiny (0.5M to 5M param) CPU-first chess net that outputs both policy and value, paired with a real move generator to keep moves legal.</dd>
+                            </div>
+                            <div>
+                                <dt>CLOE</dt>
+                                <dd>A Chrome MV3 extension for RAM, power, and load: capped preloading, script de-dupe, a declarative net guard, media lazy-loading, and DOM stripping.</dd>
+                            </div>
+                            <div>
+                                <dt>VEA</dt>
+                                <dd>A hardware-accelerated image viewer in Rust with a Photos-style gallery: month timeline, background scanning, thumbnail cache, search, and RAW, SVG, EXR, and AVIF support.</dd>
+                            </div>
+                            <div>
+                                <dt>AD-DSP</dt>
+                                <dd>System-wide Linux DSP that learns your EQ preferences per headphone using blind A/B tests.</dd>
+                            </div>
+                        </dl>
+                    </details>
 
                     <p class="private-close">If any of these overlap with what you&rsquo;re working on (or you just want to see how one works), <a href="mailto:deshmukhvedant95@gmail.com">shoot me an email</a>. Always happy to talk shop.</p>
                 </div>

@@ -55,6 +55,13 @@ body {
     font-optical-sizing: auto;
     -webkit-font-smoothing: antialiased;
     text-rendering: optimizeLegibility;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+main {
+    flex: 1 0 auto;
 }
 
 ::selection {
@@ -362,6 +369,12 @@ p {
     font-variant-numeric: tabular-nums;
 }
 
+/* Keep the number and its unit on the same line when the row wraps on
+   narrow screens. */
+.metric-phrase {
+    white-space: nowrap;
+}
+
 .index .stack,
 .index .year {
     font-family: var(--mono);
@@ -513,6 +526,56 @@ p {
     color: var(--ink-soft);
 }
 
+.private-more summary {
+    display: flex;
+    align-items: baseline;
+    gap: 8px;
+    padding: 11px 0;
+    list-style: none;
+    cursor: pointer;
+    font-family: var(--mono);
+    font-size: 0.75rem;
+    letter-spacing: 0.02em;
+    color: var(--muted);
+    border-bottom: 1px solid var(--rule);
+    transition: color 120ms ease;
+}
+
+.private-more summary::-webkit-details-marker {
+    display: none;
+}
+
+.private-more summary::before {
+    content: "+";
+    color: var(--signal);
+    font-weight: 500;
+}
+
+.private-more[open] summary::before {
+    content: "\2212";
+}
+
+.private-more summary:hover {
+    color: var(--signal);
+}
+
+.private-more .more-open {
+    display: none;
+}
+
+.private-more[open] .more-closed {
+    display: none;
+}
+
+.private-more[open] .more-open {
+    display: inline;
+}
+
+.private-more .private-list {
+    margin-top: 0;
+    border-top: 0;
+}
+
 .private-close {
     margin-top: 20px;
 }
@@ -658,7 +721,7 @@ p {
 
 .project-head {
     display: grid;
-    grid-template-columns: minmax(0, 1fr) 230px;
+    grid-template-columns: minmax(0, 1fr) 250px;
     column-gap: 32px;
     align-items: end;
     padding: 48px 0 32px;
