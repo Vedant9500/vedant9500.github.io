@@ -1,8 +1,8 @@
 # Colossen (Vedant Deshmukh)
 
 Personal site of Vedant Deshmukh, who publishes as Colossen. Computer
-engineering student in India building equation discovery, N-body simulation,
-and developer tools. Mostly Rust, C++, Python, and Go.
+engineering student in India. He builds systems from scratch, mostly in Rust,
+C++, and Python.
 
 ## Profile
 
@@ -15,10 +15,11 @@ and developer tools. Mostly Rust, C++, Python, and Go.
 
 ## Pages
 
-- [Home](https://colossen.com/): introduction, featured work, about, contact.
+- [Home](https://colossen.com/): introduction, quick facts, personal links,
+  and selected work.
 - [Work](https://colossen.com/work/): every public project, plus a selection
   of private ones.
-- [About](https://colossen.com/about/): background, work lanes, stack.
+- [About](https://colossen.com/about/): background, projects, off-screen.
 - [Glassbox](https://colossen.com/work/glassbox/): symbolic regression.
 - [FMMS](https://colossen.com/work/fmms/): fast-multipole N-body in Rust,
   with a live 160-body browser demo.
@@ -37,21 +38,21 @@ Stack: Python, C++.
 https://github.com/Vedant9500/Glassbox
 
 ### Hark
-Native Linux command palette. A resident Rust daemon with a GTK4 overlay;
-about 8 microseconds median app search across roughly 9,100 indexed items.
+Native Linux command palette. A resident Rust daemon with a GTK4 overlay.
+About 8 microseconds median app search across roughly 9,100 indexed items.
 Stack: Rust, GTK4.
 https://github.com/Vedant9500/Hark
 
 ### freeze-bench
-Execution-graded benchmark for coding models. 32 active tasks; the model
+Execution-graded benchmark for coding models. 32 active tasks. The model
 never sees git history, the fix commit, the rubric, or the network.
 Stack: Shell.
 https://github.com/Vedant9500/freeze-bench
 
 ### FMMS
-Fast-multipole N-body solver in Rust. Verified O(N) scaling; 48x faster than
-direct summation at one million bodies. The project page runs a live 160-body
-direct-summation demo in the browser.
+Fast-multipole N-body solver in Rust. Verified O(N) scaling, and 48x faster
+than direct summation at one million bodies. The project page runs a live
+160-body direct-summation demo in the browser.
 Stack: Rust.
 https://github.com/Vedant9500/FMMS
 

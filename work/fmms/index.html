@@ -39,8 +39,7 @@
     <header class="masthead">
         <div class="wrap masthead-inner">
             <div class="identity">
-                <a class="name" href="../../" aria-label="Colossen, Vedant Deshmukh"><span class="name-alias">Colossen</span><span class="name-real">Vedant Deshmukh</span></a>
-                <p class="role">AI models &middot; simulations &middot; systems &amp; tools</p>
+                <a class="name" href="../../" aria-label="Colossen, home"><span class="name-alias">Colossen</span></a>
             </div>
             <nav class="nav" aria-label="Primary">
                 <a href="../" aria-current="page">Work</a>
@@ -57,7 +56,7 @@
                     <div class="project-head-main">
                         <p class="crumb"><a href="../">Work</a> <span aria-hidden="true">/</span> FMMS</p>
                         <h1>FMMS</h1>
-                        <p class="project-abstract">A fast-multipole N-body solver in Rust, built to measure every constant, not just the asymptotic. 48&times; faster than direct summation at 10<sup>6</sup> bodies.</p>
+                        <p class="project-abstract">A fast-multipole N-body solver in Rust. 48&times; faster than direct summation at 10<sup>6</sup> bodies.</p>
                     </div>
                     <dl class="project-meta">
                         <div>
@@ -84,14 +83,14 @@
                         <h2 class="section-label" id="problem-title">Problem</h2>
                         <div class="project-body">
                             <p>Direct summation is exact and O(N&sup2;). At a million bodies, one force evaluation is a trillion interactions. Barnes&ndash;Hut drops that to O(N log N), but it gives up accuracy at the high end. The Fast Multipole Method groups distant bodies into multipole expansions and reaches O(N).</p>
-                            <p>Getting the O(N) scaling is only half the battle. The real headache is keeping energy and momentum conserved while tracking down where the constant-factor overhead actually goes.</p>
+                            <p>The O(N) scaling was the easy part. Keeping energy and momentum conserved while tracking down the constant-factor overhead was the headache.</p>
                         </div>
                     </section>
 
                     <section class="project-section" aria-labelledby="approach-title">
                         <h2 class="section-label" id="approach-title">Approach</h2>
                         <div class="project-body">
-                            <p>FMMS is a Dehnen-style dual-tree-walk solver. The tree, walk, and integrator are Rust; the math is written against a direct N&sup2; reference so every approximation has a check.</p>
+                            <p>FMMS is a Dehnen-style dual-tree-walk solver. The tree, walk, and integrator are Rust. The math is written against a direct N&sup2; reference, so every approximation has a check.</p>
                             <ul>
                                 <li>Solid-harmonic expansions with an error-controlled multipole-acceptance criterion. The MAC factor of 8 is load-bearing for the rms error check.</li>
                                 <li>Rotation-accelerated M2L at O(p&sup3;) above p&nbsp;&asymp;&nbsp;20, with the naive O(p&#8308;) path below the measured crossover.</li>
@@ -107,7 +106,7 @@
                         <div class="project-body">
                             <p class="result-figure">48&times; <span>vs direct</span></p>
                             <p class="result-caption">Single core, N=10&#8310;, p=8, &epsilon;=10&#8315;&#8309;, August 2026. The profile below uses eight threads.</p>
-                            <p>Right now a full N=10&#8310; step takes about 20 seconds. Almost all of that is spent in the tree walk and the two serial passes rather than the multipole math itself, which means the bottleneck is memory layout and parallelization rather than the algorithm.</p>
+                            <p>Right now a full N=10&#8310; step takes about 20 seconds. Almost all of it goes into the tree walk and the two serial passes. The multipole math is cheap. The bottleneck is memory layout and parallelization.</p>
 
                             <aside class="project-aside" aria-label="FMMS N=10 to the 6 force-evaluation profile">
                                 <div class="data-pane">
@@ -155,7 +154,7 @@
                                             </li>
                                         </ul>
 
-                                        <p class="data-note">Bars are scaled to the 11.89s walk. The walk is DRAM-bandwidth-bound; the serial phases beside it are the next bottleneck.</p>
+                                        <p class="data-note">Bars are scaled to the 11.89s walk. The walk is DRAM-bandwidth-bound. The serial phases beside it are the next bottleneck.</p>
                                     </figure>
                                 </div>
                             </aside>
@@ -189,7 +188,7 @@
                                         <button class="demo-control" type="button" data-demo-reset disabled>Reset</button>
                                     </div>
 
-                                    <p class="data-note" id="demo-note">Softened gravity, leapfrog integration, equal masses; G = M = a = 1. Direct O(N&sup2;): 12,720 pair interactions per step.</p>
+                                    <p class="data-note" id="demo-note">Softened gravity, leapfrog integration, equal masses. G = M = a = 1. Direct O(N&sup2;): 12,720 pair interactions per step.</p>
                                 </div>
                             </aside>
                         </div>
@@ -223,8 +222,17 @@
     </main>
 
     <footer class="footer">
-        <div class="wrap footer-inner footer-inner--narrow">
-            <p>Colossen &middot; Vedant Deshmukh &middot; 2026</p>
+        <div class="wrap footer-inner">
+            <p class="colophon"><span lang="grc">κολοσσός</span></p>
+            <div class="footer-meta">
+                <p>Colossen &middot; India &middot; IST</p>
+                <p class="footer-links">
+                    <a href="mailto:hey@colossen.com">Email</a>
+                    <a href="https://github.com/Vedant9500" target="_blank" rel="noopener noreferrer">GitHub</a>
+                    <a href="https://www.linkedin.com/in/vedant-deshmukh-82441928b/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+                    <a href="https://t.me/Vedant_s_d" target="_blank" rel="noopener noreferrer">Telegram</a>
+                </p>
+            </div>
         </div>
     </footer>
 

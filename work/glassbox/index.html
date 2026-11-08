@@ -36,8 +36,7 @@
     <header class="masthead">
         <div class="wrap masthead-inner">
             <div class="identity">
-                <a class="name" href="../../" aria-label="Colossen, Vedant Deshmukh"><span class="name-alias">Colossen</span><span class="name-real">Vedant Deshmukh</span></a>
-                <p class="role">AI models &middot; simulations &middot; systems &amp; tools</p>
+                <a class="name" href="../../" aria-label="Colossen, home"><span class="name-alias">Colossen</span></a>
             </div>
             <nav class="nav" aria-label="Primary">
                 <a href="../" aria-current="page">Work</a>
@@ -80,7 +79,7 @@
                     <section class="project-section" aria-labelledby="problem-title">
                         <h2 class="section-label" id="problem-title">Problem</h2>
                         <div class="project-body">
-                            <p>Most regression models predict well and explain nothing. Glassbox is an attempt to recover the formula itself: a short expression that fits the data and can be checked by hand. The output is the equation, not a model that approximates one.</p>
+                            <p>Most regression models are judged on prediction error alone. Glassbox tries to recover the formula itself: a short expression that fits the data and can be checked by hand. The output is the equation.</p>
                             <p>A candidate has to be accurate and legible. A slightly worse fit with a simpler expression is often the better result.</p>
                         </div>
                     </section>
@@ -88,15 +87,15 @@
                     <section class="project-section" aria-labelledby="approach-title">
                         <h2 class="section-label" id="approach-title">Approach</h2>
                         <div class="project-body">
-                            <p>The runtime is a hybrid pipeline, not a single model:</p>
+                            <p>The runtime is a hybrid pipeline:</p>
                             <ol>
                                 <li>Validate the input and optionally reduce black-box features.</li>
-                                <li>Build basis terms with the classifier fast path; check exact matches.</li>
+                                <li>Build basis terms with the classifier fast path, then check exact matches.</li>
                                 <li>Propose skeletons with the neural proposer and specialist passes.</li>
                                 <li>Search structure and constants with C++ island evolution.</li>
                                 <li>Simplify the displayed formula and score it directly.</li>
                             </ol>
-                            <p>Only the last step decides the score. Benchmarks evaluate the displayed formula, not the engine&rsquo;s internal fitness, so a good number cannot hide an unreadable expression. The C++ extension is optional; the Python layer falls back when <code>_core</code> is unavailable.</p>
+                            <p>Only the last step decides the score. Benchmarks score the displayed formula itself, so a good number cannot hide an unreadable expression. The C++ extension is optional. The Python layer falls back when <code>_core</code> is unavailable.</p>
                         </div>
                     </section>
 
@@ -121,7 +120,7 @@
 
                                         <svg class="gb-chart" viewBox="0 0 548 200" width="548" height="200" role="img" aria-labelledby="gb-title gb-desc">
                                             <title id="gb-title">Glassbox best full-suite score, May to September 2026</title>
-                                            <desc id="gb-desc">Best full-suite score after each of 33 recorded runs. The line rises from 529 on 19 May to 591 on 3 June, stays at 591 through the summer, and reaches 598 on 9 September. A single 611 run from an experimental search-power pass is excluded; it never reproduced.</desc>
+                                            <desc id="gb-desc">Best full-suite score after each of 33 recorded runs. The line rises from 529 on 19 May to 591 on 3 June, stays at 591 through the summer, and reaches 598 on 9 September. A single 611 run from an experimental search-power pass is excluded. It never reproduced.</desc>
 
                                             <line class="gb-grid gb-grid-strong" x1="44" y1="168" x2="532" y2="168"/>
                                             <line class="gb-grid" x1="44" y1="107.2" x2="532" y2="107.2"/>
@@ -153,7 +152,7 @@
                                             <text class="gb-value" x="532" y="70" text-anchor="end">598</text>
                                         </svg>
 
-                                        <p class="data-note">Best full-suite score; axis from 500. It held 588&ndash;591 from June through July, then reached 596&ndash;598 on 9 September. A single 611 run from an experimental search-power pass is excluded; it never reproduced.</p>
+                                        <p class="data-note">Best full-suite score, axis from 500. It held 588&ndash;591 from June through July, then reached 596&ndash;598 on 9 September. A single 611 run from an experimental search-power pass is excluded. It never reproduced.</p>
                                     </figure>
 
                                     <figure class="data-figure">
@@ -209,7 +208,7 @@
                                     </figure>
                                 </div>
                             </aside>
-                            <p>The score is weighted: 3 for exact, 2 for approximate, 1 for loose. Most of the gain came between May and early June; the specialist path has held near 590 since, with a late push to 598.</p>
+                            <p>The score is weighted: 3 for exact, 2 for approximate, 1 for loose. Most of the gain came between May and early June. The specialist path has held near 590 since, with a late push to 598.</p>
                         </div>
                     </section>
 
@@ -234,7 +233,7 @@ print(est.best_mse_)</code></pre>
                     <section class="project-section" aria-labelledby="next-title">
                         <h2 class="section-label" id="next-title">Next</h2>
                         <div class="project-body">
-                            <p>Running a clean SRBench pass with multiple seeds, plus cutting a release that matches the current hybrid runtime. The repository still carries research paths the default runtime no longer uses; removing them is part of making the result reproducible.</p>
+                            <p>Running a clean SRBench pass with multiple seeds, plus cutting a release that matches the current hybrid runtime. The repository still carries research paths the default runtime no longer uses. Removing them is part of making the result reproducible.</p>
                         </div>
                     </section>
                 </div>
@@ -249,8 +248,17 @@ print(est.best_mse_)</code></pre>
     </main>
 
     <footer class="footer">
-        <div class="wrap footer-inner footer-inner--narrow">
-            <p>Colossen &middot; Vedant Deshmukh &middot; 2026</p>
+        <div class="wrap footer-inner">
+            <p class="colophon"><span lang="grc">κολοσσός</span></p>
+            <div class="footer-meta">
+                <p>Colossen &middot; India &middot; IST</p>
+                <p class="footer-links">
+                    <a href="mailto:hey@colossen.com">Email</a>
+                    <a href="https://github.com/Vedant9500" target="_blank" rel="noopener noreferrer">GitHub</a>
+                    <a href="https://www.linkedin.com/in/vedant-deshmukh-82441928b/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+                    <a href="https://t.me/Vedant_s_d" target="_blank" rel="noopener noreferrer">Telegram</a>
+                </p>
+            </div>
         </div>
     </footer>
 </body>
