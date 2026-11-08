@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>FMMS: fast-multipole N-body in Rust | Vedant Deshmukh</title>
+    <title>FMMS: fast-multipole N-body in Rust | Colossen</title>
     <meta name="description" content="FMMS is a fast-multipole N-body solver in Rust: verified O(N) scaling and 48x faster than direct summation at one million bodies.">
     <meta name="author" content="Vedant Deshmukh">
     <meta name="theme-color" content="#f7f4ec">
@@ -12,7 +12,7 @@
     <meta property="og:title" content="FMMS: fast-multipole N-body in Rust">
     <meta property="og:description" content="Verified O(N) scaling and 48x faster than direct summation at one million bodies.">
     <meta property="og:type" content="article">
-    <meta property="og:site_name" content="Vedant Deshmukh">
+    <meta property="og:site_name" content="Colossen">
     <meta property="og:url" content="https://vroid-is.my.id/work/fmms/">
     <meta property="og:image" content="https://vroid-is.my.id/assets/og/og-fmms.png">
     <meta property="og:image:width" content="1200">
@@ -39,7 +39,7 @@
     <header class="masthead">
         <div class="wrap masthead-inner">
             <div class="identity">
-                <a class="name" href="../../">Vedant Deshmukh</a>
+                <a class="name" href="../../" aria-label="Colossen, Vedant Deshmukh"><span class="name-alias">Colossen</span><span class="name-real">Vedant Deshmukh</span></a>
                 <p class="role">AI models &middot; simulations &middot; systems &amp; tools</p>
             </div>
             <nav class="nav" aria-label="Primary">
@@ -57,7 +57,7 @@
                     <div class="project-head-main">
                         <p class="crumb"><a href="../">Work</a> <span aria-hidden="true">/</span> FMMS</p>
                         <h1>FMMS</h1>
-                        <p class="project-abstract">A fast-multipole N-body solver in Rust, built to measure every constant, not just the asymptotic.</p>
+                        <p class="project-abstract">A fast-multipole N-body solver in Rust, built to measure every constant, not just the asymptotic. 48&times; faster than direct summation at 10<sup>6</sup> bodies.</p>
                     </div>
                     <dl class="project-meta">
                         <div>
@@ -69,8 +69,8 @@
                             <dd>Rust</dd>
                         </div>
                         <div>
-                            <dt>Status</dt>
-                            <dd>Active</dd>
+                            <dt>Updated</dt>
+                            <dd>Aug 2026</dd>
                         </div>
                         <div>
                             <dt>Code</dt>
@@ -177,8 +177,11 @@
                                     </p>
 
                                     <div class="demo-stage">
-                                        <canvas data-demo-canvas width="1200" height="800" role="img" aria-label="A live 160-body Plummer sphere evolving under gravity." aria-describedby="demo-note"></canvas>
-                                        <noscript><p class="demo-fallback">The live demo needs JavaScript. The rest of this page works without it.</p></noscript>
+                                        <canvas data-demo-canvas width="1200" height="800" role="img" aria-label="A 160-body Plummer sphere under gravity." aria-describedby="demo-note"></canvas>
+                                        <noscript>
+                                            <img class="demo-poster" src="demo-poster.webp" width="720" height="481" alt="A still frame of the 160-body Plummer sphere simulation, with a dense core and scattered outer bodies.">
+                                            <p class="demo-fallback"><span>The live demo needs JavaScript. The rest of this page works without it.</span></p>
+                                        </noscript>
                                     </div>
 
                                     <div class="demo-controls">
@@ -221,7 +224,7 @@
 
     <footer class="footer">
         <div class="wrap footer-inner footer-inner--narrow">
-            <p>Vedant Deshmukh &middot; 2026</p>
+            <p>Colossen &middot; Vedant Deshmukh &middot; 2026</p>
         </div>
     </footer>
 

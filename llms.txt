@@ -1,7 +1,8 @@
-# Vedant Deshmukh
+# Colossen (Vedant Deshmukh)
 
-Computer engineering student in India building equation discovery, N-body
-simulation, and developer tools. Mostly Rust, C++, Python, and Go.
+Personal site of Vedant Deshmukh, who publishes as Colossen. Computer
+engineering student in India building equation discovery, N-body simulation,
+and developer tools. Mostly Rust, C++, Python, and Go.
 
 ## Profile
 

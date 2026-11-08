@@ -10,6 +10,7 @@
     const resetButton = pane.querySelector("[data-demo-reset]");
     const timeReadout = pane.querySelector("[data-demo-time]");
     const countReadout = pane.querySelector("[data-demo-count]");
+    const liveLabel = pane.querySelector(".demo-live");
     const stage = canvas.parentElement;
 
     const N = 160;
@@ -62,8 +63,6 @@
 
     if (toggle) {
         toggle.disabled = false;
-        toggle.textContent = running ? "Pause" : "Play";
-        toggle.setAttribute("aria-label", running ? "Pause the simulation" : "Play the simulation");
         toggle.addEventListener("click", () => setRunning(!running));
     }
     if (resetButton) {
@@ -350,17 +349,28 @@
         lastFrame = 0;
     }
 
-    function sync() {
-        if (running && inView && pageVisible) wake();
-        else sleep();
-    }
-
-    function setRunning(next) {
-        running = next;
+    function syncLabels() {
+        if (liveLabel) liveLabel.textContent = running ? "Live \u00b7 " : "Paused \u00b7 ";
         if (toggle) {
             toggle.textContent = running ? "Pause" : "Play";
             toggle.setAttribute("aria-label", running ? "Pause the simulation" : "Play the simulation");
         }
+        canvas.setAttribute(
+            "aria-label",
+            running
+                ? "A live 160-body Plummer sphere evolving under gravity."
+                : "A 160-body Plummer sphere. The animation is paused."
+        );
+    }
+
+    function sync() {
+        if (running && inView && pageVisible) wake();
+        else sleep();
+        syncLabels();
+    }
+
+    function setRunning(next) {
+        running = next;
         sync();
     }
 
