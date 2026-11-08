@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://vroid-is.my.id/sitemap.xml
+Sitemap: https://colossen.com/sitemap.xml

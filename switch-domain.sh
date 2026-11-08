@@ -14,6 +14,7 @@ DEFAULT_DOMAIN="vedant9500.github.io"
 
 # Domains the site has used before; all are rewritten to NEW_BASE.
 KNOWN_DOMAINS=(
+  colossen.com
   vedantium.dev
   vroid-is.my.id
   vedant9500.github.io

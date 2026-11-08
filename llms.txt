@@ -11,21 +11,21 @@ and developer tools. Mostly Rust, C++, Python, and Go.
 - GitHub: https://github.com/Vedant9500
 - LinkedIn: https://www.linkedin.com/in/vedant-deshmukh-82441928b/
 - Telegram: https://t.me/Vedant_s_d
-- Website: https://vroid-is.my.id/
+- Website: https://colossen.com/
 
 ## Pages
 
-- [Home](https://vroid-is.my.id/): introduction, featured work, about, contact.
-- [Work](https://vroid-is.my.id/work/): every public project, plus a selection
+- [Home](https://colossen.com/): introduction, featured work, about, contact.
+- [Work](https://colossen.com/work/): every public project, plus a selection
   of private ones.
-- [About](https://vroid-is.my.id/about/): background, work lanes, stack.
-- [Glassbox](https://vroid-is.my.id/work/glassbox/): symbolic regression.
-- [FMMS](https://vroid-is.my.id/work/fmms/): fast-multipole N-body in Rust,
+- [About](https://colossen.com/about/): background, work lanes, stack.
+- [Glassbox](https://colossen.com/work/glassbox/): symbolic regression.
+- [FMMS](https://colossen.com/work/fmms/): fast-multipole N-body in Rust,
   with a live 160-body browser demo.
-- [freeze-bench](https://vroid-is.my.id/work/freeze-bench/): execution-graded
+- [freeze-bench](https://colossen.com/work/freeze-bench/): execution-graded
   coding eval.
-- [Hark](https://vroid-is.my.id/work/hark/): Linux command palette.
-- [OpenLMlib](https://vroid-is.my.id/work/openlmlib/): local knowledge library
+- [Hark](https://colossen.com/work/hark/): Linux command palette.
+- [OpenLMlib](https://colossen.com/work/openlmlib/): local knowledge library
   for coding agents, with 76 MCP tools.
 
 ## Public projects
@@ -59,7 +59,7 @@ https://github.com/Vedant9500/FMMS
 Local knowledge library for coding agents, with persistent, searchable memory
 over SQLite, JSON findings, and semantic search. 76 MCP tools.
 Stack: Python, SQLite.
-https://vroid-is.my.id/work/openlmlib/
+https://colossen.com/work/openlmlib/
 https://github.com/Vedant9500/OpenLMlib
 
 ### WTF
