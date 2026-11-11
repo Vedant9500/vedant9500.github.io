@@ -39,6 +39,7 @@
     --muted: #6b655b;
     --rule: #d9d2c3;
     --rule-strong: #bfb6a6;
+    --link-underline: #8a8173;
     --signal: #a0442a;
     --bronze: #c98a5e;
     --serif: "Newsreader", "Colossen Greek", Georgia, "Times New Roman", serif;
@@ -318,6 +319,20 @@ p {
     color: var(--ink-soft);
 }
 
+.home-lede a {
+    color: var(--ink);
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+    text-decoration-color: var(--link-underline);
+    text-underline-offset: 3px;
+    transition: color 120ms ease, text-decoration-color 120ms ease;
+}
+
+.home-lede a:hover {
+    color: var(--signal);
+    text-decoration-color: var(--signal);
+}
+
 .home-facts {
     display: grid;
     grid-template-columns: 5.5rem minmax(0, 1fr);
@@ -350,17 +365,28 @@ p {
     display: flex;
     flex-wrap: wrap;
     gap: 12px 24px;
-    margin-top: 40px;
     font-family: var(--mono);
     font-size: 0.75rem;
     letter-spacing: 0.04em;
     text-transform: uppercase;
 }
 
+.home-contact {
+    margin-top: 40px;
+}
+
+.home-contact-note {
+    max-width: 52ch;
+    margin-top: 16px;
+    font-size: 0.9375rem;
+    line-height: 1.5;
+    color: var(--muted);
+}
+
 .home-links a {
     color: var(--muted);
     text-decoration: none;
-    border-bottom: 1px solid var(--rule-strong);
+    border-bottom: 1px solid var(--link-underline);
     padding-bottom: 2px;
     transition: color 120ms ease, border-color 120ms ease;
 }
@@ -374,31 +400,14 @@ p {
     background-color: var(--signal);
 }
 
-.home-work {
-    margin-top: 28px;
-    font-size: 0.9375rem;
-    line-height: 1.6;
-    color: var(--muted);
+.home-links a.home-link-primary {
+    color: var(--ink);
+    border-bottom-color: var(--ink-soft);
 }
 
-.home-work span {
-    margin-right: 8px;
-    font-family: var(--mono);
-    font-size: 0.75rem;
-    letter-spacing: 0.06em;
-    text-transform: uppercase;
-}
-
-.home-work a {
-    color: var(--ink-soft);
-    text-decoration-color: var(--rule-strong);
-    text-underline-offset: 3px;
-    transition: color 120ms ease, text-decoration-color 120ms ease;
-}
-
-.home-work a:hover {
+.home-links a.home-link-primary:hover {
     color: var(--signal);
-    text-decoration-color: var(--signal);
+    border-bottom-color: var(--signal);
 }
 
 .lede {
@@ -454,7 +463,7 @@ p {
 
 .about-lanes a {
     text-decoration: none;
-    border-bottom: 1px solid var(--rule-strong);
+    border-bottom: 1px solid var(--link-underline);
     padding-bottom: 1px;
     transition: color 120ms ease, border-color 120ms ease;
 }
@@ -756,7 +765,7 @@ p {
 
 .contact-links a {
     text-decoration: none;
-    border-bottom: 1px solid var(--rule-strong);
+    border-bottom: 1px solid var(--link-underline);
     padding-bottom: 1px;
     transition: color 120ms ease, border-color 120ms ease;
 }
@@ -777,7 +786,7 @@ p {
 
 .contact-email a {
     text-decoration: none;
-    border-bottom: 1px solid var(--rule-strong);
+    border-bottom: 1px solid var(--link-underline);
     padding-bottom: 2px;
     transition: color 120ms ease, border-color 120ms ease;
 }
@@ -838,7 +847,7 @@ p {
     text-decoration: underline;
     text-decoration-thickness: 1px;
     text-underline-offset: 3px;
-    text-decoration-color: var(--rule-strong);
+    text-decoration-color: var(--link-underline);
     transition: color 120ms ease, text-decoration-color 120ms ease;
 }
 
@@ -876,7 +885,7 @@ p {
 
 .crumb a {
     text-decoration: none;
-    border-bottom: 1px solid var(--rule-strong);
+    border-bottom: 1px solid var(--link-underline);
     padding-bottom: 1px;
     transition: color 120ms ease, border-color 120ms ease;
 }
@@ -936,7 +945,7 @@ p {
 
 .project-meta a {
     text-decoration: none;
-    border-bottom: 1px solid var(--rule-strong);
+    border-bottom: 1px solid var(--link-underline);
     padding-bottom: 1px;
     transition: color 120ms ease, border-color 120ms ease;
 }
@@ -1686,7 +1695,7 @@ p {
 
 .project-next a {
     text-decoration: none;
-    border-bottom: 1px solid var(--rule-strong);
+    border-bottom: 1px solid var(--link-underline);
     padding-bottom: 1px;
     transition: color 120ms ease, border-color 120ms ease;
 }
@@ -1960,11 +1969,10 @@ p {
 
     .home-links {
         gap: 12px 20px;
-        margin-top: 32px;
     }
 
-    .home-work {
-        margin-top: 24px;
+    .home-contact {
+        margin-top: 32px;
     }
 
     .section {
@@ -2047,6 +2055,16 @@ p {
     }
 }
 
+@media (max-width: 360px) {
+    .home-links {
+        row-gap: 22px;
+    }
+
+    .home-links a::after {
+        inset: -8px -6px;
+    }
+}
+
 @media (max-width: 340px) {
     .masthead-inner {
         flex-direction: column;
@@ -2078,6 +2096,7 @@ p {
         --muted: #444;
         --rule: #bbb;
         --rule-strong: #999;
+        --link-underline: #666;
     }
 
     @page {
@@ -2099,6 +2118,18 @@ p {
     [data-demo-time],
     .demo-live {
         display: none;
+    }
+
+    .home-page {
+        display: block;
+    }
+
+    .rail {
+        display: none;
+    }
+
+    .home-shell {
+        padding: 0;
     }
 
     .home {
