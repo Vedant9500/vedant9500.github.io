@@ -1,6 +1,7 @@
 /* ============================================================
    v2: a document, not a landing page.
-   One serif. One accent. One column of attention.
+   Newsreader carries the Latin; a small Noto Serif subset carries
+   the Greek inscription. One accent. One column of attention.
    Static pages, one canvas for the live FMMS demo.
    ============================================================ */
 
@@ -20,6 +21,17 @@
     font-display: swap;
 }
 
+/* Newsreader has no Greek. This subset keeps the inscription in a
+   consistent face instead of trusting each platform's fallback. */
+@font-face {
+    font-family: "Colossen Greek";
+    src: url("fonts/noto-serif-greek.woff2") format("woff2");
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+    unicode-range: U+0370-03FF;
+}
+
 :root {
     --paper: #f7f4ec;
     --ink: #1b1915;
@@ -29,7 +41,7 @@
     --rule-strong: #bfb6a6;
     --signal: #a0442a;
     --bronze: #c98a5e;
-    --serif: "Newsreader", Georgia, "Times New Roman", serif;
+    --serif: "Newsreader", "Colossen Greek", Georgia, "Times New Roman", serif;
     --mono: ui-monospace, "SFMono-Regular", Menlo, Consolas, "Liberation Mono", monospace;
     --page: 1000px;
     --gutter: 40px;
@@ -161,11 +173,12 @@ p {
     color: var(--signal);
 }
 
-/* Keep the visible type small, but give the name and nav a comfortable
-   pointer target. The pseudo-element extends the hit area without shifting
-   the masthead. */
+/* Keep the visible type small, but give links a comfortable pointer target.
+   The pseudo-element extends the hit area without shifting the layout. */
 .name::after,
 .nav a::after,
+.home-links a::after,
+.contact-links a::after,
 .crumb a::after,
 .project-meta a::after,
 .project-next a::after {
@@ -175,10 +188,20 @@ p {
 }
 
 .name::after {
-    inset: -6px -4px;
+    inset: -9px -4px;
+}
+
+.nav a::after {
+    inset: -13px -8px;
+}
+
+.home-links a::after {
+    inset: -12px -6px;
 }
 
 .nav a,
+.home-links a,
+.contact-links a,
 .crumb a,
 .project-meta a,
 .project-next a {
@@ -289,7 +312,7 @@ p {
 
 .home-lede {
     max-width: 52ch;
-    margin-top: 22px;
+    margin-top: 24px;
     font-size: 1.125rem;
     line-height: 1.6;
     color: var(--ink-soft);
@@ -300,7 +323,7 @@ p {
     grid-template-columns: 5.5rem minmax(0, 1fr);
     gap: 8px 24px;
     margin-top: 40px;
-    padding-top: 18px;
+    padding-top: 20px;
     border-top: 1px solid var(--rule);
     font-size: 0.9375rem;
     line-height: 1.5;
@@ -313,7 +336,7 @@ p {
 .home-facts dt {
     padding-top: 2px;
     font-family: var(--mono);
-    font-size: 0.6875rem;
+    font-size: 0.75rem;
     letter-spacing: 0.06em;
     text-transform: uppercase;
     color: var(--muted);
@@ -326,7 +349,7 @@ p {
 .home-links {
     display: flex;
     flex-wrap: wrap;
-    gap: 10px 24px;
+    gap: 12px 24px;
     margin-top: 40px;
     font-family: var(--mono);
     font-size: 0.75rem;
@@ -352,16 +375,16 @@ p {
 }
 
 .home-work {
-    margin-top: 26px;
+    margin-top: 28px;
     font-size: 0.9375rem;
     line-height: 1.6;
     color: var(--muted);
 }
 
 .home-work span {
-    margin-right: 6px;
+    margin-right: 8px;
     font-family: var(--mono);
-    font-size: 0.6875rem;
+    font-size: 0.75rem;
     letter-spacing: 0.06em;
     text-transform: uppercase;
 }
@@ -472,7 +495,7 @@ p {
     padding-bottom: 0.65rem;
     border-bottom: 1px solid var(--rule-strong);
     font-family: var(--mono);
-    font-size: 0.6875rem;
+    font-size: 0.75rem;
     font-style: normal;
     letter-spacing: 0.08em;
     text-transform: uppercase;
@@ -505,7 +528,7 @@ p {
 
 .index .num {
     font-family: var(--mono);
-    font-size: 0.6875rem;
+    font-size: 0.75rem;
     letter-spacing: 0.06em;
     color: var(--muted);
     font-variant-numeric: tabular-nums;
@@ -553,7 +576,7 @@ p {
 .index .stack,
 .index .year {
     font-family: var(--mono);
-    font-size: 0.6875rem;
+    font-size: 0.75rem;
     line-height: 1.5;
     letter-spacing: 0.04em;
     text-transform: uppercase;
@@ -743,6 +766,43 @@ p {
     border-color: var(--signal);
 }
 
+/* Contact page ---------------------------------------------- */
+
+.contact-email {
+    margin-bottom: 20px;
+    font-size: clamp(1.75rem, 4vw, 2.5rem);
+    line-height: 1.1;
+    letter-spacing: -0.03em;
+}
+
+.contact-email a {
+    text-decoration: none;
+    border-bottom: 1px solid var(--rule-strong);
+    padding-bottom: 2px;
+    transition: color 120ms ease, border-color 120ms ease;
+}
+
+.contact-email a:hover {
+    color: var(--signal);
+    border-color: var(--signal);
+}
+
+.contact-note {
+    max-width: 62ch;
+    font-size: 1.0625rem;
+    line-height: 1.6;
+    color: var(--ink-soft);
+}
+
+.contact-based {
+    margin-top: 24px;
+    font-family: var(--mono);
+    font-size: 0.75rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--muted);
+}
+
 /* Work page ------------------------------------------------- */
 
 .page-head {
@@ -807,7 +867,7 @@ p {
 
 .crumb {
     font-family: var(--mono);
-    font-size: 0.6875rem;
+    font-size: 0.75rem;
     font-style: normal;
     letter-spacing: 0.06em;
     text-transform: uppercase;
@@ -858,7 +918,7 @@ p {
 
 .project-meta dt {
     font-family: var(--mono);
-    font-size: 0.6875rem;
+    font-size: 0.75rem;
     font-style: normal;
     letter-spacing: 0.08em;
     text-transform: uppercase;
@@ -1809,7 +1869,7 @@ p {
         flex-direction: row;
         align-items: center;
         justify-content: space-between;
-        padding: 18px 24px;
+        padding: 20px 24px;
     }
 
     .rail-mark {
@@ -1847,7 +1907,7 @@ p {
 
     .index-head,
     .index li {
-        grid-template-columns: 2rem minmax(8rem, 1fr) minmax(0, 1.8fr) 6.5rem 2.5rem;
+        grid-template-columns: 2rem minmax(8rem, 1fr) minmax(0, 1.8fr) 7rem 2.5rem;
         column-gap: 1rem;
     }
 }
@@ -1888,7 +1948,7 @@ p {
     }
 
     .home-lede {
-        margin-top: 18px;
+        margin-top: 20px;
         font-size: 1.0625rem;
     }
 
@@ -1899,12 +1959,12 @@ p {
     }
 
     .home-links {
-        gap: 10px 18px;
+        gap: 12px 20px;
         margin-top: 32px;
     }
 
     .home-work {
-        margin-top: 22px;
+        margin-top: 24px;
     }
 
     .section {

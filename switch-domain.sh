@@ -3,7 +3,7 @@
 # GitHub Pages URL.
 #
 # Usage:
-#   ./switch-domain.sh https://vroid-is.my.id        # enable a custom domain
+#   ./switch-domain.sh https://colossen.com          # enable a custom domain
 #   ./switch-domain.sh https://vedant9500.github.io  # back to default Pages URL
 set -euo pipefail
 
@@ -34,6 +34,7 @@ FILES=(
   index.html
   404.html
   about/index.html
+  contact/index.html
   work/index.html
   work/glassbox/index.html
   work/fmms/index.html

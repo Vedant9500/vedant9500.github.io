@@ -56,3 +56,7 @@ jspm_packages/
 *.temp
 scripts/
 todo.md
+
+# Python
+__pycache__/
+*.pyc
